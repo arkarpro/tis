@@ -17,7 +17,7 @@
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
         .chapter-card {
-            scroll-margin-top: 6rem;
+            scroll-margin-top: 8rem;
             background-color: white;
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -50,6 +50,18 @@
         .styled-table th { background-color: #f3f4f6; font-weight: 700; color: #111827; }
         .styled-table tr:last-child td { border-bottom: none; }
         .styled-table td code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.875rem; color: #1f2937; }
+        .part-heading {
+            scroll-margin-top: 6rem;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #111827;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+            text-align: left;
+            border-bottom: 4px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
@@ -58,20 +70,15 @@
         <div class="container mx-auto max-w-7xl px-4">
             <div class="flex flex-wrap justify-between items-center h-16">
                 <a href="index.html" class="flex items-center gap-2 hover:text-blue-400 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
+                    <img src="images/logo.jpg" alt="Logo" class="h-8 w-8 rounded-full border border-white">
                     <span class="font-bold text-lg tracking-wide hidden sm:block">The Insights Solution</span>
                     <span class="font-bold text-lg tracking-wide sm:hidden">TIS</span>
                 </a>
 
                 <div class="flex space-x-1 sm:space-x-4 text-sm font-medium">
                     <a href="index.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-300 transition">Profile</a>
-                    
                     <a href="excel.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-green-400 transition">Excel</a>
-                    
                     <a href="query.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-yellow-400 transition">Query</a>
-                    
                     <a href="#" class="px-3 py-2 rounded-md bg-blue-600 text-white shadow-lg shadow-blue-500/30 font-bold">Power BI</a>
                 </div>
             </div>
@@ -87,7 +94,7 @@
                         <img src="images/logo.jpg" alt="Logo" class="w-24 h-24 rounded-full mr-6 object-cover border-4 border-white shadow-md bg-white">
                         <div>
                             <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight group-hover:text-blue-700 transition-colors">The Analyst's Playbook</h1>
-                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-semibold uppercase tracking-wide mt-1">Data Analysis</span>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-semibold uppercase tracking-wide mt-1">Full Master Class (Chapter 1-20)</span>
                         </div>
                     </div>
                 </div>
@@ -97,9 +104,9 @@
         <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 mb-12 text-center text-white shadow-2xl relative overflow-hidden group">
             <div class="relative z-10">
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Transform Your Career with Data</h2>
-                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Master the tools that drive modern business. Join our next live intake or select individual modules tailored to your needs.</p>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Master the complete toolset: Excel, Power Query, Data Modeling & Power BI Visualization.</p>
                 <a href="https://forms.gle/torodmd989212jxk7" target="_blank" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transform transition hover:-translate-y-1 text-lg">
-                    <span class="mr-2">✍️</span> Enroll in Power BI Class
+                    <span class="mr-2">✍️</span> Enroll in Master Class
                 </a>
             </div>
         </div>
@@ -107,11 +114,27 @@
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
             <aside class="lg:col-span-3 mb-8 lg:mb-0">
                 <div class="sticky top-24 bg-white p-6 rounded-xl shadow-sm border border-gray-100 max-h-[calc(100vh-6rem)] overflow-y-auto">
-                    <h2 class="text-lg font-bold text-gray-900 mb-4 uppercase tracking-wider border-b pb-2">Power BI Syllabus</h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-4 uppercase tracking-wider border-b pb-2">Full Syllabus</h2>
                     <nav class="text-sm">
                         <ul class="space-y-4">
                             <li>
-                                <h3 class="font-bold text-blue-600">Part 3: Data Modeling & DAX</h3>
+                                <h3 class="font-bold text-green-600">Part 1: Excel Engine</h3>
+                                <ul class="space-y-2 mt-2 border-l-2 border-gray-200 pl-4">
+                                    <li><a href="#chapter-1" class="text-gray-600 hover:text-green-600 transition">Chapter 1: Data Prep</a></li>
+                                    <li><a href="#chapter-2" class="text-gray-600 hover:text-green-600 transition">Chapter 2: Advanced Lookups</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h3 class="font-bold text-yellow-600">Part 2: Power Query</h3>
+                                <ul class="space-y-2 mt-2 border-l-2 border-gray-200 pl-4">
+                                    <li><a href="#chapter-3" class="text-gray-600 hover:text-yellow-600 transition">Chapter 3: Importing</a></li>
+                                    <li><a href="#chapter-4" class="text-gray-600 hover:text-yellow-600 transition">Chapter 4: Merging</a></li>
+                                    <li><a href="#chapter-5" class="text-gray-600 hover:text-yellow-600 transition">Chapter 5: Master Table</a></li>
+                                    <li><a href="#chapter-6" class="text-gray-600 hover:text-yellow-600 transition">Chapter 6: Transforms</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h3 class="font-bold text-blue-600">Part 3: Data Modeling</h3>
                                 <ul class="space-y-2 mt-2 border-l-2 border-gray-200 pl-4">
                                     <li><a href="#chapter-7" class="text-gray-600 hover:text-blue-600 transition">Chapter 7: Star Schema</a></li>
                                     <li><a href="#chapter-8" class="text-gray-600 hover:text-blue-600 transition">Chapter 8: Intermediate DAX</a></li>
@@ -143,150 +166,157 @@
             </aside>
 
             <main class="lg:col-span-9">
-                <header class="mb-12 text-center">
-                    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">The Analyst's Playbook</h1>
-                    <p class="text-xl text-gray-500 font-medium">Data Modeling & Visualization</p>
-                </header>
 
-                <h2 id="part-3" class="part-heading">Part 3: Data Modeling & DAX</h2>
+                <h2 id="part-1" class="part-heading text-green-700 border-green-500">Part 1: Mastering the Data Engine in Excel</h2>
+                
+                <div id="chapter-1" class="chapter-card">
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 1: Excel Master – Sales Data Preparation</h3></div>
+                    <div class="chapter-body">
+                        <p class="concept-text lang-my font-medium text-green-800">မြန်မာဘာသာ – အခန်း (၁): Excel ကျွမ်းကျင်မှု – အရောင်းဒေတာပြင်ဆင်ခြင်း</p>
+                        <p class="concept-text"><strong>🎯 Purpose:</strong> To teach how to prepare and summarize sales data using Excel formulas.</p>
+                        <img src="images/1.png" alt="Excel Data Preparation" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                    </div>
+                </div>
+
+                <div id="chapter-2" class="chapter-card">
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 2: Advanced Lookup & Analysis</h3></div>
+                    <div class="chapter-body">
+                        <p class="concept-text"><strong>🎯 Purpose:</strong> Advanced lookups (XLOOKUP) and region-based analysis using SUMPRODUCT.</p>
+                        <img src="images/2.png" alt="Advanced Lookup" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                    </div>
+                </div>
+
+                <h2 id="part-2" class="part-heading text-yellow-700 border-yellow-500">Part 2: The Power Query Transformation Engine</h2>
+
+                <div id="chapter-3" class="chapter-card">
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 3: Importing & Cleaning Data</h3></div>
+                    <div class="chapter-body">
+                        <p class="concept-text"><strong>🎯 Purpose:</strong> Importing from Excel, CSV, and Folders.</p>
+                        <img src="images/3.png" alt="Power Query Import" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                    </div>
+                </div>
+
+                <div id="chapter-4" class="chapter-card">
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 4: Appending & Merging</h3></div>
+                    <div class="chapter-body">
+                        <p class="concept-text"><strong>🎯 Purpose:</strong> Joining datasets and segmentation.</p>
+                        <img src="images/4.png" alt="Merging" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                    </div>
+                </div>
+
+                <div id="chapter-5" class="chapter-card">
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 5: Creating a Master Table</h3></div>
+                    <div class="chapter-body">
+                        <p class="concept-text"><strong>🎯 Purpose:</strong> Building the Fact Table for analysis.</p>
+                        <img src="images/5.png" alt="Master Table" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                    </div>
+                </div>
+
+                <div id="chapter-6" class="chapter-card">
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 6: Advanced Transforms</h3></div>
+                    <div class="chapter-body">
+                        <p class="concept-text"><strong>🎯 Purpose:</strong> Grouping, Pivoting, and Unpivoting.</p>
+                        <img src="images/6.png" alt="Transforms" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                    </div>
+                </div>
+
+                <h2 id="part-3" class="part-heading text-blue-800 border-blue-600">Part 3: Data Modeling & DAX</h2>
                 
                 <div id="chapter-7" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 7: Phase 1 – Star Schema & Calculated Columns</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 7: Star Schema Basics</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To introduce the Power Pivot interface, build a Star Schema using fact and dimension tables, and practice basic DAX measures.</p>
-                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>Star Schema</td><td>Fact Table တစ်ခုနှင့် Dimension Tables များဖြင့် ချိတ်ဆက်ထားသော Data Model</td></tr>
-                                    <tr><td>DAX Measures</td><td>SUM, DISTINCTCOUNT, CALCULATE, RELATED စသည်ဖြင့် KPIs တွက်ချက်ရန် အသုံးပြုသည်။</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <img src="images/7.png" alt="Star Schema Basics" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                        <p class="concept-text"><strong>🎯 Purpose:</strong> Building the Data Model and Basic Measures.</p>
+                        <img src="images/7.png" alt="Star Schema" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
 
                 <div id="chapter-8" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 8: Building the Complete Star Schema & Intermediate DAX</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 8: Intermediate DAX</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To complete the Star Schema by linking all Fact and Dimension tables, and to practice intermediate DAX functions.</p>
-                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>Star Schema Completion</td><td>Fact Table နှင့် Dimension Tables များအားလုံးကို ချိတ်ဆက်ခြင်း</td></tr>
-                                    <tr><td>Date Table</td><td>Time Intelligence တွက်ချက်မှုများအတွက် လိုအပ်သော Calendar Table</td></tr>
-                                    <tr><td>Intermediate DAX</td><td>SWITCH, SUMX, COUNTBLANK, DISTINCTCOUNT စသည်ဖြင့် KPIs တွက်ချက်ခြင်း</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <p class="concept-text"><strong>🎯 Purpose:</strong> SWITCH, SUMX, and Connecting Dimensions.</p>
                         <img src="images/8.png" alt="Intermediate DAX" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
 
                 <div id="chapter-9" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 9: Upgrading to Galaxy Schema</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 9: Galaxy Schema</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To transition from a Star Schema to a Galaxy Schema by integrating multiple fact tables.</p>
-                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>Galaxy Schema</td><td>Fact Tables များစွာ (Sales, Expense, Target) ကို Dimension Tables များဖြင့် ချိတ်ဆက်ထားသော မော်ဒယ်</td></tr>
-                                    <tr><td>Measure Table</td><td>Measure များအားလုံးကို စုစည်းထားသော Table တစ်ခု</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <p class="concept-text"><strong>🎯 Purpose:</strong> Multiple Fact Tables (Sales, Budget, Expense).</p>
                         <img src="images/9.png" alt="Galaxy Schema" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
 
                 <div id="chapter-10" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 10: Mastering DAX Context & Time Intelligence</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 10: Time Intelligence</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To master DAX evaluation context and apply Time Intelligence functions.</p>
-                        <h4 class="section-title">🧠 Understanding CALCULATE</h4>
-                        <p class="concept-text">The <code>CALCULATE</code> function is the most important function in DAX. It modifies the filter context of a calculation.</p>
+                        <p class="concept-text"><strong>🎯 Purpose:</strong> CALCULATE, YoY, YTD Growth.</p>
                         <img src="images/10.png" alt="Time Intelligence" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
 
-                <h2 id="part-4" class="part-heading">Part 4: Visualization with Power BI</h2>
+                <h2 id="part-4" class="part-heading text-blue-800 border-blue-600">Part 4: Visualization with Power BI</h2>
+
                 <div id="chapter-11" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 11: Getting Started with Power BI Desktop</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 11: Intro to Power BI Desktop</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To install Power BI Desktop and become familiar with its main interface components.</p>
-                        <img src="images/11.png" alt="Intro to Power BI" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                        <img src="images/11.png" alt="Intro" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-12" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 12: Creating a Dynamic Date Table with DAX</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 12: Date Tables</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To create a robust, reusable Date table using DAX.</p>
                         <img src="images/12.png" alt="Date Table" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                        <div class="dax-code">date = ADDCOLUMNS(CALENDAR(DATE(2023,1,1), DATE(2024,7,31)), "Year", YEAR([Date]), "Month", FORMAT([Date], "MMMM"))</div>
                     </div>
                 </div>
                 <div id="chapter-13" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 13: DAX Row-Level Calculations</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 13: Row-Level DAX</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To learn how to create calculated columns.</p>
-                        <img src="images/13.png" alt="Row Level DAX" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                        <img src="images/13.png" alt="Row Level" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-14" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 14: Building Your First Interactive Report</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 14: First Report</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To combine your data model and basic measures to build your first multi-visual report page.</p>
                         <img src="images/14.png" alt="First Report" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-15" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 15: Visualizing Target Achievement</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 15: Target Visuals</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To create compelling visuals that compare actual performance against predefined targets.</p>
-                        <img src="images/15.png" alt="Target Visuals" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                        <img src="images/15.png" alt="Targets" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-16" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 16: Visualizing for Comparison</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 16: Comparison Visuals</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To build comparison-focused visuals, such as Revenue vs. Cost.</p>
-                        <img src="images/16.png" alt="Comparison Visuals" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                        <img src="images/16.png" alt="Comparison" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-17" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 17: Adding Interactivity with Slicers</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 17: Slicers</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To empower report users by adding slicers.</p>
                         <img src="images/17.png" alt="Slicers" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-18" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 18: Time Series Analysis with DAX (Part 1)</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 18: Time Series I</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To use DAX time intelligence functions to calculate period-to-date and prior period comparisons.</p>
                         <img src="images/18.png" alt="Time Series 1" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-19" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 19: Time Series Analysis with DAX (Part 2)</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 19: Time Series II</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To explore more advanced time intelligence scenarios.</p>
                         <img src="images/19.png" alt="Time Series 2" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-20" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 20: Publishing and Sharing Your Report</h3></div>
+                    <div class="chapter-header bg-gray-700"><h3>📘 Chapter 20: Publishing</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To learn the process of publishing a report to the Power BI Service.</p>
                         <img src="images/20.png" alt="Publishing" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
+
             </main>
         </div>
 
