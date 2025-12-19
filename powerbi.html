@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: #f9fafb; padding-top: 80px; }
@@ -62,6 +65,16 @@
             padding-bottom: 0.5rem;
             display: inline-block;
         }
+
+        /* Floating Button Animation */
+        @keyframes pulse-custom {
+            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+        }
+        .floating-btn {
+            animation: pulse-custom 2s infinite;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
@@ -87,7 +100,7 @@
 
     <div class="container mx-auto max-w-7xl px-4 py-8">
         
-        <div class="mb-12">
+        <div data-aos="fade-down" data-aos-duration="800" class="mb-12">
             <a href="index.html" class="block group">
                 <div class="flex flex-col sm:flex-row justify-between items-center bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-600 transition transform duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl cursor-pointer">
                     <div class="flex items-center mb-4 sm:mb-0">
@@ -101,7 +114,7 @@
             </a>
         </div>
 
-        <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 mb-12 text-center text-white shadow-2xl relative overflow-hidden group">
+        <div data-aos="zoom-in" data-aos-duration="1000" class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 mb-12 text-center text-white shadow-2xl relative overflow-hidden group">
             <div class="relative z-10">
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Transform Your Career with Data</h2>
                 <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Master the complete toolset: Excel, Power Query, Data Modeling & Power BI Visualization.</p>
@@ -167,9 +180,9 @@
 
             <main class="lg:col-span-9">
 
-                <h2 id="part-1" class="part-heading text-green-700 border-green-500">Part 1: Mastering the Data Engine in Excel</h2>
+                <h2 id="part-1" data-aos="fade-right" class="part-heading text-green-700 border-green-500">Part 1: Mastering the Data Engine in Excel</h2>
                 
-                <div id="chapter-1" class="chapter-card">
+                <div id="chapter-1" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 1: Excel Master – Sales Data Preparation</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text lang-my font-medium text-green-800">မြန်မာဘာသာ – အခန်း (၁): Excel ကျွမ်းကျင်မှု – အရောင်းဒေတာပြင်ဆင်ခြင်း</p>
@@ -178,7 +191,7 @@
                     </div>
                 </div>
 
-                <div id="chapter-2" class="chapter-card">
+                <div id="chapter-2" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 2: Advanced Lookup & Analysis</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text"><strong>🎯 Purpose:</strong> Advanced lookups (XLOOKUP) and region-based analysis using SUMPRODUCT.</p>
@@ -186,9 +199,9 @@
                     </div>
                 </div>
 
-                <h2 id="part-2" class="part-heading text-yellow-700 border-yellow-500">Part 2: The Power Query Transformation Engine</h2>
+                <h2 id="part-2" data-aos="fade-right" class="part-heading text-yellow-700 border-yellow-500">Part 2: The Power Query Transformation Engine</h2>
 
-                <div id="chapter-3" class="chapter-card">
+                <div id="chapter-3" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 3: Importing & Cleaning Data</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text"><strong>🎯 Purpose:</strong> Importing from Excel, CSV, and Folders.</p>
@@ -196,7 +209,7 @@
                     </div>
                 </div>
 
-                <div id="chapter-4" class="chapter-card">
+                <div id="chapter-4" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 4: Appending & Merging</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text"><strong>🎯 Purpose:</strong> Joining datasets and segmentation.</p>
@@ -204,7 +217,7 @@
                     </div>
                 </div>
 
-                <div id="chapter-5" class="chapter-card">
+                <div id="chapter-5" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 5: Creating a Master Table</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text"><strong>🎯 Purpose:</strong> Building the Fact Table for analysis.</p>
@@ -212,7 +225,7 @@
                     </div>
                 </div>
 
-                <div id="chapter-6" class="chapter-card">
+                <div id="chapter-6" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 6: Advanced Transforms</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text"><strong>🎯 Purpose:</strong> Grouping, Pivoting, and Unpivoting.</p>
@@ -220,9 +233,9 @@
                     </div>
                 </div>
 
-                <h2 id="part-3" class="part-heading text-blue-800 border-blue-600">Part 3: Data Modeling & DAX</h2>
+                <h2 id="part-3" data-aos="fade-right" class="part-heading text-blue-800 border-blue-600">Part 3: Data Modeling & DAX</h2>
                 
-                <div id="chapter-7" class="chapter-card">
+                <div id="chapter-7" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 7: Star Schema Basics</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text"><strong>🎯 Purpose:</strong> Building the Data Model and Basic Measures.</p>
@@ -230,7 +243,7 @@
                     </div>
                 </div>
 
-                <div id="chapter-8" class="chapter-card">
+                <div id="chapter-8" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 8: Intermediate DAX</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text"><strong>🎯 Purpose:</strong> SWITCH, SUMX, and Connecting Dimensions.</p>
@@ -238,7 +251,7 @@
                     </div>
                 </div>
 
-                <div id="chapter-9" class="chapter-card">
+                <div id="chapter-9" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 9: Galaxy Schema</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text"><strong>🎯 Purpose:</strong> Multiple Fact Tables (Sales, Budget, Expense).</p>
@@ -246,7 +259,7 @@
                     </div>
                 </div>
 
-                <div id="chapter-10" class="chapter-card">
+                <div id="chapter-10" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 10: Time Intelligence</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text"><strong>🎯 Purpose:</strong> CALCULATE, YoY, YTD Growth.</p>
@@ -254,63 +267,63 @@
                     </div>
                 </div>
 
-                <h2 id="part-4" class="part-heading text-blue-800 border-blue-600">Part 4: Visualization with Power BI</h2>
+                <h2 id="part-4" data-aos="fade-right" class="part-heading text-blue-800 border-blue-600">Part 4: Visualization with Power BI</h2>
 
-                <div id="chapter-11" class="chapter-card">
+                <div id="chapter-11" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 11: Intro to Power BI Desktop</h3></div>
                     <div class="chapter-body">
                         <img src="images/11.png" alt="Intro" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
-                <div id="chapter-12" class="chapter-card">
+                <div id="chapter-12" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 12: Date Tables</h3></div>
                     <div class="chapter-body">
                         <img src="images/12.png" alt="Date Table" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
-                <div id="chapter-13" class="chapter-card">
+                <div id="chapter-13" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 13: Row-Level DAX</h3></div>
                     <div class="chapter-body">
                         <img src="images/13.png" alt="Row Level" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
-                <div id="chapter-14" class="chapter-card">
+                <div id="chapter-14" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 14: First Report</h3></div>
                     <div class="chapter-body">
                         <img src="images/14.png" alt="First Report" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
-                <div id="chapter-15" class="chapter-card">
+                <div id="chapter-15" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 15: Target Visuals</h3></div>
                     <div class="chapter-body">
                         <img src="images/15.png" alt="Targets" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
-                <div id="chapter-16" class="chapter-card">
+                <div id="chapter-16" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 16: Comparison Visuals</h3></div>
                     <div class="chapter-body">
                         <img src="images/16.png" alt="Comparison" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
-                <div id="chapter-17" class="chapter-card">
+                <div id="chapter-17" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 17: Slicers</h3></div>
                     <div class="chapter-body">
                         <img src="images/17.png" alt="Slicers" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
-                <div id="chapter-18" class="chapter-card">
+                <div id="chapter-18" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 18: Time Series I</h3></div>
                     <div class="chapter-body">
                         <img src="images/18.png" alt="Time Series 1" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
-                <div id="chapter-19" class="chapter-card">
+                <div id="chapter-19" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 19: Time Series II</h3></div>
                     <div class="chapter-body">
                         <img src="images/19.png" alt="Time Series 2" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
-                <div id="chapter-20" class="chapter-card">
+                <div id="chapter-20" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header bg-gray-700"><h3>📘 Chapter 20: Publishing</h3></div>
                     <div class="chapter-body">
                         <img src="images/20.png" alt="Publishing" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
@@ -336,5 +349,19 @@
             <p class="text-gray-500 text-sm">&copy; 2025 The Insights Solution. All Rights Reserved.</p>
         </footer>
     </div>
+
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+        <a href="https://m.me/100063901616857" target="_blank" class="floating-btn bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition transform hover:scale-110 flex items-center justify-center w-14 h-14">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.87 1.69 5.43 4.3 6.96-.06.59-.38 2.07-.42 2.22-.05.15-.03.29.08.38.1.08.26.06.4-.02.66-.37 3.32-1.93 3.63-2.12.66.19 1.35.28 2.01.28 5.52 0 10-4.03 10-9s-4.48-9-10-9zm1.17 11.66L10.3 10.8l-4.57 2.5 5.01-5.32 2.89 2.86 4.54-2.5-4.99 5.32z"/></svg>
+        </a>
+        <a href="tel:+959425320949" class="bg-green-500 text-white p-3 rounded-full shadow-lg hover:bg-green-600 transition transform hover:scale-110 flex items-center justify-center w-14 h-14">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+        </a>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, offset: 100 });
+    </script>
 </body>
 </html>
