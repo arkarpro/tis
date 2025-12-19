@@ -9,42 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            padding-top: 80px; /* Space for the Fixed Navbar */
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #f9fafb; padding-top: 80px; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
-        .part-heading {
-            scroll-margin-top: 6rem; /* Adjusted for Navbar */
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #111827;
-            margin-top: 3rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            border-bottom: 2px solid #d1d5db;
-            padding-bottom: 1rem;
-        }
         .chapter-card {
-            scroll-margin-top: 6rem; /* Adjusted for Navbar */
+            scroll-margin-top: 6rem;
             background-color: white;
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -56,75 +29,27 @@
             transform: translateY(-2px);
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
         }
-        .chapter-header {
-            background-color: #374151;
-            color: white;
-            padding: 1rem 1.5rem;
-        }
-        .chapter-header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-        .chapter-body {
-            padding: 1.5rem;
-        }
+        .chapter-header { background-color: #374151; color: white; padding: 1rem 1.5rem; }
+        .chapter-header h3 { font-size: 1.5rem; font-weight: 700; }
+        .chapter-body { padding: 1.5rem; }
         .section-title {
-            scroll-margin-top: 6rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #1f2937;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #e5e7eb;
+            font-size: 1.25rem; font-weight: 700; color: #1f2937;
+            margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb;
         }
-        .concept-text {
-            color: #4b5563;
-            margin-bottom: 1rem;
-        }
-        /* DAX Code Block Style */
+        .concept-text { color: #4b5563; margin-bottom: 1rem; }
         .dax-code {
-            background-color: #1F2937;
-            color: #D1D5DB;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            overflow-x: auto;
-            font-family: monospace;
-            font-size: 0.875rem;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            border-left: 4px solid #3B82F6;
+            background-color: #1F2937; color: #D1D5DB; padding: 1rem; border-radius: 0.5rem; overflow-x: auto;
+            font-family: monospace; font-size: 0.875rem; white-space: pre-wrap; word-wrap: break-word; border-left: 4px solid #3B82F6;
         }
-        /* Custom Table Styles */
         .styled-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
+            width: 100%; border-collapse: collapse; margin-top: 1rem;
             box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            border-radius: 0.5rem;
-            overflow: hidden;
+            border-radius: 0.5rem; overflow: hidden;
         }
-        .styled-table th, .styled-table td {
-            padding: 0.75rem 1rem;
-            text-align: left;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        .styled-table th {
-            background-color: #f3f4f6;
-            font-weight: 700;
-            color: #111827;
-        }
-        .styled-table tr:last-child td {
-            border-bottom: none;
-        }
-        .styled-table td code {
-            background-color: #e5e7eb;
-            padding: 0.2rem 0.4rem;
-            border-radius: 0.25rem;
-            font-family: monospace;
-            font-size: 0.875rem;
-            color: #1f2937;
-        }
+        .styled-table th, .styled-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
+        .styled-table th { background-color: #f3f4f6; font-weight: 700; color: #111827; }
+        .styled-table tr:last-child td { border-bottom: none; }
+        .styled-table td code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.875rem; color: #1f2937; }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
@@ -156,88 +81,35 @@
     <div class="container mx-auto max-w-7xl px-4 py-8">
         
         <div class="mb-12">
-            <a href="https://arkarpro.github.io/The_Insights_Solution_Profile/" class="block group">
+            <a href="index.html" class="block group">
                 <div class="flex flex-col sm:flex-row justify-between items-center bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-600 transition transform duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl cursor-pointer">
                     <div class="flex items-center mb-4 sm:mb-0">
-                        <img src="images/logo.jpg" alt="The Insights Solution Logo" class="w-24 h-24 rounded-full mr-6 object-cover border-4 border-white shadow-md bg-white">
+                        <img src="images/logo.jpg" alt="Logo" class="w-24 h-24 rounded-full mr-6 object-cover border-4 border-white shadow-md bg-white">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight group-hover:text-blue-700 transition-colors">The Insights Solution</h1>
-                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-semibold uppercase tracking-wide mt-1">Data Education</span>
+                            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight group-hover:text-blue-700 transition-colors">The Analyst's Playbook</h1>
+                            <span class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-semibold uppercase tracking-wide mt-1">Data Analysis</span>
                         </div>
-                    </div>
-                    <div class="text-center sm:text-right">
-                        <p class="text-md text-gray-600 font-semibold">Arkarlinn@insights-mm.com</p>
-                        <p class="text-md text-gray-600 font-mono">+959 425 320 949</p>
                     </div>
                 </div>
             </a>
-
-            <div class="grid md:grid-cols-2 gap-8 mt-8">
-                <a href="https://arkarpro.github.io/The_Insights_Solution_Profile/" class="block group">
-                    <div class="h-full bg-white p-6 rounded-xl shadow-md border-l-4 border-yellow-400 transition transform duration-300 group-hover:-translate-y-1 group-hover:shadow-xl cursor-pointer">
-                        <h2 class="text-xl font-bold text-gray-900 mb-2 flex items-center group-hover:text-yellow-600 transition-colors">
-                            <span class="text-2xl mr-2">🌟</span> Vision Statement
-                        </h2>
-                        <p class="text-gray-700 leading-relaxed">Empowering smarter decisions through data-driven insights.</p>
-                    </div>
-                </a>
-
-                <a href="https://arkarpro.github.io/The_Insights_Solution_Profile/" class="block group">
-                    <div class="h-full bg-white p-6 rounded-xl shadow-md border-l-4 border-pink-500 transition transform duration-300 group-hover:-translate-y-1 group-hover:shadow-xl cursor-pointer">
-                        <h2 class="text-xl font-bold text-gray-900 mb-2 flex items-center group-hover:text-pink-600 transition-colors">
-                            <span class="text-2xl mr-2">🎯</span> Mission Statement
-                        </h2>
-                        <p class="text-gray-700 leading-relaxed">Helping professionals and businesses unlock the power of data with practical Excel & Power BI training.</p>
-                    </div>
-                </a>
-            </div>
         </div>
 
         <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 mb-12 text-center text-white shadow-2xl relative overflow-hidden group">
-            <div class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-blue-600 opacity-20 blur-3xl group-hover:opacity-30 transition duration-700"></div>
-            
             <div class="relative z-10">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">
-                    🚀 Transform Your Career with Data
-                </h2>
-                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-                    Master the tools that drive modern business. Join our next live intake or select individual modules tailored to your needs.
-                </p>
-                
-                <a href="https://forms.gle/torodmd989212jxk7" target="_blank" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transform transition hover:-translate-y-1 hover:shadow-blue-500/50 text-lg">
-                    <span class="mr-2">✍️</span> Enroll Now
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Transform Your Career with Data</h2>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Master the tools that drive modern business. Join our next live intake or select individual modules tailored to your needs.</p>
+                <a href="https://forms.gle/torodmd989212jxk7" target="_blank" class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transform transition hover:-translate-y-1 text-lg">
+                    <span class="mr-2">✍️</span> Enroll in Power BI Class
                 </a>
-                
-                <p class="text-sm text-gray-400 mt-6 font-medium">
-                    * Choose between <span class="text-blue-400">Full Course</span> or <span class="text-blue-400">Individual Modules</span> via the registration form.
-                </p>
             </div>
         </div>
 
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-            
             <aside class="lg:col-span-3 mb-8 lg:mb-0">
                 <div class="sticky top-24 bg-white p-6 rounded-xl shadow-sm border border-gray-100 max-h-[calc(100vh-6rem)] overflow-y-auto">
-                    
-                    <h2 class="text-lg font-bold text-gray-900 mb-4 uppercase tracking-wider border-b pb-2">Course Syllabus</h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-4 uppercase tracking-wider border-b pb-2">Power BI Syllabus</h2>
                     <nav class="text-sm">
                         <ul class="space-y-4">
-                            <li>
-                                <h3 class="font-bold text-blue-600">Part 1: Excel Engine</h3>
-                                <ul class="space-y-2 mt-2 border-l-2 border-gray-200 pl-4">
-                                    <li><a href="#chapter-1" class="text-gray-600 hover:text-blue-600 transition">Chapter 1: Data Prep</a></li>
-                                    <li><a href="#chapter-2" class="text-gray-600 hover:text-blue-600 transition">Chapter 2: Advanced Lookups</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <h3 class="font-bold text-blue-600">Part 2: Power Query</h3>
-                                <ul class="space-y-2 mt-2 border-l-2 border-gray-200 pl-4">
-                                    <li><a href="#chapter-3" class="text-gray-600 hover:text-blue-600 transition">Chapter 3: Importing</a></li>
-                                    <li><a href="#chapter-4" class="text-gray-600 hover:text-blue-600 transition">Chapter 4: Merging</a></li>
-                                    <li><a href="#chapter-5" class="text-gray-600 hover:text-blue-600 transition">Chapter 5: Master Table</a></li>
-                                    <li><a href="#chapter-6" class="text-gray-600 hover:text-blue-600 transition">Chapter 6: Transforms</a></li>
-                                </ul>
-                            </li>
                             <li>
                                 <h3 class="font-bold text-blue-600">Part 3: Data Modeling & DAX</h3>
                                 <ul class="space-y-2 mt-2 border-l-2 border-gray-200 pl-4">
@@ -264,10 +136,8 @@
                             </li>
                         </ul>
                     </nav>
-
                     <div class="mt-6 pt-6 border-t border-gray-100 text-center pb-2">
-                        <p class="font-semibold text-gray-800 mb-2 text-sm">Ready to start?</p>
-                        <a href="https://forms.gle/torodmd989212jxk7" target="_blank" class="block w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition text-sm shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Enroll Now</a>
+                        <a href="https://forms.gle/torodmd989212jxk7" target="_blank" class="block w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition text-sm shadow-md">Enroll Now</a>
                     </div>
                 </div>
             </aside>
@@ -275,277 +145,52 @@
             <main class="lg:col-span-9">
                 <header class="mb-12 text-center">
                     <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">The Analyst's Playbook</h1>
-                    <p class="text-xl text-gray-500 font-medium">A Comprehensive Guide to Modern Data Analysis</p>
+                    <p class="text-xl text-gray-500 font-medium">Data Modeling & Visualization</p>
                 </header>
-
-                <h2 id="part-1" class="part-heading">Part 1: Mastering the Data Engine in Excel</h2>
-                <div id="chapter-1" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 1: Excel Master – Sales Data Preparation & Customer Summary</h3></div>
-                    <div class="chapter-body">
-                        <p class="concept-text lang-my font-medium text-blue-800">မြန်မာဘာသာ – အခန်း (၁): Excel ကျွမ်းကျင်မှု – အရောင်းဒေတာပြင်ဆင်ခြင်းနှင့် ဖောက်သည်အဆင့်အခြေခံစာရင်း ချုပ်ခြင်း</p>
-                        <p class="concept-text lang-en"><strong>🎯 Purpose of This Chapter:</strong> To teach how to prepare and summarize sales data using Excel formulas, 
-                            enabling analysts to build a strong foundation for Power BI modeling.</p>
-                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Section</th><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>I</td><td>Column Calculations</td><td>Sales Table တွင် အသုံးပြုသော Year, Month, Total Sales စသည်ဖြင့် Formula များရေးသားခြင်း</td></tr>
-                                    <tr><td>II</td><td>Customer-Level Summary</td><td>ဖောက်သည်တစ်ဦးချင်းစီအလိုက် ဝယ်ယူမှုသမိုင်း၊ Frequency နှင့် Total Amount စသည်ဖြင့် ချုပ်ခြင်း</td></tr>
-                                    <tr><td>III</td><td>Region-Level Summary</td><td>ဒေသအလိုက် အရောင်းအချက်အလက်များကို ချုပ်ခြင်း</td></tr>
-                                    <tr><td>IV</td><td>Product-Level Homework</td><td>ထုတ်ကုန်အလိုက် ချုပ်ခြင်းကို လေ့ကျင့်ခန်းအဖြစ် ပြုလုပ်ရန်</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <img src="images/1.png" alt="Excel Data Preparation" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-
-                        <h4 id="ch1-sec1" class="section-title">
-                            🧩 I. Sales Table Column Calculations</h4>
-                        <div class="overflow-x-auto">
-                           <table class="styled-table">
-                            <thead><tr><th>Column Name</th><th>Formula</th><th>Explanation (Myanmar)</th></tr></thead>
-                            <tbody>
-                                <tr><td>Year</td><td><code>=TEXT([@Date],"YYYY")</code></td><td>Date column မှ နှစ်ကို ချိတ်ယူခြင်း</td></tr>
-                                <tr><td>Month</td><td><code>=TEXT([@Date],"mmm")</code></td><td>Date column မှ လအတိုကောက်ကို ချိတ်ယူခြင်း</td></tr>
-                                <tr><td>Year-Month</td><td><code>=TEXTJOIN("-",TRUE,[@Year],[@Month])</code></td><td>နှစ်နှင့်လကို ပေါင်းပြီး Format တစ်ခုအဖြစ်ဖော်ပြခြင်း</td></tr>
-                                <tr><td>Total_Sales</td><td><code>=([@Quantity]*[@[Unit_Price_MMK]])-([@Quantity]*[@[Unit_Price_MMK]]*[@Discount])</code></td><td>Quantity × Unit Price မှ Discount ကိုနုတ်၍ စုစုပေါင်းအရောင်းတွက်ချက်ခြင်း</td></tr>
-                            </tbody>
-                         </table>
-                        </div>
-
-                        <h4 id="ch1-sec2" class="section-title">
-                            🧩 II. Customer-Level Summary</h4>
-                         <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Metric</th><th>Formula</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                <tr><td>Raw Data Start Date</td><td><code>=MIN(Sales[Date])</code></td><td>Sales Table မှ စတင်ရက်ကို ရယူခြင်း</td></tr>
-                                <tr><td>Customer Start Purchased Date</td><td><code>=MINIFS(Sales[Date],Sales[Quantity],">"&0,Sales[Customer_ID],[@[Customer_ID]])</code></td><td>ဖောက်သည်၏ ပထမဆုံးဝယ်ယူသည့်ရက်</td></tr>
-                                <tr><td>Purchased Frequency</td><td><code>=COUNTIFS(Sales[Quantity],">"&0,Sales[Customer_ID],[@[Customer_ID]])</code></td><td>ဝယ်ယူမှုအကြိမ်အရေအတွက်</td></tr>
-                                <tr><td>Total Amount</td><td><code>=SUMIFS(Sales[Total_Sales],Sales[Quantity],">"&0,Sales[Customer_ID],[@[Customer_ID]])</code></td><td>ဖောက်သည်တစ်ဦး၏ စုစုပေါင်းအရောင်း</td></tr>
-                                <tr><td>Rank by Sales</td><td><code>=RANK([@[Total Amount]],[Total Amount],0)</code></td><td>Total Amount အပေါ်မူတည်၍ အဆင့်သတ်မှတ်ခြင်း</td></tr></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="chapter-2" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 2: Advanced Lookup, Discount Logic & Regional Analysis</h3></div>
-                    <div class="chapter-body">
-                         <p class="concept-text lang-my font-medium text-blue-800">အခန်း (၂): အဆင့်မြင့် XLOOKUP အသုံးပြုခြင်း၊ လျှော့စျေးတွက်ချက်ခြင်းနှင့် ဒေသအလိုက် ချုပ်ခြင်း</p>
-                        <p class="concept-text lang-en"><strong>🎯 Purpose of This Chapter:</strong> To teach how to use advanced lookup functions (like XLOOKUP), apply conditional logic for discounts, and perform region-based analysis using SUMPRODUCT.</p>
-                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Section</th><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>I</td><td>XLOOKUP for Top Customers</td><td>Customer Summary ကို Rank အပေါ်မူတည်၍ ရှာဖွေခြင်း</td></tr>
-                                    <tr><td>II</td><td>Discount Logic</td><td>Promotion Table မှ Discount % ကို Sales Table တွင် ထည့်သွင်းခြင်း</td></tr>
-                                    <tr><td>III</td><td>Loyalty Cashback</td><td>Life Time Purchase အပေါ်မူတည်၍ Loyalty Award တွက်ချက်ခြင်း</td></tr>
-                                    <tr><td>IV</td><td>SUMPRODUCT for Region Analysis</td><td>Region အလိုက် Total Sales, Cost နှင့် Profit % တွက်ချက်ခြင်း</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <img src="images/2.png" 
-                        alt="Advanced Lookup Analysis" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                        
-                        <h4 id="ch2-sec1" class="section-title">
-                            🧩 I. Top 10 Customer Summary Using XLOOKUP</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Field</th><th>Formula</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>Customer Name</td><td><code>=XLOOKUP(B6,customer[RANK BY Sales],customer[Customer_Name],"Not Found",0)</code></td><td>B6 cell တွင် ရှိသော Rank အပေါ်မူတည်၍ Customer Table မှ Customer Name ကို ရှာဖွေသည်။</td></tr>
-                                    <tr><td>State_Division</td><td><code>=XLOOKUP(B6,customer[RANK BY Sales],customer[State_Division],"Not Found",0)</code></td><td>B6 cell တွင် ရှိသော Rank အပေါ်မူတည်၍ Customer Table မှ State Division ကို ရှာဖွေသည်။</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <h4 id="ch2-sec2" class="section-title">
-                            🧩 IV. Region-Level Analysis Using SUMPRODUCT</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Metric</th><th>Formula</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>Total Sales</td><td><code>=SUMPRODUCT((Sales[State_Division]=[@[State_Division]])*(Sales[Quantity])*(Sales[Unit_Price_MMK]))</code></td><td>Sales Table တွင် State_Division ကို Region Table နှင့် ကိုက်ညီမှုရှိသော row များအတွက် Quantity × Unit Price ကို တွက်ချက်သည်။</td></tr>
-                                    <tr><td>Profit %</td><td><code>=([@[Total Sales]]-[@[Total Cost]])/[@[Total Sales]]</code></td><td>Total Sales နှင့် Total Cost အကြားကွာခြားချက်ကို Total Sales ဖြင့်စား၍ ရရှိသော ရာခိုင်နှုန်း။</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <h2 id="part-2" class="part-heading">Part 2: The Power Query Transformation Engine</h2>
-                
-                <div id="chapter-3" class="chapter-card">
-                    <div class="chapter-header">
-                        <h3>📘 Chapter 3: Power Query – Importing, Cleaning & Combining Data</h3>
-                    </div>
-                    <div class="chapter-body">
-                        <p class="concept-text lang-en">
-                        <strong>🎯 Purpose of This Chapter:</strong> 
-                        To guide learners through importing data from Excel, CSV, and folders using Power Query, cleaning and transforming it step-by-step, and combining multiple files or sheets for analysis.</p>
-                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                        <div class="overflow-x-auto">
-                        <table class="styled-table">
-                            <thead><tr><th>Section</th><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                            <tbody>
-                                <tr><td>I</td><td>Importing Excel File</td><td>Excel Workbook တစ်ခုမှ Sheet တစ်ခုကို Power Query ဖြင့် တင်သွင်းခြင်း</td></tr>
-                                <tr><td>II</td><td>Importing & Appending CSV Files</td><td>CSV ဖိုင်များကို တင်သွင်းပြီး တစ်ခုတည်းအဖြစ် ပေါင်းခြင်း</td></tr>
-                                <tr><td>III</td><td>Combining Multiple Sheets</td><td>Excel Workbook တစ်ခုအတွင်းရှိ Sheets များကို ပေါင်းခြင်း</td></tr>
-                                <tr><td>IV</td><td>Importing from Folder</td><td>Folder တစ်ခုအတွင်းရှိ Excel Tables များကို တစ်စုတည်းအဖြစ် တင်သွင်းခြင်း</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <img src="images/3.png" 
-                    alt="Power Query Import" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                    <h4 class="section-title">
-                        🧩 Stronger Partitioning with Full Step-by-Step Detail</h4>
-                        <p>This chapter provides detailed, step-by-step guides for importing data from various sources like individual Excel files, multiple CSVs, multiple sheets in one workbook, and combining all files from a folder.</p>
-                    </div>
-                </div>
-
-                <div id="chapter-4" class="chapter-card">
-                    <div class="chapter-header">
-                        <h3>📘 Chapter 4: Appending, Merging & Customer Segmentation</h3>
-                    </div>
-                    <div class="chapter-body">
-                        <p class="concept-text lang-en">
-                            <strong>🎯 Purpose of This Chapter:</strong> 
-                            To teach how to use Power Query for appending datasets, performing joins (merging), and segmenting customers based on business logic using conditional columns.</p>
-                            <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                            <div class="overflow-x-auto">
-                                <table class="styled-table">
-                                    <thead><tr><th>Section</th><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                    <tbody>
-                                        <tr><td>I</td><td>Appending</td><td>Dataset များကို တစ်ခုတည်းအဖြစ် ပေါင်းခြင်း</td></tr>
-                                        <tr><td>II</td><td>Merging (Joins)</td><td>Customer နှင့် Sales Tables များကို ID ဖြင့် ဆက်စပ်ခြင်း</td></tr>
-                                        <tr><td>III</td><td>Conditional Columns</td><td>Logic-based Columns ဖြင့် Customer Status ခွဲခြားခြင်း</td></tr>
-                                        <tr><td>IV</td><td>Join Types</td><td>Left Outer, Right Outer, Inner, Anti Joins အသုံးပြုပြီး Customer Segmentation ပြုလုပ်ခြင်း</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <img src="images/4.png" 
-                            alt="Merging and Appending" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200"><h4 class="section-title">🧩 Join Types Explained</h4>
-                            <p>This chapter covers the practical application of different SQL-style joins within Power Query (Left Outer, Right Outer, Full Outer, Inner, Left Anti, Right Anti) to achieve various customer segmentation goals, such as identifying active, inactive, and new customers.</p>
-                        </div>
-                </div>
-
-                <div id="chapter-5" class="chapter-card">
-                      <div class="chapter-header">
-                        <h3>📘 Chapter 5: Creating a Master Table at the Transactional Level</h3>
-                    </div>
-                    <div class="chapter-body">
-                        <p class="concept-text lang-en">
-                            <strong>🎯 Purpose of This Chapter:</strong> 
-                            To build a Master Sales Table by combining multiple datasets (Sales, Customer, Region, Product, Promotion) using Power Query.</p>
-                            <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                            <div class="overflow-x-auto">
-                                <table class="styled-table">
-                                    <thead><tr><th>Section</th><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                    <tbody>
-                                        <tr><td>I</td><td>Folder-based Data Import</td><td>Folder မှ Excel ဖိုင်များကို တစ်ခါတည်း Import လုပ်ခြင်း</td></tr>
-                                        <tr><td>III</td><td>Merging Multiple Tables</td><td>Region, Product, Promotion စသည့် Table များနှင့် Merge Join ပြုလုပ်ခြင်း</td></tr>
-                                        <tr><td>IV</td><td>M Language Calculations</td><td>M Code ဖြင့် Custom Column တွက်ချက်ခြင်း</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <img src="images/5.png" 
-                            alt="Master Table Creation" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                            <h4 class="section-title">🧩 Process Overview</h4>
-                            <p>Follow a detailed process of importing multiple related datasets and using a series of Merge steps to combine them into a single, comprehensive "Fact Table" that contains all necessary attributes for analysis. This section also introduces basic M Language for creating custom columns.</p>
-                        </div>
-                </div>
-
-                <div id="chapter-6" class="chapter-card">
-                    <div class="chapter-header">
-                        <h3>📘 Chapter 6: Advanced Data Transformation</h3>
-                    </div>
-                    <div class="chapter-body">
-                        <p class="concept-text lang-en">
-                            <strong>🎯 Purpose of This Chapter:</strong> 
-                            To practice advanced data transformation techniques using Power Query, including grouping, summarizing, pivoting, and unpivoting.</p>
-                            <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                            <div class="overflow-x-auto">
-                                <table class="styled-table">
-                                    <thead>
-                                        <tr><th>Section</th><th>Concept</th><th>Explanation (Myanmar)</th></tr>
-                                    </thead><tbody><tr><td>A</td><td>Grouping & Summarizing</td><td>Region-Level Summary များဖန်တီးခြင်း</td></tr>
-                                        <tr><td>B</td><td>Pivoting</td><td>Category များကို Column အဖြစ်ပြောင်းခြင်း</td></tr>
-                                        <tr><td>C</td><td>Unpivoting</td><td>Column များကို Row အဖြစ်ပြောင်းခြင်း</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <img src="images/6.png" 
-                            alt="Advanced Transformations" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                            <h4 class="section-title">🧩 Pivoting vs. Unpivoting</h4>
-                            <p>This chapter focuses on the powerful Pivot and Unpivot features. Learn how to transform data from a tall format to a wide format (Pivoting) to create summary tables, and from wide back to tall (Unpivoting) to normalize data for easier modeling and visualization.</p>
-                        </div>
-                </div>
 
                 <h2 id="part-3" class="part-heading">Part 3: Data Modeling & DAX</h2>
                 
                 <div id="chapter-7" class="chapter-card">
-                    <div class="chapter-header">
-                        <h3>📘 Chapter 7: Phase 1 – Star Schema & Calculated Columns</h3>
-                    </div>
+                    <div class="chapter-header"><h3>📘 Chapter 7: Phase 1 – Star Schema & Calculated Columns</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en">
-                            <strong>🎯 Purpose of This Chapter:</strong> 
-                            To introduce the Power Pivot interface, build a Star Schema using fact and dimension tables, and practice basic DAX measures like SUM, DISTINCTCOUNT, CALCULATE, and RELATED.</p>
-                            <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                            <div class="overflow-x-auto">
-                                <table class="styled-table">
-                                    <thead><tr><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                    <tbody>
-                                        <tr><td>Star Schema</td><td>Fact Table တစ်ခုနှင့် Dimension Tables များဖြင့် ချိတ်ဆက်ထားသော Data Model</td></tr>
-                                        <tr><td>DAX Measures</td><td>SUM, DISTINCTCOUNT, CALCULATE, RELATED စသည်ဖြင့် KPIs တွက်ချက်ရန် အသုံးပြုသည်။</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <img src="images/7.png" 
-                            alt="Star Schema Basics" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                            <h4 class="section-title">🧩 Process Overview</h4>
-                            <p>Learn to load data into the Power Pivot Data Model, create relationships between a central fact table (e.g., Sales) and its dimension tables (e.g., Products, Customers), and write your first simple DAX measures and calculated columns using RELATED.</p>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To introduce the Power Pivot interface, build a Star Schema using fact and dimension tables, and practice basic DAX measures.</p>
+                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
+                        <div class="overflow-x-auto">
+                            <table class="styled-table">
+                                <thead><tr><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Star Schema</td><td>Fact Table တစ်ခုနှင့် Dimension Tables များဖြင့် ချိတ်ဆက်ထားသော Data Model</td></tr>
+                                    <tr><td>DAX Measures</td><td>SUM, DISTINCTCOUNT, CALCULATE, RELATED စသည်ဖြင့် KPIs တွက်ချက်ရန် အသုံးပြုသည်။</td></tr>
+                                </tbody>
+                            </table>
                         </div>
+                        <img src="images/7.png" alt="Star Schema Basics" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                    </div>
                 </div>
 
                 <div id="chapter-8" class="chapter-card">
-                    <div class="chapter-header">
-                        <h3>📘 Chapter 8: Building the Complete Star Schema & Intermediate DAX</h3>
-                    </div>
+                    <div class="chapter-header"><h3>📘 Chapter 8: Building the Complete Star Schema & Intermediate DAX</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en">
-                            <strong>🎯 Purpose of This Chapter:</strong> 
-                            To complete the Star Schema by linking all Fact and Dimension tables, and to practice intermediate DAX functions such as SWITCH and SUMX.</p>
-                            <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                            <div class="overflow-x-auto">
-                                <table class="styled-table">
-                                    <thead><tr><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                    <tbody>
-                                        <tr><td>Star Schema Completion</td><td>Fact Table နှင့် Dimension Tables များအားလုံးကို ချိတ်ဆက်ခြင်း</td></tr>
-                                        <tr><td>Date Table</td><td>Time Intelligence တွက်ချက်မှုများအတွက် လိုအပ်သော Calendar Table</td></tr>
-                                        <tr><td>Intermediate DAX</td><td>SWITCH, SUMX, COUNTBLANK, DISTINCTCOUNT စသည်ဖြင့် KPIs တွက်ချက်ခြင်း</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <img src="images/8.png" 
-                            alt="Intermediate DAX" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                            <h4 class="section-title">🧩 Step-by-Step Instructions</h4>
-                            <p>This section guides you through connecting all dimension tables to your fact table, creating a dedicated Date table (essential for time-based analysis), and writing more advanced DAX measures like `SUMX` for correct totals and `SWITCH` for complex conditional logic.</p>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To complete the Star Schema by linking all Fact and Dimension tables, and to practice intermediate DAX functions.</p>
+                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
+                        <div class="overflow-x-auto">
+                            <table class="styled-table">
+                                <thead><tr><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Star Schema Completion</td><td>Fact Table နှင့် Dimension Tables များအားလုံးကို ချိတ်ဆက်ခြင်း</td></tr>
+                                    <tr><td>Date Table</td><td>Time Intelligence တွက်ချက်မှုများအတွက် လိုအပ်သော Calendar Table</td></tr>
+                                    <tr><td>Intermediate DAX</td><td>SWITCH, SUMX, COUNTBLANK, DISTINCTCOUNT စသည်ဖြင့် KPIs တွက်ချက်ခြင်း</td></tr>
+                                </tbody>
+                            </table>
                         </div>
+                        <img src="images/8.png" alt="Intermediate DAX" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                    </div>
                 </div>
 
                 <div id="chapter-9" class="chapter-card">
-                    <div class="chapter-header">
-                        <h3>📘 Chapter 9: Upgrading to Galaxy Schema</h3>
-                    </div>
+                    <div class="chapter-header"><h3>📘 Chapter 9: Upgrading to Galaxy Schema</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en">
-                        <strong>🎯 Purpose of This Chapter:</strong> 
-                        To transition from a Star Schema to a Galaxy Schema by integrating multiple fact tables (e.g., Sales, Expense, Target).</p>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To transition from a Star Schema to a Galaxy Schema by integrating multiple fact tables.</p>
                         <h4 class="section-title">🧠 Key Concepts Covered</h4>
                         <div class="overflow-x-auto">
                             <table class="styled-table">
@@ -556,90 +201,47 @@
                                 </tbody>
                             </table>
                         </div>
-                        <img src="images/9.png" 
-                        alt="Galaxy Schema" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                        <h4 class="section-title">🧩 Step-by-Step Instructions</h4>
-                        <p>Learn how to add additional fact tables (like Expenses and Sales Targets) to the data model and connect them to shared dimension tables (like Date and Region). This evolution from a single fact table (Star) to multiple fact tables (Galaxy) allows for more complex, integrated analysis.</p>
+                        <img src="images/9.png" alt="Galaxy Schema" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
 
                 <div id="chapter-10" class="chapter-card">
-                    <div class="chapter-header">
-                        <h3>📘 Chapter 10: Mastering DAX Context & Time Intelligence</h3>
-                    </div>
+                    <div class="chapter-header"><h3>📘 Chapter 10: Mastering DAX Context & Time Intelligence</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose of This Chapter:</strong> 
-                            To master DAX evaluation context and apply Time Intelligence functions to analyze performance over time.
-                        </p>
-                        <h4 id="ch10-sec1" class="section-title">🧠 Understanding CALCULATE</h4>
-                        <p class="concept-text">The <code>CALCULATE</code> function is the most important function in DAX. It modifies the filter context of a calculation, allowing you to apply custom filters, remove existing ones, or perform time-based calculations.</p>
-                        <img src="images/10.png" 
-                        alt="Time Intelligence" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                        <h4 id="ch10-sec2" class="section-title">🧪 DAX Time Intelligence Measures</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Measure</th><th>Explanation</th></tr></thead>
-                                <tbody>
-                                    <tr><td><code>YTD Sales := TOTALYTD([Total Revenue], 'date'[Date])</code></td><td>Calculates the year-to-date sales for the current year.</td></tr>
-                                    <tr><td><code>Sales Last Year := CALCULATE([Total Revenue], SAMEPERIODLASTYEAR('date'[Date]))</code></td><td>Calculates the sales for the exact same period in the previous year.</td></tr>
-                                    <tr><td><code>YoY Sales Growth % := DIVIDE([Total Revenue] - [Sales Last Year], [Sales Last Year])</code></td><td>Calculates the year-over-year sales growth percentage.</td></tr>
-                                </tbody>
-                            </table>
-                        </div></div>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To master DAX evaluation context and apply Time Intelligence functions.</p>
+                        <h4 class="section-title">🧠 Understanding CALCULATE</h4>
+                        <p class="concept-text">The <code>CALCULATE</code> function is the most important function in DAX. It modifies the filter context of a calculation.</p>
+                        <img src="images/10.png" alt="Time Intelligence" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                    </div>
                 </div>
 
                 <h2 id="part-4" class="part-heading">Part 4: Visualization with Power BI</h2>
                 <div id="chapter-11" class="chapter-card">
                     <div class="chapter-header"><h3>📘 Chapter 11: Getting Started with Power BI Desktop</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose of This Chapter:</strong> To install Power BI Desktop and become familiar with its main interface components, including the Report, Data, and Model views.</p>
-                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
-                            <li>Installing Power BI Desktop from the Microsoft Store.</li>
-                            <li>Understanding the three main views: Report View, Data View, and Model View.</li>
-                            <li>Importing simple data from Excel to create a first visual.</li>
-                        </ul>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To install Power BI Desktop and become familiar with its main interface components.</p>
                         <img src="images/11.png" alt="Intro to Power BI" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-12" class="chapter-card">
                     <div class="chapter-header"><h3>📘 Chapter 12: Creating a Dynamic Date Table with DAX</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To create a robust, reusable Date table using DAX, which is the foundation for all time intelligence analysis.</p>
-                        <h4 class="section-title">🧠 Key Functions</h4>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1"><li><code>CALENDARAUTO()</code> / <code>CALENDAR()</code></li><li><code>ADDCOLUMNS()</code></li><li><code>FORMAT()</code>, <code>YEAR()</code>, <code>MONTH()</code>, <code>QUARTER()</code></li></ul>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To create a robust, reusable Date table using DAX.</p>
                         <img src="images/12.png" alt="Date Table" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                        <h4 class="section-title">🧪 Full DAX Formula for a Comprehensive Date Table</h4>
-                        <div class="dax-code">date = 
-ADDCOLUMNS(
-    CALENDAR(DATE(2023,1,1), DATE(2024,7,31)),
-    "Year", YEAR([Date]),
-    "Month", FORMAT([Date], "MMMM"),
-    "Year-Month", FORMAT([Date], "YYYY-MM"),
-    "MonthNr", MONTH([Date]),
-    "Quarter", "Q" & FORMAT([Date], "Q")
-)</div>
+                        <div class="dax-code">date = ADDCOLUMNS(CALENDAR(DATE(2023,1,1), DATE(2024,7,31)), "Year", YEAR([Date]), "Month", FORMAT([Date], "MMMM"))</div>
                     </div>
                 </div>
                 <div id="chapter-13" class="chapter-card">
                     <div class="chapter-header"><h3>📘 Chapter 13: DAX Row-Level Calculations</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To learn how to create calculated columns, which perform calculations for each row and are useful for adding static attributes.</p>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To learn how to create calculated columns.</p>
                         <img src="images/13.png" alt="Row Level DAX" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-                        <h4 class="section-title">🧪 Example DAX Formulas for Calculated Columns</h4>
-                        <div class="dax-code">-- In the 'sale' table
-Net_Revenue_Amount = 
-[Quantity] * RELATED('product'[Unit_Price_MMK]) * (1 - RELATED(promotion[Discount_Percent]))
-
--- In the 'customer' table
-Total_Net_Revenue = 
-SUMX(RELATEDTABLE(sale), sale[Net_Revenue_Amount])</div>
                     </div>
                 </div>
                 <div id="chapter-14" class="chapter-card">
                     <div class="chapter-header"><h3>📘 Chapter 14: Building Your First Interactive Report</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To combine your data model and basic measures to build your first multi-visual report page, focusing on layout and interactivity.</p>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To combine your data model and basic measures to build your first multi-visual report page.</p>
                         <img src="images/14.png" alt="First Report" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
@@ -647,29 +249,20 @@ SUMX(RELATEDTABLE(sale), sale[Net_Revenue_Amount])</div>
                     <div class="chapter-header"><h3>📘 Chapter 15: Visualizing Target Achievement</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To create compelling visuals that compare actual performance against predefined targets.</p>
-                        <h4 class="section-title">🧠 Key DAX Measures</h4>
-                        <div class="dax-code">Revenue = SUM(sale[Net_Revenue_Amount])
-Target = SUM(target[Revenue_Target_MMK])
-Target Achievement % = DIVIDE([Revenue], [Target], 0)</div>
                         <img src="images/15.png" alt="Target Visuals" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-16" class="chapter-card">
                     <div class="chapter-header"><h3>📘 Chapter 16: Visualizing for Comparison</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To build comparison-focused visuals, such as Revenue vs. Cost, and to organize measures into folders.</p>
-                        <h4 class="section-title">🧠 Key DAX Measures</h4>
-                        <div class="dax-code"># of Customers = DISTINCTCOUNT(sale[Customer_ID])
-Total_Expense = SUM(expense[Total Cost])
-Profit = [Revenue] - [Total_Expense]
-Profit Margin = DIVIDE([Profit], [Revenue], 0)</div>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To build comparison-focused visuals, such as Revenue vs. Cost.</p>
                         <img src="images/16.png" alt="Comparison Visuals" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-17" class="chapter-card">
                     <div class="chapter-header"><h3>📘 Chapter 17: Adding Interactivity with Slicers</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To empower report users by adding slicers, which allow them to filter the entire report page dynamically.</p>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To empower report users by adding slicers.</p>
                         <img src="images/17.png" alt="Slicers" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
@@ -677,62 +270,41 @@ Profit Margin = DIVIDE([Profit], [Revenue], 0)</div>
                     <div class="chapter-header"><h3>📘 Chapter 18: Time Series Analysis with DAX (Part 1)</h3></div>
                     <div class="chapter-body">
                         <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To use DAX time intelligence functions to calculate period-to-date and prior period comparisons.</p>
-                        <h4 class="section-title">🧠 Key Time Intelligence Functions</h4>
-                        <div class="dax-code">MTD Sales = TOTALMTD([Revenue], 'date'[Date])
-YTD Sales = TOTALYTD([Revenue], 'date'[Date])
-LY_Sales = CALCULATE([Revenue], SAMEPERIODLASTYEAR('date'[Date]))
-LM_Sales = CALCULATE([Revenue], DATEADD('date'[Date], -1, MONTH))</div>
                         <img src="images/18.png" alt="Time Series 1" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-19" class="chapter-card">
                     <div class="chapter-header"><h3>📘 Chapter 19: Time Series Analysis with DAX (Part 2)</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To explore more advanced time intelligence scenarios like comparing periods across years and calculating moving totals.</p>
-                        <h4 class="section-title">🧠 Advanced Time Intelligence Functions</h4>
-                        <div class="dax-code">LY MTD Sales = CALCULATE([MTD Sales], SAMEPERIODLASTYEAR('date'[Date]))
-Last 6 Months Total = CALCULATE([Revenue], DATESINPERIOD('date'[Date], LASTDATE('date'[Date]), -6, MONTH))</div>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To explore more advanced time intelligence scenarios.</p>
                         <img src="images/19.png" alt="Time Series 2" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
                 <div id="chapter-20" class="chapter-card">
                     <div class="chapter-header"><h3>📘 Chapter 20: Publishing and Sharing Your Report</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To learn the process of publishing a report to the Power BI Service and sharing it securely as a Power BI App.</p>
+                        <p class="concept-text lang-en"><strong>🎯 Purpose:</strong> To learn the process of publishing a report to the Power BI Service.</p>
                         <img src="images/20.png" alt="Publishing" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
                     </div>
                 </div>
             </main>
         </div>
 
-        <div class="bg-gray-100 rounded-xl p-8 mt-12 text-center border border-gray-200 mx-4">
-            <h3 class="text-2xl font-bold text-gray-900 mb-2">Ready to take the next step?</h3>
-            <p class="text-gray-600 mb-6">Join hundreds of other professionals mastering data with The Insights Solution.</p>
-            <a href="https://forms.gle/torodmd989212jxk7" target="_blank" class="inline-block bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 transition shadow-lg">Register for Class</a>
-        </div>
-
         <footer class="text-center mt-16 pt-8 border-t border-gray-300 pb-8">
             <p class="text-lg font-bold text-gray-800 mb-4">Powered by Data Insights with Arkar</p>
-            
-            <p class="text-gray-600 mb-4 font-medium">Find us on</p>
-            
             <div class="flex justify-center items-center gap-6 mb-6">
                 <a href="https://www.linkedin.com/in/arkar-linn-datapro/" target="_blank" class="transition transform hover:scale-110 hover:-translate-y-1">
                     <img src="images/linkedin.png" alt="LinkedIn" class="w-10 h-10">
                 </a>
-
                 <a href="https://youtube.com/@datainsightswitharkar?si=NPDfTvREb0IxtRDj" target="_blank" class="transition transform hover:scale-110 hover:-translate-y-1">
                     <img src="images/youtube.png" alt="YouTube" class="w-10 h-10">
                 </a>
-
                 <a href="https://www.facebook.com/share/1DB4aEH7xs/" target="_blank" class="transition transform hover:scale-110 hover:-translate-y-1">
                     <img src="images/facebook.png" alt="Facebook" class="w-10 h-10">
                 </a>
             </div>
-
             <p class="text-gray-500 text-sm">&copy; 2025 The Insights Solution. All Rights Reserved.</p>
         </footer>
     </div>
-
 </body>
 </html>
