@@ -17,7 +17,7 @@
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
         .chapter-card {
-            scroll-margin-top: 6rem;
+            scroll-margin-top: 8rem;
             background-color: white;
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -30,22 +30,25 @@
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
         }
         .chapter-header { background-color: #374151; color: white; padding: 1rem 1.5rem; }
-        .chapter-header h3 { font-size: 1.5rem; font-weight: 700; }
+        .chapter-header h3 { font-size: 1.25rem; font-weight: 700; }
         .chapter-body { padding: 1.5rem; }
-        .section-title {
-            font-size: 1.25rem; font-weight: 700; color: #1f2937;
-            margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb;
+        
+        .lecture-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f3f4f6;
+            color: #4b5563;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: start;
         }
-        .concept-text { color: #4b5563; margin-bottom: 1rem; }
-        .styled-table {
-            width: 100%; border-collapse: collapse; margin-top: 1rem;
-            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            border-radius: 0.5rem; overflow: hidden;
+        .lecture-list li:last-child { border-bottom: none; }
+        .lecture-list li::before {
+            content: "▶";
+            color: #16a34a; /* Green Icon */
+            margin-right: 10px;
+            font-size: 0.8rem;
+            margin-top: 4px;
         }
-        .styled-table th, .styled-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
-        .styled-table th { background-color: #f3f4f6; font-weight: 700; color: #111827; }
-        .styled-table tr:last-child td { border-bottom: none; }
-        .styled-table td code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.875rem; color: #1f2937; }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
@@ -53,7 +56,7 @@
     <nav class="fixed top-0 left-0 w-full bg-slate-900 text-white z-50 shadow-lg border-b border-slate-700">
         <div class="container mx-auto max-w-7xl px-4">
             <div class="flex flex-wrap justify-between items-center h-16">
-                <a href="https://arkarpro.github.io/The_Insights_Solution_Profile/" class="flex items-center gap-2 hover:text-green-400 transition duration-300">
+                <a href="index.html" class="flex items-center gap-2 hover:text-green-400 transition duration-300">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
@@ -62,12 +65,12 @@
                 </a>
 
                 <div class="flex space-x-1 sm:space-x-4 text-sm font-medium">
-                    <a href="https://arkarpro.github.io/The_Insights_Solution_Profile/" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-300 transition">Profile</a>
+                    <a href="index.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-300 transition">Profile</a>
                     
                     <a href="#" class="px-3 py-2 rounded-md bg-green-600 text-white shadow-lg shadow-green-500/30 font-bold">Excel</a>
                     
                     <a href="query.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-yellow-400 transition">Query</a>
-                    <a href="index.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-400 transition">Power BI</a>
+                    <a href="powerbi.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-400 transition">Power BI</a>
                 </div>
             </div>
         </div>
@@ -76,13 +79,13 @@
     <div class="container mx-auto max-w-7xl px-4 py-8">
         
         <div class="mb-12">
-            <a href="https://arkarpro.github.io/The_Insights_Solution_Profile/" class="block group">
+            <a href="index.html" class="block group">
                 <div class="flex flex-col sm:flex-row justify-between items-center bg-white p-6 rounded-xl shadow-lg border-t-4 border-green-600 transition transform duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl cursor-pointer">
                     <div class="flex items-center mb-4 sm:mb-0">
                         <img src="images/logo.jpg" alt="Logo" class="w-24 h-24 rounded-full mr-6 object-cover border-4 border-white shadow-md bg-white">
                         <div>
-                            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight group-hover:text-green-700 transition-colors">Excel Master Class</h1>
-                            <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-semibold uppercase tracking-wide mt-1">Data Foundation</span>
+                            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight group-hover:text-green-700 transition-colors">Excel for Business Management</h1>
+                            <span class="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-semibold uppercase tracking-wide mt-1">Data Foundation & Integrity</span>
                         </div>
                     </div>
                 </div>
@@ -91,8 +94,8 @@
 
         <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 mb-12 text-center text-white shadow-2xl relative overflow-hidden group">
             <div class="relative z-10">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Master the Engine of Data</h2>
-                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Build a rock-solid foundation in Excel. Learn advanced lookups, formulas, and data preparation techniques.</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Master Real-World Excel</h2>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">From Data Cleaning to Dynamic Dashboards. A complete guide for modern professionals.</p>
                 <a href="https://forms.gle/torodmd989212jxk7" target="_blank" class="inline-flex items-center justify-center bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transform transition hover:-translate-y-1 text-lg">
                     <span class="mr-2">✍️</span> Enroll in Excel Class
                 </a>
@@ -101,14 +104,18 @@
 
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
             <aside class="lg:col-span-3 mb-8 lg:mb-0">
-                <div class="sticky top-24 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div class="sticky top-24 bg-white p-6 rounded-xl shadow-sm border border-gray-100 max-h-[calc(100vh-6rem)] overflow-y-auto">
                     <h2 class="text-lg font-bold text-gray-900 mb-4 uppercase tracking-wider border-b pb-2">Excel Syllabus</h2>
                     <nav class="text-sm">
                         <ul class="space-y-4">
                             <li>
                                 <ul class="space-y-2 mt-2 border-l-2 border-green-200 pl-4">
-                                    <li><a href="#chapter-1" class="text-gray-600 hover:text-green-600 transition font-medium">Chapter 1: Data Prep</a></li>
-                                    <li><a href="#chapter-2" class="text-gray-600 hover:text-green-600 transition font-medium">Chapter 2: Advanced Lookups</a></li>
+                                    <li><a href="#module-1" class="text-gray-600 hover:text-green-600 transition font-medium">Module 1: Data Foundation</a></li>
+                                    <li><a href="#module-2" class="text-gray-600 hover:text-green-600 transition font-medium">Module 2: Core Calculations</a></li>
+                                    <li><a href="#module-3" class="text-gray-600 hover:text-green-600 transition font-medium">Module 3: Advanced Reporting</a></li>
+                                    <li><a href="#module-4" class="text-gray-600 hover:text-green-600 transition font-medium">Module 4: Pivot & Power Pivot</a></li>
+                                    <li><a href="#module-5" class="text-gray-600 hover:text-green-600 transition font-medium">Module 5: Dynamic Dashboard</a></li>
+                                    <li><a href="#module-6" class="text-gray-600 hover:text-green-600 transition font-medium">Module 6: Business Projects</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -120,99 +127,108 @@
             </aside>
 
             <main class="lg:col-span-9">
-                <h2 class="text-3xl font-extrabold text-slate-800 mb-8 border-b-2 border-green-500 pb-2 inline-block">Excel Engine</h2>
+                <h2 class="text-3xl font-extrabold text-slate-800 mb-8 border-b-2 border-green-500 pb-2 inline-block">Course Modules</h2>
                 
-                <div id="chapter-1" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 1: Excel Master – Sales Data Preparation & Customer Summary</h3></div>
+                <div id="module-1" class="chapter-card">
+                    <div class="chapter-header"><h3>📘 Module 1: Data Foundation & Integrity</h3></div>
                     <div class="chapter-body">
-                        <p class="concept-text lang-my font-medium text-green-800">မြန်မာဘာသာ – အခန်း (၁): Excel ကျွမ်းကျင်မှု – အရောင်းဒေတာပြင်ဆင်ခြင်းနှင့် ဖောက်သည်အဆင့်အခြေခံစာရင်း ချုပ်ခြင်း</p>
-                        <p class="concept-text lang-en"><strong>🎯 Purpose of This Chapter:</strong> To teach how to prepare and summarize sales data using Excel formulas, enabling analysts to build a strong foundation for Power BI modeling.</p>
-                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Section</th><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>I</td><td>Column Calculations</td><td>Sales Table တွင် အသုံးပြုသော Year, Month, Total Sales စသည်ဖြင့် Formula များရေးသားခြင်း</td></tr>
-                                    <tr><td>II</td><td>Customer-Level Summary</td><td>ဖောက်သည်တစ်ဦးချင်းစီအလိုက် ဝယ်ယူမှုသမိုင်း၊ Frequency နှင့် Total Amount စသည်ဖြင့် ချုပ်ခြင်း</td></tr>
-                                    <tr><td>III</td><td>Region-Level Summary</td><td>ဒေသအလိုက် အရောင်းအချက်အလက်များကို ချုပ်ခြင်း</td></tr>
-                                    <tr><td>IV</td><td>Product-Level Homework</td><td>ထုတ်ကုန်အလိုက် ချုပ်ခြင်းကို လေ့ကျင့်ခန်းအဖြစ် ပြုလုပ်ရန်</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <img src="images/1.png" alt="Excel Data Preparation" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
-
-                        <h4 id="ch1-sec1" class="section-title">🧩 I. Sales Table Column Calculations</h4>
-                        <div class="overflow-x-auto">
-                           <table class="styled-table">
-                            <thead><tr><th>Column Name</th><th>Formula</th><th>Explanation (Myanmar)</th></tr></thead>
-                            <tbody>
-                                <tr><td>Year</td><td><code>=TEXT([@Date],"YYYY")</code></td><td>Date column မှ နှစ်ကို ချိတ်ယူခြင်း</td></tr>
-                                <tr><td>Month</td><td><code>=TEXT([@Date],"mmm")</code></td><td>Date column မှ လအတိုကောက်ကို ချိတ်ယူခြင်း</td></tr>
-                                <tr><td>Year-Month</td><td><code>=TEXTJOIN("-",TRUE,[@Year],[@Month])</code></td><td>နှစ်နှင့်လကို ပေါင်းပြီး Format တစ်ခုအဖြစ်ဖော်ပြခြင်း</td></tr>
-                                <tr><td>Total_Sales</td><td><code>=([@Quantity]*[@[Unit_Price_MMK]])-([@Quantity]*[@[Unit_Price_MMK]]*[@Discount])</code></td><td>Quantity × Unit Price မှ Discount ကိုနုတ်၍ စုစုပေါင်းအရောင်းတွက်ချက်ခြင်း</td></tr>
-                            </tbody>
-                         </table>
-                        </div>
-
-                        <h4 id="ch1-sec2" class="section-title">🧩 II. Customer-Level Summary</h4>
-                         <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Metric</th><th>Formula</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                <tr><td>Raw Data Start Date</td><td><code>=MIN(Sales[Date])</code></td><td>Sales Table မှ စတင်ရက်ကို ရယူခြင်း</td></tr>
-                                <tr><td>Customer Start Purchased Date</td><td><code>=MINIFS(Sales[Date],Sales[Quantity],">"&0,Sales[Customer_ID],[@[Customer_ID]])</code></td><td>ဖောက်သည်၏ ပထမဆုံးဝယ်ယူသည့်ရက်</td></tr>
-                                <tr><td>Purchased Frequency</td><td><code>=COUNTIFS(Sales[Quantity],">"&0,Sales[Customer_ID],[@[Customer_ID]])</code></td><td>ဝယ်ယူမှုအကြိမ်အရေအတွက်</td></tr>
-                                <tr><td>Total Amount</td><td><code>=SUMIFS(Sales[Total_Sales],Sales[Quantity],">"&0,Sales[Customer_ID],[@[Customer_ID]])</code></td><td>ဖောက်သည်တစ်ဦး၏ စုစုပေါင်းအရောင်း</td></tr>
-                                <tr><td>Rank by Sales</td><td><code>=RANK([@[Total Amount]],[Total Amount],0)</code></td><td>Total Amount အပေါ်မူတည်၍ အဆင့်သတ်မှတ်ခြင်း</td></tr></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="chapter-2" class="chapter-card">
-                    <div class="chapter-header"><h3>📘 Chapter 2: Advanced Lookup, Discount Logic & Regional Analysis</h3></div>
-                    <div class="chapter-body">
-                         <p class="concept-text lang-my font-medium text-green-800">အခန်း (၂): အဆင့်မြင့် XLOOKUP အသုံးပြုခြင်း၊ လျှော့စျေးတွက်ချက်ခြင်းနှင့် ဒေသအလိုက် ချုပ်ခြင်း</p>
-                        <p class="concept-text lang-en"><strong>🎯 Purpose of This Chapter:</strong> To teach how to use advanced lookup functions (like XLOOKUP), apply conditional logic for discounts, and perform region-based analysis using SUMPRODUCT.</p>
-                        <h4 class="section-title">🧠 Key Concepts Covered</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Section</th><th>Concept</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>I</td><td>XLOOKUP for Top Customers</td><td>Customer Summary ကို Rank အပေါ်မူတည်၍ ရှာဖွေခြင်း</td></tr>
-                                    <tr><td>II</td><td>Discount Logic</td><td>Promotion Table မှ Discount % ကို Sales Table တွင် ထည့်သွင်းခြင်း</td></tr>
-                                    <tr><td>III</td><td>Loyalty Cashback</td><td>Life Time Purchase အပေါ်မူတည်၍ Loyalty Award တွက်ချက်ခြင်း</td></tr>
-                                    <tr><td>IV</td><td>SUMPRODUCT for Region Analysis</td><td>Region အလိုက် Total Sales, Cost နှင့် Profit % တွက်ချက်ခြင်း</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <img src="images/2.png" alt="Advanced Lookup Analysis" class="w-full h-auto rounded-lg shadow-md my-8 border border-gray-200">
+                        <img src="images/excel-1.jpg" alt="Excel Module 1" class="w-full h-auto rounded-lg shadow-sm mb-6 border border-gray-100">
                         
-                        <h4 id="ch2-sec1" class="section-title">🧩 I. Top 10 Customer Summary Using XLOOKUP</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Field</th><th>Formula</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>Customer Name</td><td><code>=XLOOKUP(B6,customer[RANK BY Sales],customer[Customer_Name],"Not Found",0)</code></td><td>B6 cell တွင် ရှိသော Rank အပေါ်မူတည်၍ Customer Table မှ Customer Name ကို ရှာဖွေသည်။</td></tr>
-                                    <tr><td>State_Division</td><td><code>=XLOOKUP(B6,customer[RANK BY Sales],customer[State_Division],"Not Found",0)</code></td><td>B6 cell တွင် ရှိသော Rank အပေါ်မူတည်၍ Customer Table မှ State Division ကို ရှာဖွေသည်။</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <h4 id="ch2-sec2" class="section-title">🧩 IV. Region-Level Analysis Using SUMPRODUCT</h4>
-                        <div class="overflow-x-auto">
-                            <table class="styled-table">
-                                <thead><tr><th>Metric</th><th>Formula</th><th>Explanation (Myanmar)</th></tr></thead>
-                                <tbody>
-                                    <tr><td>Total Sales</td><td><code>=SUMPRODUCT((Sales[State_Division]=[@[State_Division]])*(Sales[Quantity])*(Sales[Unit_Price_MMK]))</code></td><td>Sales Table တွင် State_Division ကို Region Table နှင့် ကိုက်ညီမှုရှိသော row များအတွက် Quantity × Unit Price ကို တွက်ချက်သည်။</td></tr>
-                                    <tr><td>Profit %</td><td><code>=([@[Total Sales]]-[@[Total Cost]])/[@[Total Sales]]</code></td><td>Total Sales နှင့် Total Cost အကြားကွာခြားချက်ကို Total Sales ဖြင့်စား၍ ရရှိသော ရာခိုင်နှုန်း။</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <ul class="lecture-list">
+                            <li>M1.01 - Bank Statement Cleaning (DATEVALUE & Text to Columns)</li>
+                            <li>M1.02 - Advanced Cleaning (Date Formulas & TEXTBEFORE)</li>
+                            <li>M1.03 - Converting Text to Numbers (5 Practical Methods)</li>
+                            <li>M1.04 - Smart Tables (Advantages & Total Row Feature)</li>
+                            <li>M1.05 - Dynamic Formulas & Filtering with Slicers</li>
+                        </ul>
                     </div>
                 </div>
+
+                <div id="module-2" class="chapter-card">
+                    <div class="chapter-header"><h3>📘 Module 2: Core Business Calculations</h3></div>
+                    <div class="chapter-body">
+                        <img src="images/excel-2.jpg" alt="Excel Module 2" class="w-full h-auto rounded-lg shadow-sm mb-6 border border-gray-100">
+                        <ul class="lecture-list">
+                            <li>M2.01 - Row-Level Calculations & Basic Lookups</li>
+                            <li>M2.02 - Creating a Basic Summary Table (SUM Function)</li>
+                            <li>M2.03 - Sales Performance Breakdown by Region</li>
+                            <li>M2.04 - Visualizing Sales Performance (Bar Chart)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="module-3" class="chapter-card">
+                    <div class="chapter-header"><h3>📘 Module 3: Advanced Reporting (XLOOKUP & SUMPRODUCT)</h3></div>
+                    <div class="chapter-body">
+                        <img src="images/excel-3.jpg" alt="Excel Module 3" class="w-full h-auto rounded-lg shadow-sm mb-6 border border-gray-100">
+                        <ul class="lecture-list">
+                            <li>M3.01 - Mastering XLOOKUP (7 Practical Examples)</li>
+                            <li>M3.02 - Mastering SUMPRODUCT (7 Advanced Methods)</li>
+                            <li>M3.03 - Building a Dynamic Customer Summary Table</li>
+                            <li>M3.04 - Building an Advanced Metrics Report (SUMPRODUCT)</li>
+                            <li>M3.05 - Building a Professional Stacked Bar Chart (Cost vs Revenue)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="module-4" class="chapter-card">
+                    <div class="chapter-header"><h3>📘 Module 4: Pivot & Power Pivot Analysis</h3></div>
+                    <div class="chapter-body">
+                        <img src="images/excel-4.jpg" alt="Excel Module 4" class="w-full h-auto rounded-lg shadow-sm mb-6 border border-gray-100">
+                        <ul class="lecture-list">
+                            <li>M4.00 - Module 4 Introduction (PivotTable & Power Pivot)</li>
+                            <li>M4.01 - Creating Your First PivotTable (with Conditional Formatting)</li>
+                            <li>M4.02 - PivotTable Calculations (Show Values As %) & Options</li>
+                            <li>M4.03 - Grouping Data in PivotTables (Manual & Numeric)</li>
+                            <li>M4.04 - Introduction to PivotCharts (Pie Chart & Key Differences)</li>
+                            <li>M4.05 - Using 'Show Report Filter Pages' (One-Click Reports)</li>
+                            <li>M4.06 - Introduction to Power Pivot & the Data Model</li>
+                            <li>M4.07 - Creating Your First Relationship (Sales & Region Tables)</li>
+                            <li>M4.08 - Introduction to DAX with a 'Target vs Actual' Measure</li>
+                            <li>M4.09 - DAX Measures for Cost, Revenue, Profit & Margin</li>
+                            <li>M4.10 - Why a Date Table is Essential (Common Errors without one)</li>
+                            <li>M4.11 - Creating & Connecting a Date Table (for Time Analysis)</li>
+                            <li>M4.12 - Building a Sales Trend Chart (using the Date Table)</li>
+                            <li>M4.13 - PivotTable Layouts for Time Analysis (Cost vs Revenue)</li>
+                            <li>M4.14 - Using PivotTable Report Layouts (Compact, Outline, Tabular)</li>
+                            <li>M4.15 - Transposing Your PivotTable (Moving 'Values' to Rows Columns)</li>
+                            <li>M4.16 - Connecting Slicers to Multiple PivotTables (Report Connections)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="module-5" class="chapter-card">
+                    <div class="chapter-header"><h3>📘 Module 5: Dynamic Dashboard Masterclass</h3></div>
+                    <div class="chapter-body">
+                        <img src="images/excel-5.jpg" alt="Excel Module 5" class="w-full h-auto rounded-lg shadow-sm mb-6 border border-gray-100">
+                        <ul class="lecture-list">
+                            <li>M5.01 - Building the Dashboard Layout & Frame</li>
+                            <li>M5.02 - Creating Dashboard Navigation (Linking Pages & URLs)</li>
+                            <li>M5.03 - Preparing the Dashboard Data Model (Data Flow)</li>
+                            <li>M5.04 - Building the Executive KPI Cards (PivotTable Linking)</li>
+                            <li>M5.05 - Building the Achievement Donut Chart (Handling Over 100% with IF)</li>
+                            <li>M5.06 - Creating a Regional Map Chart (Bridging Pivot Data with VLOOKUP)</li>
+                            <li>M5.07 - Target vs Actual Chart (Preserving Format with Slicers)</li>
+                            <li>M5.08 - Finalizing the Executive Dashboard (Sales Trend & Pro Tips)</li>
+                            <li>M5.09 - Building the Financial KPI Cards (Revenue, Cost & Profit)</li>
+                            <li>M5.10 - Building Top 5 Revenue Chart (Region & Slicers)</li>
+                            <li>M5.11 - Financial Combo Chart (Revenue vs Cost vs Margin)</li>
+                            <li>M5.12 - Creating the Info Page & Full Screen Presentation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="module-6" class="chapter-card">
+                    <div class="chapter-header"><h3>📘 Module 6: Practical Business Projects</h3></div>
+                    <div class="chapter-body">
+                        <img src="images/excel-6.jpg" alt="Excel Module 6" class="w-full h-auto rounded-lg shadow-sm mb-6 border border-gray-100">
+                        <ul class="lecture-list">
+                            <li>M6.1 - (Project-1) Profitability Bridge Analysis: Understanding Budget vs Actual</li>
+                            <li>M6.2 - (Project-2) Coming Soon...</li>
+                        </ul>
+                    </div>
+                </div>
+
             </main>
         </div>
 
