@@ -59,30 +59,37 @@
         .floating-btn {
             animation: pulse-custom 2s infinite;
         }
+        
+        /* Hide Scrollbar */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
 
     <nav class="fixed top-0 left-0 w-full bg-slate-900 text-white z-50 shadow-lg border-b border-slate-700">
         <div class="container mx-auto max-w-7xl px-4">
-            <div class="flex flex-wrap justify-between items-center h-16">
-                <a href="index.html" class="flex items-center gap-2 hover:text-yellow-400 transition duration-300">
+            <div class="flex justify-between items-center h-16">
+                
+                <a href="index.html" class="flex items-center gap-2 hover:text-green-400 transition duration-300 flex-shrink-0">
                     <img src="images/logo.jpg" alt="Logo" class="h-8 w-8 rounded-full border border-white">
                     <span class="font-bold text-lg tracking-wide hidden sm:block">The Insights Solution</span>
                     <span class="font-bold text-lg tracking-wide sm:hidden">TIS</span>
                 </a>
 
-                <div class="flex space-x-1 sm:space-x-4 text-sm font-medium">
-                    <a href="index.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-300 transition">Profile</a>
-
-                    <a href="resources.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-purple-400 transition">Free Resources</a>
+                <div class="flex-1 min-w-0 flex space-x-2 text-sm font-medium overflow-x-auto whitespace-nowrap no-scrollbar pl-4 items-center h-full justify-end sm:justify-start">
                     
+                    <a href="index.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-300 transition">Profile</a>
+                    
+                    <a href="resources.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-purple-400 transition">Free Resources</a>
+
                     <a href="excel.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-green-400 transition">Excel</a>
                     
                     <a href="#" class="px-3 py-2 rounded-md bg-yellow-500 text-slate-900 shadow-lg shadow-yellow-500/30 font-bold">Query</a>
                     
-                    <a href="powerbi.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-400 transition">Power BI</a>
+                    <a href="powerbi.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-400 transition pr-4">Power BI</a>
                 </div>
+
             </div>
         </div>
     </nav>
@@ -247,6 +254,56 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true, offset: 100 });
+    </script>
+
+    <script>
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        // Define the order of pages
+        const pages = [
+            "index.html",      // 0
+            "resources.html",  // 1
+            "excel.html",      // 2
+            "query.html",      // 3
+            "powerbi.html"     // 4
+        ];
+
+        function checkDirection() {
+            // Minimal swipe distance (50px) to trigger action
+            if (Math.abs(touchendX - touchstartX) < 50) return;
+
+            // Get current page filename
+            let path = window.location.pathname;
+            let page = path.split("/").pop(); 
+            if (page === "" || page === "tis") page = "index.html"; // Handle root URL
+
+            let currentIndex = pages.indexOf(page);
+            if (currentIndex === -1) currentIndex = 0; // Default to index if not found
+
+            if (touchendX < touchstartX) {
+                // SWIPE LEFT (Go to Next Page) ⬅️
+                if (currentIndex < pages.length - 1) {
+                    window.location.href = pages[currentIndex + 1];
+                }
+            }
+            
+            if (touchendX > touchstartX) {
+                // SWIPE RIGHT (Go to Previous Page) ➡️
+                if (currentIndex > 0) {
+                    window.location.href = pages[currentIndex - 1];
+                }
+            }
+        }
+
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            checkDirection();
+        });
     </script>
 </body>
 </html>

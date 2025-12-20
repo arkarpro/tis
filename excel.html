@@ -284,5 +284,55 @@
     <script>
         AOS.init({ once: true, offset: 100 });
     </script>
+
+    <script>
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        // Define the order of pages
+        const pages = [
+            "index.html",      // 0
+            "resources.html",  // 1
+            "excel.html",      // 2
+            "query.html",      // 3
+            "powerbi.html"     // 4
+        ];
+
+        function checkDirection() {
+            // Minimal swipe distance (50px) to trigger action
+            if (Math.abs(touchendX - touchstartX) < 50) return;
+
+            // Get current page filename
+            let path = window.location.pathname;
+            let page = path.split("/").pop(); 
+            if (page === "" || page === "tis") page = "index.html"; // Handle root URL
+
+            let currentIndex = pages.indexOf(page);
+            if (currentIndex === -1) currentIndex = 0; // Default to index if not found
+
+            if (touchendX < touchstartX) {
+                // SWIPE LEFT (Go to Next Page) ⬅️
+                if (currentIndex < pages.length - 1) {
+                    window.location.href = pages[currentIndex + 1];
+                }
+            }
+            
+            if (touchendX > touchstartX) {
+                // SWIPE RIGHT (Go to Previous Page) ➡️
+                if (currentIndex > 0) {
+                    window.location.href = pages[currentIndex - 1];
+                }
+            }
+        }
+
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            checkDirection();
+        });
+    </script>
 </body>
 </html>
