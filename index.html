@@ -8,7 +8,7 @@
     <link rel="icon" type="image/jpg" href="images/logo.jpg">
 
     <meta property="og:title" content="The Insights Solution - Data Strategy & Training">
-    <meta property="og:description" content="Master Excel, Power BI & Data Analytics with Arkar Linn. Join over 200+ students transforming their careers.">
+    <meta property="og:description" content="Master Excel, Power BI & Data Analytics with Arkar Linn. Explore interactive data apps and corporate training services.">
     <meta property="og:image" content="https://arkarpro.github.io/tis/images/profile.jpg">
     <meta property="og:url" content="https://arkarpro.github.io/tis/">
     <meta property="og:type" content="website">
@@ -38,6 +38,10 @@
             display: flow-root; 
         }
 
+        /* Hide Scrollbar for Mobile Menu */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
         /* Floating Button Animation */
         @keyframes pulse-custom {
             0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
@@ -62,20 +66,27 @@
 
     <nav class="fixed top-0 left-0 w-full bg-slate-900 text-white z-50 shadow-lg border-b border-slate-700">
         <div class="container mx-auto max-w-7xl px-4">
-            <div class="flex flex-wrap justify-between items-center h-16">
-                <a href="index.html" class="flex items-center gap-2 hover:text-blue-400 transition duration-300">
+            <div class="flex justify-between items-center h-16">
+                
+                <a href="index.html" class="flex items-center gap-2 hover:text-green-400 transition duration-300 flex-shrink-0">
                     <img src="images/logo.jpg" alt="Logo" class="h-8 w-8 rounded-full border border-white">
                     <span class="font-bold text-lg tracking-wide hidden sm:block">The Insights Solution</span>
                     <span class="font-bold text-lg tracking-wide sm:hidden">TIS</span>
                 </a>
 
-                <div class="flex space-x-1 sm:space-x-4 text-sm font-medium">
-                    <a href="index.html" class="px-3 py-2 rounded-md bg-slate-700 text-white shadow-inner">Profile</a>
+                <div class="flex space-x-2 text-sm font-medium overflow-x-auto whitespace-nowrap no-scrollbar pl-4 items-center h-full">
+                    
+                    <a href="#" class="px-3 py-2 rounded-md bg-slate-700 text-white shadow-inner">Profile</a>
+                    
                     <a href="resources.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-purple-400 transition">Free Resources</a>
+
                     <a href="excel.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-green-400 transition">Excel</a>
+                    
                     <a href="query.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-yellow-400 transition">Query</a>
-                    <a href="powerbi.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-400 transition">Power BI</a>
+                    
+                    <a href="powerbi.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-400 transition pr-4">Power BI</a>
                 </div>
+
             </div>
         </div>
     </nav>
@@ -153,6 +164,115 @@
                     <h3 class="font-bold text-blue-700 mb-2">Consulting</h3>
                     <p class="text-sm text-gray-600">Custom templates and solutions for operational and financial challenges.</p>
                 </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <div class="section-header flex items-center gap-2">
+                <span>🚀</span> Project Portfolio
+            </div>
+            <div class="section-body bg-slate-50">
+                
+                <p class="text-gray-600 mb-6 italic">
+                    "Here are some of the interactive tools and data systems I've built to solve real-world problems."
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 card-hover flex flex-col" data-aos="fade-up">
+                        <img src="images/proj-population.jpg" alt="Myanmar Population Analytics" class="w-full h-48 object-cover object-top">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded uppercase">Streamlit</div>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">Myanmar Population Analytics</h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-1">
+                                An interactive dashboard allowing users to filter census data by State, District, and Township to analyze population demographics dynamically.
+                            </p>
+                            <a href="https://dynamic-dashboard-filters.streamlit.app/" target="_blank" class="inline-flex items-center text-blue-600 font-semibold text-sm hover:underline">
+                                View Live App <span class="ml-1">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 card-hover flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                        <img src="images/proj-titanic.jpg" alt="Titanic Dashboard" class="w-full h-48 object-cover object-top">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded uppercase">Streamlit</div>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">Titanic EDA Dashboard</h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-1">
+                                Comprehensive exploratory data analysis of the Titanic dataset, visualizing survival rates by class, gender, and age groups using Python.
+                            </p>
+                            <a href="https://titanic-eda-dashboard-dkd68fsawayaumwjkkow85.streamlit.app/" target="_blank" class="inline-flex items-center text-blue-600 font-semibold text-sm hover:underline">
+                                View Live App <span class="ml-1">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 card-hover flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                        <img src="images/proj-target.jpg" alt="Sales KPI Dashboard" class="w-full h-48 object-cover object-top">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="bg-red-100 text-red-700 text-xs font-bold px-2 py-1 rounded uppercase">Streamlit</div>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">Target vs Actual KPI Tracker</h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-1">
+                                Performance tracking dashboard comparing Target vs Actual sales across different regions (AYA, YGN, MDY) with achievement percentages.
+                            </p>
+                            <a href="https://targetvsactual-arkarpro.streamlit.app/" target="_blank" class="inline-flex items-center text-blue-600 font-semibold text-sm hover:underline">
+                                View Live App <span class="ml-1">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden border border-slate-200 card-hover flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                        <img src="images/proj-pass.jpg" alt="Password Generator" class="w-full h-48 object-cover object-top">
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded uppercase">Web Tool</div>
+                            </div>
+                            <h3 class="font-bold text-lg text-slate-900 mb-2">Secure Password Generator</h3>
+                            <p class="text-gray-600 text-sm mb-4 flex-1">
+                                A handy utility tool built to generate strong, randomized passwords with customizable options for symbols and numbers.
+                            </p>
+                            <a href="https://arkarpro.github.io/password_generator/" target="_blank" class="inline-flex items-center text-blue-600 font-semibold text-sm hover:underline">
+                                View Live Tool <span class="ml-1">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="bg-slate-900 rounded-xl shadow-lg overflow-hidden border border-slate-800 text-white" data-aos="flip-up">
+                    <div class="md:flex">
+                        <div class="md:w-1/2">
+                            <img src="images/proj-sql.jpg" alt="SQL Data Warehouse" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition">
+                        </div>
+                        <div class="p-8 md:w-1/2 flex flex-col justify-center">
+                            <div class="mb-4">
+                                <span class="bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Data Engineering</span>
+                            </div>
+                            <h3 class="font-bold text-2xl mb-3">SQL Data Warehouse & Analytics</h3>
+                            <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                                A complete end-to-end data engineering project demonstrating <strong>Medallion Architecture</strong> (Bronze, Silver, Gold layers). Includes ETL pipelines, data modeling, and reporting with SQL Server.
+                            </p>
+                            <div class="flex gap-4">
+                                <a href="https://github.com/arkarpro/sql-data-warehouse-project" target="_blank" class="bg-white text-slate-900 font-bold py-2 px-4 rounded hover:bg-gray-200 transition text-sm flex items-center">
+                                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                    View Repository
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-gray-200 text-center" data-aos="zoom-in">
+                    <h4 class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">My Coding Activity</h4>
+                    <img src="https://ghchart.rshah.org/3b82f6/arkarpro" alt="Arkar's Github Chart" class="mx-auto w-full md:w-3/4 opacity-90 hover:opacity-100 transition">
+                </div>
+
             </div>
         </div>
 
@@ -340,6 +460,56 @@
         AOS.init({
             once: true, // Animation happens only once
             offset: 100, // Trigger point
+        });
+    </script>
+
+    <script>
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        // Define the order of pages
+        const pages = [
+            "index.html",      // 0
+            "resources.html",  // 1
+            "excel.html",      // 2
+            "query.html",      // 3
+            "powerbi.html"     // 4
+        ];
+
+        function checkDirection() {
+            // Minimal swipe distance (50px) to trigger action
+            if (Math.abs(touchendX - touchstartX) < 50) return;
+
+            // Get current page filename
+            let path = window.location.pathname;
+            let page = path.split("/").pop(); 
+            if (page === "" || page === "tis") page = "index.html"; // Handle root URL
+
+            let currentIndex = pages.indexOf(page);
+            if (currentIndex === -1) currentIndex = 0; // Default to index if not found
+
+            if (touchendX < touchstartX) {
+                // SWIPE LEFT (Go to Next Page) ⬅️
+                if (currentIndex < pages.length - 1) {
+                    window.location.href = pages[currentIndex + 1];
+                }
+            }
+            
+            if (touchendX > touchstartX) {
+                // SWIPE RIGHT (Go to Previous Page) ➡️
+                if (currentIndex > 0) {
+                    window.location.href = pages[currentIndex - 1];
+                }
+            }
+        }
+
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            checkDirection();
         });
     </script>
 </body>
