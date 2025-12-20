@@ -83,23 +83,23 @@
         <div class="container mx-auto max-w-7xl px-4">
             <div class="flex justify-between items-center h-16">
                 
-                <a href="index.html" class="flex items-center gap-2 hover:text-green-400 transition duration-300 flex-shrink-0">
+                <a href="index.html" class="flex items-center gap-2 hover:text-blue-400 transition duration-300 flex-shrink-0">
                     <img src="images/logo.jpg" alt="Logo" class="h-8 w-8 rounded-full border border-white">
                     <span class="font-bold text-lg tracking-wide hidden sm:block">The Insights Solution</span>
                     <span class="font-bold text-lg tracking-wide sm:hidden">TIS</span>
                 </a>
 
-                <div class="flex space-x-2 text-sm font-medium overflow-x-auto whitespace-nowrap no-scrollbar pl-4 items-center h-full">
+                <div class="flex-1 min-w-0 flex flex-nowrap space-x-2 text-sm font-medium overflow-x-auto whitespace-nowrap no-scrollbar pl-4 items-center h-full justify-end sm:justify-start">
                     
-                    <a href="index.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-300 transition">Profile</a>
+                    <a href="index.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-300 transition whitespace-nowrap">Profile</a>
                     
-                    <a href="resources.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-purple-400 transition">Free Resources</a>
+                    <a href="resources.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-purple-400 transition whitespace-nowrap">Free Resources</a>
 
-                    <a href="excel.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-green-400 transition">Excel</a>
+                    <a href="excel.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-green-400 transition whitespace-nowrap">Excel</a>
                     
-                    <a href="query.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-yellow-400 transition">Query</a>
+                    <a href="query.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-yellow-400 transition whitespace-nowrap">Query</a>
                     
-                    <a href="#" class="px-3 py-2 rounded-md bg-blue-600 text-white shadow-lg shadow-blue-500/30 font-bold">Power BI</a>
+                    <a href="#" class="px-3 py-2 rounded-md bg-blue-600 text-white shadow-lg shadow-blue-500/30 font-bold whitespace-nowrap pr-4">Power BI</a>
                 </div>
 
             </div>
@@ -394,10 +394,17 @@
             // Minimal swipe distance (50px) to trigger action
             if (Math.abs(touchendX - touchstartX) < 50) return;
 
-            // Get current page filename
+            // 🛠️ URL FIX: Get filename and handle missing .html extension
             let path = window.location.pathname;
             let page = path.split("/").pop(); 
-            if (page === "" || page === "tis") page = "index.html"; // Handle root URL
+            
+            // Handle root URL and empty string
+            if (page === "" || page === "tis") page = "index.html";
+            
+            // If page doesn't end with .html, add it (Fixes GitHub Pages issue)
+            if (!page.endsWith(".html")) {
+                page = page + ".html";
+            }
 
             let currentIndex = pages.indexOf(page);
             if (currentIndex === -1) currentIndex = 0; // Default to index if not found
