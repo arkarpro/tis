@@ -689,16 +689,27 @@ Window သေးသေးလေးတစ်ခု ကျလာပါလိမ့
                             <div class="flex flex-wrap items-center gap-2 mb-1">
                                 <span class="text-xs font-bold text-purple-600 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-100">Quiz Time</span>
                             </div>
-                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">DAX Context Challenge</h3>
-                            <p class="text-sm text-gray-500 line-clamp-1">Row Context နဲ့ Filter Context ကွာခြားချက်ကို သိပါသလား...</p>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">CALCULATE Function Challenge 🧠</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">DAX ရဲ့ "King" လို့တင်စားတဲ့ CALCULATE ကို သင်ဘယ်လောက်နားလည်လဲ?</p>
                         </div>
                         <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
                     </div>
                     <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
                         <div class="p-3 border-t border-gray-100">
                             <div class="md:clearfix">
-                                <img src="images/quiz-01.jpg" alt="Full" class="w-full md:w-5/12 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover aspect-[4/5]">
-                                <p class="text-gray-700 mb-4">Sample Question: CALCULATE function သုံးလိုက်ရင် Filter Context က ဘယ်လိုပြောင်းသွားသလဲ?</p>
+                                <img src="images/quiz-01.jpg" alt="Full" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+                                <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">မင်္ဂလာပါ Data သမားတို့ရေ... 🖐️
+DAX မှာ အရေးအကြီးဆုံး Function က ဘာလဲလို့မေးရင် ၉၀% က "CALCULATE" လို့ဖြေကြပါလိမ့်မယ်။ ဒါပေမဲ့ သူ့ရဲ့ "Filter Context" ပြောင်းလဲပုံကို သေချာနားလည်ပါသလား?
+
+❓ <strong>မေးခွန်း (Question):</strong>
+Table ထဲမှာ Region က "Yangon" လို့ Filter ခံထားပါတယ်။
+ဒါပေမဲ့ Measure ရေးတဲ့အခါ <code>CALCULATE( [Total Sales], ALL(Region) )</code> လို့ရေးလိုက်ရင် ရလဒ်က ဘာထွက်လာမလဲ?
+
+A. Yangon Sales ကိုပဲ ပြမယ်။
+B. Region အားလုံးရဲ့ Total Sales ကို ပြမယ် (Filter ပြုတ်သွားမယ်)။
+C. Error တက်သွားမယ်။
+
+အဖြေမှန်ကို Comment မှာ ဖြေခဲ့ပါနော်! 👇</div>
                             </div>
                         </div>
                     </div>
@@ -711,13 +722,30 @@ Window သေးသေးလေးတစ်ခု ကျလာပါလိမ့
                             <div class="flex flex-wrap items-center gap-2 mb-1">
                                 <span class="text-xs font-bold text-purple-600 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-100">Quiz Time</span>
                             </div>
-                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">Power Query Merge Challenge</h3>
-                            <p class="text-sm text-gray-500 line-clamp-1">Join Types (Left, Inner, Anti) တွေကို နားလည်ပါသလား...</p>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">The "Left Anti" Join Mystery 🔍</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Table A မှာမရှိဘဲ Table B မှာရှိတဲ့ Data တွေကို လိုချင်ရင်?</p>
                         </div>
                         <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
                     </div>
                     <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
-                        <div class="p-3 border-t border-gray-100"><p class="text-gray-700">Sample Question: Table A မှာမရှိဘဲ Table B မှာရှိတဲ့ Data တွေကို လိုချင်ရင် ဘယ် Join Type ကို သုံးမလဲ?</p></div>
+                        <div class="p-3 border-t border-gray-100">
+                            <div class="md:clearfix">
+                                <img src="images/quiz-02.jpg" alt="Full" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+                                <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">Data Cleaning လုပ်တဲ့အခါ VLOOKUP ထက် ပိုမိုက်တာက Power Query "Merge" ပါ။ ဒါပေမဲ့ Join Type (၆) မျိုးမှာ ဘယ်ဟာကို ရွေးရမှန်း ဝေခွဲမရ ဖြစ်နေလား? 🤔
+
+❓ <strong>Scenario:</strong>
+သင့်ဆီမှာ "All Staff List" (Table 1) နဲ့ "Training တက်ရောက်သူများ List" (Table 2) ရှိတယ်။
+သင်လိုချင်တာက "Training မတက်ရသေးတဲ့ ဝန်ထမ်းတွေစာရင်း" (Table 1 မှာရှိပြီး Table 2 မှာမရှိသူများ)။
+
+ဘယ် Join Kind ကို သုံးမလဲ?
+1️⃣ Left Outer
+2️⃣ Inner Join
+3️⃣ Left Anti
+4️⃣ Right Anti
+
+အဖြေမှန်လေး ရွေးပေးပါဦး။ 💡</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -728,13 +756,28 @@ Window သေးသေးလေးတစ်ခု ကျလာပါလိမ့
                             <div class="flex flex-wrap items-center gap-2 mb-1">
                                 <span class="text-xs font-bold text-purple-600 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-100">Quiz Time</span>
                             </div>
-                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">Data Modeling Relationships</h3>
-                            <p class="text-sm text-gray-500 line-clamp-1">One-to-Many နဲ့ Many-to-Many ဘာကွာလဲ...</p>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">Nested IF vs IFS Challenge 🤯</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Condition တွေများလာရင် IF တွေအထပ်ထပ် မရေးဘဲ ဘယ်လိုဖြေရှင်းမလဲ?</p>
                         </div>
                         <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
                     </div>
                     <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
-                        <div class="p-3 border-t border-gray-100"><p class="text-gray-700">Sample Question: Star Schema တည်ဆောက်တဲ့အခါ Fact Table နဲ့ Dimension Table ကို ဘယ်လို Relationship မျိုးနဲ့ ချိတ်ဆက်သင့်သလဲ?</p></div>
+                        <div class="p-3 border-t border-gray-100">
+                            <div class="md:clearfix">
+                                <img src="images/quiz-03.jpg" alt="Full" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+                                <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">Excel သမားတွေ အမုန်းဆုံးအရာကတော့ IF(IF(IF(...))) ဆိုပြီး ကွင်းတွေပိတ်မရအောင် Nested IF ရေးရတာပါပဲ။ 😵‍💫
+
+❓ <strong>Challenge:</strong>
+Sales Amount ပေါ်မူတည်ပြီး Bonus ပေးချင်တယ်။
+• < 10,000 = 0%
+• 10,000 - 50,000 = 5%
+• > 50,000 = 10%
+
+ဒါကို IF တွေအထပ်ထပ်မသုံးဘဲ ရှင်းရှင်းလင်းလင်းရေးဖို့ ဘယ် Function အသစ်ကို သုံးလို့ရလဲ? (Hint: Office 2019/365 မှာပါပါတယ်)
+
+Answer in comments! 👇</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -745,13 +788,28 @@ Window သေးသေးလေးတစ်ခု ကျလာပါလိမ့
                             <div class="flex flex-wrap items-center gap-2 mb-1">
                                 <span class="text-xs font-bold text-purple-600 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-100">Quiz Time</span>
                             </div>
-                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">Excel Logical Test</h3>
-                            <p class="text-sm text-gray-500 line-clamp-1">Complex IF condition တွေကို ဖြေရှင်းနိုင်လား...</p>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">The Pie Chart Trap 🥧</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Pie Chart ကို ဘယ်အချိန်မှာ လုံးဝ (လုံးဝ) မသုံးသင့်ဘူးလဲ?</p>
                         </div>
                         <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
                     </div>
                     <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
-                        <div class="p-3 border-t border-gray-100"><p class="text-gray-700">Sample Question: Condition ၃ ခုစလုံး ပြည့်မှ True ဖြစ်ချင်ရင် ဘယ် Logical Function ကို သုံးရမလဲ?</p></div>
+                        <div class="p-3 border-t border-gray-100">
+                            <div class="md:clearfix">
+                                <img src="images/quiz-04.jpg" alt="Full" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+                                <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">Data Visualization မှာ လူကြိုက်အများဆုံးက Pie Chart ပါ။ ဒါပေမဲ့ အန္တရာယ်အများဆုံးကလည်း သူပါပဲ။ 🚫
+
+❓ <strong>မေးခွန်း:</strong>
+အောက်ပါ အခြေအနေတွေထဲက ဘယ်တစ်ခုမှာ Pie Chart ကို "ရှောင်" သင့်သလဲ?
+
+A. Category ၂ ခု သို့ ၃ ခုပဲ ရှိတဲ့အခါ (ဥပမာ - Male/Female)
+B. အစိတ်အပိုင်းတွေပေါင်းလိုက်ရင် 100% ပြည့်တဲ့အခါ
+C. Category ၁၀ ခုကျော်ပြီး တန်ဖိုးတွေက သိပ်မကွာတဲ့အခါ
+D. Data Label ထည့်ပြချင်တဲ့အခါ
+
+Data Storytelling သမားတွေ အဖြေမှန်သိကြလားဗျ? 😉</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
