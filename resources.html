@@ -142,55 +142,765 @@
             </div>
         </div>
 
-        <div class="mb-16">
-            <div class="flex items-center gap-2 mb-6 border-b pb-2 border-gray-200">
-                <span class="text-2xl">💡</span>
-                <h2 class="text-2xl font-bold text-slate-800">One Day One Insight</h2>
+        <div class="mb-16" id="reading-room">
+            
+            <div class="flex items-center gap-2 mb-8 border-b pb-2 border-gray-200">
+                <span class="text-2xl">📖</span>
+                <h2 class="text-2xl font-bold text-slate-800">TIS Reading Room</h2>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 tip-card overflow-hidden" data-aos="zoom-in">
-    <img src="images/tip-1.jpg" alt="Data Tip 1" class="w-full h-48 object-cover">
-    
-    <div class="p-4">
-        <span class="text-xs font-bold text-purple-600 uppercase mb-1 block">Leader Notes</span>
-        <h4 class="font-bold text-gray-900 mb-2">Dataဆိုတာ လမ်းပြမြေပုံပါ</h4>
-        
-        <p class="text-sm text-gray-600 line-clamp-6 mb-4">
-            လွန်ခဲ့တဲ့ ရက် (၉၀) လုံးလုံး ကျွန်တော်တို့တွေ မနက်ခင်းတိုင်းမှာ Excel တွေ၊ Formula တွေ၊ Hard Skills တွေနဲ့ လုံးပန်းခဲ့ကြပြီးပြီ။ ဒါပေမဲ့ ခေါင်းဆောင်တစ်ယောက် ဖြစ်လာတဲ့အခါ... နည်းပညာသက်သက်နဲ့ မလုံလောက်တော့ဘူးဆိုတာ သတိထားမိလာလိမ့်မယ်။
-            (စာများလွန်းလို့ ဒီနေရာမှာ အတိုချုံးထားပါတယ်...)
-        </p>
+            <div class="flex flex-wrap gap-2 mb-8 justify-center md:justify-start">
+                <button onclick="filterPosts('all')" class="filter-btn active px-4 py-2 rounded-full text-sm font-bold border transition bg-slate-800 text-white border-slate-800">All Posts</button>
+                <button onclick="filterPosts('leaders')" class="filter-btn px-4 py-2 rounded-full text-sm font-bold border border-gray-300 text-gray-600 hover:bg-gray-100 transition">Leader's Notes</button>
+                <button onclick="filterPosts('excel100')" class="filter-btn px-4 py-2 rounded-full text-sm font-bold border border-gray-300 text-gray-600 hover:bg-gray-100 transition">Excel Formula 100</button>
+                <button onclick="filterPosts('sql')" class="filter-btn px-4 py-2 rounded-full text-sm font-bold border border-gray-300 text-gray-600 hover:bg-gray-100 transition">MSSQL to PowerBI</button>
+                <button onclick="filterPosts('quiz')" class="filter-btn px-4 py-2 rounded-full text-sm font-bold border border-gray-300 text-gray-600 hover:bg-gray-100 transition">Quiz Time</button>
+            </div>
 
-        <a href="https://www.facebook.com/theinsightssolution" target="_blank" class="mt-3 text-xs font-bold text-blue-600 uppercase tracking-wide hover:underline">
-            Read More on Facebook &rarr;
-        </a>
+            <div class="space-y-4" id="posts-container">
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="leaders">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/leader-01.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-blue-700 uppercase bg-blue-100 px-2 py-0.5 rounded border border-blue-200">Leader's Notes</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-blue-600 transition">Data Driven Culture တည်ဆောက်ခြင်း</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">လုပ်ငန်းခွင်မှာ Data ကို အခြေခံပြီး ဆုံးဖြတ်ချက်ချဖို့ ဘာတွေလိုအပ်မလဲ...</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/leader-01.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">မင်္ဂလာပါ... ကျွန်တော် Arkar ပါ။ 👋
+Microfinance လုပ်ငန်းခွင်ထဲမှာ ကျွန်တော် ၁၀ နှစ်ကျော် ဖြတ်သန်းခဲ့ပါတယ်။ ဒီခရီးလမ်းက လွယ်ကူခဲ့တာတော့ မဟုတ်ပါဘူး။ ကျွန်တော်ဟာ အောက်ခြေအဆင့် Trainee Credit Officer ဘဝကနေ စတင်ခဲ့ပါတယ်။ Trainee, Loan Officer, Credit Officer, Supervisor, Branch Manager အဆင့်ဆင့်ကနေ HQ မှာ Credit Analysis Manager, Credit Recovery Manager တာဝန်တွေယူပြီး အခုလက်ရှိ Senior Management Team (SMT) Member အဖြစ် တာဝန်ယူထားတဲ့ အထိ... နေရာစုံ၊ ဌာနစုံကို ကိုယ်တိုင် ဖြတ်သန်းခဲ့ရပါတယ်။ 🏢 ဒီ ၁၀ နှစ်တာ ခရီးလမ်းမှာ ကျွန်တော် အဓိက သတိထားမိတဲ့ အချက်တစ်ခုရှိတယ်။ အဲ့ဒါကတော့ - "Data ကျွမ်းကျင်မှု နဲ့ Management ဆုံးဖြတ်ချက်ကြားက ကွာဟချက် (Gap)" ပါပဲ။ 💡 ညီငယ်၊ ညီမငယ် အများစုဟာ Excel/Power BI စတဲ့ Tool တွေကို ကျွမ်းကျင်ကြပေမယ့် "ဒီ Data ကိုကြည့်ပြီး လုပ်ငန်းအတွက် ဘာဆုံးဖြတ်ချက်ချမလဲ?" ဆိုတဲ့နေရာမှာ အခက်အခဲ ရှိတတ်ကြပါတယ်။ ဒါကြောင့် ကျွန်တော့်ရဲ့ "Leader's Note" စီးရီးလေးကို စတင်လိုက်ပါတယ်။ 📘 ဒီ Album မှာ Technical Skill သက်သက်တင်မဟုတ်ဘဲ...
+✅ အောက်ခြေမြေပြင် အတွေ့အကြုံနဲ့ HQ ရဲ့ Strategy ကို ဘယ်လို ချိတ်ဆက်မလဲ၊
+✅ Data ကိုကြည့်ပြီး Professional ဆန်ဆန်၊ Smart ကျကျ ဘယ်လို တွေးခေါ်မလဲ၊
+✅ ကိုယ့်ရဲ့ Career တက်လမ်းအတွက် ဘယ်လို ပြင်ဆင်မလဲ... စတဲ့ အတွေ့အကြုံ၊ အတွေးအမြင်များကို ပုံမှန် မျှဝေပေးသွားမှာ ဖြစ်ပါတယ်။ Professional ဆန်ပြီး တိုးတက်ချင်တဲ့ ညီငယ်ညီမငယ်များ ဒီ Album လေးမှာ ဆုံကြမယ်နော်။ 🤝✨
+
+Arkar Linn
+The Insights Solution
+
+#TheInsightsSolution #LeaderNote #Microfinance #DataToDecision #CareerGrowth #ManagementSkills #Myanmar See less
+
+            </div>
+        </div>
     </div>
 </div>
+                </div>
 
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 tip-card overflow-hidden" data-aos="zoom-in" data-aos-delay="50">
-                    <img src="images/tip-2.jpg" alt="Data Tip 2" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <span class="text-xs font-bold text-green-600 uppercase mb-1 block">Excel Hack</span>
-                        <h4 class="font-bold text-gray-900 mb-2">XLOOKUP vs VLOOKUP</h4>
-                        
-                        <p class="text-sm text-gray-600 line-clamp-6 mb-4">
-                            Stop using VLOOKUP today. XLOOKUP is faster, searches left, and handles errors gracefully. Unlike VLOOKUP, which breaks when columns are inserted, XLOOKUP is dynamic and robust. It defaults to an exact match, saving you from common errors...
-                        </p>
-                        
-                        <a href="https://www.facebook.com/theinsightssolution" target="_blank" class="mt-3 text-xs font-bold text-blue-600 uppercase tracking-wide hover:underline">
-                            Read More on Facebook &rarr;
-                        </a>
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="leaders">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/leader-02.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-blue-700 uppercase bg-blue-100 px-2 py-0.5 rounded border border-blue-200">Leader's Notes</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-blue-600 transition">The Start-of-Month Mindset 📅</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">​လစရက်ကို "အလုပ်စတဲ့ရက်" လို့မမြင်ဘဲ "Strategy ချတဲ့ရက်" လို့ မြင်ကြည့်ပါ 📊</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/leader-01.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">​မင်္ဂလာပါ...
+​ဒီနေ့ကတော့ လတစ်လရဲ့ အစပိုင်းရက် ဖြစ်ပါတယ်။ လကုန်ရက် စာရင်းပိတ်ခြင်း လုပ်ငန်းစဉ်တွေ ပြီးဆုံးသွားတဲ့အတွက် ဒီရက်ပိုင်းမှာ စိတ်လက်ပေါ့ပါးနေကြမယ့်သူတွေ ရှိသလို၊ Target အသစ်တွေအတွက် ပြင်ဆင်နေကြသူတွေလည်း ရှိနိုင်ပါတယ်။ ​Senior Management အမြင်နဲ့ ကြည့်မယ်ဆိုရင်တော့... လစရက် (First Week of the Month) ဟာ "Data တွေကို စကားပြောခိုင်းရမယ့် အချိန်" ပါပဲ။ ပြီးခဲ့တဲ့လက ပိတ်လိုက်တဲ့ စာရင်းတွေ (Closing Data) ဟာ Report တစ်စောင်အဖြစ် ဖိုင်တွဲသိမ်းဆည်းလိုက်ရုံ သက်သက် မဟုတ်ပါဘူး။ အဲဒီ Data တွေက ဒီလအတွက် လမ်းပြမြေပုံ (Roadmap) တွေ ဖြစ်သင့်ပါတယ်။ ​ဒါကြောင့် လုပ်ငန်းခွင်မှာ ထိရောက်မှုရှိစေဖို့ ဒီ (၃) ချက်ကို အဓိက စဉ်းစားစေချင်ပါတယ်-
+​1. Reflect (ပြန်လည်သုံးသပ်ခြင်း): ပြီးခဲ့တဲ့လက ရလဒ်တွေ (Trend) က ဘာကို ပြသနေလဲ?
+​2. Plan (စီမံချက်ချခြင်း): အားနည်းခဲ့တဲ့ အပိုင်းတွေကို ဒီလမှာ ဘယ်လို ပြန်လည်ဖြည့်ဆည်းမလဲ?
+​3. Execute (လက်တွေ့လုပ်ဆောင်ခြင်း): ဒီလ Target ကို ပြည့်မီဖို့ ဒီနေ့ကစပြီး ဘယ်လို အရှိန် (Pace) နဲ့ သွားမလဲ?
+
+​ညီငယ်ညီမငယ်တို့ကို အကြံပြုချင်တာက... ဒီနေ့မှာ ကိုယ့် Branch သို့မဟုတ် ကိုယ့်ဌာနရဲ့ ပြီးခဲ့တဲ့လ Report ကို ပြန်ဖွင့်ကြည့်ပါ။ အစီရင်ခံစာတစ်ခုအနေနဲ့ သိမ်းဆည်းလိုက်ရုံထက်... ​"ပြီးခဲ့တဲ့လ Performance က ဒီလအတွက် ဘာသင်ခန်းစာပေးလဲ?" ဆိုတာကို ၁၅ မိနစ်လောက် အချိန်ပေးပြီး သေချာ စဉ်းစားကြည့်စေချင်ပါတယ်။ အဲ့ဒီ ၁၅ မိနစ်စာ ပြင်ဆင်မှုက သင့်ရဲ့ ဒီလတစ်လလုံးကို ပိုပြီး Smart ကျစေပါလိမ့်မယ်။ ဒီလသစ်မှာ Strategy ကောင်းကောင်းနဲ့ ရလဒ်ကောင်းတွေ ဖန်တီးနိုင်ကြပါစေ။ 💪
+​Arkar Linn
+The Insights Solution
+​#TheInsightsSolution #LeaderNote #MonthlyPlanning #DataDrivenStrategy #Microfinance #SmartWork See less
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="leaders">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/leader-03.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-blue-700 uppercase bg-blue-100 px-2 py-0.5 rounded border border-blue-200">Leader's Notes</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-blue-600 transition">Data vs Insight 💡</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Report တွေ အများကြီး ဖတ်နေရပေမယ့် ဘာလို့ ဆုံးဖြတ်ချက်ချဖို့ ခက်နေတာလဲ? 🤔</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/leader-03.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">မင်္ဂလာပါ...
+ကျွန်တော်တို့ လုပ်ငန်းခွင်မှာ မကြာခဏ ကြုံတွေ့ရတဲ့ အခြေအနေတစ်ခု ရှိပါတယ်။ အဲဒါကတော့ - Report တွေ၊ ဇယားတွေ၊ ဂဏန်းတွေ အများကြီးကို နေ့တိုင်း ကြည့်နေရပေမယ့်... တကယ့် အရေးကြီးတဲ့ ဆုံးဖြတ်ချက် (Decision) ချရတော့မယ်ဆိုရင် ဘာကို အခြေခံရမှန်း မသိဘဲ ဝေဝါးနေတတ်တာမျိုးပါ။ ဒီလိုဖြစ်ရခြင်းရဲ့ အဓိက အကြောင်းရင်းကတော့ "Data" နဲ့ "Insight" ကို မကွဲပြားသေးလို့ ဖြစ်နိုင်ပါတယ်။ Senior Management အမြင်နဲ့ ပြောရမယ်ဆိုရင် ဒီနှစ်ခုက တခြားစီပါပဲ။
+
+🔢 Data (ဒေတာ) ဆိုတာ - အကြမ်းထည် ကိန်းဂဏန်းတွေ ဖြစ်ပါတယ်။ ဥပမာ - "ဒီလ PAR က ၅% ရှိတယ်"၊ "Branch A က သိန်း ၁၀၀၀ ထုတ်ချေးတယ်" ဆိုတာမျိုးပါ။ ဒါက အမှန်တရား ဖြစ်ပေမယ့် ဆုံးဖြတ်ချက်ချဖို့ မလုံလောက်သေးပါဘူး။
+💡 Insight (အနှစ်သာရ/ထိုးထွင်းသိမြင်ခြင်း) ဆိုတာ - အဲဒီ Data ကို ဆက်စပ်တွေးခေါ်ပြီး ထွက်လာတဲ့ "အဖြေ" ဖြစ်ပါတယ်။
+
+ဥပမာ - "PAR က ၅% ရှိတယ်၊ ဒါပေမဲ့ လွန်ခဲ့တဲ့ ၃ လဆက်တိုက် ၁% စီ တက်လာနေတာ၊ အဓိကက စပါးဈေးကျလို့ တောင်သူတွေ ပြန်မဆပ်နိုင်တာ" ဆိုတဲ့ တွေ့ရှိချက်မျိုးပါ။ ဒါကြောင့် ညီငယ်ညီမငယ်တွေ အနေနဲ့ Report တစ်စောင် ပြင်ဆင်တော့မယ်ဆိုရင် အောက်ပါအချက်တွေကို သတိပြုစေချင်ပါတယ်-
+✅ ဂဏန်းတွေချည်းပဲ ဇယားကွက်နဲ့ စီမပြပါနဲ့။ ဒီဂဏန်းတွေက "ကောင်းတာလား၊ ဆိုးတာလား" ဆိုတဲ့ သဘောထား (Context) ကို ထည့်သွင်းစဉ်းစားပါ။
+✅ Trend ကို ကြည့်ပါ။ မနေ့ကထက် တက်လာတာလား၊ ကျသွားတာလား?
+✅ "So What?" (ဒါဆို ဘာဆက်လုပ်မလဲ) ဆိုတဲ့ မေးခွန်းကို ကိုယ့် Report က ဖြေရှင်းပေးနိုင်မလား ပြန်စစ်ပါ။
+
+Data သမားကောင်းတစ်ယောက်ဆိုတာ ဂဏန်းတွေကို စုဆောင်းသူ (Collector) မဟုတ်ပါဘူး။ Data ထဲကနေ Insight ကို ရှာဖွေဖော်ထုတ်ပေးသူ (Translator) သာ ဖြစ်ပါတယ်။ ဒီနေ့ကစပြီး ကိုယ့်ရဲ့ Report တွေကို Data အဆင့်ကနေ Insight အဆင့်ရောက်အောင် ပြောင်းလဲကြည့်လိုက်ပါ။ သင့်ရဲ့ တန်ဖိုး (Value) လည်း အများကြီး တက်လာပါလိမ့်မယ်။
+
+Arkar Linn
+The Insights Solution
+#TheInsightsSolution #LeaderNote #DataVsInsight #SmartWork #DecisionMaking #Microfinance See less
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="leaders">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/leader-04.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-blue-700 uppercase bg-blue-100 px-2 py-0.5 rounded border border-blue-200">Leader's Notes</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-blue-600 transition">Career & Skill Upgrade 💼</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">CV မှာ "Computer ကျွမ်းကျင်သည်" လို့ ရေးရုံနဲ့ မလုံလောက်တော့ပါ 💻</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/leader-04.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">မင်္ဂလာပါ...
+ကျွန်တော်တို့ ဝန်ထမ်းခေါ်ယူတဲ့အခါ (Recruitment) မှာ လျှောက်လွှာအများစုမှာ တွေ့ရလေ့ရှိတဲ့ အချက်တစ်ခုရှိပါတယ်။ အဲဒါကတော့ Skill နေရာမှာ "Computer Literate (ကွန်ပျူတာ အခြေခံကျွမ်းကျင်သည်)" ဆိုတဲ့ စာသားလေးပါပဲ။ လွန်ခဲ့တဲ့ ၁၀ နှစ်လောက်ကတော့ ဒီစာသားဟာ အလုပ်ရဖို့ လုံလောက်ကောင်း လုံလောက်ခဲ့ပါလိမ့်မယ်။ ဒါပေမဲ့ ၂၀၂၅ ခုနှစ်လို Digital ခေတ်ကြီးမှာတော့ ဒီအရာဟာ "အခြေခံလိုအပ်ချက် (Basic Requirement)" တစ်ခုသာ ဖြစ်သွားပါပြီ။ Senior Management တစ်ယောက်အနေနဲ့ Team Member အသစ်တွေကို ရွေးချယ်တဲ့အခါ ကျွန်တော်တို့ ရှာဖွေတာက "ကွန်ပျူတာ သုံးတတ်သူ" မဟုတ်တော့ပါဘူး။ "နည်းပညာကို သုံးပြီး ပြဿနာဖြေရှင်းနိုင်သူ" ကို ရှာဖွေနေတာ ဖြစ်ပါတယ်။ ဒါကြောင့် ညီငယ်ညီမငယ်တွေအနေနဲ့ ကိုယ့်ရဲ့ CV သို့မဟုတ် Performance Review မှာ ဒီလို ပြောင်းလဲရေးသားဖို့ အကြံပြုချင်ပါတယ်-
+
+❌ Don't just write: "Excel ကျွမ်းကျင်သည်"
+✅ Write this instead: "Excel တွင် Pivot Table, VLOOKUP တို့ကို အသုံးပြုပြီး Data Analysis ပြုလုပ်နိုင်သည်"
+❌ Don't just write: "Report လုပ်တတ်သည်"
+✅ Write this instead: "Power BI ကို အသုံးပြုပြီး နေ့စဉ် Branch Performance Dashboard များ ဖန်တီးနိုင်သည်"
+
+💼 အဓိက ကွာခြားချက်ကတော့ - သာမန်လူတွေက သူတို့ "သုံးတတ်တဲ့ Tool" ကို ပြောပြကြတယ်။ Professional တွေကတော့ အဲဒီ Tool ကိုသုံးပြီး သူတို့ ဖန်တီးပေးနိုင်တဲ့ "ရလဒ် (Result)" ကို ပြောပြကြပါတယ်။ Microfinance လုပ်ငန်းခွင်မှာပဲဖြစ်ဖြစ်၊ ဘယ်လုပ်ငန်းခွင်မှာပဲဖြစ်ဖြစ်... သင်ဟာ "စာစီစာရိုက်သမား" မဟုတ်ဘဲ "Data နဲ့ အဖြေရှာသူ" တစ်ယောက် ဖြစ်ကြောင်း သက်သေပြနိုင်ပါစေ။ ဒါဟာ သင့်ရဲ့ Career တက်လမ်းကို အများကြီး အထောက်အကူ ပြုပါလိမ့်မယ်။
+
+Arkar Linn
+The Insights Solution
+09 42532 0949
+arkarlinn@insights-mm.com
+#TheInsightsSolution #LeaderNote #CareerAdvice #CVTips #DataSkills #ProfessionalGrowth See less
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="excel100">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/excel100-001.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-green-600 uppercase bg-green-50 px-2 py-0.5 rounded border border-green-100">Excel 100</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-green-600 transition">EOMONTH</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Excel ထဲမှာ မည်သည့်နေ့စွဲမဆို ထည့်လိုက်တာနဲ့ အဲဒီလ ၁ရက်နေ့ ကို ထုတ်ချင်ပါသလား❓</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/excel100-001.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">Excel ထဲမှာ မည်သည့်နေ့စွဲမဆို ထည့်လိုက်တာနဲ့ အဲဒီလ ၁ရက်နေ့ ကို ထုတ်ချင်ပါသလား❓
+👉 =EOMONTH(A2,-1)+1
+
+#exceltips #Myanmar #Excel #smartwork #DataDriven
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="excel100">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/excel100-002.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-green-600 uppercase bg-green-50 px-2 py-0.5 rounded border border-green-100">Excel 100</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-green-600 transition">Sum by Week (တစ်ပတ်ချင်းစီ ပေါင်းခြင်း)</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">မှတ်တမ်းတွေကို ခွဲခြမ်းစိတ်ဖြာတဲ့အခါ နေ့စဥ်ပေါင်းခြင်းထက် တစ်ပတ်ချင်းစီပေါင်းတာက ပိုပြီးရှင်းလင်းတဲ့ ရလဒ်တွေ ပေးနိုင်ပါတယ်။</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/excel100-002.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">Sum by Week (တစ်ပတ်ချင်းစီ ပေါင်းခြင်း)
+အရောင်းအ၀ယ်ဒေတာ (သို့မဟုတ်) မှတ်တမ်းတွေကို ခွဲခြမ်းစိတ်ဖြာတဲ့အခါ နေ့စဥ်ပေါင်းခြင်းထက် တစ်ပတ်ချင်းစီပေါင်းတာက ပိုပြီးရှင်းလင်းတဲ့ ရလဒ်တွေ ပေးနိုင်ပါတယ်။
+
+ဒီနည်းလမ်းက ဘာလို့အသုံးဝင်တာလဲ-🤔
+💹အပတ်စဉ်အစီရင်ခံစာတွေ၊ KPI တွေကို Trackingဖို့ အတွက် အကောင်းဆုံးပါပဲ။
+🔥လုံးဝပြောင်းလဲနိုင်ပါတယ် - formula ကို အပတ်တိုင်းအတွက် အောက်ကိုဆွဲချရုံပါပဲ။👍
+📈အရောင်းအ၀ယ်မှတ်တမ်းများ၊ အရောင်းဒေတာ (သို့မဟုတ်) အချိန်အခြေခံ မှတ်တမ်းများမှာလည်း အလုပ်လုပ်ပါတယ်။
+
+Formula ကတော့-
+=SUMIFS(data[Amount], data[Date], ">="&E5, data[Date], "<"&E5+7)
+ဒီ formula က ဘယ်လို အလုပ်လုပ်လဲဆိုတော့-
+data[Amount] = ပေါင်းမယ့်တန်ဖိုးတွေရဲ့ ကော်လံ
+data[Date] = စစ်ဆေးမယ့် ရက်စွဲတွေရဲ့ ကော်လံ
+ဒီလို စံနှုန်းတွေထားခြင်းဖြင့် ၇ ရက်ကာလအတွင်းက ရက်စွဲတွေကိုပဲ ထည့်သွင်းပေါင်းပါတယ်။
+
+အနှစ်ချုပ်အနေဖြင့်-
+ရက်စွဲအပိုင်းအခြားတွေနဲ့ SUMIFS ကို အသုံးပြုခြင်းဖြင့် dynamically အပတ်စဉ် အနှစ်ချုပ်တွေကို ရရှိနိုင်ပါတယ်။
+လွယ်ကူမြန်ဆန်တဲ့ ရလဒ်တွေအတွက် ပေါ့ပါးတဲ့ နည်းလမ်းတစ်ခုပါပဲ။
+
+#Excel #Myanmar #short #tricks See less
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="excel100">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/excel100-003.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-green-600 uppercase bg-green-50 px-2 py-0.5 rounded border border-green-100">Excel 100</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-green-600 transition">Say Goodbye to VLOOKUP!</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">It's time to upgrade your game with XLOOKUP!</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/excel100-003.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">🚀 Excel Hack #1: Say Goodbye to VLOOKUP!
+Still using VLOOKUP? It's time to upgrade your game with XLOOKUP!
+
+✅ No more column index guessing
+✅ Works left-to-right AND right-to-left
+✅ Handles missing values gracefully
+
+🔍 Example: =XLOOKUP("Arkar", B9:B13, C9:C13, "Not Found")
+
+This finds "Arkar" in column B and returns the matching value from column C. If not found, it shows "Not Found" instead of an error!
+
+Arkar" ဆိုတဲ့ F9, ကတန်ဖိုးကို B9ကနေ B13 မှာရှာတယ်, တွေ့ရင် C9 ကနေ C13 မှာ သူ့ရဲ့ row အတိုင်းမှာရှိနေသော Finance ဆိုတဲ့ တန်ဖိုးကို လာပြန်ပေးတယ်, မတွေ့ခဲ့ရင် "Not Found" ကို အဖြေပြန်ပြမယ်။
+
+💡 Tip: Use XLOOKUP for cleaner, smarter, and more flexible lookups in your dashboards.
+
+#exceltips #Excel #XLOOKUP
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="excel100">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/excel100-004.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-green-600 uppercase bg-green-50 px-2 py-0.5 rounded border border-green-100">Excel 100</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-green-600 transition">Clean Up Your Formulas with IFERROR</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Tired of seeing #N/A or #VALUE! in your sheets?</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/excel100-004.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">💡 Excel Hack #3: Clean Up Your Formulas with IFERROR
+Tired of seeing #N/A or #VALUE! in your sheets?
+                
+Use IFERROR to catch errors and show friendly messages instead!
+
+🔍 Example shown at photo: If the lookup fails, it shows "Not Found" instead of an ugly error.
+✅ Cleaner dashboards
+✅ Better user experience
+✅ Easier debugging
+
+#ExcelTips #IFERROR #CleanData #Excel #data See less
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="sql">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/sql-01.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600 uppercase bg-gray-100 px-2 py-0.5 rounded border border-gray-200">MSSQL to PowerBI</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-gray-600 transition">Introduction to MSSQL</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Database ဆိုတာဘာလဲ၊ Power BI နဲ့ ဘာလို့တွဲသုံးသင့်သလဲ...</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/sql-01.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">Data Journey" (ဒေတာ ခရီးစဉ်) — MS SQL Server ထဲက 'ကိန်းဂဏန်း' တွေကို Power BI ပေါ်က လှပတဲ့ 'ပုံပြင်' တစ်ပုဒ် ဖြစ်အောင် ဘယ်လိုဖန်တီးမလဲ။ 📊➡️🎨
+Good Morning ပါ ညီ/ညီမတို့။ ☀️ ဒီ စနေ၊ တနင်္ဂနွေမှာ အသိပညာသစ်တစ်ခု အတူတူလေ့လာဖို့ အဆင်သင့်ဖြစ်ပြီလား? ☕️ ကျွန်တော်တို့ရဲ့ လုပ်ငန်းခွင်ထဲမှာ "Microsoft SQL Server" (ဒါမှမဟုတ် MSSQL) ဆိုတဲ့ စကားလုံးကို မကြာခဏ ကြားဖူးကြမှာပါ။
+ရိုးရိုးလေး တွေးကြည့်ရအောင်...
+MSSQL Server ဆိုတာ... သင့်လုပ်ငန်းရဲ့ အရေးကြီးတဲ့ အချက်အလက် (Data) တွေ အများကြီးကို စနစ်တကျ သိမ်းထားပေးတဲ့ Microsoft ရဲ့ "ဒေတာ ဂိုဒေါင်" (Data Warehouse) ကြီးတစ်ခုလို့ မြင်ကြည့်လိုက်ပါ။ 🗄️ Power BI ဆိုတာ... အဲ့ဒီ ဂိုဒေါင်ထဲက ပစ္စည်းတွေကို လူတိုင်း နားလည်လွယ်အောင်၊ လှလှပပ ခင်းကျင်းပြသပေးမယ့် Microsoft ရဲ့ "Showroom" (အရောင်းပြခန်း) တစ်ခုပေါ့။ 🎨 ဒါဆို... "Microsoft မိသားစုဝင်" တွေဖြစ်တဲ့ ဒီ "ဂိုဒေါင်" (MSSQL) နဲ့ "Showroom" (Power BI) ကို ဘယ်လို ချိတ်ဆက်ပြီး "ဇာတ်လမ်း" တစ်ပုဒ် ဖြစ်အောင် လုပ်မလဲ?
+
+Data Journey အသစ် စတင်ပါပြီ 🚀
+ဒါကြောင့် ကျွန်တော် ဒီအပတ်ကစပြီး၊ "MSSQL" ဂိုဒေါင်ထဲက Data တွေကို "Power BI" Showroom ပေါ်အထိ ရောက်အောင် ဘယ်လို သယ်ဆောင်ရမလဲဆိုတဲ့ Data ခရီးစဉ်အကြောင်းကို... နည်းပညာစကားလုံးတွေ အများကြီးမသုံးဘဲ၊ အဖွားနှင်မြေး ရှင်းပြသလို (Grandmother Technique) အပိုင်း (၄) ပိုင်း ခွဲပြီး ရိုးရှင်းလွယ်ကူစွာ မျှဝေပေးသွားဖို့ စီစဉ်ထားပါတယ်။ ဒီ Series မှာ ဘာတွေ ပါဝင်မလဲ? 👇
+
+အပိုင်း (၁) - "သော့" နဲ့ "တံခါး" (The Key & The Door) 🔑🚪 Power BI နဲ့ MSSQL Database ကို ဘယ်လို "စကားပြော" ခိုင်းမလဲ (Connection)
+
+အပိုင်း (၂) - "ဘာလိုချင်လဲ" ပြောပြခြင်း (Asking for the Data) 🔎 Database ကြီးတစ်ခုလုံးထဲက "လိုချင်တဲ့ အချက်" ကိုပဲ ရွေးထုတ်ယူနည်း (Extraction)
+
+အပိုင်း (၃) - "Data ကို 'အသုံးဝင်' အောင် ပြုပြင်ခြင်း" (Data Manipulation) ✨ "Data အစိမ်း" တွေကို "အသုံးဝင်တဲ့" အချက်အလက် ဖြစ်အောင် ပြုပြင်နည်း
+
+အပိုင်း (၄) - "ပုံဖော်ခြင်း" (Telling the Story) 📈 "ကိန်းဂဏန်း" တွေကို "ဇာတ်လမ်း" ဖြစ်အောင် ပုံဖော်ခြင်း — သင့်ရဲ့ ပထမဆုံး Dashboard
+
+ဒီ Series က နည်းပညာသမား မဟုတ်တဲ့ Professional တွေကိုပါ 'Data' ဆိုတာ လက်လှမ်းမမီတဲ့အရာ မဟုတ်ဘဲ၊ ကိုယ်တိုင် ကိုင်တွယ်နိုင်တဲ့ 'ကိရိယာ' တစ်ခုအဖြစ် မြင်လာစေဖို့ စေတနာနဲ့ မျှဝေပေးတာပါ။ စောင့်မျှော် ကြည့်ရှုပေးကြပါဦးခင်ဗျာ။ ပျော်ရွှင်စရာ စနေနေ့လေး ဖြစ်ပါစေ။ 😊 ဒီလို 'Insight' (အတွင်းကျကျသိမြင်မှု) ကပဲ တကယ့် 'Solution' (ဖြေရှင်းနည်း) အစစ်အမှန်ကို ယူဆောင်လာပေးနိုင်တာပါ။ ✨ MSSQL TO POWER BI ဆိုတဲ့ Album လေးမှာ စောင့်ကြည့်ပေးကြပါဦး၊ Page က်ု follow မလုပ်ရသေးရင် Follow လုပ်ထားပြီး နေ့စဉ်ရယူလိုက်ပါ 🤗
+#MSSQLtoPowerBI #DataJourney #TheInsightsSolution #DataLiteracy #BusinessIntelligence #GrandmotherTechnique #MyanmarProfessional #DataSeries #MicrosoftFabric
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="sql">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/sql-02.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                             <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600 uppercase bg-gray-100 px-2 py-0.5 rounded border border-gray-200">MSSQL to PowerBI</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-gray-600 transition">Importing: The Key and The Door</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Data Journey" အပိုင်း (၁) - "သော့" နဲ့ "တံခါး" (The Key & The Door) 🔑🚪</p>
+                        </div>
+                         <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/sql-02.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">Good Evening ပါ ညီ/ညီမတို့။ ☕️ ဒီနေ့မနက်က ကျွန်တော်တို့ မိတ်ဆက်ခဲ့တဲ့ "Data Journey" (ဒေတာ ခရီးစဉ်) ရဲ့ ပထမဆုံးခြေလှမ်းကို ဒီညနေမှာ အတူတူ စတင်လိုက်ရအောင်။ "ဂိုဒေါင်" (MSSQL) ထဲက ပစ္စည်းတွေကို "Showroom" (Power BI) ပေါ် တင်ပြဖို့၊ ပထမဆုံး ဘာလုပ်ရမလဲ? ဟုတ်ပါတယ်။ ကျွန်တော်တို့ "ဂိုဒေါင်" ရဲ့ "တံခါး" ကို အရင်ဖွင့်ရပါမယ်။ 🚪
+
+🎯 ဒီနေ့ရဲ့ ရည်ရွယ်ချက်ကတော့... ကျွန်တော်တို့ရဲ့ "Showroom" (Power BI) က "ဒေတာ ဂိုဒေါင်" (MSSQL Server) ထဲကို ဝင်ကြည့်ခွင့်ရအောင် "သော့" (Authentication) ကို ဘယ်လိုသုံးမလဲ၊ "တံခါး" (Connection) ကို ဘယ်လိုဖွင့်ရမလဲဆိုတာ ရှင်းပြဖို့ပါပဲ။
+
+🤔 ဘယ်လောက် အရေးကြီးလဲ? ဒါက Data Journey တစ်ခုလုံးရဲ့ ပထမဆုံးနဲ့ အရေးကြီးဆုံး ခြေလှမ်းပါ။ ဒီ "တံခါး" ကို မှန်မှန်ကန်ကန် ဖွင့်နိုင်မှ၊ ဂိုဒေါင်ထဲမှာ ဘယ်လောက်တန်ဖိုးရှိတဲ့ ပစ္စည်း (Data) တွေ ရှိရှိ၊ ကျွန်တော်တို့ရဲ့ Showroom ထဲကို သယ်လာလို့ ရမှာဖြစ်ပါတယ်။
+
+👵 ဥပမာ (Grandmother Technique) "ဘဏ်" (Database) ကို သွားပြီး ကိုယ့် "ငွေစာရင်း" (Data) ကို ထုတ်ချင်တာနဲ့ တူပါတယ်။ ဘဏ်ဝန်ထမ်း (Power BI) ကို "ငွေထုတ်မယ်" လို့ ပြောလိုက်တာနဲ့ သူက သင့်ကို အရင်ဆုံး ဘာမေးမလဲ?
+1️⃣ "ဘယ်ဘဏ်ခွဲကလဲ?" (Which Bank Branch?)
+ဒါက "Server Name" ပါပဲ။ ဂိုဒေါင်ရဲ့ 'လိပ်စာ' (📍) ပေါ့။
+2️⃣ "ဘယ်စာရင်း အမျိုးအစားလဲ?" (Which Account Type?)
+ဒါက "Database Name" ပါ။ ဂိုဒေါင်ထဲက 'အခန်းနံပါတ်' (📁) ပေါ့။
+3️⃣ "လူမှန်၊ မမှန်?" (Are you the owner?) ဒါက "Credentials" (Username/Password) ပါ။ ဂိုဒေါင်တံခါးရဲ့ 'သော့' (🔑) အစစ်အမှန်ပါပဲ။
+
+🎯 လက်တွေ့ ဥပမာ (Practical Sample) Power BI Desktop မှာ လက်တွေ့လုပ်ကြည့်ရအောင်...
+"Home" tab ကနေ "Get Data" ကို နှိပ်ပါ။
+"SQL Server" ဆိုတာကို ရွေးလိုက်ပါ။
+Window သေးသေးလေးတစ်ခု ကျလာပါလိမ့်မယ်။ အဲ့ဒီထဲမှာ... Server: ဆိုတဲ့အကွက်မှာ ခုနကပြောတဲ့ 'ဘဏ်လိပ်စာ' (📍) (ဥပမာ- ServerName\SQLEXPRESS) ကို ထည့်ပါ။ Database (optional): ဆိုတဲ့အကွက်မှာ 'အခန်းနံပါတ်' (📁) (ဥပမာ- Sales_DB) ကို ထည့်ပါ။ "Ok" နှိပ်လိုက်တာနဲ့ Power BI က "သော့" (🔑) တောင်းပါလိမ့်မယ်။ (Username/Password သို့မဟုတ် Windows Credentials) ဒါတွေ မှန်မှန်ကန်ကန် ဖြည့်ပေးလိုက်တာနဲ့ "တံခါး" ပွင့်သွားပါပြီ။ အရမ်း ရိုးရှင်းပါတယ်။ ✅
+
+💪 အားပေးစကား နည်းပညာတွေက ခက်ခဲတယ်လို့ မထင်လိုက်ပါနဲ့။ မှန်ကန်တဲ့ 'လိပ်စာ' နဲ့ 'သော့' ကို သိသွားရင် အရာအားလုံးက လွယ်ကူသွားမှာပါ။ နောက်နေ့တွေမှာ ဒီ Data တွေကို ဘယ်လို "ရွေးထုတ်" မလဲဆိုတာ ဆက်ပြီး မျှဝေပေးပါ့မယ်။ နေ့စဉ် Data Skill အသစ်တွေ ရယူဖို့ ကျွန်တော်တို့ Page ကို Follow လုပ်ထားဖို့ မမေ့နဲ့နော်။ ဒီလို 'Insight' (အတွင်းကျကျသိမြင်မှု) ကပဲ တကယ့် 'Solution' (ဖြေရှင်းနည်း) အစစ်အမှန်ကို ယူဆောင်လာပေးနိုင်တာပါ။ ✨
+
+#MSSQLtoPowerBI #DataJourneyPart1 #TheInsightsSolution #DataLiteracy #BusinessIntelligence #GrandmotherTechnique #DataConnection
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="sql">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/sql-03.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                             <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600 uppercase bg-gray-100 px-2 py-0.5 rounded border border-gray-200">MSSQL to PowerBI</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-gray-600 transition">ဘာလိုချင်လဲ"Data Extraction</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">🎯 ဘာလိုချင်လဲ" ပြောပြခြင်း (Data Extraction) 🔎</p>
+                        </div>
+                         <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/sql-03.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">Good Morning ပါ ညီ/ညီမတို့။ ☀️ ဒီတပတ်ရဲ့ တနင်္လာနေ့မနက်ခင်းမှာ အားလုံး စွမ်းအင်အသစ်တွေနဲ့ ပြည့်ဝနေကြပါစေ။ "Data Journey" Series ကို ဆက်လိုက်ရအောင်။ မနေ့က အပိုင်း (၁) ရဲ့ လက်တွေ့ Video မှာ "တံခါး" (Connection) ကို အောင်မြင်စွာ ဖွင့်ပြီး "Navigator" ဆိုတဲ့ Window မှာ ရပ်ထားခဲ့တာ မှတ်မိကြမယ်ထင်ပါတယ်။ ဒီနေ့ အဲ့ဒီကနေ ဆက်လိုက်ရအောင်။ (အပိုင်း ၁ ကို မဖတ်ရသေးရင် ဒီမှာ ပြန်ဖတ်နိုင်ပါတယ် -> https://www.facebook.com/share/p/1XfNvLs6aA/) 👈
+
+🎯 ဒီနေ့ရဲ့ ရည်ရွယ်ချက်ကတော့... "ဂိုဒေါင်" (MSSQL) ကြီးတစ်ခုလုံးကို မသယ်ဘဲ၊ ကိုယ့် "Showroom" (Power BI) မှာ ခင်းကျင်းပြသဖို့ လိုအပ်တဲ့ ပစ္စည်း (Data Tables) တွေကိုပဲ "ရွေးပြီး" ဘယ်လို တောင်းဆိုရမလဲ (Select Tables) ဆိုတာ ရှင်းပြဖို့ပါ။
+
+🤔 ဘယ်လောက် အရေးကြီးလဲ? အရမ်း အရေးကြီးပါတယ်။ ဘာလို့လဲဆိုတော့... မလိုအပ်တဲ့ Data တွေ အများကြီး သယ်လာလေ၊ သင့် Power BI Report က လေးလံလေ (Slow) 🐢၊ အလုပ်မတွင်လေပါပဲ။ လိုအပ်တာကိုပဲ ရွေးထုတ်နိုင်ခြင်း (Extraction) က သင့် Report ကို မြန်ဆန်သွက်လက်စေပြီး (Fast) 🚀၊ မှန်ကန်တဲ့ Data Model တစ်ခု တည်ဆောက်ဖို့ ပထမဆုံး ခြေလှမ်းပါပဲ။
+
+👵 ဥပမာ (Grandmother Technique) "စူပါမားကတ်" (Database) ကြီးတစ်ခုလုံးကို အိမ်ထဲဆွဲထည့်စရာ မလိုပါဘူး။ 🛒 ဒီည ချက်ဖို့ လိုအပ်တဲ့ "အသား" (ဥပမာ- FactSales Table) နဲ့ "အရွက်" (ဥပမာ- DimProduct Table) ကိုပဲ ဈေးဝယ်ခြင်း (Shopping Cart) ထဲ ထည့်လာတာက ပိုပြီး စမတ်ကျပါတယ်။ Data ထုတ်တာလည်း ဒီသဘောတရားပါပဲ။
+
+🎯 လက်တွေ့ ဥပမာ (Practical Sample) မနေ့က Video မှာ မြင်ခဲ့တဲ့ "Navigator" Window မှာ...
+1️⃣ ဂိုဒေါင် (Database) ထဲက အခန်းငယ် (Tables) တွေ အများကြီး တွေ့ရပါမယ်။ (ဥပမာ- DimProduct, DimCustomer, FactSales)
+2️⃣ ကိုယ်လိုချင်တဲ့ Table (ဥပမာ- FactSales) ရဲ့ ဘေးက အမှန်ခြစ် (✅) လေး ကို နှိပ်လိုက်တာနဲ့၊ အဲ့ဒီ Table ကိုပဲ ကိုယ့်ရဲ့ "ဈေးဝယ်ခြင်း" (Shopping Cart) ထဲ ထည့်လိုက်တာပါပဲ။
+3️⃣ (အရေးကြီးဆုံးအချက်) Table တွေ ရွေးပြီးတာနဲ့ အောက်မှာ ခလုတ် (၂) ခု တွေ့ပါမယ်။ "Load" နဲ့ "Transform Data"။
+🔹 Load (တန်းသယ်မယ်): နှိပ်လိုက်ရင် Data တွေက Power BI ထဲ ချက်ချင်း ရောက်သွားပါမယ်။ (Data က 100% သန့်ရှင်းနေတယ်လို့ သေချာမှ သုံးသင့်ပါတယ်)
+🔹 Transform Data (အရင်ပြင်ဆင်မယ်): နှိပ်လိုက်ရင်တော့ မနက်ဖြန် ပြောမယ့် "Data သန့်ရှင်းရေး" အဆင့် (Power Query) ကို ရောက်သွားပါမယ်။ (Professional တိုင်းက ဒါကိုပဲ ရွေးချယ်ကြပါတယ်) 👍
+
+💪 အားပေးစကား (Closing) Data တွေ အများကြီးတွေ့တိုင်း မစိုးရိမ်သွားပါနဲ့။ 😟 "ဘာက တကယ်အရေးကြီးလဲ" ဆိုတာကို ရွေးချယ်နိုင်စွမ်း (Filtering) က Analyst တစ်ယောက်ရဲ့ အဓိက စွမ်းရည်တစ်ခုပါပဲ။ မနက်ဖြန်မှာ အရေးအကြီးဆုံး အဆင့်ဖြစ်တဲ့ "Data သန့်ရှင်းရေး" (Data Manipulation) အကြောင်း ဆက်ပြီး မျှဝေပေးပါ့မယ်။ ➡️ နေ့စဉ် Data Skill အသစ်တွေ ရယူဖို့ ကျွန်တော်တို့ Page ကို Follow လုပ်ထားဖို့ မမေ့နဲ့နော်။ ဒီလို 'Insight' (အတွင်းကျကျသိမြင်မှု) ကပဲ တကယ့် 'Solution' (ဖြေရှင်းနည်း) အစစ်အမှန်ကို ယူဆောင်လာပေးနိုင်တာပါ။ ✨
+
+#MSSQLtoPowerBI #DataJourneyPart2 #TheInsightsSolution #DataLiteracy #BusinessIntelligence #GrandmotherTechnique #DataExtraction #PowerQuery
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="sql">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/sql-04.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                             <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600 uppercase bg-gray-100 px-2 py-0.5 rounded border border-gray-200">MSSQL to PowerBI</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-gray-600 transition">Data Manipulation</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Data ကို 'အသုံးဝင်' အောင် ပြုပြင်ခြင်း" (Data Manipulation) 🍳</p>
+                        </div>
+                         <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/sql-04.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">Good Morning ပါ ညီ/ညီမတို့။ ☀️ ဒီတပတ်ရဲ့ ဒုတိယနေ့မှာ အားအင်အပြည့် ရှိကြပါစေ။ Data Journey" Series ကို ဆက်လိုက်ရအောင်။ မနေ့က အပိုင်း (၂) မှာ 'ဈေးဝယ်ခြင်း' (Shopping Cart 🛒) ထဲကို လိုချင်တဲ့ Data (Tables) တွေ ရွေးထည့်ပြီး 'Transform Data' (အရင်ပြင်ဆင်မယ်) ဆိုတဲ့ ခလုတ်လေးကို နှိပ်ပြီး ရပ်ထားခဲ့ပါတယ်။ အဲ့ဒီ 'Transform Data' ကို နှိပ်လိုက်တာနဲ့... ကျွန်တော်တို့ 'Data Journey' ရဲ့ အရေးအကြီးဆုံး၊ အစွမ်းထက်ဆုံး အခန်းကဏ္ဍ... "Data Manipulation" (ဒေတာ ပြုပြင်ခြင်း) ကို ရောက်လာပါပြီ။ ⚡️
+
+🎯 ဒီနေ့ရဲ့ ရည်ရွယ်ချက်ကတော့... "ဂိုဒေါင်" (MSSQL) ကနေ ယူလာတဲ့ "Data အစိမ်း" (Raw Data) တွေကို "Showroom" (Power BI) မှာ ခင်းကျင်းပြသလို့ရအောင် ဘယ်လို "သန့်ရှင်းရေး" (Cleaning) လုပ်မလဲ၊ ဘယ်လို "ပုံစံချ" (Shaping) မလဲ ဆိုတာ ရှင်းပြဖို့ပါ။
+
+🤔 ဘယ်လောက် အရေးကြီးလဲ? ဒါက ဒီခရီးစဉ်တစ်ခုလုံးရဲ့ "အသက်သွေးကြော" ပါပဲ။ 💔 Data တွေက ရှုပ်ပွနေရင် (ဥပမာ- စာလုံးပေါင်းမှားတာ၊ ကွက်လပ်တွေပါတာ)၊ သင်ဆွဲလိုက်တဲ့ Dashboard ကြီး တစ်ခုလုံး "မှား" သွားပါလိမ့်မယ်။ (Garbage In, Garbage Out ဆိုတာ ဒါပါပဲ 🚮)။ Data Manipulation က သင့် Report တွေ "တိကျမှန်ကန်" (Accurate) ဖို့ အာမခံချက်ပေးတဲ့ အဆင့်ပါ။
+
+👵 ဥပမာ (Grandmother Technique) မနေ့က စူပါမားကတ်က ဝယ်လာတဲ့ "အသားစိမ်း" 🥩 (Raw Data) ကို မချက်ခင် ဘာလုပ်ရမလဲ?
+1️⃣ မလိုအပ်တဲ့ "အဆီ" (Null Values / Unwanted Columns) တွေ ဖယ်ရမယ်။
+2️⃣ "အရွက်" (Text Data) တွေကို ရေဆေးရမယ် (Clean & Format)။
+3️⃣ ပြီးတော့ "အသား" (Sales Table) နဲ့ "အရွက်" (Product Table) ကို "ပေါင်းစပ်" (Merge/Join) ပြီး ဟင်းတစ်ပွဲဖြစ်အောင် ချက်ပြုတ်ပြင်ဆင်ရပါမယ်။ 🥘Power BI မှာ ဒီအဆင့်ကို လုပ်ပေးတဲ့ နေရာက "Power Query" ပါ။ သူက ဒီ Data ခရီးစဉ်ရဲ့ "စားဖိုမှူး" (The Chef) 🧑‍🍳 ပါပဲ။
+
+🎯 လက်တွေ့ ဥပမာ (Practical Sample)'Transform Data' ကို နှိပ်လိုက်တာနဲ့ 'Power Query Editor' Window အသစ်တစ်ခု ပွင့်လာပါမယ်။
+1️⃣ Remove Columns: မလိုချင်တဲ့ Column ကို Select မှတ်၊ Right-click နှိပ်၊ 'Remove' လုပ်လိုက်ရုံပါပဲ။
+2️⃣ Merge Queries: 'Sales' Table နဲ့ 'Product' Table ကို ချိတ်ချင်လား? Excel မှာ VLOOKUP လို ခက်ခက်ခဲခဲ လုပ်စရာမလိုဘဲ၊ 'Merge Queries' ကို နှိပ်ပြီး ဘယ် Column ချင်း ချိတ်မလဲ ရွေးပေးလိုက်ရုံပါပဲ။
+3️⃣ Applied Steps (မျက်လှည့် 🪄): အရေးကြီးဆုံးက ညာဘက်က 'Applied Steps' box ပါပဲ။ သင်လုပ်လိုက်တဲ့ အဆင့် (Remove, Merge) အားလုံးကို သူက မှတ်တမ်းတင်ထားပါတယ်။ နောက်လ Data အသစ်ဝင်လာရင်၊ ဒီအဆင့်တွေအားလုံးကို 'Refresh' တစ်ချက်နှိပ်ရုံနဲ့ အလိုအလျောက် ပြန်လုပ်ပေးပါတော့မယ်။
+
+💡 ဒီအဆင့်က ဘယ်လောက်ထိ အရေးကြီးသလဲ? ကျွန်တော် အခု မျှဝေလိုက်တာက အခြေခံ သဘောတရားလေးပါပဲ။ ဒီ "စားဖိုမှူး" အခန်းကဏ္ဍ (Power Query) ဟာ တကယ်တမ်းမှာ အရမ်းကို ကျယ်ပြန့်ပြီး အရေးကြီးပါတယ်။ ကျွန်တော်တို့ရဲ့ "Power BI Basic to Master Class" မှာဆိုရင်၊ ဒီ "Data Manipulation" အပိုင်းတစ်ခုတည်းကိုပဲ Real-World Project အစစ်အမှန်တစ်ခုနဲ့ Chapter (၄) ခု ခွဲပြီး၊ သင်ကြားချိန် (၈) နာရီကျော် အသုံးပြုကာ အသေးစိတ် သင်ကြားရပါတယ်။ ဘာကြောင့် ဒီလောက် အချိန်ပေးရသလဲဆိုတော့... ဒါဟာ ဒီ Report တစ်ခုတည်းအတွက် မဟုတ်ပါဘူး။ Cloud ပေါ်က "Dataflow" တွေ တည်ဆောက်တဲ့အခါမှာလည်း ဒါက အရေးကြီးဆုံး Concept ဖြစ်နေလို့ပါပဲ။ 🚀
+
+💪 အားပေးစကား (Closing) Data တွေ ရှုပ်ပွနေတာက သင့်အမှားမဟုတ်ပါဘူး၊ ဒါက သူ့ရဲ့ သဘာဝပါပဲ။ အဲ့ဒီ ရှုပ်ပွမှုကို "ရှင်းလင်း" အောင် လုပ်နိုင်တာကမှ သင့်ရဲ့ စွမ်းရည် (Skill) ပါ။ မနက်ဖြန်၊ နောက်ဆုံးအပိုင်း (၄) မှာ... ဒီလို 'ချက်ပြုတ်ပြင်ဆင်' ပြီးသား Data တွေကို လှပတဲ့ Dashboard ဖြစ်အောင် ဘယ်လို 'ပုံဖော်' မလဲဆိုတာ မျှဝေပေးပါ့မယ်။ ➡️ နေ့စဉ် Data Skill အသစ်တွေ ရယူဖို့ ကျွန်တော်တို့ Page ကို Follow လုပ်ထားဖို့ မမေ့နဲ့နော်။ 👍 ဒီလို 'Insight' (အတွင်းကျကျသိမြင်မှု) ကပဲ တကယ့် 'Solution' (ဖြေရှင်းနည်း) အစစ်အမှန်ကို ယူဆောင်လာပေးနိုင်တာပါ။ ✨
+
+#MSSQLtoPowerBI #DataJourneyPart3 #TheInsightsSolution #DataLiteracy #BusinessIntelligence #GrandmotherTechnique #DataManipulation #PowerQuery #ETL #Dataflow
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="sql">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/sql-05.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                             <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-gray-600 uppercase bg-gray-100 px-2 py-0.5 rounded border border-gray-200">MSSQL to PowerBI</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-gray-600 transition">Data Visualization</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">"ကိန်းဂဏန်း" တွေကို "ဇာတ်လမ်း" ဖြစ်အောင် ပုံဖော်ခြင်း 🎨</p>
+                        </div>
+                         <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+    <div class="p-3 border-t border-gray-100">
+        <div class="md:clearfix">
+            
+            <img src="images/sql-05.jpg" alt="Full Image" class="w-full md:w-1/3 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover">
+            
+            <div class="prose text-gray-700 leading-relaxed text-sm md:text-base text-justify whitespace-pre-line">Good Morning ပါ ညီ/ညီမတို့။☀️ ကျွန်တော်တို့ရဲ့ "Data Journey" ခရီးစဉ် နောက်ဆုံးအပိုင်းကို ရောက်လာပါပြီ။ မနေ့က အပိုင်း (၃) မှာ... "စားဖိုမှူး" (Power Query 🧑‍🍳) က "Data အစိမ်း" တွေကို "ချက်ပြုတ်ပြင်ဆင်ပြီး" (Manipulate) သန့်ရှင်းလှပတဲ့ "ဟင်းပွဲ" (Clean Data 🍽️) ဖြစ်အောင် ဖန်တီးခဲ့ကြပါတယ်။ အခု... အဲ့ဒီ "ဟင်းပွဲ" ကို ဧည့်သည်တွေ (Management/Clients) စားသုံးဖို့ "Showroom" (Power BI Canvas) ပေါ်မှာ လှလှပပ ခင်းကျင်း ပြင်ဆင် (Visualize) ကြည့်ရအောင်။
+
+🎯 ဒီနေ့ရဲ့ ရည်ရွယ်ချက်ကတော့... "သန့်ရှင်းပြီး" အသင့်ဖြစ်နေတဲ့ Data တွေကို ဘယ်သူမဆို (အထူးသဖြင့် Boss တွေ၊ Management တွေ) တစ်ချက်ကြည့်လိုက်တာနဲ့ နားလည်သွားအောင် "လှပတဲ့"၊ "အဓိပ္ပာယ်ရှိတဲ့" Dashboard တွေအဖြစ် ဘယ်လို "ပုံဖော်" (Visualize) မလဲ ရှင်းပြဖို့ပါ။
+
+🤔 ဘယ်လောက် အရေးကြီးလဲ? ဒါက "အရေးကြီးဆုံး" အဆင့်လို့ ပြောနိုင်ပါတယ်။
+ဘာလို့လဲဆိုတော့... သင် အဆင့် (၁) ကနေ (၃) အထိ ဘယ်လောက် ပင်ပင်ပန်းပန်း လုပ်ခဲ့ရလဲဆိုတာ ဘယ်သူမှ မသိပါဘူး။ လူတွေက ဒီ "နောက်ဆုံးရလဒ်" (Dashboard) ကိုပဲ မြင်တာပါ။ ဒီ Dashboard က မရှင်းလင်းရင်၊ မလှပရင်၊ သင့်ရဲ့ ကြိုးစားမှုအားလုံး အလဟဿ ဖြစ်သွားနိုင်ပါတယ်။  dashboards ကောင်းတစ်ခုက "Aha!" moment (အသိဉာဏ်ပွင့်သွားတဲ့) ခံစားချက်ကို (၅) စက္ကန့်အတွင်း ပေးနိုင်ရပါမယ်။
+👵 ဥပမာ (Grandmother Technique) သင် အရသာရှိအောင် ချက်ပြုတ်ပြီးသွားပြီ (Part 3)။ 🥘အခု အဲ့ဒီ "ဟင်း" (Data) ကို ဧည့်သည်တွေ (Management) ကို ချကျွေးရမယ့် အချိန်ပါ။ သင်သာ ဟင်းကို ချက်တဲ့ "အိုး" (Data Table) ကြီးလိုက် ချပြရင် ဘယ်သူမှ စားချင်မှာ မဟုတ်ပါဘူး။ သင်က အဲ့ဒီဟင်းကို "လှပတဲ့ ပန်းကန်" (Visualization) ထဲမှာ သေသေချာချာ ပြင်ဆင် ခင်းကျင်း (Dashboard) ပြီးမှ ချပြရပါမယ်။ ပန်းကန်ပြင်ဆင်မှု လှပလေ၊ ဧည့်သည်တွေက စားချင်စိတ် ပေါက်လေ (နားလည်လွယ်လေ) ပါပဲ။
+
+🎯 လက်တွေ့ ဥပမာ (Practical Sample) မနေ့က 'Power Query Editor' Window မှာ "Close & Apply" ကို နှိပ်လိုက်ပါ။
+1️⃣ Power BI ရဲ့ "Showroom" (အဖြူရောင် Canvas ကြီး) ကို ပြန်ရောက်လာပါမယ်။ ညာဘက် "Data" pane မှာ သင်သန့်ရှင်းထားတဲ့ Table တွေ (ဥပမာ- FactSales, DimProduct) ကို တွေ့ရပါပြီ။
+2️⃣ ညာဘက်က "Visualizations" pane (ပန်းချီစုတ်တံ ပုံစံ 🎨) ထဲက ကိုယ်ကြိုက်တဲ့ Chart Icon တစ်ခု (ဥပမာ- Bar chart 📊) ကို နှိပ်လိုက်ပါ။
+3️⃣ အခု... "Data" pane ထဲက "အသား" (Sales Amount) ကို ဆွဲယူပြီး Chart ရဲ့ Y-axis ထဲ ထည့်လိုက်ပါ။ "အရွက်" (Region) ကို ဆွဲယူပြီး X-axis ထဲ ထည့်လိုက်ပါ။ ဒါပါပဲ။ 🪄 သင့်ရဲ့ ပထမဆုံး "ဇာတ်လမ်း" (Chart) တစ်ခု ထွက်ပေါ်လာပါပြီ။ ဒါကိုပဲ လှပအောင် အရောင်တွေ ချိန်ညှိပြီး Dashboard တစ်ခု တည်ဆောက်ရတာပါ။
+
+💪 အားပေးစကား (Closing)
+"Data Journey" တစ်ခု ပြီးဆုံးသွားပါပြီ။ 🏁"ဂိုဒေါင်" (MSSQL) ထဲက Data တွေကို "Showroom" (Power BI) ပေါ်မှာ လှပတဲ့ "ပန်းကန်" (Dashboard) နဲ့ ခင်းကျင်းပြသနိုင်သွားပါပြီ။ Data Analyst ဆိုတာ "ဇာတ်လမ်းပြောသူ" (Storyteller) ပါပဲ။ ကိန်းဂဏန်းတွေထဲက "ဇာတ်လမ်း" ကို အကောင်းဆုံး ဖော်ထုတ်နိုင်ပါစေ။ နေ့စဉ် Data Skill အသစ်တွေ ရယူဖို့ ကျွန်တော်တို့ Page ကို Follow လုပ်ထားဖို့ မမေ့နဲ့နော်။ 👍 ဒီလို 'Insight' (အတွင်းကျကျသိမြင်မှု) ကပဲ တကယ့် 'Solution' (ဖြေရှင်းနည်း) အစစ်အမှန်ကို ယူဆောင်လာပေးနိုင်တာပါ။ ✨
+
+#MSSQLtoPowerBI #DataJourneyPart4 #TheInsightsSolution #DataLiteracy #BusinessIntelligence #GrandmotherTechnique #DataVisualization #Dashboard #DataStorytelling
+
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+ 
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="quiz">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/quiz-01.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-purple-600 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-100">Quiz Time</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">DAX Context Challenge</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Row Context နဲ့ Filter Context ကွာခြားချက်ကို သိပါသလား...</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+                        <div class="p-3 border-t border-gray-100">
+                            <div class="md:clearfix">
+                                <img src="images/quiz-01.jpg" alt="Full" class="w-full md:w-5/12 md:float-right md:ml-6 mb-4 md:mb-2 rounded-lg shadow-sm border border-gray-200 object-cover aspect-[4/5]">
+                                <p class="text-gray-700 mb-4">Sample Question: CALCULATE function သုံးလိုက်ရင် Filter Context က ဘယ်လိုပြောင်းသွားသလဲ?</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="bg-gray-50 rounded-lg border-2 border-dashed border-gray-300 flex flex-col items-center justify-center p-8 text-center h-full min-h-[300px]">
-                    <span class="text-4xl mb-2">🚀</span>
-                    <p class="text-gray-500 font-medium">More insights coming soon!</p>
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="quiz">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/quiz-02.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-purple-600 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-100">Quiz Time</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">Power Query Merge Challenge</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Join Types (Left, Inner, Anti) တွေကို နားလည်ပါသလား...</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+                        <div class="p-3 border-t border-gray-100"><p class="text-gray-700">Sample Question: Table A မှာမရှိဘဲ Table B မှာရှိတဲ့ Data တွေကို လိုချင်ရင် ဘယ် Join Type ကို သုံးမလဲ?</p></div>
+                    </div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="quiz">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/quiz-03.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-purple-600 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-100">Quiz Time</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">Data Modeling Relationships</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">One-to-Many နဲ့ Many-to-Many ဘာကွာလဲ...</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+                        <div class="p-3 border-t border-gray-100"><p class="text-gray-700">Sample Question: Star Schema တည်ဆောက်တဲ့အခါ Fact Table နဲ့ Dimension Table ကို ဘယ်လို Relationship မျိုးနဲ့ ချိတ်ဆက်သင့်သလဲ?</p></div>
+                    </div>
+                </div>
+
+                <div class="post-item group border border-gray-200 rounded-xl overflow-hidden bg-white hover:shadow-md transition" data-category="quiz">
+                    <div class="post-header flex gap-4 p-4 cursor-pointer items-center" onclick="togglePost(this)">
+                        <img src="images/quiz-04.jpg" alt="Thumb" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover flex-shrink-0 border border-gray-100">
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-purple-600 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-100">Quiz Time</span>
+                            </div>
+                            <h3 class="font-bold text-gray-900 text-lg truncate group-hover:text-purple-600 transition">Excel Logical Test</h3>
+                            <p class="text-sm text-gray-500 line-clamp-1">Complex IF condition တွေကို ဖြေရှင်းနိုင်လား...</p>
+                        </div>
+                        <div class="text-gray-400"><svg class="w-6 h-6 transform transition-transform duration-300 arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div>
+                    </div>
+                    <div class="post-body max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-gray-50">
+                        <div class="p-3 border-t border-gray-100"><p class="text-gray-700">Sample Question: Condition ၃ ခုစလုံး ပြည့်မှ True ဖြစ်ချင်ရင် ဘယ် Logical Function ကို သုံးရမလဲ?</p></div>
+                    </div>
                 </div>
 
             </div>
         </div>
+
+        <script>
+            // Accordion Logic (တပုဒ်ဖွင့်ရင် ကျန်တာပိတ်)
+            function togglePost(header) {
+                const item = header.parentElement;
+                const body = item.querySelector('.post-body');
+                const arrow = item.querySelector('.arrow-icon');
+                const isOpen = body.style.maxHeight;
+
+                document.querySelectorAll('.post-item').forEach(otherItem => {
+                    const otherBody = otherItem.querySelector('.post-body');
+                    const otherArrow = otherItem.querySelector('.arrow-icon');
+                    if (otherBody !== body) {
+                        otherBody.style.maxHeight = null;
+                        otherArrow.style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                if (isOpen) {
+                    body.style.maxHeight = null;
+                    arrow.style.transform = 'rotate(0deg)';
+                } else {
+                    body.style.maxHeight = body.scrollHeight + "px"; 
+                    arrow.style.transform = 'rotate(180deg)';
+                }
+            }
+
+            // Filter Logic (Category ရွေးခြင်း)
+            function filterPosts(category) {
+                // Button Styles Update
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('bg-slate-800', 'text-white', 'border-slate-800');
+                    btn.classList.add('text-gray-600', 'border-gray-300', 'hover:bg-gray-100');
+                });
+                event.target.classList.remove('text-gray-600', 'border-gray-300', 'hover:bg-gray-100');
+                event.target.classList.add('bg-slate-800', 'text-white', 'border-slate-800');
+
+                // Items Filtering
+                const posts = document.querySelectorAll('.post-item');
+                posts.forEach(post => {
+                    if (category === 'all' || post.dataset.category === category) {
+                        post.classList.remove('hidden');
+                    } else {
+                        post.classList.add('hidden');
+                    }
+                });
+            }
+        </script>
+
+        <script>
+            // Accordion Logic (တပုဒ်ဖွင့်ရင် ကျန်တာပိတ်)
+            function togglePost(header) {
+                const item = header.parentElement;
+                const body = item.querySelector('.post-body');
+                const arrow = item.querySelector('.arrow-icon');
+                const isOpen = body.style.maxHeight;
+
+                document.querySelectorAll('.post-item').forEach(otherItem => {
+                    const otherBody = otherItem.querySelector('.post-body');
+                    const otherArrow = otherItem.querySelector('.arrow-icon');
+                    if (otherBody !== body) {
+                        otherBody.style.maxHeight = null;
+                        otherArrow.style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                if (isOpen) {
+                    body.style.maxHeight = null;
+                    arrow.style.transform = 'rotate(0deg)';
+                } else {
+                    body.style.maxHeight = body.scrollHeight + "px"; 
+                    arrow.style.transform = 'rotate(180deg)';
+                }
+            }
+
+            // Filter Logic (Category ရွေးခြင်း)
+            function filterPosts(category) {
+                // Button Styles Update
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('bg-slate-800', 'text-white', 'border-slate-800');
+                    btn.classList.add('text-gray-600', 'border-gray-300', 'hover:bg-gray-100');
+                });
+                event.target.classList.remove('text-gray-600', 'border-gray-300', 'hover:bg-gray-100');
+                event.target.classList.add('bg-slate-800', 'text-white', 'border-slate-800');
+
+                // Items Filtering
+                const posts = document.querySelectorAll('.post-item');
+                posts.forEach(post => {
+                    if (category === 'all' || post.dataset.category === category) {
+                        post.classList.remove('hidden');
+                    } else {
+                        post.classList.add('hidden');
+                    }
+                });
+            }
+        </script>
+
+        <script>
+            // Accordion Logic
+            function togglePost(header) {
+                const item = header.parentElement;
+                const body = item.querySelector('.post-body');
+                const arrow = item.querySelector('.arrow-icon');
+                const isOpen = body.style.maxHeight;
+
+                document.querySelectorAll('.post-item').forEach(otherItem => {
+                    const otherBody = otherItem.querySelector('.post-body');
+                    const otherArrow = otherItem.querySelector('.arrow-icon');
+                    if (otherBody !== body) {
+                        otherBody.style.maxHeight = null;
+                        otherArrow.style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                if (isOpen) {
+                    body.style.maxHeight = null;
+                    arrow.style.transform = 'rotate(0deg)';
+                } else {
+                    body.style.maxHeight = body.scrollHeight + "px"; 
+                    arrow.style.transform = 'rotate(180deg)';
+                }
+            }
+
+            // Filter Logic
+            function filterPosts(category) {
+                // Button Styles
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('bg-slate-800', 'text-white', 'border-slate-800');
+                    btn.classList.add('text-gray-600', 'border-gray-300', 'hover:bg-gray-100');
+                });
+                event.target.classList.remove('text-gray-600', 'border-gray-300', 'hover:bg-gray-100');
+                event.target.classList.add('bg-slate-800', 'text-white', 'border-slate-800');
+
+                // Item Filtering
+                const posts = document.querySelectorAll('.post-item');
+                posts.forEach(post => {
+                    if (category === 'all' || post.dataset.category === category) {
+                        post.classList.remove('hidden');
+                    } else {
+                        post.classList.add('hidden');
+                    }
+                });
+            }
+        </script>
 
         <footer class="text-center mt-16 pt-8 border-t border-gray-300 pb-8">
             <p class="text-gray-500 text-sm">&copy; 2025 The Insights Solution. All Rights Reserved.</p>
