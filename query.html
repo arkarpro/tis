@@ -259,44 +259,47 @@
     <script>
         let touchstartX = 0;
         let touchendX = 0;
+        let touchstartY = 0; // Y ဝင်ရိုး (အပေါ်အောက်) ကိုပါ မှတ်မယ်
+        let touchendY = 0;
         
-        // Define the order of pages
+        // Page အစီအစဉ်
         const pages = [
-            "index.html",      // 0
-            "resources.html",  // 1
-            "excel.html",      // 2
-            "query.html",      // 3
-            "powerbi.html"     // 4
+            "index.html",      // 0 - Home
+            "resources.html",  // 1 - Free
+            "excel.html",      // 2 - Excel
+            "query.html",      // 3 - Query
+            "powerbi.html"     // 4 - PBI
         ];
 
         function checkDirection() {
-            // Minimal swipe distance (50px) to trigger action
-            if (Math.abs(touchendX - touchstartX) < 50) return;
+            // X (ဘေးတိုက်) နှင့် Y (အပေါ်အောက်) ကွာခြားချက်ကို တွက်မယ်
+            let diffX = Math.abs(touchendX - touchstartX);
+            let diffY = Math.abs(touchendY - touchstartY);
 
-            // 🛠️ URL FIX: Get filename and handle missing .html extension
+            // ၁။ အနည်းဆုံး 50px လောက် ဆွဲမှ အလုပ်လုပ်မယ် (Threshold)
+            if (diffX < 50) return;
+
+            // ၂။ အရေးကြီးဆုံးအချက် (Scroll Lock) 🛡️
+            // အပေါ်အောက် ဆွဲတာက ဘေးတိုက်ဆွဲတာထက် ပိုများနေရင် Page မပြောင်းဘူး (Scroll လုပ်နေတာမို့လို့)
+            if (diffY > diffX) return;
+
+            // Page ပြောင်းမည့် Logic
             let path = window.location.pathname;
             let page = path.split("/").pop(); 
-            
-            // Handle root URL and empty string
-            if (page === "" || page === "tis") page = "index.html";
-            
-            // If page doesn't end with .html, add it (Fixes GitHub Pages issue)
-            if (!page.endsWith(".html")) {
-                page = page + ".html";
-            }
+            if (page === "" || page === "tis") page = "index.html"; 
 
             let currentIndex = pages.indexOf(page);
-            if (currentIndex === -1) currentIndex = 0; // Default to index if not found
+            if (currentIndex === -1) currentIndex = 0; 
 
             if (touchendX < touchstartX) {
-                // SWIPE LEFT (Go to Next Page) ⬅️
+                // SWIPE LEFT (Next Page) ⬅️
                 if (currentIndex < pages.length - 1) {
                     window.location.href = pages[currentIndex + 1];
                 }
             }
             
             if (touchendX > touchstartX) {
-                // SWIPE RIGHT (Go to Previous Page) ➡️
+                // SWIPE RIGHT (Previous Page) ➡️
                 if (currentIndex > 0) {
                     window.location.href = pages[currentIndex - 1];
                 }
@@ -305,10 +308,12 @@
 
         document.addEventListener('touchstart', e => {
             touchstartX = e.changedTouches[0].screenX;
+            touchstartY = e.changedTouches[0].screenY; // စထိတဲ့ Y နေရာမှတ်မယ်
         });
 
         document.addEventListener('touchend', e => {
             touchendX = e.changedTouches[0].screenX;
+            touchendY = e.changedTouches[0].screenY; // လွှတ်လိုက်တဲ့ Y နေရာမှတ်မယ်
             checkDirection();
         });
     </script>
