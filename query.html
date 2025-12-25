@@ -8,17 +8,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: #f9fafb; padding-top: 80px; }
+        
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
+        /* Mobile Nav Scrollbar Hide */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
         .chapter-card {
             scroll-margin-top: 8rem;
             background-color: white;
@@ -35,21 +40,7 @@
         .chapter-header { background-color: #374151; color: white; padding: 1rem 1.5rem; }
         .chapter-header h3 { font-size: 1.5rem; font-weight: 700; }
         .chapter-body { padding: 1.5rem; }
-        .section-title {
-            font-size: 1.25rem; font-weight: 700; color: #1f2937;
-            margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb;
-        }
-        .concept-text { color: #4b5563; margin-bottom: 1rem; }
-        .styled-table {
-            width: 100%; border-collapse: collapse; margin-top: 1rem;
-            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            border-radius: 0.5rem; overflow: hidden;
-        }
-        .styled-table th, .styled-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #e5e7eb; }
-        .styled-table th { background-color: #f3f4f6; font-weight: 700; color: #111827; }
-        .styled-table tr:last-child td { border-bottom: none; }
-        .styled-table td code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.875rem; color: #1f2937; }
-
+        
         /* Floating Button Animation */
         @keyframes pulse-custom {
             0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
@@ -59,10 +50,6 @@
         .floating-btn {
             animation: pulse-custom 2s infinite;
         }
-        
-        /* Hide Scrollbar */
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
@@ -93,7 +80,6 @@
             </div>
         </div>
     </nav>
-
     <div class="container mx-auto max-w-7xl px-4 py-8">
         
         <div data-aos="fade-down" data-aos-duration="800" class="mb-12">
@@ -110,7 +96,35 @@
             </a>
         </div>
 
-        <div data-aos="zoom-in" data-aos-duration="1000" class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 mb-12 text-center text-white shadow-2xl relative overflow-hidden group">
+
+        <div class="max-w-3xl mx-auto px-4 mb-16" data-aos="zoom-in">
+            <div class="bg-gradient-to-r from-slate-900 to-blue-800 rounded-2xl p-8 shadow-xl text-center text-white relative overflow-hidden border border-blue-700">
+                
+                <div class="absolute top-0 right-0 -mr-10 -mt-10 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl"></div>
+                
+                <h2 class="text-2xl md:text-3xl font-bold mb-2 tracking-tight">
+                    Jan 2026 Power BI Master Class
+                </h2>
+
+                <p class="text-yellow-400 text-lg md:text-xl font-bold mb-8">
+                    အခုပဲ စာရင်းပေးသွင်းလိုက်ပါ (Register Now)
+                </p>
+
+                <a href="https://forms.gle/DqSoYay8RpbELDuv8" target="_blank" 
+                   class="inline-block bg-white text-blue-900 font-extrabold text-lg px-8 py-4 rounded-full shadow-lg hover:bg-yellow-50 hover:scale-105 transition transform duration-300 ring-4 ring-blue-900/30">
+                    📝 Register Form ဖြည့်ရန် နှိပ်ပါ
+                </a>
+                
+                <div class="mt-6">
+                    <p class="text-sm text-gray-300 mb-1">သင်တန်းအကြောင်း စုံစမ်းရန်</p>
+                    <a href="powerbi.html" class="text-blue-200 hover:text-white hover:underline underline-offset-4 font-medium transition flex items-center justify-center gap-2">
+                        👉 သင်ကြားမည့် အသေးစိတ်ကို ဒီမှာကြည့်ရှုပါ (Syllabus)
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="1000" class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-8 mb-12 text-center text-white shadow-2xl relative overflow-hidden group">
             <div class="relative z-10">
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Master Data Cleaning & Automation</h2>
                 <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Stop wasting time on manual data tasks. Learn to automate your workflow with Power Query.</p>
@@ -119,6 +133,8 @@
                 </a>
             </div>
         </div>
+
+        ```
 
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
             <aside class="lg:col-span-3 mb-8 lg:mb-0">
