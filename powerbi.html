@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Power BI Master Class - The Insights Solution</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,13 +14,16 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; } /* ချောမွေ့စွာ Scroll ဆွဲရန် */
         body { font-family: 'Inter', sans-serif; background-color: #f9fafb; padding-top: 80px; }
+        
+        /* Scrollbar အလှဆင်ခြင်း */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         
+        /* သင်ခန်းစာ ကဒ်ပြား ဒီဇိုင်းများ */
         .chapter-card {
             scroll-margin-top: 8rem;
             background-color: white;
@@ -35,15 +40,21 @@
         .chapter-header { background-color: #374151; color: white; padding: 1rem 1.5rem; }
         .chapter-header h3 { font-size: 1.5rem; font-weight: 700; }
         .chapter-body { padding: 1.5rem; }
+        
+        /* စာသားခေါင်းစဉ်များ */
         .section-title {
             font-size: 1.25rem; font-weight: 700; color: #1f2937;
             margin-top: 2rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb;
         }
         .concept-text { color: #4b5563; margin-bottom: 1rem; }
+        
+        /* DAX ကုဒ်ပြကွက် ဒီဇိုင်း */
         .dax-code {
             background-color: #1F2937; color: #D1D5DB; padding: 1rem; border-radius: 0.5rem; overflow-x: auto;
             font-family: monospace; font-size: 0.875rem; white-space: pre-wrap; word-wrap: break-word; border-left: 4px solid #3B82F6;
         }
+        
+        /* ဇယားကွက် ဒီဇိုင်း */
         .styled-table {
             width: 100%; border-collapse: collapse; margin-top: 1rem;
             box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
@@ -53,6 +64,8 @@
         .styled-table th { background-color: #f3f4f6; font-weight: 700; color: #111827; }
         .styled-table tr:last-child td { border-bottom: none; }
         .styled-table td code { background-color: #e5e7eb; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.875rem; color: #1f2937; }
+        
+        /* အပိုင်းလိုက် ခေါင်းစဉ်ကြီးများ (Part 1, Part 2...) */
         .part-heading {
             scroll-margin-top: 6rem;
             font-size: 2rem;
@@ -66,7 +79,7 @@
             display: inline-block;
         }
 
-        /* Floating Button Animation */
+        /* Floating Button အသက်ရှုသံ Animation */
         @keyframes pulse-custom {
             0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
             70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
@@ -76,7 +89,7 @@
             animation: pulse-custom 2s infinite;
         }
         
-        /* Hide Scrollbar */
+        /* Mobile Menu အတွက် Scrollbar ဖျောက်ခြင်း */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
@@ -94,15 +107,10 @@
                 </a>
 
                 <div class="flex-1 min-w-0 flex flex-nowrap space-x-2 text-sm font-medium overflow-x-auto whitespace-nowrap no-scrollbar pl-4 items-center h-full sm:justify-end">
-                    
                     <a href="index.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-300 transition whitespace-nowrap">Home</a>
-                    
                     <a href="resources.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-purple-400 transition whitespace-nowrap">Free</a>
-
                     <a href="excel.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-green-400 transition whitespace-nowrap">Excel</a>
-                    
                     <a href="query.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-yellow-400 transition whitespace-nowrap">Query</a>
-                    
                     <a href="#" class="px-3 py-2 rounded-md bg-blue-600 text-white shadow-lg shadow-blue-500/30 font-bold whitespace-nowrap pr-4">PBI</a>
                 </div>
 
@@ -132,10 +140,10 @@
             <div class="flex flex-col lg:flex-row">
                 
                 <div class="relative w-full h-auto lg:absolute lg:inset-y-0 lg:left-0 lg:w-1/2 lg:h-full z-0">
-                    <img src="images/pbi_ads.jpg" alt="Power BI Jan Intake" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition duration-500">
+                    <img src="images/pbi_ads.jpg" alt="Power BI May Intake" class="w-full h-full object-cover opacity-90 hover:opacity-100 transition duration-500">
                     
                     <div class="absolute top-4 left-4 bg-yellow-500 text-slate-900 font-bold px-4 py-1 rounded-full shadow-lg animate-pulse border-2 border-slate-900 z-10">
-                        Jan-2026 Intake 🔥
+                        May-2026 Intake 🔥
                     </div>
                     
                     <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-slate-900 to-transparent lg:hidden z-0"></div>
@@ -143,11 +151,12 @@
 
                 <div class="relative lg:w-1/2 lg:ml-auto p-6 md:p-8 text-white flex flex-col justify-center z-10">
                     <h2 class="text-2xl md:text-3xl font-extrabold text-yellow-400 mb-2 tracking-tight">🚀 Power BI Basic to Master</h2>
+                    
                     <p class="text-blue-200 mb-6 text-sm md:text-base border-l-4 border-yellow-500 pl-3 font-medium">
-                        ၂၀၂၆ ကို "Unstoppable" ဖြစ်မယ့် Career အရှိန်အဟုန်နဲ့ စတင်လိုက်ပါ! ⚡📊
+                        Coming Soon: <span class="text-white font-bold">May 2, 2026 (Sat-Sun)</span> တွင် စတင်မည်! ⚡
                     </p>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
                         <div class="bg-slate-800/50 p-3 rounded-lg border border-blue-700/50 flex items-start gap-3">
                             <span class="text-2xl">⚡</span>
                             <div>
@@ -178,52 +187,27 @@
                         </div>
                     </div>
 
-                    <div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-5 text-white mb-6 shadow-lg border border-blue-400 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 -mr-10 -mt-10 w-32 h-32 bg-yellow-400 opacity-10 rounded-full blur-2xl"></div>
-
-                        <h3 class="font-extrabold text-xl mb-4 flex items-center gap-2">💎 Investment Options <span class="text-sm font-normal text-yellow-300 bg-blue-900/50 px-2 py-0.5 rounded-full">(Start: Jan 10)</span></h3>
-
-                        <div class="space-y-3 relative z-10">
-                            <div class="flex justify-between items-center bg-blue-900/60 p-3 rounded-lg border border-yellow-400/50">
-                                <div>
-                                    <span class="font-bold text-yellow-400 flex items-center gap-1">🦚 Early Bird (Before Jan 3rd) 🔥</span>
-                                    <span class="text-xs text-blue-200 block">50,000 Ks သက်သာမည်!</span>
-                                </div>
-                                <div class="text-right">
-                                    <span class="block text-sm line-through opacity-60">250,000 Ks</span>
-                                    <span class="block text-2xl font-black text-yellow-400">200,000 Ks</span>
-                                </div>
-                            </div>
-                            <div class="flex justify-between text-sm px-2">
-                                <span class="text-gray-300">🏷️ Normal Fee:</span>
-                                <span class="font-medium">250,000 Ks</span>
-                            </div>
-                            <div class="flex justify-between text-sm px-2 border-t border-blue-700/50 pt-2">
-                                <span class="text-gray-300">🎓 Scholarship (Students):</span>
-                                <span class="font-medium text-green-300">175,000 Ks (30% OFF)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-center md:text-left mt-6">
+                    <div class="text-center md:text-left">
                         <div class="flex flex-col xl:flex-row gap-3">
-                            <a href="https://forms.gle/DqSoYay8RpbELDuv8" target="_blank" class="inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-bold py-3 px-6 rounded-full transition shadow-lg text-lg w-full xl:w-auto">
-                                🚀 Enroll Now (Jan Intake)
+                            <a href="https://forms.gle/DqSoYay8RpbELDuv8" target="_blank" class="inline-flex items-center justify-center bg-white text-blue-900 hover:bg-yellow-50 font-bold py-3 px-6 rounded-full transition shadow-lg text-lg w-full xl:w-auto ring-2 ring-blue-900/20">
+                                📝 Join Waiting List
                             </a>
                             <a href="viber://chat?number=%2B959425320949" class="inline-flex items-center justify-center gap-2 bg-[#7360f2] hover:bg-[#5e4ad1] text-white font-bold py-3 px-6 rounded-full transition shadow-lg text-lg w-full xl:w-auto border border-white/20">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                     <path d="M22 12c0 5.523-4.477 10-10 10-1.732 0-3.364-.452-4.798-1.235l-3.658 1.219a.75.75 0 0 1-.949-.949l1.22-3.658A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10Zm-4.502 3.46c-.102.023-.71.208-2.487.326-2.541.168-6.652-1.934-9.182-6.385-2.147-3.778-1.43-5.641-.85-6.402.607-.796 1.953-1.34 2.847-.863.942.502 1.214 3.141 1.146 4.183-.078 1.173-.548 1.622-.972 2.017-.46.43-.68.853-.33 1.372.903 1.343 2.307 2.42 3.607 3.174.68.395 1.096.354 1.457-.165.322-.463.785-1.028 1.948-.968 1.15.059 3.52.529 3.824 1.555.11.37.044.827-.054 1.156Z"/>
                                 </svg>
-                                <span>Viber မှ စာရင်းသွင်းရန်</span>
+                                <span>May Intake မေးမြန်းရန်</span>
                             </a>
                         </div>
-                        <p class="text-xs text-blue-300 mt-3 italic">* နေရာကန့်သတ်ထားသဖြင့် လစာထုတ်ရက်မတိုင်ခင် အမြန်ဆုံး Register ပြုလုပ်ပါ။</p>
+                        <p class="text-blue-200 font-medium text-sm mt-4 flex items-center justify-center md:justify-start gap-2 animate-pulse">
+                            👇 သင်ရိုးညွှန်းတမ်း (Syllabus) အပြည့်အစုံကို အောက်တွင် ဆက်လက်လေ့လာပါ
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+            
             <aside class="lg:col-span-3 mb-8 lg:mb-0">
                 <div class="sticky top-24 bg-white p-6 rounded-xl shadow-sm border border-gray-100 max-h-[calc(100vh-6rem)] overflow-y-auto">
                     <h2 class="text-lg font-bold text-gray-900 mb-4 uppercase tracking-wider border-b pb-2">Full Syllabus</h2>
@@ -471,7 +455,7 @@
     <script>
         let touchstartX = 0;
         let touchendX = 0;
-        let touchstartY = 0; // Y ဝင်ရိုး (အပေါ်အောက်) ကိုပါ မှတ်မယ်
+        let touchstartY = 0; 
         let touchendY = 0;
         
         // Page အစီအစဉ်
@@ -480,38 +464,30 @@
             "resources.html",  // 1 - Free
             "excel.html",      // 2 - Excel
             "query.html",      // 3 - Query
-            "powerbi.html"     // 4 - PBI
+            "powerbi.html"     // 4 - PBI (လက်ရှိ Page)
         ];
 
         function checkDirection() {
-            // X (ဘေးတိုက်) နှင့် Y (အပေါ်အောက်) ကွာခြားချက်ကို တွက်မယ်
             let diffX = Math.abs(touchendX - touchstartX);
             let diffY = Math.abs(touchendY - touchstartY);
 
-            // ၁။ အနည်းဆုံး 50px လောက် ဆွဲမှ အလုပ်လုပ်မယ် (Threshold)
             if (diffX < 50) return;
-
-            // ၂။ အရေးကြီးဆုံးအချက် (Scroll Lock) 🛡️
-            // အပေါ်အောက် ဆွဲတာက ဘေးတိုက်ဆွဲတာထက် ပိုများနေရင် Page မပြောင်းဘူး (Scroll လုပ်နေတာမို့လို့)
             if (diffY > diffX) return;
 
-            // Page ပြောင်းမည့် Logic
             let path = window.location.pathname;
             let page = path.split("/").pop(); 
             if (page === "" || page === "tis") page = "index.html"; 
 
             let currentIndex = pages.indexOf(page);
-            if (currentIndex === -1) currentIndex = 0; 
+            if (currentIndex === -1) currentIndex = 4; // Default to PBI if not found
 
             if (touchendX < touchstartX) {
-                // SWIPE LEFT (Next Page) ⬅️
                 if (currentIndex < pages.length - 1) {
                     window.location.href = pages[currentIndex + 1];
                 }
             }
             
             if (touchendX > touchstartX) {
-                // SWIPE RIGHT (Previous Page) ➡️
                 if (currentIndex > 0) {
                     window.location.href = pages[currentIndex - 1];
                 }
@@ -520,12 +496,12 @@
 
         document.addEventListener('touchstart', e => {
             touchstartX = e.changedTouches[0].screenX;
-            touchstartY = e.changedTouches[0].screenY; // စထိတဲ့ Y နေရာမှတ်မယ်
+            touchstartY = e.changedTouches[0].screenY;
         });
 
         document.addEventListener('touchend', e => {
             touchendX = e.changedTouches[0].screenX;
-            touchendY = e.changedTouches[0].screenY; // လွှတ်လိုက်တဲ့ Y နေရာမှတ်မယ်
+            touchendY = e.changedTouches[0].screenY; 
             checkDirection();
         });
     </script>
