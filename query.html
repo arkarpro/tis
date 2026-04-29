@@ -26,29 +26,22 @@
             scroll-margin-top: 8rem;
             background-color: white;
             border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            margin-bottom: 3.5rem;
             overflow: hidden;
             transition: all 0.3s ease;
             border: 1px solid #e2e8f0;
         }
-        .chapter-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-            border-color: #facc15;
-        }
-        .chapter-header { background: linear-gradient(to right, #1e293b, #334155); color: white; padding: 1.25rem 2rem; border-bottom: 4px solid #eab308; }
-        .chapter-header h3 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.025em; }
+        .chapter-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); border-color: #facc15; }
+        .chapter-header { background: linear-gradient(to right, #1e293b, #334155); color: white; padding: 1.5rem 2rem; border-bottom: 4px solid #eab308; }
+        .chapter-header h3 { font-size: 1.6rem; font-weight: 800; }
         .chapter-body { padding: 2.5rem; }
         
-        .pain-point { background-color: #fefce8; border-left: 4px solid #eab308; padding: 1.25rem; border-radius: 0.5rem; margin-bottom: 1.5rem; }
+        .pain-point { background-color: #fefce8; border-left: 4px solid #eab308; padding: 1.25rem; border-radius: 0.5rem; margin-bottom: 1.5rem; font-weight: 500; }
         .tech-solution { background-color: #f0fdf4; border-left: 4px solid #22c55e; padding: 1.25rem; border-radius: 0.5rem; margin-bottom: 1.5rem; }
+        .m-code-box { background-color: #1e293b; color: #fbbf24; padding: 1rem; border-radius: 0.5rem; font-family: monospace; font-size: 0.85rem; margin: 1rem 0; overflow-x: auto; }
 
-        @keyframes pulse-custom {
-            0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
-        }
+        @keyframes pulse-custom { 0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); } }
         .floating-btn { animation: pulse-custom 2s infinite; }
     </style>
 </head>
@@ -63,11 +56,11 @@
                     <span class="font-bold text-lg tracking-wide sm:hidden">TIS</span>
                 </a>
                 <div class="flex-1 min-w-0 flex flex-nowrap space-x-2 text-sm font-medium overflow-x-auto whitespace-nowrap no-scrollbar pl-4 items-center h-full sm:justify-end">
-                    <a href="index.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-300 transition whitespace-nowrap">Home</a>
-                    <a href="resources.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-purple-400 transition whitespace-nowrap">Free</a>
-                    <a href="excel.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-green-400 transition whitespace-nowrap">Excel</a>
-                    <a href="#" class="px-3 py-2 rounded-md bg-yellow-500 text-slate-900 shadow-lg shadow-yellow-500/30 font-bold whitespace-nowrap">Query</a>
-                    <a href="powerbi.html" class="px-3 py-2 rounded-md hover:bg-slate-800 hover:text-blue-400 transition pr-4 whitespace-nowrap">PBI</a>
+                    <a href="index.html" class="px-3 py-2 rounded-md hover:bg-slate-800 transition">Home</a>
+                    <a href="resources.html" class="px-3 py-2 rounded-md hover:bg-slate-800 transition">Free</a>
+                    <a href="excel.html" class="px-3 py-2 rounded-md hover:bg-slate-800 transition">Excel</a>
+                    <a href="#" class="px-3 py-2 rounded-md bg-yellow-500 text-slate-900 font-bold shadow-lg">Query</a>
+                    <a href="powerbi.html" class="px-3 py-2 rounded-md hover:bg-slate-800 transition">PBI</a>
                 </div>
             </div>
         </div>
@@ -75,73 +68,42 @@
     
     <div class="container mx-auto max-w-screen-xl px-4 py-8">
         
-        <div data-aos="fade-down" data-aos-duration="800" class="mb-12">
-            <a href="index.html" class="block group">
-                <div class="flex flex-col sm:flex-row justify-between items-center bg-white p-8 rounded-2xl shadow-xl border-t-4 border-yellow-500 transition transform duration-300 group-hover:-translate-y-1 group-hover:shadow-2xl cursor-pointer">
-                    <div class="flex items-center mb-4 sm:mb-0">
-                        <img src="images/logo.jpg" alt="Logo" class="w-24 h-24 rounded-full mr-6 object-cover border-4 border-white shadow-md bg-white">
-                        <div>
-                            <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight group-hover:text-yellow-600 transition-colors uppercase">Power Query Master Class</h1>
-                            <span class="inline-block bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full font-semibold uppercase tracking-wide mt-1">Advanced Data Automation</span>
-                        </div>
+        <div data-aos="fade-down" class="mb-12">
+            <div class="flex flex-col sm:flex-row justify-between items-center bg-white p-8 rounded-2xl shadow-xl border-t-4 border-yellow-500">
+                <div class="flex items-center mb-4 sm:mb-0">
+                    <img src="images/logo.jpg" alt="Logo" class="w-24 h-24 rounded-full mr-6 border-4 border-white shadow-md">
+                    <div>
+                        <h1 class="text-3xl font-black text-gray-900 tracking-tight uppercase">Power Query Master Class</h1>
+                        <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full font-bold uppercase tracking-wide">The Automation Engine</span>
                     </div>
                 </div>
-            </a>
-        </div>
-
-        <div class="relative mb-12 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 border border-blue-500/50 p-6 flex flex-col md:flex-row items-center justify-between gap-6" data-aos="fade-up">
-            <div class="absolute inset-0 z-0 pointer-events-none">
-                <img src="images/pbi_ads.jpg" alt="Power BI Background" class="w-full h-full object-cover opacity-20 mix-blend-overlay">
-            </div>
-            <div class="relative z-10 flex flex-col sm:flex-row items-center sm:items-start md:items-center gap-4 text-center sm:text-left">
-                <span class="bg-yellow-400 text-slate-900 font-extrabold px-3 py-1 rounded-full text-xs uppercase tracking-wider shadow-sm flex-shrink-0 animate-pulse">Coming Soon 🔥</span>
-                <div>
-                    <h3 class="text-white font-extrabold text-xl md:text-2xl tracking-tight mb-1 flex items-center gap-2 justify-center sm:justify-start">🚀 Power BI Master Class</h3>
-                    <p class="text-blue-200 font-medium text-sm md:text-base">
-                        <span class="text-yellow-300 font-bold">August 2026 (Sat-Sun)</span> တွင် စတင်မည်။ (Online Live)
-                    </p>
-                </div>
-            </div>
-            <div class="relative z-10 flex-shrink-0">
-                <a href="viber://chat?number=%2B959425320949" class="group inline-flex items-center gap-2 bg-white text-blue-900 hover:bg-yellow-400 hover:text-slate-900 font-bold py-2.5 px-6 rounded-full transition-all duration-300 shadow-md text-sm md:text-base ring-2 ring-blue-900/10 hover:ring-yellow-400/50 hover:scale-105 active:scale-95">
-                    <span>📝 Join Waiting List</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
-                        <path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-            </div>
-        </div>
-
-        <div data-aos="fade-up" data-aos-duration="1000" class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-10 mb-12 text-center text-white shadow-2xl relative overflow-hidden group">
-            <div class="relative z-10">
-                <h2 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Master Data Cleaning & Automation</h2>
-                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">Copy-Paste သံသရာထဲမှ ရုန်းထွက်ပါ။ Click တစ်ချက်နှိပ်ရုံဖြင့် Data သန်းပေါင်းများစွာကို အလိုအလျောက် သန့်စင်ပေါင်းစပ်ပေးမည့် "Robotic Mode" ကို သင်ယူလိုက်ပါ။</p>
-                <a href="viber://chat?number=%2B959425320949" class="inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-400 text-slate-900 font-black py-4 px-12 rounded-full shadow-lg transform transition hover:-translate-y-1 text-lg">
-                    <span class="mr-2">✍️</span> Enroll in Query Class
-                </a>
             </div>
         </div>
 
         <div class="lg:grid lg:grid-cols-12 lg:gap-10">
+
             <aside class="lg:col-span-3 mb-8 lg:mb-0">
                 <div class="sticky top-24 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h2 class="text-lg font-bold text-gray-900 mb-4 uppercase tracking-widest border-b-2 border-yellow-400 pb-2">Full Syllabus</h2>
+                    <h2 class="text-lg font-bold text-gray-900 mb-4 uppercase tracking-widest border-b-2 border-yellow-400 pb-2">Course Modules</h2>
                     <nav class="text-sm font-semibold text-slate-600">
                         <ul class="space-y-3 mt-2 border-l-2 border-yellow-200 pl-4">
-                            <li><a href="#chapter-1" class="hover:text-yellow-600 transition">1.1 Folder Automation</a></li>
-                            <li><a href="#chapter-2" class="hover:text-yellow-600 transition">2.1 CSV Mastering</a></li>
-                            <li><a href="#chapter-3" class="hover:text-yellow-600 transition">2.3 Single Excel Sheet</a></li>
-                            <li><a href="#chapter-4" class="hover:text-yellow-600 transition">2.4 Multi-Sheet Pro Secret</a></li>
-                            <li><a href="#chapter-5" class="hover:text-yellow-600 transition">3.1 Ultimate Masterpiece</a></li>
-                            <li><a href="#chapter-6" class="hover:text-yellow-600 transition">3.2 Web & SQL Data</a></li>
-                            <li><a href="#chapter-7" class="hover:text-yellow-600 transition">3.3 Fill Down Magic</a></li>
-                            <li><a href="#chapter-8" class="hover:text-yellow-600 transition">3.5 Transpose Trick</a></li>
-                            <li><a href="#chapter-9" class="hover:text-yellow-600 transition">4.1 Bank Statement</a></li>
-                            <li><a href="#chapter-10" class="hover:text-yellow-600 transition">4.2 Pivot & Unpivot KPI</a></li>
-                            <li><a href="#chapter-11" class="hover:text-yellow-600 transition">4.3 Append Logic</a></li>
-                            <li><a href="#chapter-12" class="hover:text-yellow-600 transition">5.1 Advanced Joins</a></li>
-                            <li><a href="#chapter-13" class="hover:text-yellow-600 transition">6.1 Master Table Logic</a></li>
-                            <li><a href="#chapter-14" class="hover:text-yellow-600 transition">7.1 Regional Master Final</a></li>
+                            <li><a href="#ch-1-1" class="hover:text-yellow-600 transition">1.1 Folder Automation</a></li>
+                            <li><a href="#ch-2-1" class="hover:text-yellow-600 transition">2.1 CSV Mastering</a></li>
+                            <li><a href="#ch-2-2" class="hover:text-yellow-600 transition">2.2 Multiple CSV Consolidation</a></li>
+                            <li><a href="#ch-2-3" class="hover:text-yellow-600 transition">2.3 Single Excel Sheet</a></li>
+                            <li><a href="#ch-2-4" class="hover:text-yellow-600 transition">2.4 Multiple Sheets</a></li>
+                            <li><a href="#ch-3-1" class="hover:text-yellow-600 transition">3.1 Files & Sheets Consolidation</a></li>
+                            <li><a href="#ch-3-2" class="hover:text-yellow-600 transition">3.2 Web & Database Import</a></li>
+                            <li><a href="#ch-3-3" class="hover:text-yellow-600 transition">3.3 Fill Down Magic</a></li>
+                            <li><a href="#ch-3-4" class="hover:text-yellow-600 transition">3.4 Advanced Shaping (Folder)</a></li>
+                            <li><a href="#ch-3-5" class="hover:text-yellow-600 transition">3.5 Transpose & Merge (Single)</a></li>
+                            <li><a href="#ch-3-6" class="hover:text-yellow-600 transition">3.6 Transpose Master (Folder)</a></li>
+                            <li><a href="#ch-4-1" class="hover:text-yellow-600 transition">4.1 Bank Statement Foundation</a></li>
+                            <li><a href="#ch-4-2" class="hover:text-yellow-600 transition">4.2 Pivot & Unpivot Logic</a></li>
+                            <li><a href="#ch-4-3" class="hover:text-yellow-600 transition">4.3 The Append Magic</a></li>
+                            <li><a href="#ch-5-1" class="hover:text-yellow-600 transition">5.1 Joins & Analysis</a></li>
+                            <li><a href="#ch-6-1" class="hover:text-yellow-600 transition">6.1 Transactional Master Table</a></li>
+                            <li><a href="#ch-7-1" class="hover:text-yellow-600 transition">7.1 Regional Master Dashboard</a></li>
                         </ul>
                     </nav>
                     <div class="mt-6 pt-6 border-t border-gray-100 text-center pb-2">
@@ -151,80 +113,740 @@
             </aside>
 
             <main class="lg:col-span-9">
-                <h2 data-aos="fade-right" class="text-3xl font-black text-slate-900 mb-8 border-b-4 border-yellow-400 pb-2 inline-block">The Power Query Arsenal ⚡</h2>
 
-                <div id="chapter-1" data-aos="fade-up" class="chapter-card">
+                <div id="ch-1-1" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header"><h3>📂 1.1 Folder Automation (ဖိုင်ပေါင်း ၂၆၀ ကျော်ကို တစ်ချက်တည်းပေါင်းခြင်း)</h3></div>
                     <div class="chapter-body">
-                        <div class="pain-point">
-                            <strong>🔥 The Pain:</strong> ၂၀၂၃၊ ၂၀၂၄ လအလိုက် ခွဲထားတဲ့ Sales ဖိုင်ရာပေါင်းများစွာကို တစ်ခုချင်းဖွင့်ပြီး Copy-Paste လုပ်နေရတာ အချိန်ကုန် လူပင်ပန်းစေပါတယ်။
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">❓ ဘာကြောင့် ဒါကို လေ့လာရသလဲ? (Business Need)</h4>
+                            <p class="text-sm leading-relaxed">
+                                လုပ်ငန်းခွင်မှာ Data တွေကို နေ့စဉ်၊ လအလိုက် ဖိုင်တွေခွဲပြီး သိမ်းလေ့ရှိပါတယ်။ ဥပမာ - နယ်ရုံးခွဲပေါင်း ၂၀ ကျော်က ပို့သမျှ Sales ဖိုင်တွေကို တစ်နှစ်စာပြန်ပေါင်းကြည့်ရင် ဖိုင်ပေါင်း ၂၄၀ ကျော် ရှိနေပါပြီ။ ဒါတွေကို ပေါင်းပြီးမှသာ Trend Analysis တွေ၊ Dashboard တွေ ဆွဲလို့ရမှာမို့လို့ ဖြစ်ပါတယ်။
+                            </p>
                         </div>
-                        <div class="tech-solution">
-                            <strong>💡 The Solution:</strong> <span class="font-bold text-green-700">Folder Path Connection</span> ကို အသုံးပြုပြီး ဖိုဒါထဲမှာ ဖိုင်ဘယ်လောက်များများ တစ်ခါတည်း ဆွဲယူပါမယ်။ ဖိုင်အသစ်ထပ်တိုးလာရင် <strong>"Refresh"</strong> နှိပ်ရုံနဲ့ Auto ပါဝင်လာမည့် ၁၀၀% Automated Data Flow ကို တည်ဆောက်ပါမည်။
+
+                        <div class="grid md:grid-cols-2 gap-4 mb-6">
+                            <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                                <h4 class="font-bold text-red-800 text-sm mb-2">❌ Manual Excel Way</h4>
+                                <ul class="text-xs space-y-1 text-red-700">
+                                    <li>• ဖိုင် ၂၀၀ ကျော်ကို တစ်ခုချင်း ဖွင့်ရတယ်။</li>
+                                    <li>• Copy ကူးပြီး Master ဖိုင်မှာ Paste လိုက်လုပ်ရတယ်။</li>
+                                    <li>• ဖိုင်အသစ် ထပ်လာရင် နောက်တစ်ခါ ပြန်ကူးရပြန်တယ်။</li>
+                                    <li>• လူပင်ပန်းပြီး Human Error (ဒေတာကျန်ခဲ့တာ) ဖြစ်နိုင်တယ်။</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-100">
+                                <h4 class="font-bold text-green-800 text-sm mb-2">✅ Power Query "Robotic Mode"</h4>
+                                <ul class="text-xs space-y-1 text-green-700">
+                                    <li>• Folder လမ်းကြောင်း တစ်ခါပဲ ချိတ်ပေးဖို့ လိုတယ်။</li>
+                                    <li>• ဖိုင်အသစ် ၁၀ ဖိုင် ထပ်ရောက်လာလည်း ဘာမှ ထပ်လုပ်စရာမလို။</li>
+                                    <li>• <strong>"Refresh"</strong> နှိပ်လိုက်တာနဲ့ စက္ကန့်ပိုင်းအတွင်း အကုန်ပေါင်းပြီးသား။</li>
+                                    <li>• Flexible ဖြစ်တယ် (ဖိုင်တွေ တိုးလာလည်း Error မတက်ဘူး)။</li>
+                                </ul>
+                            </div>
                         </div>
-                        <img src="images/pq_1_1.png" alt="Folder Automation" class="w-full h-auto rounded-xl shadow-md border border-slate-100 mt-4">
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-green-800 mb-2">💡 ဒီသင်ခန်းစာရဲ့ အဓိက လက်နက် - "Excel Tables"</h4>
+                            <p class="mb-3">
+                                ဒီမှာ ကျွန်တော်တို့က Worksheet တွေကို မသုံးဘဲ <span class="magic-highlight">Excel Tables</span> တွေကိုပဲ သုံးပါမယ်။ ဘာလို့လဲဆိုတော့ Table တွေက Dynamic ဖြစ်လို့ ဒေတာ အတိုးအလျှော့ ရှိလာရင်တောင် Query က အတိအကျ သိနေမှာ ဖြစ်လို့ပါ။
+                            </p>
+                        </div>
+                        <img src="images/pq_1_1.png" class="w-full h-auto rounded-xl shadow-md border border-slate-100">
+                        
+                        <div class="mt-6 text-center">
+                            <p class="text-sm font-black text-blue-900 uppercase">🏆 Result: 100% Scalable & Automated Pipeline</p>
+                        </div>
                     </div>
                 </div>
 
-                <div id="chapter-2" data-aos="fade-up" class="chapter-card">
+                <div id="ch-2-1" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header"><h3>📄 2.1 Mastering CSV Data Imports (System Data Cleaning)</h3></div>
                     <div class="chapter-body">
-                        <div class="pain-point">
-                            <strong>🔥 The Pain:</strong> ERP သို့မဟုတ် SAP ကလာတဲ့ CSV တွေမှာ အပေါ်ဆုံးက ခေါင်းစဉ်ပိုတွေ၊ အောက်ခြေ Footer တွေကြောင့် Data ပြင်ရတာ တော်တော်ခေါင်းစားရပါတယ်။
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">❓ ဘာကြောင့် CSV Import ကို သီးသန့်လေ့လာရသလဲ?</h4>
+                            <p class="text-sm leading-relaxed">
+                                လုပ်ငန်းသုံး System အများစု (ERP, SAP, Web Systems) ကနေ ဒေတာဆွဲချလိုက်ရင် <strong>CSV (Comma-Separated Values)</strong> Format နဲ့ ထွက်လာလေ့ရှိပါတယ်။ ဒီဖိုင်တွေမှာ အပေါ်ဆုံးက ခေါင်းစဉ်ပိုတွေ၊ အောက်ခြေက "Page 1 of 1" ဆိုတဲ့ Footer တွေ ရောနှောပါဝင်နေတတ်လို့ သာမန် Excel နဲ့ ရှင်းရတာ အချိန်ကုန်စေပါတယ်။
+                            </p>
                         </div>
-                        <p class="leading-relaxed mb-6 font-medium text-slate-700">
-                            <strong>💡 The Solution:</strong> <span class="font-bold text-blue-700">Dynamic Filtering</span> နည်းလမ်းကိုသုံးပြီး အမှိုက်တွေကို အလိုအလျောက် ရှင်းထုတ်ပါမယ်။ နိုင်ငံတကာ Date Format လွဲချော်မှုတွေကို <strong>"Using Locale"</strong> ဖြင့် စနစ်တကျ ဖြေရှင်းပြသွားပါမည်။
-                        </p>
-                        <img src="images/pq_1_2.png" alt="CSV Mastering" class="w-full h-auto rounded-xl shadow-md border border-slate-100">
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 ဒီသင်ခန်းစာရဲ့ Key Techniques:</h4>
+                            <ul class="list-disc pl-5 space-y-2 mb-4">
+                                <li><strong>Dynamic Filtering:</strong> Row အရေအတွက် ဘယ်လောက်ပြောင်းပြောင်း အမှိုက်တွေကို အလိုအလျောက် သိရှိရှင်းလင်းပေးမယ့် နည်းလမ်း။</li>
+                                <li><strong>Using Locale:</strong> <span class="magic-highlight">Date Format Error</span> ကင်းစင်အောင် နိုင်ငံတကာစံနှုန်း (Region) အလိုက် ဒေတာအမျိုးအစား သတ်မှတ်နည်း။</li>
+                            </ul>
+                        </div>
+
+                        <img src="images/pq_1_2.png" class="w-full h-auto rounded-xl shadow-md border border-slate-100">
+                        
+                        <div class="mt-6 text-center">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
+                                <p class="text-sm font-bold text-blue-800 italic">"တစ်ခါ Setup လုပ်ပြီးတာနဲ့ System ကနေ နောက်တစ်ခါ CSV အသစ်ဆွဲချတိုင်း Copy-Paste လုပ်စရာမလိုဘဲ Refresh နှိပ်ရုံနဲ့ ဒေတာတွေ Update ဖြစ်နေမှာပါ။"</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div id="chapter-4" data-aos="fade-up" class="chapter-card">
+                <div id="ch-2-2" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>📂 2.2 Masterpiece: Multiple CSV Consolidation</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">🏦 Banking & Enterprise Power</h4>
+                            <p class="text-sm leading-relaxed">
+                                Core Banking System သို့မဟုတ် ERP များမှ နေ့စဉ် Export ထုတ်ယူရသော ဒေတာများသည် များသောအားဖြင့် CSV format များဖြစ်ကြပါသည်။ ဖိုင်အရေအတွက် ရာနှင့်ချီရှိနေစေကာမူ Manual တစ်ခုချင်း စုစည်းနေစရာမလိုဘဲ Query တစ်ခုတည်းအတွင်းသို့ စီးဝင်စေမည့် နည်းပညာဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">⚡</span>
+                                <h5 class="font-bold text-xs mt-2">Zero Copy-Paste</h5>
+                                <p class="text-[10px] text-slate-600">ဖိုင်ဘယ်လောက်များများ တစ်ခါတည်းပေါင်းပေးတယ်။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">📈</span>
+                                <h5 class="font-bold text-xs mt-2">Scale-ability</h5>
+                                <p class="text-[10px] text-slate-600">ဒေတာပမာဏ သန်းချီရှိလာလည်း အမြဲမြန်ဆန်နေမည်။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">🤖</span>
+                                <h5 class="font-bold text-xs mt-2">Robotic Update</h5>
+                                <p class="text-[10px] text-slate-600">ဖိုင်သစ်ရောက်လာရင် Refresh နှိပ်ရုံဖြင့် ပြီးစီးမည်။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">✨ Why It’s Smart?</h4>
+                            <p class="text-xs leading-relaxed text-slate-700">
+                                တစ်နေ့ကို ၁ နာရီကြာအောင် ဖိုင်ပေါင်းနေရတဲ့ အလုပ်ကို ၅ စက္ကန့်တည်းနဲ့ ပြီးအောင် Automation လုပ်နိုင်သွားမှာပါ။ ဤနည်းပညာကို တတ်မြောက်ထားခြင်းဖြင့် ရိုးရိုး Excel သမားထက် သာလွန်သည့် <strong>"Automation Expert"</strong> တစ်ဦးအဖြစ် လုပ်ငန်းခွင်မှာ ရပ်တည်နိုင်မည် ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        <img src="images/pq_2_2.png" alt="CSV Consolidation Value" class="w-full h-auto rounded-xl shadow-md border border-slate-100 mt-4">
+                    </div>
+                </div>
+
+                <div id="ch-2-3" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>📊 2.3 Single Excel Sheet Import (Filter by Kind)</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">❓ CSV နဲ့ Excel Import ဘာကွာသလဲ?</h4>
+                            <p class="text-sm leading-relaxed">
+                                CSV က ရိုးရှင်းတဲ့ စာသားဖိုင်ဖြစ်ပေမယ့် Excel ဖိုင်တွေထဲမှာတော့ Worksheet တွေအပြင်၊ Tables တွေနဲ့ Defined Names (Range) တွေ အများကြီး ရောထွေးနေတတ်ပါတယ်။ ဒါကြောင့် Power Query နဲ့ ခေါ်တဲ့အခါ ဒေတာတွေ ထပ်မသွားအောင် စနစ်တကျ ရွေးချယ်တတ်ဖို့ လိုအပ်ပါတယ်။
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">🎯</span>
+                                <h5 class="font-bold text-xs mt-2">Precision Select</h5>
+                                <p class="text-[10px] text-slate-600">လိုချင်တဲ့ Sheet ကိုပဲ အတိအကျ ရွေးထုတ်နိုင်ခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">🛡️</span>
+                                <h5 class="font-bold text-xs mt-2">Zero Redundancy</h5>
+                                <p class="text-[10px] text-slate-600">ဒေတာတွေ နှစ်ခါထပ်မလာအောင် "Kind" နဲ့ စစ်ထုတ်ခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">⚡</span>
+                                <h5 class="font-bold text-xs mt-2">Auto Shaping</h5>
+                                <p class="text-[10px] text-slate-600">ခေါင်းစဉ်အပိုတွေကို Dynamic ဖယ်ရှားပြီးသား ဖြစ်ခြင်း။</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100">
+                                <p class="text-sm font-bold text-green-800 italic">"Manual Copy-Paste လုံးဝမလိုတော့ဘဲ၊ မူလ Excel ဖိုင်မှာ ဒေတာအသစ်တွေ ထပ်တိုးတာနဲ့ Refresh တစ်ချက်နှိပ်ရုံဖြင့် သင့် Dashboard က အလိုအလျောက် အဆင်သင့် ဖြစ်နေပါလိမ့်မယ်။"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ch-2-4" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header"><h3>🗝️ 2.4 Multiple Sheets Consolidation (The Pro Secret)</h3></div>
                     <div class="chapter-body">
-                        <div class="pain-point">
-                            <strong>🔥 The Pain:</strong> Excel ဖိုင်တစ်ခုတည်းမှာ Jan, Feb, Mar ဆိုပြီး Sheet တွေခွဲထားရင် ပေါင်းရတာ အရမ်းပင်ပန်းပါတယ်။
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">📂 Multi-Sheet Management Challenge</h4>
+                            <p class="text-sm leading-relaxed">
+                                လုပ်ငန်းခွင်တွင် Data များကို Excel ဖိုင်တစ်ခုတည်းအတွင်း Sheet များစွာခွဲ၍ (ဥပမာ - Jan, Feb, Mar...) သိမ်းဆည်းလေ့ရှိကြပါသည်။ ဤဒေတာများကို ပေါင်းစပ်ရန်အတွက် Blank Query ခေါ်ပြီး Code ရေးစရာမလိုဘဲ ကျွမ်းကျင်သူများသာ အသုံးပြုလေ့ရှိသည့် <strong>"Step Stripping"</strong> နည်းပညာဖြင့် အလိုအလျောက် ပေါင်းစည်းနည်းကို လေ့လာရမည်ဖြစ်ပါသည်။
+                            </p>
                         </div>
-                        <p class="leading-relaxed mb-6 font-medium text-slate-700">
-                            <strong>💡 The Solution:</strong> Blank Query တွေ ရေးနေစရာမလိုပါဘူး။ <span class="font-bold text-purple-700">Step Stripping</span> နည်းလမ်းကိုသုံးပြီး Navigation အဆင့်ကို ဖြတ်ထုတ်ကာ Sheet အားလုံးကို Stacked ပုံစံ အလိုအလျောက် ပေါင်းစပ်ပြသွားပါမယ်။
-                        </p>
-                        <img src="images/pq_4_4.png" alt="Multi-Sheet Consolidation" class="w-full h-auto rounded-xl shadow-md border border-slate-100">
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">✂️</span>
+                                <h5 class="font-bold text-xs mt-2">Step Stripping</h5>
+                                <p class="text-[10px] text-slate-600">မလိုအပ်သော Steps များကို ဖြတ်ထုတ်ကာ Flow ကို ပေါ့ပါးစေခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">🧱</span>
+                                <h5 class="font-bold text-xs mt-2">Data Stacking</h5>
+                                <p class="text-[10px] text-slate-600">Sheet ပေါင်းများစွာရှိ ဒေတာများကို အပေါ်အောက် အလိုအလျောက် စုစည်းခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">🛡️</span>
+                                <h5 class="font-bold text-xs mt-2">Dynamic Clean</h5>
+                                <p class="text-[10px] text-slate-600">ခေါင်းစဉ်အပိုများနှင့် အမှိုက်များကို တစ်ချက်တည်း ရှင်းလင်းခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">✨ Why It’s a Pro Secret?</h4>
+                            <p class="text-xs leading-relaxed text-slate-700">
+                                ရိုးရိုး Navigator မှတစ်ဆင့် ခေါ်ယူခြင်းသည် Sheet တစ်ခုတည်းကိုသာ ရည်ညွှန်း (Hardcode) ထားခြင်း ဖြစ်သဖြင့် နောင်တွင် Sheet အသစ်များ တိုးလာပါက အလိုအလျောက် ပါဝင်လာမည် မဟုတ်ပါ။ ဤ <strong>Pro Secret</strong> ကို အသုံးပြုခြင်းဖြင့် နောင်တစ်ချိန် Excel ဖိုင်အတွင်း Sheet အသစ်များ မည်မျှပင် ထပ်တိုးလာစေကာမူ <strong>"Refresh"</strong> တစ်ချက်နှိပ်ရုံဖြင့် အကုန်လုံး ပေါင်းစည်းပြီးသား ဖြစ်နေပါမည်။
+                            </p>
+                        </div>
+
+                        <img src="images/pq_4_4.png" alt="Multi-Sheet Consolidation Logic" class="w-full h-auto rounded-xl shadow-md border border-slate-100 mt-4">
+                        
+                        <div class="mt-6 text-center">
+                            <p class="text-sm font-black text-blue-900 uppercase">🏆 Result: A Fully Scalable Data Consolidation System</p>
+                        </div>
                     </div>
                 </div>
 
-                <div id="chapter-7" data-aos="fade-up" class="chapter-card">
+                <div id="ch-3-1" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>🏆 3.1 The Ultimate Masterpiece: Files & Sheets Consolidation</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="mb-8">
+                            <h4 class="font-bold text-slate-800 mb-4 border-b pb-2">📂 Manual Excel User များ၏ နေ့စဉ် Pain Points များ</h4>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                                    <h5 class="font-bold text-red-700 text-sm mb-2">❌ Manual Excel User တို့၏ အခက်အခဲများ </h5>
+                                    <ul class="text-xs space-y-2 text-red-800">
+                                        <li>• <strong>Double Work:</strong> ဖိုင်အများကြီးကို တစ်ခုချင်းဖွင့်ရသလို၊ ထဲမှာရှိတဲ့ Sheet တွေကိုပါ တစ်ခုချင်း Copy လိုက်ကူးနေရခြင်း။</li>
+                                        <li>• <strong>Header Hell:</strong> ပေါင်းလိုက်တဲ့အခါ ကြားထဲမှာ ညှပ်ပါလာတဲ့ ခေါင်းစဉ် (Header) တွေကို Manual လိုက်ဖျက်နေရခြင်း။</li>
+                                        <li>• <strong>High Risk:</strong> ဒေတာတစ်ခုခု ကျန်ခဲ့ရင် ရှာရခက်ပြီး Human Error ကြောင့် Report မှားယွင်းနိုင်ခြင်း။</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg border border-green-100">
+                                    <h5 class="font-bold text-green-700 text-sm mb-2">✅ The Robotic Power Query Way</h5>
+                                    <ul class="text-xs space-y-2 text-green-800">
+                                        <li>• <strong>One-Click Magic:</strong> ဖိုင်ဘယ်လောက်များများ၊ Sheet ဘယ်လောက်ရှိရှိ Refresh တစ်ချက်နှိပ်ရုံဖြင့် အကုန်ပေါင်းပေးခြင်း။</li>
+                                        <li>• <strong>Dynamic Cleaning:</strong> ထပ်နေတဲ့ ခေါင်းစဉ် (Headers) တွေနဲ့ အမှိုက် (Nulls) တွေကို စက္ကန့်ပိုင်းအတွင်း အမြစ်ပြတ်ရှင်းလင်းခြင်း။</li>
+                                        <li>• <strong>Future Proof:</strong> နောက်လမှာ ဖိုင်အသစ် သို့မဟုတ် Sheet အသစ် တိုးလာလည်း ဘာမှ ထပ်ပြင်စရာမလိုဘဲ အဆင်သင့်ဖြစ်နေခြင်း။</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 p-4 bg-blue-600 rounded-xl text-white text-center shadow-lg">
+                            <p class="text-sm font-bold uppercase tracking-wider">🏆 သင်ယူရမည့် ရလဒ်:</p>
+                            <p class="text-xs mt-1 font-medium opacity-90">နာရီပေါင်းများစွာ ကြာမြင့်မည့် ရှုပ်ထွေးလှသော Consolidation အလုပ်များကို စက်ရုပ်တစ်ရုပ်ကဲ့သို့ တိကျမြန်ဆန်စွာ Automate လုပ်နိုင်သွားပါမည်။</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ch-3-2" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>🌐 3.2 External Sources (Web Scraping & SQL Database)</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">🚀 Beyond Excel Files</h4>
+                            <p class="text-sm leading-relaxed">
+                                ခေတ်မီလုပ်ငန်းခွင်များတွင် အချက်အလက်များသည် Excel သို့မဟုတ် CSV များတွင်သာ ရှိနေသည်မဟုတ်ပါ။ Wikipedia ကဲ့သို့ Website များမှ နေ့စဉ်ပြောင်းလဲနေသော Live Data များကို ဆွဲယူရန် လိုအပ်သလို၊ လုပ်ငန်း၏ ပင်မ Database (SQL Server) ဆီသို့ တိုက်ရိုက်ချိတ်ဆက်၍ ခိုင်မာသော Data Architecture တစ်ခု တည်ဆောက်တတ်ရန်လည်း အရေးကြီးပါသည်။
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">🌍</span>
+                                <h5 class="font-bold text-xs mt-2">Web Scraping</h5>
+                                <p class="text-[10px] text-slate-600">Website များပေါ်ရှိ Live Tables များကို တိုက်ရိုက်ဆွဲယူခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">🗄️</span>
+                                <h5 class="font-bold text-xs mt-2">SQL Integration</h5>
+                                <p class="text-[10px] text-slate-600">Company Database နှင့် တိုက်ရိုက် Bridge တည်ဆောက်ခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">🔄</span>
+                                <h5 class="font-bold text-xs mt-2">Auto Live Update</h5>
+                                <p class="text-[10px] text-slate-600">ရင်းမြစ်တွင် ဒေတာပြောင်းသည်နှင့် Report ပါ ချက်ချင်းပြောင်းခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">✨ The Death of "Export to Excel"</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                စနစ်တစ်ခုမှ Excel ကို နေ့စဉ် Download ထုတ်ပြီး Report ပြန်ဆွဲနေရသည့် ခေတ်ကုန်သွားပါပြီ။ ဤသင်ခန်းစာတွင် <span class="magic-highlight">Direct DB Connection</span> နည်းပညာကို အသုံးပြု၍ လူသားအမှား (Human Error) များကို ၁၀၀% ကာကွယ်နည်းနှင့် File Size အကန့်အသတ်မရှိ (Big Data) ကို ကိုင်တွယ်နည်းများကို လေ့လာရမည်ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <p class="text-sm font-black text-blue-900 uppercase">🏆 Result: Professional Real-time Reporting System</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ch-3-3" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header"><h3>⏬ 3.3 Fill Data & Shaping (Excel Merge & Center ပြဿနာကို ရှင်းခြင်း)</h3></div>
                     <div class="chapter-body">
-                        <div class="pain-point">
-                            <strong>🔥 The Pain:</strong> Excel မှာ Merge လုပ်ထားတဲ့ Cells တွေကြောင့် Database မှာ <code class="text-blue-600">null</code> တွေ ဖြစ်ကုန်ပြီး Data Analysis လုပ်ရာမှာ ကြီးမားတဲ့ အဟန့်အတား ဖြစ်စေပါတယ်။
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">❓ "Merge & Center" ကြောင့် ဒေတာတွေ ပျောက်ဆုံးနေပါသလား?</h4>
+                            <p class="text-sm leading-relaxed">
+                                လုပ်ငန်းခွင်သုံး Excel Report အများစုတွင် ကြည့်ရှုရ လွယ်ကူစေရန် အချက်အလက်များကို အထက်အောက် Merge လုပ်၍ တည်ဆောက်လေ့ရှိပါသည်။ သို့သော် Database အမြင်တွင် ထိုကွက်လပ်များသည် <strong>"Null" (ဘာမှမရှိသောနေရာ)</strong> များဖြစ်သွားပြီး Data Analysis လုပ်ရာတွင် ကြီးမားသော အဟန့်အတား ဖြစ်စေပါသည်။
+                            </p>
                         </div>
-                        <div class="tech-solution">
-                            <strong>💡 The Solution:</strong> <span class="font-bold text-green-700">Fill Down Magic</span> နည်းပညာကို သုံးပြီး Manual လိုက်ရိုက်စရာမလိုဘဲ အပေါ်က ဒေတာတွေကို အောက်က ကွက်လပ်တွေထဲ စက္ကန့်ပိုင်းအတွင်း Auto ဖြည့်သွင်းနည်းကို သင်ယူရပါမယ်။
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">🪄</span>
+                                <h5 class="font-bold text-xs mt-2">Fill Down Magic</h5>
+                                <p class="text-[10px] text-slate-600">အပေါ်ကဒေတာကို အောက်ကကွက်လပ်တွေထဲ Auto ဖြည့်ပေးခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">📋</span>
+                                <h5 class="font-bold text-xs mt-2">Tabular Structure</h5>
+                                <p class="text-[10px] text-slate-600">ဖရိုဖရဲ Report မှ သန့်ရှင်းသော Database ဇယားသို့ ပြောင်းလဲခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">🚀</span>
+                                <h5 class="font-bold text-xs mt-2">Instant Analysis</h5>
+                                <p class="text-[10px] text-slate-600">ဒေတာပြည့်စုံသွားသဖြင့် Dashboard ဆွဲရန် အသင့်ဖြစ်ခြင်း။</p>
+                            </div>
                         </div>
-                        <img src="images/pq_3_1.png" alt="Fill Down Magic" class="w-full h-auto rounded-xl shadow-md border border-slate-100 mt-4">
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 Data Engineer တိုင်း သိထားရမည့် Core Skill</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                ကွက်လပ် (null) များတွင် ဒေတာများကို Manual လိုက်လံရိုက်ထည့်ခြင်း သို့မဟုတ် Copy-Paste လုပ်ခြင်းသည် ဒေတာပမာဏ များလာပါက မဖြစ်နိုင်တော့ပါ။ <span class="magic-highlight">Fill Down</span> နည်းပညာကို အသုံးပြုခြင်းဖြင့် စာကြောင်းရေ သောင်းနှင့်ချီသော Report များကို စက္ကန့်ပိုင်းအတွင်း သန့်စင်ပြီးသား <strong>"Ready-to-Structure Data"</strong> အဖြစ် ပြောင်းလဲနိုင်မည် ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        [Image of a spreadsheet before and after applying the Fill Down transformation in Power Query]
+
+                        <div class="mt-6 text-center">
+                            <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-200 shadow-inner">
+                                <p class="text-sm font-black text-yellow-900 uppercase">🏆 Result: Transform "Human-Readable" Reports into "Machine-Ready" Data</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div id="chapter-9" data-aos="fade-up" class="chapter-card">
+                <div id="ch-3-4" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>⚙️ 3.4 Advanced Shaping: Bulk Fill Down Automation</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">📂 The Multiple Merged-File Challenge</h4>
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                ယခင်သင်ခန်းစာတွင် ဖိုင်တစ်ဖိုင်တည်း၏ ပြဿနာကို ဖြေရှင်းခဲ့သော်လည်း၊ လက်တွေ့တွင်မူ ဖိုင်ပေါင်းများစွာသည် Merged Cells များဖြင့် Folder အတွင်း ပြန့်ကျဲနေတတ်ပါသည်။ ဤဖိုင်များအားလုံးကို တစ်ပြိုင်နက်တည်း ပေါင်းစပ်ပြီး <strong>"Null"</strong> ပြဿနာများကို တစ်ချက်တည်းဖြင့် အမြစ်ပြတ်ရှင်းလင်းမည့် Automation Pipeline တစ်ခုကို တည်ဆောက်ရမည် ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">📦</span>
+                                <h5 class="font-bold text-xs mt-2">Bulk Extraction</h5>
+                                <p class="text-[10px] text-slate-600">ဖိုင်များစွာမှ Merged Data များကို တစ်ပြိုင်နက် ဆွဲထုတ်ခြင်း။</p>
+                            </div>
+                            <div class="bg-red-50 p-3 rounded-lg border border-red-100 text-center">
+                                <span class="text-2xl">🛡️</span>
+                                <h5 class="font-bold text-xs mt-2">Header Trap Fix</h5>
+                                <p class="text-[10px] text-slate-600">ဒေတာများကြား ညှပ်ပါလာသော ခေါင်းစဉ်အပိုများကို ဖယ်ရှားခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">⏬</span>
+                                <h5 class="font-bold text-xs mt-2">Global Fill Down</h5>
+                                <p class="text-[10px] text-slate-600">ဖိုင်အားလုံးရှိ ကွက်လပ်များကို စက္ကန့်ပိုင်းအတွင်း ဖြည့်တင်းခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 အရေးအကြီးဆုံးအချက်: The Duplicate Header Trap</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                ဖိုင်များစွာကို ပေါင်းစပ်လိုက်သောအခါ ဒုတိယနှင့် တတိယဖိုင်များမှ <strong>"Column Headers"</strong> များသည် ဒေတာများအလယ်တွင် စာသားများအဖြစ် ပိတ်မိနေတတ်ပါသည်။ ၎င်းတို့ကို Filter ဖြင့် မဖယ်ရှားပါက Data Type ပြောင်းသည့်အခါ Error တက်မည် ဖြစ်ပါသည်။ ဤသည်မှာ Folder Automation ၏ အသက်သွေးကြော ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        
+
+                        <div class="mt-6 text-center">
+                            <div class="bg-blue-600 p-4 rounded-xl shadow-lg border-t-4 border-blue-400">
+                                <p class="text-white text-sm font-bold uppercase tracking-widest">🏆 Ultimate Goal:</p>
+                                <p class="text-blue-100 text-xs mt-1">အလုပ်ချိန် နာရီပေါင်းများစွာကို သက်သာစေပြီး၊ ၁၀၀% တိကျမှန်ကန်သော Automated Master Database တစ်ခုကို တည်ဆောက်နိုင်သွားမည်။</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ch-3-5" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>🔄 3.5 Transpose Magic: Fixing Horizontal Merged Cells</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">❓ အလျားလိုက် Merge လုပ်ထားသော ခေါင်းစဉ်များ</h4>
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                Excel တွင် Report များကို ဖတ်ရလွယ်ကူစေရန် ခေါင်းစဉ်များကို အလျားလိုက် (Horizontally) Merge လုပ်ထားလေ့ရှိပါသည်။ သို့သော် Power Query တွင် <strong>"Fill Right"</strong> ဆိုသည့် Function မရှိသဖြင့် အဆိုပါ ဘေးတိုက်ကွက်လပ်များကို ဖြည့်တင်းရန်မှာ အလွန်ခက်ခဲလှပါသည်။
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">🔄</span>
+                                <h5 class="font-bold text-xs mt-2">Transpose Move</h5>
+                                <p class="text-[10px] text-slate-600">ဇယားကို ၉၀ ဒီဂရီ လှည့်၍ ဘေးတိုက်ကွက်လပ်ကို ဒေါင်လိုက်ပြောင်းခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">🔗</span>
+                                <h5 class="font-bold text-xs mt-2">Unique Header</h5>
+                                <p class="text-[10px] text-slate-600">Main Category နှင့် Sub-Category ကို တစ်ပေါင်းတည်း ဖြစ်စေခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">🔁</span>
+                                <h5 class="font-bold text-xs mt-2">Transpose Back</h5>
+                                <p class="text-[10px] text-slate-600">သန့်စင်ပြီးနောက် ဇယားကို မူလအနေအထားသို့ ပြန်လှည့်ခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 The "Ninja" Technique: Double Transpose</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                ဤနည်းစနစ်သည် ရှုပ်ထွေးလှသော ခေါင်းစဉ်များကို စက်ဖတ်၍ရသော (Machine-friendly) Database Headers များအဖြစ် ပြောင်းလဲရာတွင် အထိရောက်ဆုံး ဖြစ်ပါသည်။ <span class="magic-highlight">Transpose >> Fill Down >> Merge >> Transpose Back</span> ဆိုသည့် အဆင့်ဆင့်သော logic ကို အသုံးပြုခြင်းဖြင့် Manual တစ်ချက်မှ ရိုက်စရာမလိုဘဲ အားလုံးကို Automate လုပ်နိုင်သွားပါမည်။
+                            </p>
+                        </div>
+
+                        
+
+                        <div class="mt-6 text-center">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 shadow-sm italic text-slate-600">
+                                <p class="text-sm font-bold">"Data Shaping is not just about tools, it's about the LOGIC you apply."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ch-3-6" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>🔄 3.6 Transpose Master: Bulk Merged-Cell Automation</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">📂 The "Master Level" Challenge</h4>
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                ယခင်သင်ခန်းစာတွင် ဖိုင်တစ်ဖိုင်တည်း၏ Horizontal Merge ပြဿနာကို ဖြေရှင်းခဲ့သော်လည်း၊ အလုပ်ခွင်တွင် ထိုကဲ့သို့ ဖရိုဖရဲ Merge လုပ်ထားသော ဖိုင်ပေါင်းရာချီကို Folder လိုက် တစ်ပြိုင်နက်တည်း Automate လုပ်ရန် လိုအပ်လာပါသည်။ ဤသည်မှာ သာမန် Excel User တစ်ဦးအတွက် မဖြစ်နိုင်သလောက် ခက်ခဲသော အလုပ်ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">🔄</span>
+                                <h5 class="font-bold text-xs mt-2">Bulk Transpose</h5>
+                                <p class="text-[10px] text-slate-600">ဖိုင်များစွာ၏ ဇယားများကို တစ်ပြိုင်နက်လှည့်၍ သန့်စင်ခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">⏬</span>
+                                <h5 class="font-bold text-xs mt-2">Fill & Merge</h5>
+                                <p class="text-[10px] text-slate-600">Category အားလုံးကို အလိုအလျောက် ဖြည့်တင်းပေါင်းစပ်ခြင်း။</p>
+                            </div>
+                            <div class="bg-red-50 p-3 rounded-lg border border-red-100 text-center">
+                                <span class="text-2xl">🛡️</span>
+                                <h5 class="font-bold text-xs mt-2">Header Trap Fix</h5>
+                                <p class="text-[10px] text-slate-600">ဖိုင်အသီးသီးမှ ညပ်ပါလာသော ခေါင်းစဉ်အပိုများကို ရှင်းထုတ်ခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 The Strategy: Robotic Transformation Pipeline</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                ဤသင်ခန်းစာတွင် <span class="magic-highlight">Transpose > Fill Down > Merge > Transpose Back</span> ဆိုသည့် "Ninja Strategy" ကို Folder Automation အတွင်းသို့ ထည့်သွင်းအသုံးပြုပါမည်။ ဤနည်းလမ်းသည် ဖိုဒါအတွင်းသို့ ဖိုင်အသစ်များ မည်မျှပင် ထပ်ရောက်လာစေကာမူ <strong>Refresh တစ်ချက်နှိပ်ရုံဖြင့်</strong> အချက်အလက်အားလုံးကို အလိုအလျောက် ပေါင်းစပ်ပေးသွားမည် ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        
+
+                        <div class="mt-6 text-center">
+                            <div class="bg-blue-600 p-4 rounded-xl shadow-lg border-t-4 border-blue-400">
+                                <p class="text-white text-sm font-bold uppercase tracking-widest">🏆 Master Level Outcome:</p>
+                                <p class="text-blue-100 text-xs mt-1">အလုပ်ချိန် ရက်သတ္တပတ်ပေါင်းများစွာ ကြာမြင့်မည့် Data Cleaning အလုပ်များကို Robotic Mode ဖြင့် တစ်သက်စာအတွက် Automation လုပ်နိုင်သွားမည်။</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ch-4-1" data-aos="fade-up" class="chapter-card">
                     <div class="chapter-header"><h3>📅 4.1 Bank Statement Foundation (Messy Data များကို သန့်စင်ခြင်း)</h3></div>
                     <div class="chapter-body">
-                        <div class="pain-point">
-                            <strong>🔥 The Pain:</strong> ဘဏ်မှတ်တမ်းတွေမှာ အချိန် (Time) တွေရော၊ ရက်စွဲ (Date) တွေရော ရောထွေးနေပြီး ခေါင်းစဉ်တွေက အပိုတွေ အများကြီး ပါနေတတ်ပါတယ်။
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">❓ ဘဏ်မှတ်တမ်းများကို Analysis လုပ်ရန် အခက်တွေ့နေပါသလား?</h4>
+                            <p class="text-sm leading-relaxed">
+                                ဘဏ်မှ တိုက်ရိုက်ရရှိသော Excel မှတ်တမ်းများသည် Analysis လုပ်ရန် အဆင်သင့်မဖြစ်သေးသော <strong>"Messy Data"</strong> များဖြစ်ပါသည်။ အပေါ်ဆုံးတွင် မလိုအပ်သော ဘဏ်အမည်များ ပါဝင်နေတတ်သလို၊ ရက်စွဲများမှာလည်း အချိန် (Time) များနှင့် ရောထွေးနေတတ်ပါသည်။
+                            </p>
                         </div>
-                        <p class="leading-relaxed mb-6 font-medium text-slate-700">
-                            <strong>💡 The Solution:</strong> <span class="font-bold text-blue-700">Text Extraction</span> နဲ့ <span class="font-bold text-blue-700">The Ultimate Date Fix</span> ကို သုံးပြီး Date Error ကင်းစင်တဲ့ ခိုင်မာသော Data Foundation တစ်ခုကို ဘဏ်စာရင်းတွေပေါ်မှာ အခြေခံပြီး တည်ဆောက်ပါမယ်။
-                        </p>
-                        <img src="images/pq_5_1.png" alt="Bank Statement Cleaning" class="w-full h-auto rounded-xl shadow-md border border-slate-100">
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">✂️</span>
+                                <h5 class="font-bold text-xs mt-2">Text Extraction</h5>
+                                <p class="text-[10px] text-slate-600">ရှည်လျားသော Description များမှ Transaction Type ကို ခွဲထုတ်ခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">📅</span>
+                                <h5 class="font-bold text-xs mt-2">The Date Fix</h5>
+                                <p class="text-[10px] text-slate-600">Date Error ကင်းစင်အောင် ပုံစံသစ်ဖြင့် ပြန်လည်တည်ဆောက်ခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">⚖️</span>
+                                <h5 class="font-bold text-xs mt-2">Logic-Based Value</h5>
+                                <p class="text-[10px] text-slate-600">Credit/Debit နှစ်ခုကို Value တစ်ခုတည်းအဖြစ် စုစည်းခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 The "Ultimate Date Fix" Strategy</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                ဘဏ်စာရင်းများတွင် ရက်စွဲနှင့် အချိန် ရောထွေးနေမှုကြောင့် Date Type ပြောင်းလိုက်လျှင် Error တက်လေ့ရှိပါသည်။ ဤသင်ခန်းစာတွင် ရက်စွဲများကို အပိုင်းပိုင်းဖြတ်တောက် (Split) ပြီး မိမိကွန်ပျူတာ နားလည်သော အစီအစဉ်အတိုင်း ပြန်လည်တပ်ဆင် (Merge) နည်းကို အသုံးပြု၍ <strong>၁၀၀% တိကျသော Data Foundation</strong> ကို တည်ဆောက်ပြသွားမည် ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        
+
+                        <div class="mt-6 text-center">
+                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 italic text-blue-800">
+                                <p class="text-sm font-bold">"Data Foundation ခိုင်မာမှသာ မှန်ကန်သော Dashboard Analysis များကို ဖန်တီးနိုင်မည် ဖြစ်ပါသည်။"</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div id="chapter-14" data-aos="fade-up" class="chapter-card">
-                    <div class="chapter-header"><h3>🏆 7.1 Master Table Final (Regional Regional Reporting)</h3></div>
+                <div id="ch-4-2" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>🧮 4.2 Pivot & Unpivot Logic (KPI Achievement တွက်ချက်ခြင်း)</h3></div>
                     <div class="chapter-body">
-                        <div class="tech-solution">
-                            <strong>💡 The Final Goal:</strong> Target, Expense, နဲ့ Sales ဆိုတဲ့ မတူညီတဲ့ ဒေတာ ၃ ခုကို Bridge တစ်ခုတည်းနဲ့ ပေါင်းစပ်ပြီး <strong>Master Table</strong> ကြီး တည်ဆောက်ပါမယ်။ နှိပ်လိုက်တာနဲ့ အဖြေတွေချက်ချင်းပြောင်းမည့် <strong>Dynamic Dashboard</strong> ဖန်တီးရန် အဆင်သင့် ဖြစ်နေပါမယ်။
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">❓ Unpivot လုပ်ထားသော ဒေတာတွင် KPI ကို မည်သို့တွက်မည်နည်း?</h4>
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                ရှုပ်ထွေးသော ဒေတာများကို သန့်စင်ရန် <strong>Unpivot</strong> သည် အကောင်းဆုံးဖြစ်သော်လည်း၊ Actual နှင့် Target ကို နှိုင်းယှဉ်၍ လုပ်ဆောင်ရည် (KPI) ရာခိုင်နှုန်းတွက်ချက်လိုသောအခါ Unpivot ထားသော ဒေါင်လိုက်ဇယားသည် အခက်အခဲ ဖြစ်စေပါသည်။ ထိုအခါ ဇယားကို လိုသလို ပြန်လည်စုစည်းပေးမည့် <strong>Pivot</strong> နည်းပညာကို အသုံးပြုရပါမည်။
+                            </p>
                         </div>
-                        <img src="images/pq_6_1.png" alt="Final Masterpiece" class="w-full h-auto rounded-xl shadow-md border border-slate-100 mt-4">
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">🧱</span>
+                                <h5 class="font-bold text-xs mt-2">Flat Database</h5>
+                                <p class="text-[10px] text-slate-600">Unpivot ဖြင့် ဖရိုဖရဲ ဒေတာများကို ရှင်းလင်းသော Database ပြုလုပ်ခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">🎯</span>
+                                <h5 class="font-bold text-xs mt-2">Pivot for Compare</h5>
+                                <p class="text-[10px] text-slate-600">Target နှင့် Actual ကို ဘေးတိုက်ယှဉ်၍ တွက်ချက်ရန် ပြင်ဆင်ခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">📈</span>
+                                <h5 class="font-bold text-xs mt-2">Auto KPI</h5>
+                                <p class="text-[10px] text-slate-600">Achievement % ကို Flow အတွင်း၌ပင် တစ်ခါတည်း တွက်ချက်ခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 The Strategy: "Reshaping for Analytics"</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                ဤသင်ခန်းစာတွင် <span class="magic-highlight">Unpivot > Group By > Pivot</span> ဆိုသည့် Advance Logic ကို အသုံးပြုသွားမည်ဖြစ်ပါသည်။ ဤနည်းလမ်းသည် အရောင်းဝန်ထမ်းရာပေါင်းများစွာ၏ KPI များကို Manual Excel တွက်ချက်စရာမလိုဘဲ ဖိုင်အသစ်ရောက်လာတိုင်း <strong>Refresh တစ်ချက်ဖြင့်</strong> အလိုအလျောက် တွက်ချက်ပေးသွားမည်ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-200 shadow-inner">
+                                <p class="text-sm font-black text-yellow-900 uppercase">🏆 Result: From Messy Reports to Automated Performance Tracking</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="ch-4-3" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>🔗 4.3 The Append Magic (Yearly Data Consolidation)</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">📂 လမ်းကြောင်းမတူသော ဖိုင်များကို ပေါင်းစပ်ခြင်း</h4>
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                အချက်အလက်များကို ဖိုဒါတစ်ခုတည်းတွင် စုစည်းထားခြင်းမရှိဘဲ လမ်းကြောင်း (Path) အမျိုးမျိုးတွင် ပြန့်ကျဲနေသောအခါ Folder Automation ပြုလုပ်၍ မရနိုင်ပါ။ ထိုအခါ သီးခြားစီဖြစ်နေသော Query များကို Lego တုံးများကဲ့သို့ အထက်အောက် တစ်ဆက်တည်း ပေါင်းစပ်ပေးမည့် <strong>"Append Queries"</strong> နည်းပညာကို အသုံးပြုရပါမည်။
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">🧱</span>
+                                <h5 class="font-bold text-xs mt-2">Append Logic</h5>
+                                <p class="text-[10px] text-slate-600">မတူညီသော Source များကို အထက်အောက် တစ်သားတည်း ပေါင်းစပ်ခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">⚡</span>
+                                <h5 class="font-bold text-xs mt-2">Zero Redundancy</h5>
+                                <p class="text-[10px] text-slate-600">Data Type နှင့် ခေါင်းစဉ်များ 100% ကိုက်ညီအောင် ညှိယူခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">🚀</span>
+                                <h5 class="font-bold text-xs mt-2">Memory Opti</h5>
+                                <p class="text-[10px] text-slate-600">စက်မလေးစေရန် Enable Load ကို စနစ်တကျ စီမံခန့်ခွဲခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 Professional Secret: Enable Load Management</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                မူရင်းဖိုင် (Source Queries) များကိုပါ Excel ထဲသို့ တစ်ပြိုင်နက် Load လုပ်နေခြင်းသည် ဖိုင် Size ကို အလဟဿ ကြီးမားစေပြီး စက်ကို လေးလံစေပါသည်။ <span class="magic-highlight">Enable Load</span> ကို ပိတ်ထားပြီး နောက်ဆုံးရလဒ် (Combined Result) တစ်ခုတည်းကိုသာ Load လုပ်ခြင်းသည် <strong>"Professional Data Engineer"</strong> များသာ အသုံးပြုလေ့ရှိသည့် အဆင့်မြင့် လုပ်ထုံးလုပ်နည်းဖြစ်ပါသည်။
+                            </p>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <div class="bg-blue-600 p-4 rounded-xl shadow-lg border-t-4 border-blue-400">
+                                <p class="text-white text-sm font-bold uppercase tracking-widest">🏆 Result: Scalable & Optimized Data Pipeline</p>
+                                <p class="text-blue-100 text-xs mt-1">လမ်းကြောင်းပေါင်းစုံမှ ဒေတာများကို ပေါင်းစပ်ပြီး စွမ်းဆောင်ရည် အမြင့်မားဆုံးသော Reporting System တစ်ခုကို တည်ဆောက်နိုင်သွားမည်။</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ch-5-1" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>⬅️ 5.1 Advanced Joins: Customer Segmentation Analysis</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">❓ ဘယ်သူတွေက ဝယ်သူအသစ်လဲ? ဘယ်သူတွေ ပျောက်သွားပြီလဲ?</h4>
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                ကုမ္ပဏီ၏ Customer Database နှင့် လစဉ် Sales Data များကို တိုက်စစ်ရန် VLOOKUP ထက် သာလွန်သည့် <strong>Merge Queries (Joins)</strong> နည်းပညာကို အသုံးပြုရပါမည်။ ဤသင်ခန်းစာတွင် Join Kind ၆ မျိုးကို အသုံးပြု၍ ဖောက်သည်များ၏ အပြုအမူကို အသေးစိတ် ခွဲခြားစိတ်ဖြာနည်းကို လေ့လာရမည် ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
+                                <h5 class="font-bold text-xs text-blue-800">⬅️ Left Outer Join</h5>
+                                <p class="text-[10px] text-slate-600">ဖောက်သည်ဟောင်းများထဲမှ မည်သူတွေ ဝယ်နေဆဲ (Active) လဲဆိုတာ စစ်ဆေးခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100">
+                                <h5 class="font-bold text-xs text-purple-800">➡️ Right Outer Join</h5>
+                                <p class="text-[10px] text-slate-600">အရောင်းစာရင်းထဲမှ မည်သူတွေက ဖောက်သည်အသစ် (New Customers) လဲဆိုတာ ရှာဖွေခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100">
+                                <h5 class="font-bold text-xs text-green-800">🔄 Full Outer Join</h5>
+                                <p class="text-[10px] text-slate-600">အဟောင်းရော အသစ်ပါ ဒေတာအားလုံးကို ပေါင်းစပ်၍ Master Report တည်ဆောက်ခြင်း။</p>
+                            </div>
+                            <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-100">
+                                <h5 class="font-bold text-xs text-yellow-800">🎯 Inner Join</h5>
+                                <p class="text-[10px] text-slate-600">နှစ်ဖက်စလုံးတွင် Match ဖြစ်သော Loyalty Customer များကိုသာ သီးသန့်စစ်ထုတ်ခြင်း။</p>
+                            </div>
+                            <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+                                <h5 class="font-bold text-xs text-red-800">🚫 Anti Joins</h5>
+                                <p class="text-[10px] text-slate-600">Match မဖြစ်သော (ဥပမာ- လုံးဝ လာမဝယ်တော့သူများ) ကိုသာ သီးသန့် ဆွဲထုတ်ခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 The Power of Join Logic</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                Join Logic များကို တတ်မြောက်ထားခြင်းဖြင့် ရှုပ်ထွေးလှသော Data တိုက်စစ်ခြင်းများကို Manual Filter လုပ်စရာမလိုဘဲ <span class="magic-highlight">Conditional Column</span> နှင့် တွဲဖက်ကာ အလိုအလျောက် ခွဲခြားပေးနိုင်သည့် "Smart Pipeline" တစ်ခုကို တည်ဆောက်နိုင်မည် ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <div class="bg-blue-600 p-4 rounded-xl shadow-lg border-t-4 border-blue-400">
+                                <p class="text-white text-sm font-bold uppercase tracking-widest">🏆 Result: Scientific Customer Segmentation</p>
+                                <p class="text-blue-100 text-xs mt-1">ဒေတာများကို အခြေခံ၍ မှန်ကန်သော Business Decision များ ချမှတ်နိုင်သည့် အဆင့်မြင့် Analyst တစ်ဦး ဖြစ်လာမည်။</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ch-6-1" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>🔑 6.1 Master Table Logic (Sales, Product & Promotion)</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">🏗️ Building the Data Architecture</h4>
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                လုပ်ငန်းခွင် Data Automation တွင် အခြေခံအကျဆုံး ဇယားကြီး (၃) ခုရှိပါသည်။ အရောင်းမှတ်တမ်း (Sales)၊ ပစ္စည်းဈေးနှုန်းများ (Products) နှင့် လအလိုက် ပရိုမိုးရှင်းများ (Promotions) တို့ ဖြစ်ပါသည်။ ယနေ့သင်ခန်းစာတွင် ယင်းဇယားများကို လမ်းကြောင်းတစ်ခုတည်းမှ ခေါ်ယူပြီး <strong>Master Table</strong> ကြီးတစ်ခုတည်းအဖြစ် ပေါင်းစပ်နည်းကို လေ့လာပါမည်။
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">🔗</span>
+                                <h5 class="font-bold text-xs mt-2">Bridge Key Logic</h5>
+                                <p class="text-[10px] text-slate-600">Year-Month Key တည်ဆောက်၍ ကွဲပြားသော Source များကို ချိတ်ဆက်ခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">🧮</span>
+                                <h5 class="font-bold text-xs mt-2">Row-Level Calculation</h5>
+                                <p class="text-[10px] text-slate-600">Revenue နှင့် Discount များကို အတန်းလိုက် အလိုအလျောက် တွက်ချက်ခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">💰</span>
+                                <h5 class="font-bold text-xs mt-2">M-Language Bonus</h5>
+                                <p class="text-[10px] text-slate-600">ဝန်ထမ်းဆုကြေးများကို Code ရေးသား၍ Automation ပြုလုပ်ခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 Introduction to M-Language Logic</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                UI (Buttons) များပေါ်တွင် မရနိုင်သော အဆင့်မြင့် Bonus Logic များကို <span class="magic-highlight">M-Language</span> အသုံးပြု၍ စတင်ရေးသားပါမည်။ ဤနည်းလမ်းသည် သတ်မှတ်ထားသော Target ပြည့်မီသည့် ဝန်ထမ်းများကိုသာ ဆုကြေးများ အလိုအလျောက် သတ်မှတ်ပေးနိုင်သည့် "Smart Scoring System" တစ်ခု ဖြစ်ပါသည်။
+                            </p>
+                            
+                            <div class="bg-slate-900 text-yellow-400 p-4 rounded-lg font-mono text-xs">
+                                <p class="text-slate-500 mb-2">// Bonus Calculation Logic Example</p>
+                                <code>if [Sale Price] >= 1500000 then [Sale Price]*0.033 else if ...</code>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="mt-6 text-center">
+                            <div class="bg-blue-600 p-4 rounded-xl shadow-lg border-t-4 border-blue-400">
+                                <p class="text-white text-sm font-bold uppercase tracking-widest">🏆 Result: Advanced Automated Financial System</p>
+                                <p class="text-blue-100 text-xs mt-1">ရှုပ်ထွေးသော တွက်ချက်မှုများအားလုံးကို Excel ထဲတွင် Manual လုပ်စရာမလိုတော့ဘဲ Data Flow ထဲတွင်ပင် အပြီးသတ်နိုင်သွားမည်။</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="ch-7-1" data-aos="fade-up" class="chapter-card">
+                    <div class="chapter-header"><h3>🏆 7.1 Regional Master Final: The Grand Dashboard Integration</h3></div>
+                    <div class="chapter-body">
+                        
+                        <div class="pain-point mb-6">
+                            <h4 class="font-bold text-yellow-900 mb-2">🚀 Final Capstone Project</h4>
+                            <p class="text-sm leading-relaxed text-slate-700">
+                                ဤသင်ခန်းစာသည် သင်ယူခဲ့သမျှသော Power Query နည်းပညာများအားလုံးကို အသုံးချရမည့် Final Project ဖြစ်ပါသည်။ <strong>Target (ရည်မှန်းချက်)၊ Expense (ကုန်ကျစရိတ်) နှင့် Sales (အရောင်း)</strong> ဆိုသည့် မတူညီသော Data အရင်းအမြစ် ၃ ခုကို တိုင်းဒေသကြီးအလိုက် အချိုးကျ ပေါင်းစပ်ပြီး အသက်ဝင်သည့် <strong>Dynamic Dashboard</strong> တစ်ခုအဖြစ် ပြောင်းလဲဖန်တီးသွားမည် ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-3 mb-6">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-center">
+                                <span class="text-2xl">🔗</span>
+                                <h5 class="font-bold text-xs mt-2">Master Integration</h5>
+                                <p class="text-[10px] text-slate-600">ဇယား ၃ ခုကို Key တစ်ခုတည်းဖြင့် ပေါင်းစပ်ခြင်း။</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-100 text-center">
+                                <span class="text-2xl">⚡</span>
+                                <h5 class="font-bold text-xs mt-2">M-Code Optimization</h5>
+                                <p class="text-[10px] text-slate-600">Date Functions များကို အဆင့်မြင့် Code ဖြင့် ရေးသားခြင်း။</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-100 text-center">
+                                <span class="text-2xl">📈</span>
+                                <h5 class="font-bold text-xs mt-2">Dynamic Analysis</h5>
+                                <p class="text-[10px] text-slate-600">Slicer နှိပ်လိုက်သည်နှင့် အဖြေများ ချက်ချင်းပြောင်းလဲခြင်း။</p>
+                            </div>
+                        </div>
+
+                        <div class="tech-solution mb-6 text-sm">
+                            <h4 class="font-bold text-blue-800 mb-2">💡 The "Master Key" Concept</h4>
+                            <p class="text-xs leading-relaxed text-slate-700 mb-4">
+                                မတူညီသော ဇယားများကို ပေါင်းစပ်ရာတွင် <span class="magic-highlight">Date.ToText</span> Function ကို အသုံးပြု၍ <code>2024-January-Yangon</code> ကဲ့သို့သော "Unique ID" များကို ကိုယ်တိုင် တည်ဆောက်နည်းကို လေ့လာရမည် ဖြစ်ပါသည်။ ဤနည်းလမ်းသည် ရှုပ်ထွေးလှသော ဒေတာများကို တစ်ခုတည်းသော Master Table အဖြစ် စီးဆင်းသွားစေမည့် <strong>LUCAS-01 Architecture</strong> ၏ အခြေခံအုတ်မြစ် ဖြစ်ပါသည်။
+                            </p>
+                        </div>
+
+                        
+
+                        <div class="mt-6 text-center">
+                            <div class="bg-blue-600 p-5 rounded-2xl shadow-2xl border-t-4 border-yellow-400 transform transition hover:scale-105">
+                                <p class="text-white text-base font-black uppercase tracking-widest">🏆 Master Class Graduation Project</p>
+                                <p class="text-blue-100 text-xs mt-2 font-medium">"သင်သည် ယခုအခါ ရှုပ်ထွေးသော ဒေတာများကို အသက်သွင်းပေးနိုင်သည့် Professional Data Automation Expert တစ်ဦး ဖြစ်သွားပါပြီ။"</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -232,17 +854,11 @@
         </div>
 
         <footer class="container mx-auto max-w-screen-xl px-4 text-center mt-16 pt-8 border-t border-gray-300 pb-8">
-            <p class="text-lg font-bold text-gray-800 mb-4 tracking-wide">Powered by Data Insights with Arkar 💡</p>
+            <p class="text-lg font-bold text-gray-800 mb-4">Powered by Data Insights with Arkar 💡</p>
             <div class="flex justify-center items-center gap-6 mb-6">
-                <a href="https://www.linkedin.com/in/arkar-linn-datapro/" target="_blank" class="transition transform hover:scale-110 hover:-translate-y-1">
-                    <img src="images/linkedin.png" alt="LinkedIn" class="w-10 h-10">
-                </a>
-                <a href="https://youtube.com/@datainsightswitharkar?si=NPDfTvREb0IxtRDj" target="_blank" class="transition transform hover:scale-110 hover:-translate-y-1">
-                    <img src="images/youtube.png" alt="YouTube" class="w-10 h-10">
-                </a>
-                <a href="https://www.facebook.com/share/1DB4aEH7xs/" target="_blank" class="transition transform hover:scale-110 hover:-translate-y-1">
-                    <img src="images/facebook.png" alt="Facebook" class="w-10 h-10">
-                </a>
+                <a href="https://www.linkedin.com/in/arkar-linn-datapro/" target="_blank" class="transition transform hover:scale-110"><img src="images/linkedin.png" class="w-10 h-10"></a>
+                <a href="https://youtube.com/@datainsightswitharkar" target="_blank" class="transition transform hover:scale-110"><img src="images/youtube.png" class="w-10 h-10"></a>
+                <a href="https://www.facebook.com/theinsightssolution" target="_blank" class="transition transform hover:scale-110"><img src="images/facebook.png" class="w-10 h-10"></a>
             </div>
             <p class="text-gray-500 text-sm">&copy; 2026 The Insights Solution. All Rights Reserved.</p>
         </footer>
@@ -291,25 +907,64 @@
 
     </div>
 
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ once: true, offset: 100 });
+    </script>
+
+    <script>
+        let touchstartX = 0;
+        let touchendX = 0;
+        let touchstartY = 0; 
+        let touchendY = 0;
         
-        let touchstartX = 0, touchendX = 0, touchstartY = 0, touchendY = 0;
-        const pages = ["index.html", "resources.html", "excel.html", "query.html", "powerbi.html"];
+        // Page အစီအစဉ်
+        const pages = [
+            "index.html",      // 0 - Home
+            "resources.html",  // 1 - Free
+            "excel.html",      // 2 - Excel
+            "query.html",      // 3 - Query
+            "powerbi.html"     // 4 - PBI (လက်ရှိ Page)
+        ];
 
         function checkDirection() {
-            let diffX = Math.abs(touchendX - touchstartX), diffY = Math.abs(touchendY - touchstartY);
-            if (diffX < 50 || diffY > diffX) return;
-            let path = window.location.pathname, page = path.split("/").pop() || "index.html";
+            let diffX = Math.abs(touchendX - touchstartX);
+            let diffY = Math.abs(touchendY - touchstartY);
+
+            if (diffX < 50) return;
+            if (diffY > diffX) return;
+
+            let path = window.location.pathname;
+            let page = path.split("/").pop(); 
+            if (page === "" || page === "tis") page = "index.html"; 
+
             let currentIndex = pages.indexOf(page);
-            if (currentIndex === -1) currentIndex = 0;
-            if (touchendX < touchstartX && currentIndex < pages.length - 1) window.location.href = pages[currentIndex + 1];
-            if (touchendX > touchstartX && currentIndex > 0) window.location.href = pages[currentIndex - 1];
+            if (currentIndex === -1) currentIndex = 4; // Default to PBI if not found
+
+            if (touchendX < touchstartX) {
+                if (currentIndex < pages.length - 1) {
+                    window.location.href = pages[currentIndex + 1];
+                }
+            }
+            
+            if (touchendX > touchstartX) {
+                if (currentIndex > 0) {
+                    window.location.href = pages[currentIndex - 1];
+                }
+            }
         }
 
-        document.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; touchstartY = e.changedTouches[0].screenY; });
-        document.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; touchendY = e.changedTouches[0].screenY; checkDirection(); });
+        document.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+            touchstartY = e.changedTouches[0].screenY;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            touchendY = e.changedTouches[0].screenY; 
+            checkDirection();
+        });
     </script>
 </body>
 </html>
