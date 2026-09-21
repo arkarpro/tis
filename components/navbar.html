@@ -1,0 +1,40 @@
+<style>
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+
+<div class="bg-white/90 backdrop-blur-md w-full h-full flex items-center border-b border-gray-100 relative z-50">
+    <div class="w-full max-w-7xl mx-auto px-4 md:px-6 flex items-center h-16">
+        
+        <a href="#" onclick="loadCategory('Home'); return false;" class="flex-shrink-0 text-xl font-extrabold tracking-tight mr-6 md:mr-10 flex items-center gap-1 group">
+            <span class="text-blue-600 group-hover:text-blue-700 transition-colors">TIS</span>
+            <span class="text-gray-800 group-hover:text-gray-900 transition-colors">Learning</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 ml-0.5"></span>
+        </a>
+        
+        <div class="flex-1 overflow-x-auto no-scrollbar flex items-center justify-start md:justify-end">
+            <div id="navMenu" class="flex items-center space-x-1 sm:space-x-2 min-w-max py-2 pr-2">
+                
+                <a href="#" onclick="loadCategory('Excel'); return false;" data-category="Excel" class="nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300">Excel</a>
+                
+                <a href="#" onclick="loadCategory('PowerQuery'); return false;" data-category="PowerQuery" class="nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300">
+                    <!-- ဖုန်းတွင်ပေါ်မည် --> <span class="md:hidden">Query</span>
+                    <!-- Desktop တွင်ပေါ်မည် --> <span class="hidden md:inline">Power Query</span>
+                </a>
+                
+                <a href="#" onclick="loadCategory('PowerBI'); return false;" data-category="PowerBI" class="nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300">
+                    <!-- ဖုန်းတွင်ပေါ်မည် --> <span class="md:hidden">PBI</span>
+                    <!-- Desktop တွင်ပေါ်မည် --> <span class="hidden md:inline">Power BI</span>
+                </a>
+                
+                <a href="#" onclick="loadCategory('SQL'); return false;" data-category="SQL" class="nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300">SQL</a>
+                
+                <a href="#" onclick="loadCategory('Tech'); return false;" data-category="Tech" class="nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300">
+                    <!-- ဖုန်းတွင်ပေါ်မည် --> <span class="md:hidden">Dev</span>
+                    <!-- Desktop တွင်ပေါ်မည် --> <span class="hidden md:inline">Python & Dev</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</div>
