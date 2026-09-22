@@ -1,342 +1,337 @@
-// =========================================================================
-// 🌐 The Insights Solution (TIS) - Universal CMS & Dynamic Rendering Engine
-// =========================================================================
+// =================================================================
+// 🌐 TIS Master API & Single-Page Render Engine
+// =================================================================
 
-const MASTER_API = "https://script.google.com/macros/s/AKfycbwuwM_avvTVZyYqgXVwzF_IAd5klnlvdmJ13JwBWiByUxXAq7dXKAiuLB5sjSornBfH/exec";
-const DATA_CACHE = {};
+// 💡 သင်ပေးပို့ထားသော API လင့်ခ်အသစ်
+const MASTER_API = "https://script.google.com/macros/s/AKfycbw7JI_LnKhMK9yWChr9ABNkgKMkmf9oUtD09zgGoEIZ-vsPrB0bzVjW18JeJj-kBreq/exec";
 
-function resolveMedia(folder, filename) {
-  if (!filename || filename === "" || filename === "null" || filename === "undefined") {
-    return "../Media_Files/branding/placeholder.png";
-  }
-  const cleanName = String(filename).trim();
-  if (cleanName.startsWith("http://") || cleanName.startsWith("https://") || cleanName.startsWith("data:")) {
-    return cleanName;
-  }
-  // Determine if running from within pages/ subdirectory or root
-  const isInPagesDir = window.location.pathname.includes('/pages/') || window.location.href.includes('/pages/');
-  const prefix = isInPagesDir ? '../Media_Files' : 'Media_Files';
-  
-  if (cleanName.includes("/")) {
-    return `${prefix}/${cleanName}`;
-  }
-  return `${prefix}/${folder}/${cleanName}`;
-}
+const THEMES = {
+    'Home': { text: 'text-blue-600', tag: 'bg-blue-50 text-blue-700' },
+    'Excel': { text: 'text-green-600', tag: 'bg-green-50 text-green-700' },
+    'PowerQuery': { text: 'text-orange-600', tag: 'bg-orange-50 text-orange-700' },
+    'PowerBI': { text: 'text-yellow-600', tag: 'bg-yellow-50 text-yellow-700' },
+    'SQL': { text: 'text-sky-600', tag: 'bg-sky-50 text-sky-700' },
+    'Tech': { text: 'text-purple-600', tag: 'bg-purple-50 text-purple-700' }
+};
 
-function createButtonHtml(url, label, customClass = "bg-blue-600 hover:bg-blue-700 text-white") {
-  if (!url || url.trim() === "" || url === "#") return "";
-  return `
-    <a href="${url}" target="_blank" rel="noopener noreferrer" 
-       class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs tracking-wide transition shadow-sm ${customClass}">
-      <span>${label}</span>
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-    </a>
-  `;
-}
+let APP_DATA = null;
+let currentCategory = 'Home';
 
-async function fetchTabData(tabName, forceRefresh = false) {
-  if (!forceRefresh && DATA_CACHE[tabName]) {
-    return DATA_CACHE[tabName];
-  }
-  
-  const url = `${MASTER_API}?tab=${encodeURIComponent(tabName)}${forceRefresh ? '&nocache=1' : ''}`;
-  try {
-    const res = await fetch(url);
-    const json = await res.json();
-    if (json.status === "success" && json.data) {
-      DATA_CACHE[tabName] = json.data;
-      return json.data;
-    } else {
-      console.warn("API returned error or empty data for tab:", tabName, json);
-      return [];
-    }
-  } catch (err) {
-    console.error(`Error fetching tab [${tabName}]:`, err);
-    return [];
-  }
-}
-
-async function initSection(tabName, containerId) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  container.innerHTML = `
-    <div class="flex flex-col items-center justify-center py-16 w-full">
-      <div class="w-8 h-8 border-3 border-gray-100 border-t-blue-600 rounded-full animate-spin mb-3"></div>
-      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Cloud CMS မှ ဒေတာများ ဆွဲယူနေပါသည်...</p>
-    </div>
-  `;
-
-  const data = await fetchTabData(tabName);
-  if (!data || data.length === 0) {
+// --------------------------------------------------
+// 1. Data တစ်ခါတည်း ဆွဲယူခြင်း (One-time Fetch)
+// --------------------------------------------------
+async function fetchMasterData() {
+    const container = document.getElementById('content');
+    
+    // Loading State
     container.innerHTML = `
-      <div class="bg-gray-50 border border-gray-100 rounded-2xl p-6 text-center text-gray-500">
-        <p class="font-bold text-xs">လက်ရှိတွင် အချက်အလက်များ မရှိသေးပါ</p>
-        <p class="text-[10px] text-gray-400 mt-1">Google Sheet တွင် ဒေတာဖြည့်သွင်းပြီးပါက အလိုအလျောက် ပေါ်လာမည်ဖြစ်ပါသည်။</p>
-      </div>
+        <div class="flex flex-col items-center justify-center py-32 h-screen">
+            <div class="w-12 h-12 border-[4px] border-gray-100 border-t-blue-600 rounded-full animate-spin mb-4"></div>
+            <h2 class="text-xl font-extrabold text-gray-800 mb-1 tracking-tight">TIS Learning</h2>
+            <p class="text-xs font-bold text-gray-400 tracking-widest uppercase">Building your workspace...</p>
+        </div>
     `;
-    return;
-  }
 
-  switch (tabName) {
-    case "HOME_About":
-      renderAbout(data, container);
-      break;
-    case "HOME_Projects":
-      renderProjects(data, container);
-      break;
-    case "FREE_Excel_Hacks":
-      renderHacks(data, container);
-      break;
-    case "FREE_Videos":
-      renderVideos(data, container);
-      break;
-    case "FREE_Articles":
-      renderArticles(data, container);
-      break;
-    case "COURSE_Excel":
-    case "COURSE_PowerQuery":
-    case "COURSE_PowerBI":
-    case "COURSE_SQL":
-      renderCourse(data, tabName, container);
-      break;
-    case "TEST_Reviews":
-      renderReviews(data, container);
-      break;
-    default:
-      console.warn("No specific renderer for tab:", tabName);
-  }
+    try {
+        const response = await fetch(MASTER_API);
+        APP_DATA = await response.json();
+        
+        // Data ရပြီဆိုပါက HTML အားလုံးကို တစ်ခါတည်း တည်ဆောက်မည်
+        renderAllContent();
+        
+    } catch (error) {
+        console.error("Fetch error:", error);
+        container.innerHTML = `<div class="text-center text-red-500 font-bold bg-red-50 p-6 rounded-3xl w-full mt-10">Failed to load workspace. Please check your connection.</div>`;
+    }
 }
 
-function renderAbout(rows, container) {
-  const item = rows[0] || {};
-  const photoUrl = resolveMedia('about', item.Image_Name || 'arkar_linn.png');
-  
-  container.innerHTML = `
-    <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm flex flex-col md:flex-row gap-8 items-center">
-      <div class="w-36 h-36 md:w-48 md:h-48 rounded-2xl overflow-hidden shrink-0 shadow-md border-2 border-blue-50">
-        <img src="${photoUrl}" alt="${item.Headline || 'Sayar Arkar Linn'}" class="w-full h-full object-cover" onerror="this.src='../Media_Files/branding/placeholder.png'">
-      </div>
-      <div class="flex-1 text-left space-y-3">
-        <span class="inline-block px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-extrabold uppercase tracking-wider">
-          ${item.Subheadline || 'Founder & Lead Instructor'}
-        </span>
-        <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
-          ${item.Headline || 'About The Insights Solution'}
-        </h2>
-        <div class="text-gray-600 text-sm leading-relaxed space-y-2">
-          ${item.Founder_Bio_MD ? `<p>${item.Founder_Bio_MD}</p>` : ''}
-          ${item.Vision_Mission_MD ? `<p class="font-medium text-gray-700 bg-gray-50 p-3 rounded-xl border-l-4 border-blue-600">${item.Vision_Mission_MD}</p>` : ''}
-        </div>
-        <div class="pt-2 flex flex-wrap gap-3">
-          ${createButtonHtml(item.CTA_Link, item.CTA_Text || 'ဆက်သွယ်ရန်')}
-          ${item.Viber_Link ? `<a href="${item.Viber_Link}" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-purple-50 text-purple-700 hover:bg-purple-100 transition">Viber ဆက်သွယ်မည်</a>` : ''}
-          ${item.Facebook_Link ? `<a href="${item.Facebook_Link}" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs bg-blue-50 text-blue-700 hover:bg-blue-100 transition">Facebook Page</a>` : ''}
-        </div>
-      </div>
-    </div>
-  `;
-}
+// --------------------------------------------------
+// 2. HTML အပိုင်းအားလုံးကို အစဉ်လိုက် တည်ဆောက်ခြင်း
+// --------------------------------------------------
+function renderAllContent() {
+    const container = document.getElementById('content');
+    container.className = "md:col-span-6 w-full pb-32"; // pb-32 for bottom scrolling space
+    let finalHTML = '';
 
-function renderProjects(rows, container) {
-  let html = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">`;
-  rows.forEach(p => {
-    const imgUrl = resolveMedia('projects', p.Image_Name);
-    const techTags = (p.Tech_Stack || '').split('/').map(t => `<span class="px-2 py-0.5 bg-gray-100 text-gray-700 rounded-md text-[10px] font-bold">${t.trim()}</span>`).join('');
+    // ==========================================
+    // Section 1: HOME (Hero + Random Feed)
+    // ==========================================
+    finalHTML += `<div id="section-Home" class="scroll-section scroll-mt-20 flex flex-col gap-8 w-full pt-4">`;
+    finalHTML += getHomeHeroHTML();
     
-    html += `
-      <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
-        <div>
-          <div class="h-44 w-full bg-gray-100 overflow-hidden relative">
-            <img src="${imgUrl}" alt="${p.Title}" class="w-full h-full object-cover transition hover:scale-105 duration-300" onerror="this.src='../Media_Files/branding/placeholder.png'">
-            <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">${p.Category || 'Project'}</span>
-          </div>
-          <div class="p-5 space-y-3">
-            <h3 class="font-extrabold text-base text-gray-900 leading-snug">${p.Title}</h3>
-            <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">${p.Summary || ''}</p>
-            <div class="flex flex-wrap gap-1.5">${techTags}</div>
-          </div>
-        </div>
-        <div class="p-5 pt-0">
-          <div class="pt-3 border-t border-gray-100 flex items-center justify-between gap-2">
-            ${createButtonHtml(p.Live_Demo_URL, 'Live Demo စမ်းသပ်ရန် ➔', 'bg-slate-900 hover:bg-blue-600 text-white flex-1 text-center')}
-            ${p.GitHub_URL ? `<a href="${p.GitHub_URL}" target="_blank" class="px-3 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-xs font-bold transition">GitHub</a>` : ''}
-          </div>
-        </div>
-      </div>
-    `;
-  });
-  html += `</div>`;
-  container.innerHTML = html;
-}
+    // Mix all posts for Home Feed
+    let allPosts = [];
+    ['Excel', 'PowerQuery', 'PowerBI', 'SQL', 'Tech'].forEach(key => {
+        if(APP_DATA[key] && Array.isArray(APP_DATA[key])) {
+            allPosts = allPosts.concat(APP_DATA[key].map(p => ({...p, OriginCategory: key})));
+        }
+    });
+    if (allPosts.length > 0) {
+        allPosts = allPosts.sort(() => 0.5 - Math.random()).slice(0, 15); // Show 15 random posts
+        finalHTML += generateCardsHTML(allPosts, 'Home');
+    }
+    finalHTML += `</div>`;
 
-function renderHacks(rows, container) {
-  let html = `<div class="space-y-4 w-full">`;
-  rows.forEach((h, idx) => {
-    const imgUrl = resolveMedia('hacks', h.Image_Name);
-    html += `
-      <div class="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:border-emerald-200 transition">
-        <div class="flex items-start justify-between gap-4">
-          <div class="flex-1 space-y-2">
-            <div class="flex items-center gap-2">
-              <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 font-extrabold text-xs rounded-lg">${h.Hack_No || `Hack #${idx+1}`}</span>
-              <span class="text-xs font-bold text-gray-400">${h.Category || 'Excel'}</span>
-            </div>
-            <h3 class="font-extrabold text-base text-gray-800">${h.Title}</h3>
-            ${h.Problem_Statement ? `<p class="text-xs text-rose-600 font-medium bg-rose-50/60 p-2.5 rounded-xl border-l-2 border-rose-400">⚠️ ပြဿနာ: ${h.Problem_Statement}</p>` : ''}
-            <div class="text-xs text-gray-600 whitespace-pre-line leading-relaxed bg-slate-50 p-3.5 rounded-xl font-mono">${h.Solution_Steps_MD || ''}</div>
-          </div>
-          ${h.Image_Name ? `
-            <div class="w-24 h-24 shrink-0 rounded-xl overflow-hidden border border-gray-200 shadow-sm cursor-pointer" onclick="window.open('${imgUrl}', '_blank')">
-              <img src="${imgUrl}" alt="${h.Title}" class="w-full h-full object-cover hover:scale-110 transition" onerror="this.src='../Media_Files/branding/placeholder.png'">
-            </div>
-          ` : ''}
-        </div>
-        ${h.Download_File_URL ? `
-          <div class="mt-3 pt-3 border-t border-gray-100 flex justify-end">
-            ${createButtonHtml(h.Download_File_URL, 'Practice File ဒေါင်းလုဒ်ရယူရန် 📥', 'bg-emerald-600 hover:bg-emerald-700 text-white')}
-          </div>
-        ` : ''}
-      </div>
-    `;
-  });
-  html += `</div>`;
-  container.innerHTML = html;
-}
+    // ==========================================
+    // Section 2: EXCEL
+    // ==========================================
+    finalHTML += `<div id="section-Excel" class="scroll-section scroll-mt-24 mt-16 pt-10 border-t border-gray-100 flex flex-col gap-8 w-full">`;
+    finalHTML += `<div class="flex items-center gap-3 mb-2"><span class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold">E</span><h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Excel Insights</h2></div>`;
+    if (APP_DATA['Excel'] && APP_DATA['Excel'].length > 0) finalHTML += generateCardsHTML(APP_DATA['Excel'], 'Excel');
+    else finalHTML += getEmptyStateHTML('Excel');
+    finalHTML += `</div>`;
 
-function renderVideos(rows, container) {
-  let html = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">`;
-  rows.forEach(v => {
-    const thumbUrl = resolveMedia('videos', v.Image_Name);
-    const ytUrl = v.YouTube_Embed_ID ? `https://www.youtube.com/watch?v=${v.YouTube_Embed_ID}` : '#';
+    // ==========================================
+    // Section 3: POWER QUERY
+    // ==========================================
+    finalHTML += `<div id="section-PowerQuery" class="scroll-section scroll-mt-24 mt-16 pt-10 border-t border-gray-100 flex flex-col gap-8 w-full">`;
+    finalHTML += `<div class="flex items-center gap-3 mb-2"><span class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold">PQ</span><h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Power Query</h2></div>`;
+    if (APP_DATA['PowerQuery'] && APP_DATA['PowerQuery'].length > 0) finalHTML += generateCardsHTML(APP_DATA['PowerQuery'], 'PowerQuery');
+    else finalHTML += getEmptyStateHTML('Power Query');
+    finalHTML += `</div>`;
+
+    // ==========================================
+    // Section 4: POWER BI
+    // ==========================================
+    finalHTML += `<div id="section-PowerBI" class="scroll-section scroll-mt-24 mt-16 pt-10 border-t border-gray-100 flex flex-col gap-8 w-full">`;
+    finalHTML += `<div class="flex items-center gap-3 mb-2"><span class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 font-bold">BI</span><h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Power BI</h2></div>`;
+    if (APP_DATA['PowerBI'] && APP_DATA['PowerBI'].length > 0) finalHTML += generateCardsHTML(APP_DATA['PowerBI'], 'PowerBI');
+    else finalHTML += getEmptyStateHTML('Power BI');
+    finalHTML += `</div>`;
+
+    // ==========================================
+    // Section 5: SQL (Static + Data)
+    // ==========================================
+    finalHTML += `<div id="section-SQL" class="scroll-section scroll-mt-24 mt-16 pt-10 border-t border-gray-100 flex flex-col gap-8 w-full">`;
+    finalHTML += `<div class="flex items-center gap-3 mb-2"><span class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 font-bold">DB</span><h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">SQL Server</h2></div>`;
+    finalHTML += getSQLStaticHTML();
+    if (APP_DATA['SQL'] && APP_DATA['SQL'].length > 0) finalHTML += generateCardsHTML(APP_DATA['SQL'], 'SQL');
+    finalHTML += `</div>`;
+
+    // ==========================================
+    // Section 6: TECH (Static + Data)
+    // ==========================================
+    finalHTML += `<div id="section-Tech" class="scroll-section scroll-mt-24 mt-16 pt-10 border-t border-gray-100 flex flex-col gap-8 w-full">`;
+    finalHTML += `<div class="flex items-center gap-3 mb-2"><span class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold">Dev</span><h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Python & Dev</h2></div>`;
+    finalHTML += getTechStaticHTML();
+    if (APP_DATA['Tech'] && APP_DATA['Tech'].length > 0) finalHTML += generateCardsHTML(APP_DATA['Tech'], 'Tech');
+    finalHTML += `</div>`;
+
+    // Add everything to DOM
+    container.innerHTML = finalHTML;
     
-    html += `
-      <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm flex flex-col justify-between">
-        <div>
-          <div class="h-44 w-full bg-gray-900 relative group cursor-pointer" onclick="window.open('${ytUrl}', '_blank')">
-            <img src="${thumbUrl}" alt="${v.Title}" class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition" onerror="this.src='../Media_Files/branding/placeholder.png'">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-12 h-12 rounded-full bg-red-600/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition">
-                <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              </div>
+    // Initialize ScrollSpy to track where user is reading
+    if (typeof setupScrollSpy === 'function') setupScrollSpy();
+}
+
+// --------------------------------------------------
+// 3. Navigation (Scroll to Anchor)
+// --------------------------------------------------
+function loadCategory(categoryName) {
+    if (window.innerWidth < 768 && typeof switchMobileTab === 'function') {
+        switchMobileTab('home');
+    }
+    
+    const targetSection = document.getElementById('section-' + categoryName);
+    if (targetSection) {
+        // Smooth scroll to the specific section
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+function updateTopNavbarUI(categoryName) {
+    currentCategory = categoryName;
+    document.querySelectorAll('.nav-item').forEach(el => {
+        if (el.getAttribute('data-category') === categoryName) {
+            el.className = "nav-item text-[15px] font-extrabold text-blue-800 bg-blue-50 px-4 py-2 rounded-full transition-all duration-300 shadow-sm";
+        } else {
+            el.className = "nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300";
+        }
+    });
+}
+
+// --------------------------------------------------
+// ၄။ HTML Generators
+// --------------------------------------------------
+function generateCardsHTML(dataArray, fallbackCategory) {
+    return dataArray.map(item => {
+        let mediaContent = '';
+        const mediaVal = item.Media_URL ? item.Media_URL.trim() : '';
+
+        if (mediaVal.includes('youtu.be/') || mediaVal.includes('youtube.com/')) {
+            let videoId = '';
+            if (mediaVal.includes('youtu.be/')) videoId = mediaVal.split('youtu.be/')[1].split('?')[0];
+            else if (mediaVal.includes('v=')) videoId = mediaVal.split('v=')[1].split('&')[0];
+            mediaContent = `<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+        } else if (mediaVal.match(/\.(jpeg|jpg|gif|png|webp)$/i)) {
+            mediaContent = `<img src="Media_Files/${mediaVal}" class="absolute top-0 left-0 w-full h-full object-cover" alt="${item.Title}">`;
+        } else {
+            mediaContent = `<div class="absolute inset-0 flex items-center justify-center bg-gray-50 text-gray-400 font-medium text-sm">No Media Available</div>`;
+        }
+
+        const isPremium = String(item.Is_Premium).toUpperCase() === 'TRUE';
+        const isLoggedIn = typeof checkLoginStatus === 'function' ? checkLoginStatus() : false; 
+        const isLocked = isPremium && !isLoggedIn;
+
+        const activeCategoryName = item.OriginCategory || item.Category || fallbackCategory;
+        const theme = THEMES[activeCategoryName] || THEMES['Home'];
+
+        return `
+        <div class="bg-white rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition-all duration-300 flex flex-col overflow-hidden w-full relative animate-fade-in">
+            
+            <div class="aspect-video w-full bg-slate-900 relative">
+                ${isLocked ? `
+                    <!-- 💡 Overlay ကို ၄၀% သာ မှောင်စေပြီး (bg-slate-900/20)၊ အနည်းငယ်သာ ဝါးစေရန် (backdrop-blur-sm) ပြင်ဆင်ထားသည် -->
+                    <div class="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/40 backdrop-blur-sm text-white z-10 p-4 text-center transition-all duration-300 hover:bg-slate-900/50">
+                        <div class="text-3xl mb-2 filter drop-shadow-lg">💎</div>
+                        <span class="font-bold text-[13px] tracking-wide mb-4 text-white drop-shadow-md">Premium Lesson</span>
+                        <button onclick="if(typeof openLoginModal === 'function') openLoginModal()" class="px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-full text-xs font-extrabold tracking-wider uppercase shadow-lg shadow-blue-900/50 hover:shadow-blue-600/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            Login to Learn
+                        </button>
+                    </div>
+                    <!-- 💡 Video အား အဖြူအမည်းဖြစ်စေသော grayscale နှင့် opacity များကို ဖယ်ရှားလိုက်ပါသည် -->
+                    <div class="w-full h-full pointer-events-none">${mediaContent}</div>
+                ` : `${mediaContent}`}
             </div>
-            <span class="absolute bottom-2 right-2 bg-black/80 text-white text-[10px] font-bold px-2 py-0.5 rounded">${v.Duration || '15:00'}</span>
-          </div>
-          <div class="p-4 space-y-2">
-            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider">${v.Topic || 'Tutorial'}</span>
-            <h3 class="font-extrabold text-sm text-gray-900 leading-snug">${v.Title}</h3>
-          </div>
-        </div>
-        <div class="p-4 pt-0">
-          <div class="pt-2 flex items-center justify-between gap-2 border-t border-gray-100">
-            ${createButtonHtml(ytUrl, 'YouTube တွင် ကြည့်ရှုမည်', 'bg-red-600 hover:bg-red-700 text-white text-xs')}
-            ${v.Notes_URL ? `<a href="${v.Notes_URL}" target="_blank" class="text-xs font-bold text-gray-600 hover:text-blue-600">Lecture Notes 📥</a>` : ''}
-          </div>
-        </div>
-      </div>
-    `;
-  });
-  html += `</div>`;
-  container.innerHTML = html;
+            
+            <div class="p-6 md:p-8 flex flex-col flex-grow">
+                <span class="inline-block px-3.5 py-1.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest w-max mb-3 ${theme.tag}">${activeCategoryName}</span>
+                <h3 class="font-bold text-lg sm:text-xl mt-1 text-gray-900 tracking-tight leading-snug">${item.Title}</h3>
+                <p class="text-[13px] text-gray-600 mt-3 leading-relaxed">${item.Body_Text || item.Description}</p>
+            </div>
+            
+        </div>`;
+    }).join(''); 
 }
 
-function renderArticles(rows, container) {
-  let html = `<div class="space-y-6 w-full">`;
-  rows.forEach(a => {
-    const coverUrl = resolveMedia('articles', a.Image_Name);
-    html += `
-      <article class="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm flex flex-col md:flex-row gap-6 items-start">
-        ${a.Image_Name ? `
-          <div class="w-full md:w-48 h-36 rounded-2xl overflow-hidden shrink-0 bg-gray-100">
-            <img src="${coverUrl}" alt="${a.Title}" class="w-full h-full object-cover" onerror="this.src='../Media_Files/branding/placeholder.png'">
-          </div>
-        ` : ''}
-        <div class="flex-1 space-y-2">
-          <div class="flex items-center gap-2 text-xs font-bold text-gray-400">
-            <span class="text-blue-600">${a.Category || 'Data Analytics'}</span>
-            <span>•</span>
-            <span>${a.Published_Date || ''}</span>
-            <span>•</span>
-            <span>${a.Author || 'Sayar Arkar Linn'}</span>
-          </div>
-          <h3 class="text-lg md:text-xl font-extrabold text-gray-900 leading-snug">${a.Title}</h3>
-          <p class="text-xs text-gray-500 leading-relaxed">${a.Summary || ''}</p>
-          <div class="text-xs text-gray-700 bg-gray-50 p-4 rounded-2xl whitespace-pre-line leading-relaxed font-sans">${a.Content_Markdown || ''}</div>
-          <div class="pt-2 flex items-center justify-between text-xs text-gray-500">
-            <span class="flex items-center gap-1 font-bold text-rose-500">❤️ ${a.Likes_Count || 0} Likes</span>
-          </div>
-        </div>
-      </article>
-    `;
-  });
-  html += `</div>`;
-  container.innerHTML = html;
+function getEmptyStateHTML(cat) {
+    return `<div class="p-10 text-center bg-gray-50 border border-gray-100 rounded-3xl w-full flex items-center justify-center"><p class="text-gray-400 text-sm font-medium">Content for ${cat} will appear here soon.</p></div>`;
 }
 
-function renderCourse(rows, tabName, container) {
-  const c = rows[0] || {};
-  const bannerUrl = resolveMedia('courses', c.Image_Name);
-  const colorMap = {
-    'COURSE_Excel': 'text-emerald-600 border-emerald-500 bg-emerald-50',
-    'COURSE_PowerQuery': 'text-amber-600 border-amber-500 bg-amber-50',
-    'COURSE_PowerBI': 'text-blue-600 border-blue-500 bg-blue-50',
-    'COURSE_SQL': 'text-cyan-600 border-cyan-500 bg-cyan-50'
-  };
-  const theme = colorMap[tabName] || 'text-blue-600 border-blue-500 bg-blue-50';
-
-  container.innerHTML = `
-    <div class="bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm flex flex-col md:flex-row gap-6 p-6 md:p-8 mb-8">
-      <div class="w-full md:w-5/12 rounded-2xl overflow-hidden bg-gray-100 relative min-h-[220px]">
-        <img src="${bannerUrl}" alt="${c.Course_Title || c.Title}" class="w-full h-full object-cover" onerror="this.src='../Media_Files/branding/placeholder.png'">
-        <span class="absolute top-4 left-4 bg-slate-900/90 text-white text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">${c.Batch_No || 'Next Batch'}</span>
-      </div>
-      <div class="flex-1 flex flex-col justify-between space-y-4">
-        <div>
-          <span class="inline-block px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider ${theme}">${c.Subtitle || tabName.replace('COURSE_', '')}</span>
-          <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mt-2 tracking-tight">${c.Course_Title || c.Title}</h2>
-          <div class="mt-4 grid grid-cols-2 gap-3 text-xs">
-            <div class="bg-gray-50 p-3 rounded-xl"><span class="text-gray-400 block font-bold">သင်တန်းကာလ:</span> <span class="font-extrabold text-gray-800">${c.Duration || '4-6 Weeks'}</span></div>
-            <div class="bg-gray-50 p-3 rounded-xl"><span class="text-gray-400 block font-bold">အချိန်ဇယား:</span> <span class="font-extrabold text-gray-800">${c.Schedule || 'Live Online'}</span></div>
-            <div class="bg-gray-50 p-3 rounded-xl"><span class="text-gray-400 block font-bold">ပုံမှန်သင်တန်းကြေး:</span> <span class="line-through text-gray-400 font-bold">${c.Regular_Fee_MMK || c.Fee_Regular || '0'} MMK</span></div>
-            <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><span class="text-emerald-700 block font-bold">Early Bird ကြေး:</span> <span class="text-emerald-700 font-extrabold text-sm">${c.Promo_Fee_MMK || c.Fee_Discount || '0'} MMK</span></div>
-          </div>
-          <div class="mt-4 text-xs text-gray-600 bg-gray-50 p-4 rounded-xl whitespace-pre-line leading-relaxed">
-            <strong class="text-gray-800 block mb-1">📋 Course Syllabus Overview:</strong>
-            ${c.Syllabus_Outline_MD || 'Course modules and detailed topics covered in live classes.'}
-          </div>
+function getHomeHeroHTML() {
+    return `
+        <!-- 💡 အမည်းရောင်အစား မျက်စိအေးပြီး လင်းလက်သော Education Light Theme သို့ ပြောင်းထားသည် -->
+        <div class="bg-gradient-to-br from-white to-blue-50/50 rounded-3xl p-8 sm:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-blue-100 mb-2 animate-fade-in">
+            <h2 class="text-2xl sm:text-3xl font-extrabold mb-6 tracking-tight flex items-center gap-3 text-slate-900">
+                <span class="text-yellow-500">⚡</span> Empowering Decisions
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xs font-extrabold text-blue-600 uppercase tracking-widest mb-2">Our Vision</h4>
+                    <p class="text-slate-600 text-[13px] leading-relaxed font-medium">Empowering smarter decisions through data-driven insights.</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-extrabold text-blue-600 uppercase tracking-widest mb-2">Our Mission</h4>
+                    <p class="text-slate-600 text-[13px] leading-relaxed font-medium">Helping professionals unlock the power of data with practical Excel & Power BI training.</p>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-blue-100 flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
+                <div class="w-16 h-16 rounded-full bg-white p-1 overflow-hidden flex-shrink-0 mx-auto sm:mx-0 shadow-sm border border-gray-100">
+                    <img src="Media_Files/tis_logo.webp" class="w-full h-full rounded-full object-cover">
+                </div>
+                <div>
+                    <h3 class="font-extrabold text-lg text-slate-900">Arkar Linn</h3>
+                    <p class="text-blue-600 text-[10px] font-extrabold uppercase tracking-widest mb-1">Senior Executive & Founder</p>
+                    <p class="text-slate-500 text-xs leading-relaxed max-w-sm font-medium">Advising CEO and Board on nationwide operational strategy. Trained over 500+ students in advanced data skills.</p>
+                </div>
+            </div>
         </div>
-        <div class="pt-4 border-t border-gray-100 flex items-center justify-between gap-4">
-          <div class="text-xs font-bold text-gray-500">Status: <span class="text-emerald-600 font-extrabold">${c.Status || 'Enrolling Open'}</span></div>
-          ${createButtonHtml(c.Form_Link || c.Enroll_Form_URL, 'ကျောင်းအပ်နှံရန် လျှောက်ထားမည်', 'bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm px-6 py-3 shadow-md')}
-        </div>
-      </div>
-    </div>
-  `;
+    `;
 }
 
-function renderReviews(rows, container) {
-  let html = `<div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">`;
-  rows.forEach(r => {
-    const avatarUrl = resolveMedia('reviews', r.Image_Name);
-    const stars = '⭐'.repeat(Number(r.Rating_Stars) || 5);
-    html += `
-      <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm flex flex-col justify-between space-y-4">
-        <div class="space-y-3">
-          <div class="text-sm">${stars}</div>
-          <p class="text-xs text-gray-600 leading-relaxed italic">"${r.Review_Text || r.Feedback_Text || ''}"</p>
+function getSQLStaticHTML() {
+    return `
+        <div class="bg-slate-900 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] overflow-hidden text-white flex flex-col w-full mb-2">
+            <div class="w-full bg-slate-950">
+                <img src="Media_Files/proj-sql.jpg" alt="SQL Data Warehouse" class="w-full aspect-video object-cover object-top opacity-80 hover:opacity-100 transition-opacity duration-300">
+            </div>
+            <div class="p-8 md:p-10 w-full flex flex-col justify-center">
+                <div class="mb-4"><span class="bg-yellow-500 text-slate-900 text-[10px] font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest">Data Engineering</span></div>
+                <h3 class="font-extrabold text-2xl sm:text-3xl mb-4 tracking-tight leading-snug text-white">SQL Data Warehouse & Analytics</h3>
+                <p class="text-gray-300 text-[13px] mb-8 leading-relaxed">A complete end-to-end data engineering project demonstrating <strong>Medallion Architecture</strong>. Includes ETL pipelines, data modeling, and reporting with SQL Server.</p>
+                <div class="flex">
+                    <a href="https://github.com/arkarpro/sql-data-warehouse-project" target="_blank" class="bg-white text-slate-900 font-bold py-3.5 px-6 rounded-xl hover:bg-gray-100 transition-all duration-300 text-sm flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> View Repository
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="pt-4 border-t border-gray-100 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
-            <img src="${avatarUrl}" alt="${r.Student_Name}" class="w-full h-full object-cover" onerror="this.src='../Media_Files/branding/placeholder.png'">
-          </div>
-          <div>
-            <h4 class="font-extrabold text-xs text-gray-900">${r.Student_Name}</h4>
-            <p class="text-[10px] text-gray-400 font-bold">${r.Role_Company || ''} • <span class="text-blue-600">${r.Course_Taken || ''}</span></p>
-          </div>
-        </div>
-      </div>
     `;
-  });
-  html += `</div>`;
-  container.innerHTML = html;
+}
+
+function getTechStaticHTML() {
+    return `
+        <!-- Project List (All Vertical Layout) -->
+        <div class="flex flex-col gap-8 mb-2"> 
+            
+            <!-- Population -->
+            <div class="bg-white rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300">
+                <img src="Media_Files/proj-population.jpg" alt="Population" class="w-full aspect-video object-cover object-top">
+                <div class="p-6 md:p-8 flex flex-col flex-grow">
+                    <div class="mb-3"><span class="bg-red-50 text-red-600 text-[10px] font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest">Streamlit</span></div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2 leading-snug">Myanmar Population Analytics</h3>
+                    <p class="text-gray-600 text-[13px] mb-6 leading-relaxed">An interactive dashboard allowing users to filter census data by State, District, and Township to analyze demographics dynamically.</p>
+                    <a href="https://dynamic-dashboard-filters.streamlit.app/" target="_blank" class="inline-flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition">View Live App &rarr;</a>
+                </div>
+            </div>
+            
+            <!-- Titanic -->
+            <div class="bg-white rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300">
+                <img src="Media_Files/proj-titanic.jpg" alt="Titanic" class="w-full aspect-video object-cover object-top">
+                <div class="p-6 md:p-8 flex flex-col flex-grow">
+                    <div class="mb-3"><span class="bg-red-50 text-red-600 text-[10px] font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest">Streamlit</span></div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2 leading-snug">Titanic EDA Dashboard</h3>
+                    <p class="text-gray-600 text-[13px] mb-6 leading-relaxed">Comprehensive exploratory data analysis of the Titanic dataset, visualizing survival rates by class, gender, and age groups.</p>
+                    <a href="https://titanic-eda-dashboard-dkd68fsawayaumwjkkow85.streamlit.app/" target="_blank" class="inline-flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition">View Live App &rarr;</a>
+                </div>
+            </div>
+            
+            <!-- Target vs Actual -->
+            <div class="bg-white rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300">
+                <img src="Media_Files/proj-target.jpg" alt="Target" class="w-full aspect-video object-cover object-top">
+                <div class="p-6 md:p-8 flex flex-col flex-grow">
+                    <div class="mb-3"><span class="bg-red-50 text-red-600 text-[10px] font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest">Streamlit</span></div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2 leading-snug">Target vs Actual KPI Tracker</h3>
+                    <p class="text-gray-600 text-[13px] mb-6 leading-relaxed">Performance tracking dashboard comparing Target vs Actual sales across regions with achievement percentages.</p>
+                    <a href="https://targetvsactual-arkarpro.streamlit.app/" target="_blank" class="inline-flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition">View Live App &rarr;</a>
+                </div>
+            </div>
+            
+            <!-- Password Generator -->
+            <div class="bg-white rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300">
+                <img src="Media_Files/proj-pass.jpg" alt="Password" class="w-full aspect-video object-cover object-top">
+                <div class="p-6 md:p-8 flex flex-col flex-grow">
+                    <div class="mb-3"><span class="bg-blue-50 text-blue-600 text-[10px] font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest">Web Tool</span></div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-2 leading-snug">Secure Password Generator</h3>
+                    <p class="text-gray-600 text-[13px] mb-6 leading-relaxed">A handy utility tool built to generate strong, randomized passwords with customizable options.</p>
+                    <a href="https://arkarpro.github.io/password_generator/" target="_blank" class="inline-flex items-center text-blue-600 font-bold text-sm hover:text-blue-800 transition">View Live Tool &rarr;</a>
+                </div>
+            </div>
+            
+            <!-- SQL Data Warehouse (Vertical Layout) -->
+            <div class="bg-slate-900 rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] overflow-hidden text-white flex flex-col w-full mb-8">
+                <div class="w-full bg-slate-950">
+                    <img src="Media_Files/proj-sql.jpg" alt="SQL Data Warehouse" class="w-full aspect-video object-cover object-top opacity-80 hover:opacity-100 transition-opacity duration-300">
+                </div>
+                <div class="p-8 md:p-10 w-full flex flex-col justify-center">
+                    <div class="mb-4"><span class="bg-yellow-500 text-slate-900 text-[10px] font-extrabold px-3 py-1.5 rounded-full uppercase tracking-widest">Data Engineering</span></div>
+                    <h3 class="font-extrabold text-2xl sm:text-3xl mb-4 tracking-tight leading-snug text-white">SQL Data Warehouse & Analytics</h3>
+                    <p class="text-gray-300 text-[13px] mb-8 leading-relaxed">A complete end-to-end data engineering project demonstrating <strong>Medallion Architecture</strong>. Includes ETL pipelines, data modeling, and reporting with SQL Server.</p>
+                    <div class="flex">
+                        <a href="https://github.com/arkarpro/sql-data-warehouse-project" target="_blank" class="bg-white text-slate-900 font-bold py-3.5 px-6 rounded-xl hover:bg-gray-100 transition-all duration-300 text-sm flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GitHub Chart -->
+            <div class="bg-white rounded-3xl shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-50 p-8 w-full text-center mb-8">
+                <h4 class="text-xs font-extrabold text-gray-400 uppercase tracking-widest mb-6">My Coding Activity</h4>
+                <img src="https://ghchart.rshah.org/3b82f6/arkarpro" alt="Arkar's Github Chart" class="mx-auto w-full md:w-3/4 opacity-90">
+            </div>
+        </div>
+    `;
 }
