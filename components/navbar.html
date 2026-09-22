@@ -1,40 +1,196 @@
-<style>
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-</style>
-
-<div class="bg-white/90 backdrop-blur-md w-full h-full flex items-center border-b border-gray-100 relative z-50">
-    <div class="w-full max-w-7xl mx-auto px-4 md:px-6 flex items-center h-16">
-        
-        <a href="#" onclick="loadCategory('Home'); return false;" class="flex-shrink-0 text-xl font-extrabold tracking-tight mr-6 md:mr-10 flex items-center gap-1 group">
-            <span class="text-blue-600 group-hover:text-blue-700 transition-colors">TIS</span>
-            <span class="text-gray-800 group-hover:text-gray-900 transition-colors">Learning</span>
-            <span class="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 ml-0.5"></span>
-        </a>
-        
-        <div class="flex-1 overflow-x-auto no-scrollbar flex items-center justify-start md:justify-end">
-            <div id="navMenu" class="flex items-center space-x-1 sm:space-x-2 min-w-max py-2 pr-2">
-                
-                <a href="#" onclick="loadCategory('Excel'); return false;" data-category="Excel" class="nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300">Excel</a>
-                
-                <a href="#" onclick="loadCategory('PowerQuery'); return false;" data-category="PowerQuery" class="nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300">
-                    <!-- ဖုန်းတွင်ပေါ်မည် --> <span class="md:hidden">Query</span>
-                    <!-- Desktop တွင်ပေါ်မည် --> <span class="hidden md:inline">Power Query</span>
-                </a>
-                
-                <a href="#" onclick="loadCategory('PowerBI'); return false;" data-category="PowerBI" class="nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300">
-                    <!-- ဖုန်းတွင်ပေါ်မည် --> <span class="md:hidden">PBI</span>
-                    <!-- Desktop တွင်ပေါ်မည် --> <span class="hidden md:inline">Power BI</span>
-                </a>
-                
-                <a href="#" onclick="loadCategory('SQL'); return false;" data-category="SQL" class="nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300">SQL</a>
-                
-                <a href="#" onclick="loadCategory('Tech'); return false;" data-category="Tech" class="nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300">
-                    <!-- ဖုန်းတွင်ပေါ်မည် --> <span class="md:hidden">Dev</span>
-                    <!-- Desktop တွင်ပေါ်မည် --> <span class="hidden md:inline">Python & Dev</span>
-                </a>
-
-            </div>
+<!-- ================================================================= -->
+<!-- ၁။ ပင်မ Navigation Bar နှင့် Dropdown Menu များ (Global Navigation) -->
+<!-- ================================================================= -->
+<nav class="fixed top-0 left-0 w-full bg-slate-900/95 backdrop-blur-md text-white z-50 shadow-xl border-b border-slate-700/80">
+  <div class="container mx-auto max-w-7xl px-4">
+    <div class="flex justify-between items-center h-16">
+      
+      <!-- Logo & ကျောင်းအမည် (Brand) -->
+      <a href="index.html" class="flex items-center gap-3 hover:text-blue-400 transition duration-300 flex-shrink-0 group">
+        <img src="Media_Files/logo.jpg" alt="Logo" class="h-9 w-9 rounded-full border-2 border-blue-500 object-cover shadow-sm group-hover:scale-105 transition duration-300">
+        <div class="flex flex-col">
+          <span class="font-extrabold text-base sm:text-lg tracking-wide leading-tight group-hover:text-blue-400 transition">The Insights Solution</span>
+          <span class="text-[10px] text-blue-400 hidden sm:block tracking-widest font-semibold uppercase">Data Strategy & Training</span>
         </div>
+      </a>
+
+      <!-- Desktop Navigation Tabs (Dropdown ပါဝင်သော မီနူးများ) -->
+      <div class="hidden md:flex items-center space-x-1.5 text-sm font-medium">
+        
+        <!-- Tab 1: Home (မူလစာမျက်နှာ) -->
+        <div class="relative group">
+          <a href="index.html" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition duration-200 bg-blue-600 text-white font-bold">
+            <span>Home</span>
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </a>
+          <div class="absolute left-0 mt-1 w-60 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-50">
+            <a href="index.html#about" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-blue-400 text-lg">👨‍💼</span>
+              <div>
+                <p class="font-bold text-xs text-white">About Founder & TIS</p>
+                <p class="text-[10px] text-gray-400">ကျောင်းအကြောင်းနှင့် ဆရာ့အတွေ့အကြုံ</p>
+              </div>
+            </a>
+            <a href="index.html#projects" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-emerald-400 text-lg">💼</span>
+              <div>
+                <p class="font-bold text-xs text-white">Featured Projects</p>
+                <p class="text-[10px] text-gray-400">Live Data Analytics Dashboard များ</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tab 2: Free (အခမဲ့ လေ့လာရန်) -->
+        <div class="relative group">
+          <a href="free.html" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition duration-200 text-gray-300 hover:bg-slate-800 hover:text-white">
+            <span>Free</span>
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </a>
+          <div class="absolute left-0 mt-1 w-64 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-50">
+            <a href="free.html#excel-hacks" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-emerald-400 text-lg">💡</span>
+              <div>
+                <p class="font-bold text-xs text-white">Excel 100 Hacks</p>
+                <p class="text-[10px] text-gray-400">လုပ်ငန်းခွင်သုံး လက်တွေ့ Excel နည်းလမ်းများ</p>
+              </div>
+            </a>
+            <a href="free.html#videos" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-rose-400 text-lg">📺</span>
+              <div>
+                <p class="font-bold text-xs text-white">Video Tutorials</p>
+                <p class="text-[10px] text-gray-400">YouTube ဗီဒီယို သင်ခန်းစာများ</p>
+              </div>
+            </a>
+            <a href="free.html#articles" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-amber-400 text-lg">📰</span>
+              <div>
+                <p class="font-bold text-xs text-white">Knowledge Hub & Articles</p>
+                <p class="text-[10px] text-gray-400">ဆောင်းပါးများနှင့် ဗဟုသုတများ</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tab 3: Course (သင်တန်းများ) -->
+        <div class="relative group">
+          <a href="courses.html" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition duration-200 text-gray-300 hover:bg-slate-800 hover:text-white">
+            <span>Course</span>
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </a>
+          <div class="absolute left-0 mt-1 w-64 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-50">
+            <a href="courses.html#excel" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-emerald-400 text-lg">📊</span>
+              <div>
+                <p class="font-bold text-xs text-white">Microsoft Excel</p>
+                <p class="text-[10px] text-gray-400">Business Applications Masterclass</p>
+              </div>
+            </a>
+            <a href="courses.html#powerquery" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-amber-400 text-lg">⚡</span>
+              <div>
+                <p class="font-bold text-xs text-white">Power Query</p>
+                <p class="text-[10px] text-gray-400">Data Clean, Transform & Automation</p>
+              </div>
+            </a>
+            <a href="courses.html#powerbi" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-blue-400 text-lg">📈</span>
+              <div>
+                <p class="font-bold text-xs text-white">Power BI</p>
+                <p class="text-[10px] text-gray-400">DAX, Data Modeling & Dashboards</p>
+              </div>
+            </a>
+            <a href="courses.html#sql" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-cyan-400 text-lg">🗄️</span>
+              <div>
+                <p class="font-bold text-xs text-white">SQL</p>
+                <p class="text-[10px] text-gray-400">Database Queries & Business Analytics</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Tab 4: Test & Review (စာမေးပွဲနှင့် သုံးသပ်ချက်များ) -->
+        <div class="relative group">
+          <a href="test-review.html" class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition duration-200 text-gray-300 hover:bg-slate-800 hover:text-white">
+            <span>Test & Review</span>
+            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </a>
+          <div class="absolute right-0 mt-1 w-64 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-50">
+            <a href="test-review.html#excel-mock-tests" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-emerald-400 text-lg">📝</span>
+              <div>
+                <p class="font-bold text-xs text-white">Excel Mock Test</p>
+                <p class="text-[10px] text-gray-400">Level 1 - 5 Quiz Master</p>
+              </div>
+            </a>
+            <a href="test-review.html#pl300-tests" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-blue-400 text-lg">🏆</span>
+              <div>
+                <p class="font-bold text-xs text-white">PL-300</p>
+                <p class="text-[10px] text-gray-400">Microsoft Certified Data Analyst Mock</p>
+              </div>
+            </a>
+            <a href="test-review.html#reviews-qa" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-purple-400 text-lg">🗣️</span>
+              <div>
+                <p class="font-bold text-xs text-white">Q&A Reviews</p>
+                <p class="text-[10px] text-gray-400">သင်တန်းသားသုံးသပ်ချက်များနှင့် မေးခွန်းများ</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- User Login / Profile Button & Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <button id="nav-auth-btn" onclick="handleNavAuthClick()" class="px-4 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold rounded-full shadow-md transition flex items-center gap-1.5 whitespace-nowrap">
+          <span>👤</span>
+          <span id="nav-user-name">Login</span>
+        </button>
+
+        <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-slate-800 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+
     </div>
-</div>
+  </div>
+
+  <!-- Mobile Dropdown Menu (ဖုန်း screen မီနူး) -->
+  <div id="mobile-menu" class="hidden md:hidden bg-slate-900/98 border-b border-slate-800 px-5 py-4 space-y-3 shadow-2xl">
+    <div class="border-b border-slate-800 pb-2">
+      <a href="index.html" class="block font-bold text-sm text-blue-400 py-1">🏠 Home</a>
+      <div class="pl-4 space-y-1 text-xs text-gray-300 mt-1">
+        <a href="index.html#about" class="block py-1 hover:text-white">↳ About Founder & TIS</a>
+        <a href="index.html#projects" class="block py-1 hover:text-white">↳ Featured Projects</a>
+      </div>
+    </div>
+    <div class="border-b border-slate-800 pb-2">
+      <a href="free.html" class="block font-bold text-sm text-emerald-400 py-1">🎁 Free</a>
+      <div class="pl-4 space-y-1 text-xs text-gray-300 mt-1">
+        <a href="free.html#excel-hacks" class="block py-1 hover:text-white">↳ Excel 100 Hacks</a>
+        <a href="free.html#videos" class="block py-1 hover:text-white">↳ Video Tutorials</a>
+        <a href="free.html#articles" class="block py-1 hover:text-white">↳ Knowledge Hub & Articles</a>
+      </div>
+    </div>
+    <div class="border-b border-slate-800 pb-2">
+      <a href="courses.html" class="block font-bold text-sm text-amber-400 py-1">📚 Course</a>
+      <div class="pl-4 space-y-1 text-xs text-gray-300 mt-1">
+        <a href="courses.html#excel" class="block py-1 hover:text-white">↳ Microsoft Excel</a>
+        <a href="courses.html#powerquery" class="block py-1 hover:text-white">↳ Power Query</a>
+        <a href="courses.html#powerbi" class="block py-1 hover:text-white">↳ Power BI</a>
+        <a href="courses.html#sql" class="block py-1 hover:text-white">↳ SQL</a>
+      </div>
+    </div>
+    <div>
+      <a href="test-review.html" class="block font-bold text-sm text-purple-400 py-1">📝 Test & Review</a>
+      <div class="pl-4 space-y-1 text-xs text-gray-300 mt-1">
+        <a href="test-review.html#excel-mock-tests" class="block py-1 hover:text-white">↳ Excel Mock Test</a>
+        <a href="test-review.html#pl300-tests" class="block py-1 hover:text-white">↳ PL-300</a>
+        <a href="test-review.html#reviews-qa" class="block py-1 hover:text-white">↳ Q&A Reviews</a>
+      </div>
+    </div>
+  </div>
+</nav>
