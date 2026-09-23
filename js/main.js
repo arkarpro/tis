@@ -2,14 +2,6 @@
 // 🌐 The Insights Solution (TIS) - Main Frame Engine & SPA Router
 // =========================================================================
 
-const COMPONENTS = [
-  { id: 'nav-placeholder', file: 'components/nav.html' },
-  { id: 'ad-banner-placeholder', file: 'components/ad_banner.html' },
-  { id: 'footer-placeholder', file: 'components/footer.html' },
-  { id: 'floating-icons-placeholder', file: 'components/floating_icons.html' },
-  { id: 'login-placeholder', file: 'components/login.html' }
-];
-
 const VALID_PAGES = [
   'about',
   'projects',
@@ -25,32 +17,22 @@ const VALID_PAGES = [
   'review'
 ];
 
-document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Load All Shared Layout Components in Parallel
-  await Promise.all(COMPONENTS.map(c => loadComponent(c.id, c.file)));
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Check Initial Hash Route
+  const hash = window.location.hash.replace('#', '').trim();
+  if (hash && hash !== 'about' && VALID_PAGES.includes(hash)) {
+    loadPage(hash, false);
+  }
 
-  // 2. Load Top Ad Banner from Google Sheet
+  // 2. Load Top Ad Banner Async without blocking UI
   loadAdBannerFromSheet();
 
-  // 3. Handle Initial Page Route from URL Hash (e.g. #projects, #course_data_analysis)
-  handleHashRoute();
-
-  // 4. Listen to Hash changes for Back/Forward Navigation
-  window.addEventListener('hashchange', handleHashRoute);
+  // 3. Listen to Hash changes for Back/Forward Navigation
+  window.addEventListener('hashchange', () => {
+    const newHash = window.location.hash.replace('#', '').trim() || 'about';
+    loadPage(newHash, false);
+  });
 });
-
-// Component Loader
-async function loadComponent(elementId, filePath) {
-  try {
-    const res = await fetch(filePath);
-    if (!res.ok) throw new Error(`HTTP ${res.status} loading ${filePath}`);
-    const html = await res.text();
-    const el = document.getElementById(elementId);
-    if (el) el.innerHTML = html;
-  } catch (err) {
-    console.warn(`Failed to load component: ${filePath}`, err);
-  }
-}
 
 // SPA Page Loader
 async function loadPage(pageName, updateHash = true) {
@@ -73,7 +55,7 @@ async function loadPage(pageName, updateHash = true) {
 
   try {
     const res = await fetch(`pages/${targetPage}.html`);
-    if (!res.ok) throw new Error(`Failed to load pages/${targetPage}.html`);
+    if (!res.ok) throw new Error(`HTTP ${res.status} loading pages/${targetPage}.html`);
     const pageHtml = await res.text();
     container.innerHTML = pageHtml;
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -85,12 +67,6 @@ async function loadPage(pageName, updateHash = true) {
       </div>
     `;
   }
-}
-
-function handleHashRoute() {
-  const hash = window.location.hash.replace('#', '').trim();
-  const page = hash || 'about';
-  loadPage(page, false);
 }
 
 // Mobile Menu Toggle
@@ -151,7 +127,7 @@ function handleLike(cardId) {
 
 // Universal Content Card: Comment Box
 function openCommentBox(cardId) {
-  alert('မှတ်ချက်ပေးပို့ရန် Viber (09 775 775 020) သို့ တိုက်ရိုက် ဆက်သွယ်ပေးပို့နိုင်ပါသည်ခင်ဗျာ။');
+  alert('မှတ်ချက်ပေးပို့ရန် Viber (+95 9 425 320 949) သို့ တိုက်ရိုက် ဆက်သွယ်ပေးပို့နိုင်ပါသည်ခင်ဗျာ။');
 }
 
 // Universal Content Card: Social Share

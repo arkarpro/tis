@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>The Insights Solution | Data Strategy & Executive Training</title>
-  <link href="media_folder/branding/logo.jpg" rel="icon" type="image/jpg" onerror="this.href='Media_Files/logo.jpg'"/>
+  <link href="Media_Files/branding/logo1.jpg" rel="icon" type="image/jpeg" onerror="this.href='Media_Files/logo.jpg'"/>
   <meta content="The Insights Solution" property="og:title"/>
   <meta content="Data Strategy, Modern Excel, Power Query, Power BI & SQL Executive Training." property="og:description"/>
   
@@ -16,9 +16,15 @@
   
   <style>
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; padding-top: 104px; }
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; padding-top: 64px; }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Strict Navbar Enforcement */
+    #main-navbar {
+      background-color: #0f172a !important;
+      color: #ffffff !important;
+    }
     
     /* Universal Content Card Media Display 16:9 */
     .media-16-9 {
@@ -37,7 +43,6 @@
       object-fit: contain;
     }
 
-    /* Content Line Clamp */
     .clamp-3 {
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -60,28 +65,457 @@
 </head>
 <body class="text-gray-800 antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen">
 
-  <!-- 1. Navigation Placeholder -->
-  <header id="nav-placeholder" class="fixed top-0 left-0 w-full z-50"></header>
+  <!-- 1. Navigation Bar (Pre-rendered for Instant Display) -->
+  <header id="nav-placeholder" class="fixed top-0 left-0 w-full z-50">
+<!-- Navigation Bar Component -->
+<nav id="main-navbar" class="fixed top-0 left-0 w-full text-white z-50 shadow-xl border-b border-slate-700" style="background-color: #0f172a !important; color: #ffffff !important;">
+  <div class="container mx-auto max-w-7xl px-4">
+    <div class="flex justify-between items-center h-16">
+      
+      <!-- Brand Logo & Title -->
+      <a href="#about" onclick="loadPage('about'); return false;" class="flex items-center gap-3 hover:text-blue-400 transition flex-shrink-0 group">
+        <img src="Media_Files/branding/logo1.jpg" alt="TIS Logo" class="h-9 w-9 rounded-full border-2 border-blue-500 object-cover shadow-sm group-hover:scale-105 transition" onerror="this.src='Media_Files/logo.jpg'">
+        <div class="flex flex-col">
+          <span class="font-extrabold text-base sm:text-lg tracking-wide leading-tight group-hover:text-blue-400 transition text-white">The Insights Solution</span>
+          <span class="text-[10px] text-blue-400 hidden sm:block tracking-widest font-semibold uppercase">Data Strategy & Training</span>
+        </div>
+      </a>
 
-  <!-- 2. Dynamic Ad Banner Placeholder (Google Sheet Integration) -->
-  <div id="ad-banner-placeholder"></div>
+      <!-- Desktop Navigation Menu with Dropdowns -->
+      <div class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+        
+        <!-- 1. Home Menu -->
+        <div class="relative group">
+          <button class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition text-gray-200 hover:bg-slate-800 hover:text-white font-semibold">
+            <span>Home</span>
+            <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute left-0 mt-1 w-64 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-50 border border-slate-700" style="background-color: #1e293b !important;">
+            <a href="#about" onclick="loadPage('about'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-blue-400 text-lg">👨‍💼</span>
+              <div>
+                <p class="font-bold text-xs text-white">About TIS & Founder</p>
+                <p class="text-[10px] text-gray-400">ဆရာ့အတွေ့အကြုံနှင့် သင်တန်းကျောင်းအကြောင်း</p>
+              </div>
+            </a>
+            <a href="#projects" onclick="loadPage('projects'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-emerald-400 text-lg">💼</span>
+              <div>
+                <p class="font-bold text-xs text-white">Featured Projects</p>
+                <p class="text-[10px] text-gray-400">Live Interactive Web Apps & Dashboards</p>
+              </div>
+            </a>
+          </div>
+        </div>
 
-  <!-- 3. Dynamic Page Content Frame (SPA Loader) -->
-  <main id="main-content" class="flex-1 container mx-auto max-w-7xl px-4 py-6">
-    <div id="loading-spinner" class="flex flex-col items-center justify-center py-28 w-full">
-      <div class="w-10 h-10 border-4 border-gray-100 border-t-blue-600 rounded-full animate-spin mb-4"></div>
-      <p class="text-xs font-bold text-gray-400 uppercase tracking-widest">TIS Learning Platform ကို ဖွင့်လှစ်နေပါသည်...</p>
+        <!-- 2. Free Menu -->
+        <div class="relative group">
+          <button class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition text-gray-200 hover:bg-slate-800 hover:text-white font-semibold">
+            <span>Free</span>
+            <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute left-0 mt-1 w-64 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-50 border border-slate-700" style="background-color: #1e293b !important;">
+            <a href="#excel_hacks" onclick="loadPage('excel_hacks'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-emerald-400 text-lg">💡</span>
+              <div>
+                <p class="font-bold text-xs text-white">Excel Hack 100+</p>
+                <p class="text-[10px] text-gray-400">လုပ်ငန်းခွင်သုံး လက်တွေ့ အသုံးဝင် နည်းလမ်းများ</p>
+              </div>
+            </a>
+            <a href="#articles" onclick="loadPage('articles'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-amber-400 text-lg">📰</span>
+              <div>
+                <p class="font-bold text-xs text-white">Knowledge Hub</p>
+                <p class="text-[10px] text-gray-400">Data Analytics & Automation ဆောင်းပါးများ</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Course Menu -->
+        <div class="relative group">
+          <button class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition text-gray-200 hover:bg-slate-800 hover:text-white font-semibold">
+            <span>Course</span>
+            <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute left-0 mt-1 w-72 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-50 border border-slate-700" style="background-color: #1e293b !important;">
+            <a href="#course_excel_biz" onclick="loadPage('course_excel_biz'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-emerald-400 text-lg">📊</span>
+              <div>
+                <p class="font-bold text-xs text-white">Excel For Business Management</p>
+                <p class="text-[10px] text-gray-400">လုပ်ငန်းခွင်သုံး Excel အဆင့်မြင့် စီမံခန့်ခွဲမှု</p>
+              </div>
+            </a>
+            <a href="#course_data_analysis" onclick="loadPage('course_data_analysis'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-green-400 text-lg">📦</span>
+              <div>
+                <p class="font-bold text-xs text-white">Data Analysis Full Package in Excel</p>
+                <p class="text-[10px] text-gray-400">Excel + Power Query + Automation စုံလင်စွာ</p>
+              </div>
+            </a>
+            <a href="#course_powerbi" onclick="loadPage('course_powerbi'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-yellow-400 text-lg">📈</span>
+              <div>
+                <p class="font-bold text-xs text-white">Power BI Basic to Master</p>
+                <p class="text-[10px] text-gray-400">DAX, Data Modeling & Interactive Dashboards</p>
+              </div>
+            </a>
+            <a href="#course_sql" onclick="loadPage('course_sql'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-cyan-400 text-lg">🗄️</span>
+              <div>
+                <p class="font-bold text-xs text-white">SQL for Data Analytics</p>
+                <p class="text-[10px] text-gray-400">Database Queries & Warehouse Analytics</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4. Test Menu -->
+        <div class="relative group">
+          <button class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition text-gray-200 hover:bg-slate-800 hover:text-white font-semibold">
+            <span>Test</span>
+            <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute left-0 mt-1 w-64 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-50 border border-slate-700" style="background-color: #1e293b !important;">
+            <a href="#mock_excel" onclick="loadPage('mock_excel'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-emerald-400 text-lg">📝</span>
+              <div>
+                <p class="font-bold text-xs text-white">Mock tests_Excel</p>
+                <p class="text-[10px] text-gray-400">Level 1 - 5 Excel Quiz Master</p>
+              </div>
+            </a>
+            <a href="#mock_pl300" onclick="loadPage('mock_pl300'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-blue-400 text-lg">🏆</span>
+              <div>
+                <p class="font-bold text-xs text-white">Mock tests_PL-300</p>
+                <p class="text-[10px] text-gray-400">Microsoft Certified Data Analyst Simulator</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5. Review Menu -->
+        <div class="relative group">
+          <button class="px-3.5 py-2 rounded-lg flex items-center gap-1.5 transition text-gray-200 hover:bg-slate-800 hover:text-white font-semibold">
+            <span>Review</span>
+            <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div class="absolute right-0 mt-1 w-64 rounded-xl shadow-2xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform group-hover:translate-y-0 translate-y-2 z-50 border border-slate-700" style="background-color: #1e293b !important;">
+            <a href="#qna" onclick="loadPage('qna'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-purple-400 text-lg">💬</span>
+              <div>
+                <p class="font-bold text-xs text-white">Q&A Hub</p>
+                <p class="text-[10px] text-gray-400">မေးလေ့ရှိသော မေးခွန်းများနှင့် အမေးအဖြေများ</p>
+              </div>
+            </a>
+            <a href="#review" onclick="loadPage('review'); return false;" class="flex items-center gap-3 px-4 py-2.5 hover:bg-slate-700/80 text-gray-200 hover:text-white transition">
+              <span class="text-yellow-400 text-lg">⭐</span>
+              <div>
+                <p class="font-bold text-xs text-white">Student Reviews</p>
+                <p class="text-[10px] text-gray-400">သင်တန်းသား/သူများ၏ ရင်ဖွင့်သုံးသပ်ချက်များ</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Buttons: Login & Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <button onclick="openLoginModal()" class="px-4 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold rounded-full shadow-md transition flex items-center gap-1.5">
+          <span>👤</span>
+          <span id="nav-user-label">Login</span>
+        </button>
+
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-slate-800 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+      </div>
+
     </div>
+  </div>
+
+  <!-- Mobile Dropdown Navigation Menu -->
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 px-5 py-4 space-y-4 shadow-2xl max-h-[80vh] overflow-y-auto" style="background-color: #0f172a !important;">
+    <div>
+      <p class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-2">Home</p>
+      <div class="pl-2 space-y-1 text-xs">
+        <a href="#about" onclick="loadPage('about'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">👨‍💼 About TIS & Founder</a>
+        <a href="#projects" onclick="loadPage('projects'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">💼 Featured Projects</a>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 pt-3">
+      <p class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Free</p>
+      <div class="pl-2 space-y-1 text-xs">
+        <a href="#excel_hacks" onclick="loadPage('excel_hacks'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">💡 Excel Hack 100+</a>
+        <a href="#articles" onclick="loadPage('articles'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">📰 Knowledge Hub & Articles</a>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 pt-3">
+      <p class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2">Course</p>
+      <div class="pl-2 space-y-1 text-xs">
+        <a href="#course_excel_biz" onclick="loadPage('course_excel_biz'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">📊 Excel For Business Management</a>
+        <a href="#course_data_analysis" onclick="loadPage('course_data_analysis'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">📦 Data Analysis Full Package in Excel</a>
+        <a href="#course_powerbi" onclick="loadPage('course_powerbi'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">📈 Power BI Basic to Master</a>
+        <a href="#course_sql" onclick="loadPage('course_sql'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">🗄️ SQL for Data Analytics</a>
+      </div>
+    </div>
+    <div class="border-t border-slate-800 pt-3">
+      <p class="text-xs font-bold text-purple-400 uppercase tracking-wider mb-2">Test & Review</p>
+      <div class="pl-2 space-y-1 text-xs">
+        <a href="#mock_excel" onclick="loadPage('mock_excel'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">📝 Mock tests_Excel</a>
+        <a href="#mock_pl300" onclick="loadPage('mock_pl300'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">🏆 Mock tests_PL-300</a>
+        <a href="#qna" onclick="loadPage('qna'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">💬 Q&A Hub</a>
+        <a href="#review" onclick="loadPage('review'); toggleMobileMenu(); return false;" class="block py-1.5 text-gray-300 hover:text-white">⭐ Student Reviews</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Quick-Access Category Bar with Authentic Icons -->
+  <div class="lg:hidden border-t border-slate-800/80 py-2.5 px-3 overflow-x-auto no-scrollbar shadow-inner" style="background-color: #0f172a !important;">
+    <div class="flex items-center gap-2 min-w-max">
+      <a href="#course_excel_biz" onclick="loadPage('course_excel_biz'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs font-bold active:scale-95 transition">
+        <span class="text-emerald-400">📊 Excel</span>
+      </a>
+      <a href="#course_data_analysis" onclick="loadPage('course_data_analysis'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs font-bold active:scale-95 transition">
+        <span class="text-green-300">📦 Data Analysis</span>
+      </a>
+      <a href="#course_powerbi" onclick="loadPage('course_powerbi'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs font-bold active:scale-95 transition">
+        <span class="text-yellow-400">📈 Power BI</span>
+      </a>
+      <a href="#course_sql" onclick="loadPage('course_sql'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs font-bold active:scale-95 transition">
+        <span class="text-cyan-300">🗄️ SQL</span>
+      </a>
+      <a href="#projects" onclick="loadPage('projects'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-blue-600 text-white text-xs font-bold active:scale-95 transition">
+        <span>💼 Projects</span>
+      </a>
+      <a href="#excel_hacks" onclick="loadPage('excel_hacks'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-emerald-700 text-white text-xs font-bold active:scale-95 transition">
+        <span>💡 100 Hacks</span>
+      </a>
+      <a href="#mock_excel" onclick="loadPage('mock_excel'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-purple-700 text-white text-xs font-bold active:scale-95 transition">
+        <span>📝 Tests</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+  </header>
+
+  <!-- 2. Dynamic Ad Banner -->
+  <div id="ad-banner-placeholder">
+<!-- Dynamic Ad Banner Component (Loaded from Google Sheet: SITE_Config) -->
+<div id="dynamic-ad-banner" class="w-full bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white py-2.5 px-4 shadow-sm" style="display: none;">
+  <div class="container mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
+    <div class="flex items-center gap-2">
+      <span class="px-2 py-0.5 rounded bg-yellow-400 text-slate-900 font-extrabold text-[10px] uppercase tracking-wider animate-pulse">Announcement</span>
+      <p id="ad-banner-text" class="font-medium text-white"></p>
+    </div>
+    <a id="ad-banner-link" href="#" target="_blank" class="font-bold underline hover:text-yellow-300 transition whitespace-nowrap">အသေးစိတ်ကြည့်ရန် ➔</a>
+  </div>
+</div>
+
+  </div>
+
+  <!-- 3. Dynamic Page Content Frame (Pre-rendered About Section) -->
+  <main id="main-content" class="flex-1 container mx-auto max-w-7xl px-4 py-6">
+<!-- 5. About TIS & Founder Page -->
+<div class="space-y-8 animate-fadeIn">
+  
+  <div class="flex items-center gap-3 pb-3 border-b border-gray-200">
+    <span class="text-2xl">👨‍💼</span>
+    <div>
+      <h2 class="text-2xl font-black text-slate-900 tracking-tight">About The Founder & The Insights Solution</h2>
+      <p class="text-xs text-gray-500">ဦးဆောင်သူ ဆရာ့အတွေ့အကြုံနှင့် TIS ၏ မူဝါဒရည်မှန်းချက်များ</p>
+    </div>
+  </div>
+
+  <!-- Sayar Profile Card with 1553x538 Full-Width Banner -->
+  <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 flex flex-col gap-6">
+    
+    <!-- 📸 Profile Banner (1553x538 size displayed 100% fully without cropping) -->
+    <div class="w-full rounded-2xl overflow-hidden shadow-md border border-gray-100 bg-slate-900/5">
+      <img src="Media_Files/about/profile.jpg" alt="Sayar Arkar Linn - The Insights Solution" 
+           class="w-full h-auto object-contain block mx-auto rounded-xl"
+           onerror="this.src='Media_Files/profile.jpg'">
+    </div>
+
+    <!-- Instructor Bio & Story -->
+    <div class="space-y-4">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">Lead Instructor & Founder</span>
+        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-full">Financial Service Analyst</span>
+        <span class="px-3 py-1 bg-purple-50 text-purple-700 text-xs font-bold rounded-full">Corporate Data Strategist</span>
+      </div>
+
+      <h3 class="text-2xl font-extrabold text-slate-900">Arkar Linn</h3>
+      
+      <p class="text-sm text-gray-600 leading-relaxed">
+        ဘဏ္ဍာရေးဝန်ဆောင်မှု လုပ်ငန်းနယ်ပယ်တွင် ၂၀၁၅ ခုနှစ်မှစ၍ Credit Officer, Credit Supervisor, Branch Manager နှင့် Credit Analysis Manager အဖြစ် တာဝန်ယူခဲ့ပြီး PAR Management စနစ်များကို ဒေတာခွဲခြမ်းစိတ်ဖြာမှုဖြင့် အောင်မြင်စွာ ဦးဆောင်ခဲ့သူ ဖြစ်ပါသည်။ ၂၀၁၂ ခုနှစ်မှ စတင်ကာ စုဆောင်းလေ့လာခဲ့သော Data Analysis အသိပညာများကို မြန်မာနိုင်ငံရှိ စီးပွားရေးလုပ်ငန်းများနှင့် လူငယ်များထံ လက်တွေ့ကျကျ မျှဝေပေးလျက်ရှိပါသည်။
+      </p>
+
+      <!-- Key Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-gray-100">
+        <div class="bg-slate-50 p-3.5 rounded-2xl border border-gray-100 text-center">
+          <span class="block text-2xl font-black text-blue-600">10+ Years</span>
+          <span class="text-[11px] text-gray-500 font-bold">Domain Experience</span>
+        </div>
+        <div class="bg-slate-50 p-3.5 rounded-2xl border border-gray-100 text-center">
+          <span class="block text-2xl font-black text-emerald-600">1,500+</span>
+          <span class="text-[11px] text-gray-500 font-bold">Students Trained</span>
+        </div>
+        <div class="bg-slate-50 p-3.5 rounded-2xl border border-gray-100 text-center">
+          <span class="block text-2xl font-black text-purple-600">100%</span>
+          <span class="text-[11px] text-gray-500 font-bold">Hands-on Practical</span>
+        </div>
+        <div class="bg-slate-50 p-3.5 rounded-2xl border border-gray-100 text-center">
+          <span class="block text-2xl font-black text-amber-600">5.0 ⭐</span>
+          <span class="text-[11px] text-gray-500 font-bold">Student Rating</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="pt-2 flex flex-wrap gap-3">
+        <a href="viber://chat?number=%2B959425320949" class="px-5 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs transition shadow-md flex items-center gap-2">
+          <span>💬 Viber ဖြင့် တိုက်ရိုက်ဆွေးနွေးမည်</span>
+        </a>
+        <a href="#course_data_analysis" onclick="loadPage('course_data_analysis'); return false;" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-extrabold text-xs transition shadow-md">
+          <span>သင်တန်းများ ကြည့်ရှုမည် ➔</span>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Organization Values & Vision -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-2">
+      <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-black text-lg mb-3">🎯</div>
+      <h4 class="font-extrabold text-base text-slate-900">လက်တွေ့ ဦးစားပေး စနစ်</h4>
+      <p class="text-xs text-gray-500 leading-relaxed">
+        သဘောတရားသက်သက် မဟုတ်ဘဲ လုပ်ငန်းခွင်တွင် ချက်ချင်း အသုံးချနိုင်သော Real-World Business Cases များကိုသာ သင်ကြားပေးပါသည်။
+      </p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-2">
+      <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-black text-lg mb-3">⚡</div>
+      <h4 class="font-extrabold text-base text-slate-900">Automation ဦးစားပေးခြင်း</h4>
+      <p class="text-xs text-gray-500 leading-relaxed">
+        ထပ်တလဲလဲ လုပ်ရသော အချိန်ကုန် စာရင်းဇယားများကို Power Query နှင့် Modern DAX ဖြင့် 1-Click အလိုအလျောက် ဖြစ်စေရန် လေ့ကျင့်ပေးပါသည်။
+      </p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-2">
+      <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-black text-lg mb-3">🤝</div>
+      <h4 class="font-extrabold text-base text-slate-900">တစ်သက်တာ ပံ့ပိုးမှု (Community)</h4>
+      <p class="text-xs text-gray-500 leading-relaxed">
+        သင်တန်းပြီးဆုံးသော်လည်း TIS Viber Community မှတစ်ဆင့် လုပ်ငန်းခွင် ပြဿနာများနှင့် ဒေတာဆိုင်ရာ အခက်အခဲများကို အမြဲ အကြံပေးကူညီပါသည်။
+      </p>
+    </div>
+  </div>
+
+</div>
+
   </main>
 
-  <!-- 4. Footer Placeholder -->
-  <div id="footer-placeholder"></div>
+  <!-- 4. Footer -->
+  <div id="footer-placeholder">
+<!-- Footer Component -->
+<footer class="text-gray-400 py-12 border-t border-slate-800" style="background-color: #0f172a !important;">
+  <div class="container mx-auto max-w-7xl px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      
+      <div class="col-span-1 md:col-span-2 space-y-4">
+        <div class="flex items-center gap-3">
+          <img src="Media_Files/branding/logo1.jpg" alt="Logo" class="h-10 w-10 rounded-full border border-slate-700" onerror="this.src='Media_Files/logo.jpg'">
+          <span class="text-xl font-bold text-white tracking-wide">The Insights Solution</span>
+        </div>
+        <p class="text-sm text-gray-400 leading-relaxed max-w-md">
+          Empowering Myanmar's workforce with modern Data Strategy, Excel Automation, Power Query, Power BI, and SQL Analytics practical training.
+        </p>
+        <div class="flex gap-4 pt-2">
+          <a href="https://www.facebook.com/insights.arkar?mibextid=ZbWKwL" target="_blank" class="hover:opacity-80 transition" title="Facebook"><img src="Media_Files/branding/facebook.png" alt="Facebook" class="w-6 h-6"></a>
+          <a href="https://youtube.com/@theinsightssolution?si=UoU-1s8-hTHZ_av_" target="_blank" class="hover:opacity-80 transition" title="YouTube"><img src="Media_Files/branding/youtube.png" alt="YouTube" class="w-6 h-6"></a>
+          <a href="https://www.linkedin.com/in/arkar-linn-datapro/" target="_blank" class="hover:opacity-80 transition" title="LinkedIn"><img src="Media_Files/branding/linkedin.png" alt="LinkedIn" class="w-6 h-6"></a>
+        </div>
+      </div>
 
-  <!-- 5. Floating Action Icons Placeholder (Viber / Phone) -->
-  <div id="floating-icons-placeholder"></div>
+      <div>
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Quick Navigation</h4>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#about" onclick="loadPage('about'); return false;" class="hover:text-white transition">👨‍💼 About TIS & Founder</a></li>
+          <li><a href="#projects" onclick="loadPage('projects'); return false;" class="hover:text-white transition">💼 Featured Projects</a></li>
+          <li><a href="#excel_hacks" onclick="loadPage('excel_hacks'); return false;" class="hover:text-white transition">💡 Excel Hack 100+</a></li>
+          <li><a href="#course_data_analysis" onclick="loadPage('course_data_analysis'); return false;" class="hover:text-white transition">📦 Data Analysis Full Package</a></li>
+          <li><a href="#course_powerbi" onclick="loadPage('course_powerbi'); return false;" class="hover:text-white transition">📈 Power BI Basic to Master</a></li>
+          <li><a href="#mock_excel" onclick="loadPage('mock_excel'); return false;" class="hover:text-white transition">📝 Mock Tests (Excel / PL-300)</a></li>
+        </ul>
+      </div>
 
-  <!-- 6. Login Modal Placeholder -->
-  <div id="login-placeholder"></div>
+      <div>
+        <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-3">Contact Support</h4>
+        <p class="text-xs text-gray-400 mb-2">📍 Yangon, Myanmar</p>
+        <p class="text-xs text-gray-400 mb-2">📞 +95 9 425 320 949</p>
+        <p class="text-xs text-gray-400 mb-3">✉️ arkarlinn1988@gmail.com</p>
+        <a href="viber://chat?number=%2B959425320949" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition">
+          <span>💬 Viber Chat တိုက်ရိုက်ဆက်သွယ်မည်</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="pt-8 border-t border-slate-800 text-center text-xs text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <p>© 2026 The Insights Solution. All rights reserved.</p>
+      <p class="text-[11px] text-gray-500">Built with Excellence for Myanmar Data Professionals</p>
+    </div>
+  </div>
+</footer>
+
+  </div>
+
+  <!-- 5. Floating Action Icons -->
+  <div id="floating-icons-placeholder">
+<!-- Floating Action Icons Component -->
+<div class="fixed bottom-6 right-6 flex flex-col gap-3 z-40">
+  <a href="viber://chat?number=%2B959425320949" title="Chat on Viber" 
+     class="w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center shadow-xl hover:bg-purple-700 hover:scale-110 active:scale-95 transition duration-300 border-2 border-white">
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.95.56 3.77 1.52 5.32L2.5 21.5l4.35-1.01C8.36 21.46 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm1 14.5h-2v-2h2v2zm0-4h-2V7h2v5.5z"/></svg>
+  </a>
+  <a href="tel:+959425320949" title="Call Directly" 
+     class="w-12 h-12 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-xl hover:bg-emerald-700 hover:scale-110 active:scale-95 transition duration-300 border-2 border-white">
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+  </div>
+
+  <!-- 6. Login Modal -->
+  <div id="login-placeholder">
+<!-- Login Modal Component -->
+<div id="loginModal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+  <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-gray-100 relative">
+    <button onclick="closeLoginModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gray-600 text-2xl font-bold leading-none">&times;</button>
+    <div class="text-center mb-6">
+      <img src="Media_Files/branding/logo1.jpg" alt="Logo" class="w-14 h-14 rounded-full mx-auto mb-2 border-2 border-blue-500" onerror="this.src='Media_Files/logo.jpg'">
+      <h3 class="text-xl font-black text-slate-800">TIS Account Login</h3>
+      <p class="text-xs text-gray-500 mt-1">သင်၏ သင်ယူမှုမှတ်တမ်းနှင့် Mock Test ရလဒ်များကို ရယူပါ</p>
+    </div>
+    <div class="space-y-4">
+      <button onclick="handleGoogleLogin()" class="w-full flex items-center justify-center gap-3 py-3 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 font-bold text-xs text-gray-700 shadow-sm transition">
+        <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+        <span>Google ဖြင့် ဝင်ရောက်မည်</span>
+      </button>
+      <div class="flex items-center my-3">
+        <div class="flex-1 border-t border-gray-200"></div>
+        <span class="px-3 text-gray-400 text-xs font-semibold">သို့မဟုတ်</span>
+        <div class="flex-1 border-t border-gray-200"></div>
+      </div>
+      <input type="email" id="login-email" placeholder="အီးမေးလ် လိပ်စာ" class="w-full px-4 py-2.5 border rounded-xl text-xs focus:ring-2 focus:ring-blue-500 outline-none">
+      <input type="password" id="login-password" placeholder="စကားဝှက် (Password)" class="w-full px-4 py-2.5 border rounded-xl text-xs focus:ring-2 focus:ring-blue-500 outline-none">
+      <button onclick="handleEmailLogin()" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-xl shadow-md transition">ဝင်ရောက်မည် (Sign In)</button>
+    </div>
+  </div>
+</div>
+
+  </div>
 
   <!-- Scripts -->
   <script src="js/api.js"></script>
