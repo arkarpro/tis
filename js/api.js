@@ -74,7 +74,11 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "projects") {
     <!-- 2. Media Display (Strict 16:9 Ratio, object-fit: contain) -->
     <div class="media-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #f4f4f4; overflow: hidden; display: flex; align-items: center; justify-content: center;">
       <img src="${imgSrc}" alt="${title}" class="w-full h-full object-contain" 
+<<<<<<< HEAD
            onerror="if(!this.dataset.fallback){this.dataset.fallback=1; this.src='${fallbackSrc}';}else{this.src='Media_Files/branding/logo1.jpg';}">
+=======
+           onerror="if(!this.dataset.fallback){this.dataset.fallback=1; this.src='${fallbackSrc}';}else{this.src='Media_Files/branding/placeholder.png';}">
+>>>>>>> e6ac88726eb248a9eb9e8334f114dbb17e929645
       
       <!-- Action Button (Absolute Bottom Right overlay) -->
       <a href="${actionLink}" target="_blank" rel="noopener noreferrer" 
