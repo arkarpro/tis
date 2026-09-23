@@ -1,6 +1,7 @@
-<!-- 6. Featured Projects Page -->
+<!-- 6. Featured Projects Page (Dynamic Google Sheets Integration) -->
 <div class="space-y-6 animate-fadeIn">
   
+  <!-- Header Title -->
   <div class="flex items-center justify-between pb-3 border-b border-gray-200">
     <div class="flex items-center gap-3">
       <span class="text-2xl">💼</span>
@@ -11,287 +12,55 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    
-    <!-- Universal Content Card: prj-01 -->
-    <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md">
-      
-      <!-- 1. Title -->
-      <div class="p-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
-        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg leading-snug">Myanmar Population Analytics</h3>
-        <div class="flex items-center gap-1.5 shrink-0"><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">Streamlit</span><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">Census Data</span></div>
-      </div>
-
-      <!-- 2. Media Display (Strict 16:9 Ratio, object-fit: contain) -->
-      <div class="media-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #f4f4f4; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-        <img src="media_folder/projects/proj-population.jpg" alt="Myanmar Population Analytics" class="w-full h-full object-contain" onerror="this.src='Media_Files/proj-population.jpg'">
-        
-        <!-- Action Button (Absolute Bottom Right overlay) -->
-        <a href="https://myanmar-population.streamlit.app/" target="_blank" rel="noopener noreferrer" 
-           class="action-btn"
-           style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #0f172a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); text-decoration: none; transition: 0.2s;"
-           onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#0f172a'">
-          <span>Live Demo ဖွင့်ကြည့်မည်</span>
-          <span>➔</span>
-        </a>
-      </div>
-
-      <!-- 3. Social Actions Row (Flexbox: Left: Like | Center: Comment | Right: Share) -->
-      <div class="flex items-center justify-between px-4 py-2.5 border-t border-b border-gray-100 bg-slate-50/70 text-xs text-gray-500 font-semibold select-none">
-        <!-- Left: Like Button -->
-        <button onclick="handleLike('prj-01')" id="like-btn-prj-01" class="flex items-center gap-1.5 hover:text-rose-600 transition">
-          <span id="like-icon-prj-01">🤍</span>
-          <span id="like-count-prj-01">128</span> Likes
-        </button>
-        <!-- Center: Comment Box -->
-        <button onclick="openCommentBox('prj-01')" class="flex items-center gap-1.5 hover:text-blue-600 transition">
-          <span>💬</span>
-          <span>မှတ်ချက်ပေးရန်</span>
-        </button>
-        <!-- Right: Share -->
-        <button onclick="handleShare('Myanmar Population Analytics', 'https://myanmar-population.streamlit.app/')" class="flex items-center gap-1.5 hover:text-indigo-600 transition">
-          <span>🔗</span>
-          <span>မျှဝေမည်</span>
-        </button>
-      </div>
-
-      <!-- 4. Content / Article (3-line clamp + Read more >> toggle) -->
-      <div class="p-4 text-xs text-gray-600 leading-relaxed font-sans">
-        <div id="content-prj-01" class="content-clamped" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-          <p class="font-medium text-gray-700 mb-1">မြန်မာနိုင်ငံ၏ သန်းခေါင်စာရင်းအချက်အလက်များကို အပြန်အလှန် လေ့လာနိုင်သော Interactive Dashboard ဖြစ်ပါသည်။</p>
-          <div class="mt-2 space-y-1.5 text-gray-600"><p>Streamlit နှင့် Python ကို အသုံးပြု၍ သန်းခေါင်စာရင်း Demographic Data များကို Region, Township, Gender, Age Pyramid အလိုက် Visual Charts များဖြင့် တင်ဆက်ထားသော စနစ်ဖြစ်ပါသည်။</p><p>Data Cleaning, Metric Calculations များနှင့် Filter Interactivity များကို အပြည့်အစုံ ထည့်သွင်းထားပါသည်။</p></div>
-        </div>
-        <button onclick="toggleReadMore('prj-01')" id="readmore-btn-prj-01" class="mt-2 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
-          Read more &gt;&gt;
-        </button>
-      </div>
-
+  <!-- Dynamic Content Cards Grid Container -->
+  <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Google Sheet မှ ဒေတာ မရောက်မချင်း Loading Skeleton ပြသထားမည် -->
+    <div class="col-span-full flex flex-col items-center justify-center py-20">
+      <div class="w-8 h-8 border-3 border-gray-200 border-t-blue-600 rounded-full animate-spin mb-3"></div>
+      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Google Sheet မှ Projects ဒေတာများကို ရယူနေပါသည်...</p>
     </div>
-    
-    
-    <!-- Universal Content Card: prj-02 -->
-    <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md">
-      
-      <!-- 1. Title -->
-      <div class="p-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
-        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg leading-snug">Titanic EDA Dashboard</h3>
-        <div class="flex items-center gap-1.5 shrink-0"><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">Python EDA</span><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">ML Analytics</span></div>
-      </div>
-
-      <!-- 2. Media Display (Strict 16:9 Ratio, object-fit: contain) -->
-      <div class="media-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #f4f4f4; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-        <img src="media_folder/projects/proj-titanic.jpg" alt="Titanic EDA Dashboard" class="w-full h-full object-contain" onerror="this.src='Media_Files/proj-titanic.jpg'">
-        
-        <!-- Action Button (Absolute Bottom Right overlay) -->
-        <a href="https://titanic-eda-app.streamlit.app/" target="_blank" rel="noopener noreferrer" 
-           class="action-btn"
-           style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #0f172a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); text-decoration: none; transition: 0.2s;"
-           onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#0f172a'">
-          <span>Live Demo ဖွင့်ကြည့်မည်</span>
-          <span>➔</span>
-        </a>
-      </div>
-
-      <!-- 3. Social Actions Row (Flexbox: Left: Like | Center: Comment | Right: Share) -->
-      <div class="flex items-center justify-between px-4 py-2.5 border-t border-b border-gray-100 bg-slate-50/70 text-xs text-gray-500 font-semibold select-none">
-        <!-- Left: Like Button -->
-        <button onclick="handleLike('prj-02')" id="like-btn-prj-02" class="flex items-center gap-1.5 hover:text-rose-600 transition">
-          <span id="like-icon-prj-02">🤍</span>
-          <span id="like-count-prj-02">128</span> Likes
-        </button>
-        <!-- Center: Comment Box -->
-        <button onclick="openCommentBox('prj-02')" class="flex items-center gap-1.5 hover:text-blue-600 transition">
-          <span>💬</span>
-          <span>မှတ်ချက်ပေးရန်</span>
-        </button>
-        <!-- Right: Share -->
-        <button onclick="handleShare('Titanic EDA Dashboard', 'https://titanic-eda-app.streamlit.app/')" class="flex items-center gap-1.5 hover:text-indigo-600 transition">
-          <span>🔗</span>
-          <span>မျှဝေမည်</span>
-        </button>
-      </div>
-
-      <!-- 4. Content / Article (3-line clamp + Read more >> toggle) -->
-      <div class="p-4 text-xs text-gray-600 leading-relaxed font-sans">
-        <div id="content-prj-02" class="content-clamped" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-          <p class="font-medium text-gray-700 mb-1">ခရီးသည်များ အသက်ရှင်ကျန်ရစ်မှုနှုန်းကို Gender, Class, Age အလိုက် စူးစမ်းလေ့လာထားသော Analytics Case Study ဖြစ်ပါသည်။</p>
-          <div class="mt-2 space-y-1.5 text-gray-600"><p>Data Exploration & Machine Learning အခြေခံ သဘောတရားများကို ရှင်းလင်းစွာ လေ့လာနိုင်ရန် ပြုလုပ်ထားသော Case Study ဖြစ်ပါသည်။ Correlation Heatmap, Survival Distribution များနှင့် Feature Insights များကို Interactive စစ်ဆေးနိုင်ပါသည်။</p></div>
-        </div>
-        <button onclick="toggleReadMore('prj-02')" id="readmore-btn-prj-02" class="mt-2 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
-          Read more &gt;&gt;
-        </button>
-      </div>
-
-    </div>
-    
-    
-    <!-- Universal Content Card: prj-03 -->
-    <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md">
-      
-      <!-- 1. Title -->
-      <div class="p-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
-        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg leading-snug">Target vs Actual Sales Performance Tracker</h3>
-        <div class="flex items-center gap-1.5 shrink-0"><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">KPI Engine</span><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">Variance Analysis</span></div>
-      </div>
-
-      <!-- 2. Media Display (Strict 16:9 Ratio, object-fit: contain) -->
-      <div class="media-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #f4f4f4; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-        <img src="media_folder/projects/proj-target.jpg" alt="Target vs Actual Sales Performance Tracker" class="w-full h-full object-contain" onerror="this.src='Media_Files/proj-target.jpg'">
-        
-        <!-- Action Button (Absolute Bottom Right overlay) -->
-        <a href="https://target-actual-kpi.streamlit.app/" target="_blank" rel="noopener noreferrer" 
-           class="action-btn"
-           style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #0f172a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); text-decoration: none; transition: 0.2s;"
-           onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#0f172a'">
-          <span>Live Demo ဖွင့်ကြည့်မည်</span>
-          <span>➔</span>
-        </a>
-      </div>
-
-      <!-- 3. Social Actions Row (Flexbox: Left: Like | Center: Comment | Right: Share) -->
-      <div class="flex items-center justify-between px-4 py-2.5 border-t border-b border-gray-100 bg-slate-50/70 text-xs text-gray-500 font-semibold select-none">
-        <!-- Left: Like Button -->
-        <button onclick="handleLike('prj-03')" id="like-btn-prj-03" class="flex items-center gap-1.5 hover:text-rose-600 transition">
-          <span id="like-icon-prj-03">🤍</span>
-          <span id="like-count-prj-03">128</span> Likes
-        </button>
-        <!-- Center: Comment Box -->
-        <button onclick="openCommentBox('prj-03')" class="flex items-center gap-1.5 hover:text-blue-600 transition">
-          <span>💬</span>
-          <span>မှတ်ချက်ပေးရန်</span>
-        </button>
-        <!-- Right: Share -->
-        <button onclick="handleShare('Target vs Actual Sales Performance Tracker', 'https://target-actual-kpi.streamlit.app/')" class="flex items-center gap-1.5 hover:text-indigo-600 transition">
-          <span>🔗</span>
-          <span>မျှဝေမည်</span>
-        </button>
-      </div>
-
-      <!-- 4. Content / Article (3-line clamp + Read more >> toggle) -->
-      <div class="p-4 text-xs text-gray-600 leading-relaxed font-sans">
-        <div id="content-prj-03" class="content-clamped" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-          <p class="font-medium text-gray-700 mb-1">အရောင်းရည်မှန်းချက်နှင့် လက်တွေ့ရရှိမှု ကွာခြားချက်များကို Variance Analysis ဖြင့် စောင့်ကြည့်နိုင်သော Dashboard ဖြစ်ပါသည်။</p>
-          <div class="mt-2 space-y-1.5 text-gray-600"><p>လအလိုက်၊ ဌာနခွဲအလိုက် အရောင်း Target နှင့် Actual အောင်မြင်မှု ရာခိုင်နှုန်း (Achievement Rate) များကို တွက်ချက်ကာ အချိန်နှင့်တပြေးညီ KPI Variance များကို ဖော်ပြပေးပါသည်။</p></div>
-        </div>
-        <button onclick="toggleReadMore('prj-03')" id="readmore-btn-prj-03" class="mt-2 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
-          Read more &gt;&gt;
-        </button>
-      </div>
-
-    </div>
-    
-    
-    <!-- Universal Content Card: prj-04 -->
-    <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md">
-      
-      <!-- 1. Title -->
-      <div class="p-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
-        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg leading-snug">Secure Password Generator</h3>
-        <div class="flex items-center gap-1.5 shrink-0"><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">Cyber Security</span><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">Web Utility</span></div>
-      </div>
-
-      <!-- 2. Media Display (Strict 16:9 Ratio, object-fit: contain) -->
-      <div class="media-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #f4f4f4; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-        <img src="media_folder/projects/proj-pass.jpg" alt="Secure Password Generator" class="w-full h-full object-contain" onerror="this.src='Media_Files/proj-pass.jpg'">
-        
-        <!-- Action Button (Absolute Bottom Right overlay) -->
-        <a href="https://arkarpro.github.io/tis/password/" target="_blank" rel="noopener noreferrer" 
-           class="action-btn"
-           style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #0f172a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); text-decoration: none; transition: 0.2s;"
-           onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#0f172a'">
-          <span>Live App ဖွင့်ကြည့်မည်</span>
-          <span>➔</span>
-        </a>
-      </div>
-
-      <!-- 3. Social Actions Row (Flexbox: Left: Like | Center: Comment | Right: Share) -->
-      <div class="flex items-center justify-between px-4 py-2.5 border-t border-b border-gray-100 bg-slate-50/70 text-xs text-gray-500 font-semibold select-none">
-        <!-- Left: Like Button -->
-        <button onclick="handleLike('prj-04')" id="like-btn-prj-04" class="flex items-center gap-1.5 hover:text-rose-600 transition">
-          <span id="like-icon-prj-04">🤍</span>
-          <span id="like-count-prj-04">128</span> Likes
-        </button>
-        <!-- Center: Comment Box -->
-        <button onclick="openCommentBox('prj-04')" class="flex items-center gap-1.5 hover:text-blue-600 transition">
-          <span>💬</span>
-          <span>မှတ်ချက်ပေးရန်</span>
-        </button>
-        <!-- Right: Share -->
-        <button onclick="handleShare('Secure Password Generator', 'https://arkarpro.github.io/tis/password/')" class="flex items-center gap-1.5 hover:text-indigo-600 transition">
-          <span>🔗</span>
-          <span>မျှဝေမည်</span>
-        </button>
-      </div>
-
-      <!-- 4. Content / Article (3-line clamp + Read more >> toggle) -->
-      <div class="p-4 text-xs text-gray-600 leading-relaxed font-sans">
-        <div id="content-prj-04" class="content-clamped" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-          <p class="font-medium text-gray-700 mb-1">အကောင့်လုံခြုံရေးအတွက် ခန့်မှန်းရခက်သော လျှို့ဝှက်နံပါတ်များကို ကလစ်တစ်ချက်ဖြင့် ထုတ်ပေးသည့် Utility Tool ဖြစ်ပါသည်။</p>
-          <div class="mt-2 space-y-1.5 text-gray-600"><p>Cybersecurity အလေ့အကျင့်ကောင်းများ ရရှိစေရန်နှင့် ခန့်မှန်းရခက်ခဲသော ခိုင်မာသည့် လျှို့ဝှက်နံပါတ်များကို Custom Parameters (Length, Symbols, Numbers) ဖြင့် 1-Click Generate ပြုလုပ်ပေးသည့် Web Utility ဖြစ်ပါသည်။</p></div>
-        </div>
-        <button onclick="toggleReadMore('prj-04')" id="readmore-btn-prj-04" class="mt-2 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
-          Read more &gt;&gt;
-        </button>
-      </div>
-
-    </div>
-    
-    
-    <!-- Universal Content Card: prj-05 -->
-    <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md">
-      
-      <!-- 1. Title -->
-      <div class="p-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
-        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg leading-snug">SQL Data Warehouse & Analytics</h3>
-        <div class="flex items-center gap-1.5 shrink-0"><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">MSSQL Server</span><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">Data Warehouse</span></div>
-      </div>
-
-      <!-- 2. Media Display (Strict 16:9 Ratio, object-fit: contain) -->
-      <div class="media-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #f4f4f4; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-        <img src="media_folder/projects/proj-sql.jpg" alt="SQL Data Warehouse & Analytics" class="w-full h-full object-contain" onerror="this.src='Media_Files/proj-sql.jpg'">
-        
-        <!-- Action Button (Absolute Bottom Right overlay) -->
-        <a href="#course_sql" target="_blank" rel="noopener noreferrer" 
-           class="action-btn"
-           style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #0f172a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); text-decoration: none; transition: 0.2s;"
-           onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#0f172a'">
-          <span>အသေးစိတ် လေ့လာမည်</span>
-          <span>➔</span>
-        </a>
-      </div>
-
-      <!-- 3. Social Actions Row (Flexbox: Left: Like | Center: Comment | Right: Share) -->
-      <div class="flex items-center justify-between px-4 py-2.5 border-t border-b border-gray-100 bg-slate-50/70 text-xs text-gray-500 font-semibold select-none">
-        <!-- Left: Like Button -->
-        <button onclick="handleLike('prj-05')" id="like-btn-prj-05" class="flex items-center gap-1.5 hover:text-rose-600 transition">
-          <span id="like-icon-prj-05">🤍</span>
-          <span id="like-count-prj-05">128</span> Likes
-        </button>
-        <!-- Center: Comment Box -->
-        <button onclick="openCommentBox('prj-05')" class="flex items-center gap-1.5 hover:text-blue-600 transition">
-          <span>💬</span>
-          <span>မှတ်ချက်ပေးရန်</span>
-        </button>
-        <!-- Right: Share -->
-        <button onclick="handleShare('SQL Data Warehouse & Analytics', '#course_sql')" class="flex items-center gap-1.5 hover:text-indigo-600 transition">
-          <span>🔗</span>
-          <span>မျှဝေမည်</span>
-        </button>
-      </div>
-
-      <!-- 4. Content / Article (3-line clamp + Read more >> toggle) -->
-      <div class="p-4 text-xs text-gray-600 leading-relaxed font-sans">
-        <div id="content-prj-05" class="content-clamped" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-          <p class="font-medium text-gray-700 mb-1">Relational Database နှင့် SQL Queries များကို စီးပွားရေးအစီရင်ခံစာများ အလိုအလျောက် ထုတ်ယူနိုင်ရန် ချိတ်ဆက်တည်ဆောက်ထားသော စနစ်။</p>
-          <div class="mt-2 space-y-1.5 text-gray-600"><p>MSSQL Server တွင် Normalization, Star Schema Fact/Dimension Tables များကို တည်ဆောက်ပြီး Stored Procedures, Views များနှင့် Indexing ပြုလုပ်ပုံ လက်တွေ့ Case Study ဖြစ်ပါသည်။</p></div>
-        </div>
-        <button onclick="toggleReadMore('prj-05')" id="readmore-btn-prj-05" class="mt-2 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
-          Read more &gt;&gt;
-        </button>
-      </div>
-
-    </div>
-    
   </div>
 
 </div>
+
+<!-- Google Sheet မှ ဒေတာ လှမ်းဖတ်ပြီး ကတ်များကို အလိုအလျောက် တည်ဆောက်ပေးမည့် Script -->
+<script>
+(async function initDynamicProjects() {
+  const container = document.getElementById('projects-container');
+  if (!container) return;
+
+  try {
+    // 1. Google Sheet ၏ HOME_Projects Tab မှ ဒေတာ အားလုံးကို လှမ်းဆွဲယူခြင်း
+    const projects = await fetchTabData('HOME_Projects');
+
+    if (!projects || projects.length === 0) {
+      container.innerHTML = `
+        <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-gray-100 p-6">
+          <p class="text-sm font-bold text-gray-500">လက်ရှိတွင် ဖော်ပြရန် Project များ မရှိသေးပါခင်ဗျာ။</p>
+        </div>
+      `;
+      return;
+    }
+
+    // 2. Is_Active = TRUE ဖြစ်သော ကတ်များကိုသာ စစ်ထုတ်ပြီး Order အလိုက် စီစဉ်ခြင်း
+    const activeProjects = projects
+      .filter(item => item.Is_Active === true || String(item.Is_Active).toUpperCase() === 'TRUE')
+      .sort((a, b) => (parseInt(a.Order) || 99) - (parseInt(b.Order) || 99));
+
+    // 3. Google Sheet ထဲရှိ Image_Name (ဥပမာ- proj-population.jpg) ကို သုံးပြီး ကတ်တစ်ခုချင်းစီ တည်ဆောက်ခြင်း
+    container.innerHTML = activeProjects.map(item => {
+      // Action Button စာသား မပါပါက "Live Demo ဖွင့်ကြည့်မည်" ဟု အလိုအလျောက် သတ်မှတ်ခြင်း
+      if (!item.Action_Text) item.Action_Text = "Live Demo ဖွင့်ကြည့်မည်";
+      return createUniversalCardHtml(item, 'projects');
+    }).join('');
+
+  } catch (error) {
+    console.error('Projects data fetch error:', error);
+    container.innerHTML = `
+      <div class="col-span-full text-center py-8 text-red-500 text-xs font-bold">
+        ဒေတာ ရယူရာတွင် အခက်အခဲရှိနေပါသဖြင့် ခေတ္တစောင့်ဆိုင်းပြီး ပြန်လည် ကြိုးစားပေးပါ။
+      </div>
+    `;
+  }
+})();
+</script>
