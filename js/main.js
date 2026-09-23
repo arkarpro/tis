@@ -1,5 +1,5 @@
 // =========================================================================
-// 🌐 The Insights Solution (TIS) - Main Frame Engine & SPA Router
+// 🌐 The Insights Solution (TIS) - Main Frame Engine & Headless CMS Router
 // =========================================================================
 
 const VALID_PAGES = [
@@ -17,22 +17,111 @@ const VALID_PAGES = [
   'review'
 ];
 
+// Page Controllers mapping to Google Sheets tabs
+const PAGE_CONTROLLERS = {
+  projects: () => renderDynamicTab('HOME_Projects', 'projects-container', 'projects', 'Live Demo ဖွင့်ကြည့်မည် ➔'),
+  excel_hacks: () => renderDynamicTab('FREE_Excel_Hacks', 'hacks-container', 'hacks', 'Hack လေ့လာမည် ➔'),
+  articles: () => renderDynamicTab('FREE_Articles', 'articles-container', 'articles', 'ဆောင်းပါး ဖတ်ရှုမည် ➔'),
+  course_excel_biz: () => renderDynamicTab('COURSE_Excel', 'course-excel-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
+  course_data_analysis: () => renderDynamicTab('COURSE_PowerQuery', 'course-da-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
+  course_powerbi: () => renderDynamicTab('COURSE_PowerBI', 'course-pbi-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
+  course_sql: () => renderDynamicTab('COURSE_SQL', 'course-sql-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
+  review: () => renderDynamicTab('TEST_Reviews', 'reviews-container', 'reviews', 'သင်တန်း ဆွေးနွေးရန် ➔'),
+  mock_excel: () => renderMockExcel(),
+  mock_pl300: () => renderMockPL300()
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Check Initial Hash Route
+  // 1. Initial Route check
   const hash = window.location.hash.replace('#', '').trim();
   if (hash && hash !== 'about' && VALID_PAGES.includes(hash)) {
     loadPage(hash, false);
   }
 
-  // 2. Load Top Ad Banner Async without blocking UI
+  // 2. Load Announcement Banner from Google Sheet SITE_Config
   loadAdBannerFromSheet();
 
-  // 3. Listen to Hash changes for Back/Forward Navigation
+  // 3. Listen to Hash change
   window.addEventListener('hashchange', () => {
     const newHash = window.location.hash.replace('#', '').trim() || 'about';
     loadPage(newHash, false);
   });
 });
+
+// Generic Dynamic Tab Renderer for Google Sheets CMS
+async function renderDynamicTab(tabName, containerId, folderName, defaultActionText = "အသေးစိတ် လေ့လာမည်") {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="col-span-full flex flex-col items-center justify-center py-16">
+      <div class="w-8 h-8 border-3 border-gray-200 border-t-blue-600 rounded-full animate-spin mb-3"></div>
+      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Google Sheet မှ ဒေတာများ ရယူနေပါသည်...</p>
+    </div>
+  `;
+
+  try {
+    const data = await fetchTabData(tabName);
+    if (!data || data.length === 0) {
+      container.innerHTML = `
+        <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-gray-100 p-6">
+          <p class="text-sm font-bold text-gray-500">လက်ရှိတွင် ဖော်ပြရန် အချက်အလက်များ မရှိသေးပါခင်ဗျာ။</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Filter active items and sort by Order
+    const activeItems = data
+      .filter(item => item.Is_Active === true || String(item.Is_Active).toUpperCase() === 'TRUE' || item.Status === 'Active' || item.Is_Active === undefined)
+      .sort((a, b) => (parseInt(a.Order) || 99) - (parseInt(b.Order) || 99));
+
+    if (activeItems.length === 0) {
+      container.innerHTML = `
+        <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-gray-100 p-6">
+          <p class="text-sm font-bold text-gray-500">ဖွင့်လှစ်ထားသော အကြောင်းအရာများ မရှိသေးပါခင်ဗျာ။</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Render cards using universal engine
+    container.innerHTML = activeItems.map(item => {
+      if (!item.Action_Text) item.Action_Text = defaultActionText;
+      return createUniversalCardHtml(item, folderName);
+    }).join('');
+
+  } catch (err) {
+    console.error(`Error rendering tab [${tabName}]:`, err);
+    container.innerHTML = `
+      <div class="col-span-full text-center py-8 text-red-500 text-xs font-bold">
+        ဒေတာ ရယူရာတွင် အခက်အခဲရှိနေပါသဖြင့် ခေတ္တစောင့်ဆိုင်းပြီး ပြန်လည် ကြိုးစားပေးပါ။
+      </div>
+    `;
+  }
+}
+
+// Mock Tests Launchers
+function renderMockExcel() {
+  const container = document.getElementById('mock-excel-container');
+  if (!container) return;
+  const tests = [
+    { title: 'Excel Level 1: Foundations & Essential Formulas', Category: 'Level 1', Summary: 'SUM, AVERAGE, COUNTIF, IF အခြေခံ တွက်ချက်မှုများနှင့် Data Formatting စစ်ဆေးခြင်း။', Action_Text: 'Test စတင်ဖြေဆိုမည် ➔', Action_Link: 'https://docs.google.com/forms/d/e/1FAIpQLSd_mock_level1/viewform', Photo_Name: 'quiz-01.jpg' },
+    { title: 'Excel Level 2: Advanced Lookup & Dynamic Formulas', Category: 'Level 2', Summary: 'XLOOKUP, INDEX-MATCH, FILTER, UNIQUE dynamic array စနစ်များ စစ်ဆေးခြင်း။', Action_Text: 'Test စတင်ဖြေဆိုမည် ➔', Action_Link: 'https://docs.google.com/forms/d/e/1FAIpQLSd_mock_level2/viewform', Photo_Name: 'quiz-02.jpg' },
+    { title: 'Excel Level 3: Power Query Automation Mastery', Category: 'Level 3', Summary: 'Folder Combining, Merged-cell Unpivoting, Custom M-Functions စစ်ဆေးခြင်း။', Action_Text: 'Test စတင်ဖြေဆိုမည် ➔', Action_Link: 'https://docs.google.com/forms/d/e/1FAIpQLSd_mock_level3/viewform', Photo_Name: 'quiz-03.jpg' }
+  ];
+  container.innerHTML = tests.map(t => createUniversalCardHtml(t, 'quizzes')).join('');
+}
+
+function renderMockPL300() {
+  const container = document.getElementById('mock-pl300-container');
+  if (!container) return;
+  const tests = [
+    { title: 'PL-300 Mock Test 1: Prepare the Data (25-30%)', Category: 'PL-300 Prep', Summary: 'Power Query Parameters, Data Cleaning, Custom Columns နှင့် Data Source Connections။', Action_Text: 'Exam စတင်ဖြေဆိုမည် ➔', Action_Link: 'https://docs.google.com/forms/d/e/1FAIpQLSd_pl300_part1/viewform', Photo_Name: 'quiz-03.jpg' },
+    { title: 'PL-300 Mock Test 2: Model the Data & DAX (25-30%)', Category: 'PL-300 DAX', Summary: 'Star Schema, Relationships (1:M, M:M), CALCULATE, FILTER, Time Intelligence DAX။', Action_Text: 'Exam စတင်ဖြေဆိုမည် ➔', Action_Link: 'https://docs.google.com/forms/d/e/1FAIpQLSd_pl300_part2/viewform', Photo_Name: 'PBI_8.png' }
+  ];
+  container.innerHTML = tests.map(t => createUniversalCardHtml(t, 'quizzes')).join('');
+}
 
 // SPA Page Loader
 async function loadPage(pageName, updateHash = true) {
@@ -45,7 +134,6 @@ async function loadPage(pageName, updateHash = true) {
     window.location.hash = targetPage;
   }
 
-  // Show Smooth Loading State
   container.innerHTML = `
     <div class="flex flex-col items-center justify-center py-20 w-full animate-fadeIn">
       <div class="w-8 h-8 border-3 border-gray-100 border-t-blue-600 rounded-full animate-spin mb-3"></div>
@@ -59,6 +147,12 @@ async function loadPage(pageName, updateHash = true) {
     const pageHtml = await res.text();
     container.innerHTML = pageHtml;
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Trigger Dynamic Tab Controller
+    if (PAGE_CONTROLLERS[targetPage]) {
+      PAGE_CONTROLLERS[targetPage]();
+    }
+
   } catch (err) {
     console.error(err);
     container.innerHTML = `
@@ -142,7 +236,7 @@ function handleShare(title, link) {
   }
 }
 
-// Dynamic Ad Banner from Google Sheet
+// Dynamic Ad Banner from Google Sheet SITE_Config
 async function loadAdBannerFromSheet() {
   const bannerEl = document.getElementById('dynamic-ad-banner');
   const textEl = document.getElementById('ad-banner-text');

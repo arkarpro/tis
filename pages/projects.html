@@ -1,7 +1,5 @@
-<!-- 6. Featured Projects Page (Dynamic Google Sheets Integration) -->
+<!-- 6. Featured Projects Page (Dynamic Google Sheets CMS) -->
 <div class="space-y-6 animate-fadeIn">
-  
-  <!-- Header Title -->
   <div class="flex items-center justify-between pb-3 border-b border-gray-200">
     <div class="flex items-center gap-3">
       <span class="text-2xl">💼</span>
@@ -12,55 +10,10 @@
     </div>
   </div>
 
-  <!-- Dynamic Content Cards Grid Container -->
   <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <!-- Google Sheet မှ ဒေတာ မရောက်မချင်း Loading Skeleton ပြသထားမည် -->
     <div class="col-span-full flex flex-col items-center justify-center py-20">
       <div class="w-8 h-8 border-3 border-gray-200 border-t-blue-600 rounded-full animate-spin mb-3"></div>
       <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Google Sheet မှ Projects ဒေတာများကို ရယူနေပါသည်...</p>
     </div>
   </div>
-
 </div>
-
-<!-- Google Sheet မှ ဒေတာ လှမ်းဖတ်ပြီး ကတ်များကို အလိုအလျောက် တည်ဆောက်ပေးမည့် Script -->
-<script>
-(async function initDynamicProjects() {
-  const container = document.getElementById('projects-container');
-  if (!container) return;
-
-  try {
-    // 1. Google Sheet ၏ HOME_Projects Tab မှ ဒေတာ အားလုံးကို လှမ်းဆွဲယူခြင်း
-    const projects = await fetchTabData('HOME_Projects');
-
-    if (!projects || projects.length === 0) {
-      container.innerHTML = `
-        <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-gray-100 p-6">
-          <p class="text-sm font-bold text-gray-500">လက်ရှိတွင် ဖော်ပြရန် Project များ မရှိသေးပါခင်ဗျာ။</p>
-        </div>
-      `;
-      return;
-    }
-
-    // 2. Is_Active = TRUE ဖြစ်သော ကတ်များကိုသာ စစ်ထုတ်ပြီး Order အလိုက် စီစဉ်ခြင်း
-    const activeProjects = projects
-      .filter(item => item.Is_Active === true || String(item.Is_Active).toUpperCase() === 'TRUE')
-      .sort((a, b) => (parseInt(a.Order) || 99) - (parseInt(b.Order) || 99));
-
-    // 3. Google Sheet ထဲရှိ Image_Name (ဥပမာ- proj-population.jpg) ကို သုံးပြီး ကတ်တစ်ခုချင်းစီ တည်ဆောက်ခြင်း
-    container.innerHTML = activeProjects.map(item => {
-      // Action Button စာသား မပါပါက "Live Demo ဖွင့်ကြည့်မည်" ဟု အလိုအလျောက် သတ်မှတ်ခြင်း
-      if (!item.Action_Text) item.Action_Text = "Live Demo ဖွင့်ကြည့်မည်";
-      return createUniversalCardHtml(item, 'projects');
-    }).join('');
-
-  } catch (error) {
-    console.error('Projects data fetch error:', error);
-    container.innerHTML = `
-      <div class="col-span-full text-center py-8 text-red-500 text-xs font-bold">
-        ဒေတာ ရယူရာတွင် အခက်အခဲရှိနေပါသဖြင့် ခေတ္တစောင့်ဆိုင်းပြီး ပြန်လည် ကြိုးစားပေးပါ။
-      </div>
-    `;
-  }
-})();
-</script>

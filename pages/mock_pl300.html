@@ -1,6 +1,5 @@
-<!-- 10. Mock Tests - PL-300 Page -->
+<!-- Mock Tests: Microsoft PL-300 -->
 <div class="space-y-6 animate-fadeIn">
-  
   <div class="flex items-center justify-between pb-3 border-b border-gray-200">
     <div class="flex items-center gap-3">
       <span class="text-2xl">🏆</span>
@@ -11,119 +10,10 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    
-    <!-- Universal Content Card: test-pl300-01 -->
-    <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md">
-      
-      <!-- 1. Title -->
-      <div class="p-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
-        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg leading-snug">PL-300 Mock Test 1: Prepare the Data (25-30%)</h3>
-        <div class="flex items-center gap-1.5 shrink-0"><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">PL-300</span><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">Data Prep</span></div>
-      </div>
-
-      <!-- 2. Media Display (Strict 16:9 Ratio, object-fit: contain) -->
-      <div class="media-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #f4f4f4; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-        <img src="media_folder/quizzes/quiz-03.jpg" alt="PL-300 Mock Test 1: Prepare the Data (25-30%)" class="w-full h-full object-contain" onerror="this.src='Media_Files/quiz-03.jpg'">
-        
-        <!-- Action Button (Absolute Bottom Right overlay) -->
-        <a href="test-review.html#pl300-tests" target="_blank" rel="noopener noreferrer" 
-           class="action-btn"
-           style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #0f172a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); text-decoration: none; transition: 0.2s;"
-           onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#0f172a'">
-          <span>Exam စတင်ဖြေဆိုမည်</span>
-          <span>➔</span>
-        </a>
-      </div>
-
-      <!-- 3. Social Actions Row (Flexbox: Left: Like | Center: Comment | Right: Share) -->
-      <div class="flex items-center justify-between px-4 py-2.5 border-t border-b border-gray-100 bg-slate-50/70 text-xs text-gray-500 font-semibold select-none">
-        <!-- Left: Like Button -->
-        <button onclick="handleLike('test-pl300-01')" id="like-btn-test-pl300-01" class="flex items-center gap-1.5 hover:text-rose-600 transition">
-          <span id="like-icon-test-pl300-01">🤍</span>
-          <span id="like-count-test-pl300-01">128</span> Likes
-        </button>
-        <!-- Center: Comment Box -->
-        <button onclick="openCommentBox('test-pl300-01')" class="flex items-center gap-1.5 hover:text-blue-600 transition">
-          <span>💬</span>
-          <span>မှတ်ချက်ပေးရန်</span>
-        </button>
-        <!-- Right: Share -->
-        <button onclick="handleShare('PL-300 Mock Test 1: Prepare the Data (25-30%)', 'test-review.html#pl300-tests')" class="flex items-center gap-1.5 hover:text-indigo-600 transition">
-          <span>🔗</span>
-          <span>မျှဝေမည်</span>
-        </button>
-      </div>
-
-      <!-- 4. Content / Article (3-line clamp + Read more >> toggle) -->
-      <div class="p-4 text-xs text-gray-600 leading-relaxed font-sans">
-        <div id="content-test-pl300-01" class="content-clamped" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-          <p class="font-medium text-gray-700 mb-1">Power Query Parameters, Data Cleaning, Custom Columns နှင့် Data Source Connections။</p>
-          <div class="mt-2 space-y-1.5 text-gray-600"><p>Microsoft တရားဝင် စာမေးပွဲ Outline အတိုင်း Data Preparation အပိုင်းကို သီးသန့် အကဲဖြတ်မည့် စနစ် ဖြစ်ပါသည်။</p></div>
-        </div>
-        <button onclick="toggleReadMore('test-pl300-01')" id="readmore-btn-test-pl300-01" class="mt-2 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
-          Read more &gt;&gt;
-        </button>
-      </div>
-
+  <div id="mock-pl300-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="col-span-full flex flex-col items-center justify-center py-20">
+      <div class="w-8 h-8 border-3 border-gray-200 border-t-blue-600 rounded-full animate-spin mb-3"></div>
+      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">PL-300 Exam Simulator ကို ချိတ်ဆက်နေပါသည်...</p>
     </div>
-    
-    
-    <!-- Universal Content Card: test-pl300-02 -->
-    <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md">
-      
-      <!-- 1. Title -->
-      <div class="p-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
-        <h3 class="font-extrabold text-slate-900 text-base sm:text-lg leading-snug">PL-300 Mock Test 2: Model the Data & DAX (25-30%)</h3>
-        <div class="flex items-center gap-1.5 shrink-0"><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">PL-300</span><span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold text-[10px]">DAX Modeling</span></div>
-      </div>
-
-      <!-- 2. Media Display (Strict 16:9 Ratio, object-fit: contain) -->
-      <div class="media-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #f4f4f4; overflow: hidden; display: flex; align-items: center; justify-content: center;">
-        <img src="media_folder/quizzes/quiz-04.jpg" alt="PL-300 Mock Test 2: Model the Data & DAX (25-30%)" class="w-full h-full object-contain" onerror="this.src='Media_Files/quiz-04.jpg'">
-        
-        <!-- Action Button (Absolute Bottom Right overlay) -->
-        <a href="test-review.html#pl300-tests" target="_blank" rel="noopener noreferrer" 
-           class="action-btn"
-           style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #0f172a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); text-decoration: none; transition: 0.2s;"
-           onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#0f172a'">
-          <span>Exam စတင်ဖြေဆိုမည်</span>
-          <span>➔</span>
-        </a>
-      </div>
-
-      <!-- 3. Social Actions Row (Flexbox: Left: Like | Center: Comment | Right: Share) -->
-      <div class="flex items-center justify-between px-4 py-2.5 border-t border-b border-gray-100 bg-slate-50/70 text-xs text-gray-500 font-semibold select-none">
-        <!-- Left: Like Button -->
-        <button onclick="handleLike('test-pl300-02')" id="like-btn-test-pl300-02" class="flex items-center gap-1.5 hover:text-rose-600 transition">
-          <span id="like-icon-test-pl300-02">🤍</span>
-          <span id="like-count-test-pl300-02">128</span> Likes
-        </button>
-        <!-- Center: Comment Box -->
-        <button onclick="openCommentBox('test-pl300-02')" class="flex items-center gap-1.5 hover:text-blue-600 transition">
-          <span>💬</span>
-          <span>မှတ်ချက်ပေးရန်</span>
-        </button>
-        <!-- Right: Share -->
-        <button onclick="handleShare('PL-300 Mock Test 2: Model the Data & DAX (25-30%)', 'test-review.html#pl300-tests')" class="flex items-center gap-1.5 hover:text-indigo-600 transition">
-          <span>🔗</span>
-          <span>မျှဝေမည်</span>
-        </button>
-      </div>
-
-      <!-- 4. Content / Article (3-line clamp + Read more >> toggle) -->
-      <div class="p-4 text-xs text-gray-600 leading-relaxed font-sans">
-        <div id="content-test-pl300-02" class="content-clamped" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-          <p class="font-medium text-gray-700 mb-1">Star Schema, Relationship Directions, Role-playing Dimensions နှင့် Complex DAX Measures။</p>
-          <div class="mt-2 space-y-1.5 text-gray-600"><p>Data Modeling နှင့် DAX တွက်ချက်မှုများကို အမှားမခံဘဲ တိကျစွာ ဖြေဆိုနိုင်ရန် Real Exam Scenario မေးခွန်းများဖြင့် လေ့ကျင့်ပေးပါသည်။</p></div>
-        </div>
-        <button onclick="toggleReadMore('test-pl300-02')" id="readmore-btn-test-pl300-02" class="mt-2 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
-          Read more &gt;&gt;
-        </button>
-      </div>
-
-    </div>
-    
   </div>
-
 </div>
