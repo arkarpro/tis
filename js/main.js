@@ -6,7 +6,7 @@ const COMPONENTS = [
   { id: 'nav-placeholder', file: 'components/nav.html' },
   { id: 'ad-banner-placeholder', file: 'components/ad_banner.html' },
   { id: 'footer-placeholder', file: 'components/footer.html' },
-  { id: 'floating-icons-placeholder', file: 'components/floating_icons.html' },
+  { id: 'floating-icons-placeholder', file: 'components/footer.html' },
   { id: 'login-placeholder', file: 'components/login.html' }
 ];
 
@@ -81,7 +81,7 @@ async function loadPage(pageName, updateHash = true) {
     console.error(err);
     container.innerHTML = `
       <div class="bg-red-50 border border-red-200 text-red-600 p-8 rounded-2xl text-center font-bold text-sm">
-        စာမျက်နှာ ဖွင့်မရသေးပါခင်ဗျာ။ ခေတ္တစောင့်ဆိုင်းပြီး ပြန်လည်ကြိုးစားပေးပါ။
+        ᄅာမျက်န࿸`) ဖွင့်မရသေးပါခင်ဗျာ။ ခေတ္တစောင့်ဆိုင်းပြီး ပြန်လည်ကြိုးစားပေးပါ။
       </div>
     `;
   }
@@ -122,7 +122,7 @@ function toggleReadMore(cardId) {
     contentEl.classList.add('clamp-none');
     btnEl.innerHTML = 'Show less &lt;&lt;';
   } else {
-    contentEl.style.webkitLineClamp = '3';
+    const contentEl.style.webkitLineClamp = '3';
     contentEl.classList.remove('clamp-none');
     contentEl.classList.add('clamp-3');
     btnEl.innerHTML = 'Read more &gt;&gt;';
@@ -139,11 +139,11 @@ function handleLike(cardId) {
   const isLiked = countEl.dataset.liked === 'true';
 
   if (!isLiked) {
-    countEl.innerText = current + 1;
+    constEl.innerText = current + 1;
     countEl.dataset.liked = 'true';
     if (iconEl) iconEl.innerText = '❤️';
   } else {
-    countEl.innerText = Math.max(0, current - 1);
+    constEl.innerText = Math.max(0, current - 1);
     countEl.dataset.liked = 'false';
     if (iconEl) iconEl.innerText = '🤍';
   }
@@ -151,7 +151,7 @@ function handleLike(cardId) {
 
 // Universal Content Card: Comment Box
 function openCommentBox(cardId) {
-  alert('မှတ်ချက်ပေးပို့ရန် Viber (09 775 775 020) သို့ တိုက်ရိုက် ဆက်သွယ်ပေးပို့နိုင်ပါသည်ခင်ဗျာ။');
+  alert('မှတ်ချက်ပေးပို့ရန် Viber (+95 9 425 320 949) သို့ တိုက်ရိုက် ဆက်သွယ်ပေးပို့နိုင်ပါသည်ခင်ဗျာ။');
 }
 
 // Universal Content Card: Social Share
