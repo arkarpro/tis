@@ -2,17 +2,6 @@
 // 🌐 The Insights Solution (TIS) - Main Frame Engine & SPA Router
 // =========================================================================
 
-<<<<<<< HEAD
-=======
-const COMPONENTS = [
-  { id: 'nav-placeholder', file: 'components/nav.html' },
-  { id: 'ad-banner-placeholder', file: 'components/ad_banner.html' },
-  { id: 'footer-placeholder', file: 'components/footer.html' },
-  { id: 'floating-icons-placeholder', file: 'components/footer.html' },
-  { id: 'login-placeholder', file: 'components/login.html' }
-];
-
->>>>>>> e6ac88726eb248a9eb9e8334f114dbb17e929645
 const VALID_PAGES = [
   'about',
   'projects',
@@ -74,7 +63,7 @@ async function loadPage(pageName, updateHash = true) {
     console.error(err);
     container.innerHTML = `
       <div class="bg-red-50 border border-red-200 text-red-600 p-8 rounded-2xl text-center font-bold text-sm">
-        ᄅာမျက်န࿸`) ဖွင့်မရသေးပါခင်ဗျာ။ ခေတ္တစောင့်ဆိုင်းပြီး ပြန်လည်ကြိုးစားပေးပါ။
+        စာမျက်နှာ ဖွင့်မရသေးပါခင်ဗျာ။ ခေတ္တစောင့်ဆိုင်းပြီး ပြန်လည်ကြိုးစားပေးပါ။
       </div>
     `;
   }
@@ -109,7 +98,7 @@ function toggleReadMore(cardId) {
     contentEl.classList.add('clamp-none');
     btnEl.innerHTML = 'Show less &lt;&lt;';
   } else {
-    const contentEl.style.webkitLineClamp = '3';
+    contentEl.style.webkitLineClamp = '3';
     contentEl.classList.remove('clamp-none');
     contentEl.classList.add('clamp-3');
     btnEl.innerHTML = 'Read more &gt;&gt;';
@@ -126,11 +115,11 @@ function handleLike(cardId) {
   const isLiked = countEl.dataset.liked === 'true';
 
   if (!isLiked) {
-    constEl.innerText = current + 1;
+    countEl.innerText = current + 1;
     countEl.dataset.liked = 'true';
     if (iconEl) iconEl.innerText = '❤️';
   } else {
-    constEl.innerText = Math.max(0, current - 1);
+    countEl.innerText = Math.max(0, current - 1);
     countEl.dataset.liked = 'false';
     if (iconEl) iconEl.innerText = '🤍';
   }
