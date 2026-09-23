@@ -1,227 +1,196 @@
-// =================================================================
-// 🚀 Main Application Logic & Single-Page Scroll Routing
-// =================================================================
+// =========================================================================
+// 🌐 The Insights Solution (TIS) - Main Frame Engine & SPA Router
+// =========================================================================
 
-async function loadComponent(id, file) {
-    try {
-        const response = await fetch(`components/${file}.html`);
-        if (!response.ok) throw new Error(`Could not load ${file}.html`);
-        const element = document.getElementById(id);
-        if (element) element.innerHTML = await response.text();
-    } catch (error) { console.warn(`Component load warning:`, error); }
-}
+const COMPONENTS = [
+  { id: 'nav-placeholder', file: 'components/nav.html' },
+  { id: 'ad-banner-placeholder', file: 'components/ad_banner.html' },
+  { id: 'footer-placeholder', file: 'components/footer.html' },
+  { id: 'floating-icons-placeholder', file: 'components/floating_icons.html' },
+  { id: 'login-placeholder', file: 'components/login.html' }
+];
 
-async function initApp() {
-    await Promise.all([
-        loadComponent('navbar', 'navbar'),
-        loadComponent('sidebar', 'sidebar'),
-        loadComponent('widgets', 'widgets'),
-        loadComponent('login-container', 'login')
-    ]);
+const VALID_PAGES = [
+  'about',
+  'projects',
+  'excel_hacks',
+  'articles',
+  'mock_excel',
+  'mock_pl300',
+  'course_excel_biz',
+  'course_data_analysis',
+  'course_powerbi',
+  'course_sql',
+  'qna',
+  'review'
+];
 
-    const isLoggedIn = typeof checkLoginStatus === 'function' ? checkLoginStatus() : false;
-    const userName = localStorage.getItem('tis_user_name');
+document.addEventListener('DOMContentLoaded', async () => {
+  // 1. Load All Shared Layout Components in Parallel
+  await Promise.all(COMPONENTS.map(c => loadComponent(c.id, c.file)));
 
-    setTimeout(() => {
-        const nameSpan = document.getElementById('dynamic-username');
-        if (nameSpan) nameSpan.innerText = isLoggedIn && userName ? userName : "Data Enthusiast";
-        const logoutSection = document.getElementById('logout-section');
-        if (logoutSection) logoutSection.style.display = isLoggedIn ? 'block' : 'none';
-    }, 50);
+  // 2. Load Top Ad Banner from Google Sheet
+  loadAdBannerFromSheet();
 
-    // 💡 အစပိုင်းတွင် Master Data ကို တစ်ခါတည်း ဆွဲယူမည် (From api.js)
-    if (typeof fetchMasterData === 'function') {
-        fetchMasterData();
-    }
+  // 3. Handle Initial Page Route from URL Hash (e.g. #projects, #course_data_analysis)
+  handleHashRoute();
 
-    if (window.innerWidth < 768) switchMobileTab('home');
-}
-window.addEventListener('DOMContentLoaded', initApp);
-
-
-// --------------------------------------------------
-// Mobile Bottom Navigation
-// --------------------------------------------------
-// --------------------------------------------------
-// Mobile Bottom Navigation
-// --------------------------------------------------
-function switchMobileTab(tabId) {
-    if (window.innerWidth >= 768) return; 
-
-    const sidebar = document.getElementById('sidebar');
-    const content = document.getElementById('content');
-    const widgets = document.getElementById('widgets');
-
-    [sidebar, content, widgets].forEach(el => {
-        if(el) { 
-            el.classList.add('hidden'); 
-            // 💡 md:block ကို မဖျက်တော့ပါ။ သို့မှသာ Screen ပြန်ချဲ့လျှင် Desktop Mode အလိုလို ပြန်ဝင်မည်ဖြစ်သည်
-            el.classList.remove('animate-fade-in'); 
-        }
-    });
-
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('text-blue-600', 'scale-110');
-        btn.classList.add('text-gray-400');
-    });
-
-    if (tabId === 'profile' || tabId === 'tests') {
-        document.querySelectorAll('.nav-item').forEach(el => {
-            el.className = "nav-item text-sm font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 px-3.5 py-2 rounded-full transition-all duration-300";
-        });
-    }
-
-    let activeElement = null;
-    let activeBtn = null;
-
-    if (tabId === 'profile') {
-        activeElement = sidebar; activeBtn = document.getElementById('nav-profile');
-    } else if (tabId === 'home') {
-        activeElement = content; activeBtn = document.getElementById('nav-home');
-        if (!content.classList.contains('hidden')) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-    } else if (tabId === 'tests') {
-        activeElement = widgets; activeBtn = document.getElementById('nav-tests');
-    }
-
-    if (activeElement) { 
-        activeElement.classList.remove('hidden'); 
-        activeElement.classList.add('animate-fade-in'); 
-    }
-    if (activeBtn) { 
-        activeBtn.classList.add('text-blue-600', 'scale-110'); 
-        activeBtn.classList.remove('text-gray-400'); 
-    }
-}
-
-let lastWidth = window.innerWidth;
-window.addEventListener('resize', () => {
-    if (window.innerWidth === lastWidth) return; 
-    lastWidth = window.innerWidth;
-    
-    if (window.innerWidth >= 768) {
-        // 💡 Screen အကျယ် 768px ထက်ကျော်သွားပါက Layout (၃) ခုစလုံးကို အလိုအလျောက် ပြန်ဖော်ပေးမည်
-        ['sidebar', 'content', 'widgets'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                el.classList.remove('hidden');
-                el.classList.add('md:block'); 
-            }
-        });
-    } else {
-        switchMobileTab('home');
-    }
+  // 4. Listen to Hash changes for Back/Forward Navigation
+  window.addEventListener('hashchange', handleHashRoute);
 });
 
-
-// --------------------------------------------------
-// ScrollSpy - ကိုယ်ဖတ်နေသည့်နေရာကို လိုက်ပြီး Navbar အရောင်ပြောင်းခြင်း
-// --------------------------------------------------
-function setupScrollSpy() {
-    const sections = document.querySelectorAll('.scroll-section');
-    
-    // မျက်နှာပြင်ရဲ့ အပေါ် ၃၀% နားကို ရောက်လာတာနဲ့ Active ဖြစ်ကြောင်း သတ်မှတ်မည်
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const currentCat = entry.target.id.replace('section-', '');
-                if (typeof updateTopNavbarUI === 'function') {
-                    updateTopNavbarUI(currentCat);
-                }
-            }
-        });
-    }, { rootMargin: '-20% 0px -70% 0px' });
-    
-    sections.forEach(sec => observer.observe(sec));
+// Component Loader
+async function loadComponent(elementId, filePath) {
+  try {
+    const res = await fetch(filePath);
+    if (!res.ok) throw new Error(`HTTP ${res.status} loading ${filePath}`);
+    const html = await res.text();
+    const el = document.getElementById(elementId);
+    if (el) el.innerHTML = html;
+  } catch (err) {
+    console.warn(`Failed to load component: ${filePath}`, err);
+  }
 }
 
+// SPA Page Loader
+async function loadPage(pageName, updateHash = true) {
+  const container = document.getElementById('main-content');
+  if (!container) return;
 
-// --------------------------------------------------
-// Mobile Horizontal Swipe Logic
-// --------------------------------------------------
-let touchStartX = 0; let touchEndX = 0;
-let touchStartY = 0; let touchEndY = 0;
-const swipeOrder = ['profile', 'Home', 'Excel', 'PowerQuery', 'PowerBI', 'SQL', 'Tech', 'tests'];
+  const targetPage = VALID_PAGES.includes(pageName) ? pageName : 'about';
+  
+  if (updateHash) {
+    window.location.hash = targetPage;
+  }
 
-function handleSwipe() {
-    if (window.innerWidth >= 768) return; 
+  // Show Smooth Loading State
+  container.innerHTML = `
+    <div class="flex flex-col items-center justify-center py-20 w-full animate-fadeIn">
+      <div class="w-8 h-8 border-3 border-gray-100 border-t-blue-600 rounded-full animate-spin mb-3"></div>
+      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Loading ${targetPage.replace(/_/g, ' ')}...</p>
+    </div>
+  `;
 
-    const diffX = touchEndX - touchStartX;
-    const diffY = touchEndY - touchStartY;
+  try {
+    const res = await fetch(`pages/${targetPage}.html`);
+    if (!res.ok) throw new Error(`Failed to load pages/${targetPage}.html`);
+    const pageHtml = await res.text();
+    container.innerHTML = pageHtml;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = `
+      <div class="bg-red-50 border border-red-200 text-red-600 p-8 rounded-2xl text-center font-bold text-sm">
+        စာမျက်နှာ ဖွင့်မရသေးပါခင်ဗျာ။ ခေတ္တစောင့်ဆိုင်းပြီး ပြန်လည်ကြိုးစားပေးပါ။
+      </div>
+    `;
+  }
+}
 
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
-        let currentState = 'Home';
-        if (!document.getElementById('sidebar')?.classList.contains('hidden')) currentState = 'profile';
-        else if (!document.getElementById('widgets')?.classList.contains('hidden')) currentState = 'tests';
-        else if (typeof currentCategory !== 'undefined') currentState = currentCategory;
+function handleHashRoute() {
+  const hash = window.location.hash.replace('#', '').trim();
+  const page = hash || 'about';
+  loadPage(page, false);
+}
 
-        let currentIndex = swipeOrder.indexOf(currentState);
-        if (currentIndex === -1) currentIndex = 1; 
+// Mobile Menu Toggle
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  if (menu) menu.classList.toggle('hidden');
+}
 
-        if (diffX > 0 && currentIndex > 0) {
-            // Swipe Right
-            if (swipeOrder[currentIndex - 1] === 'profile') switchMobileTab('profile');
-            else loadCategory(swipeOrder[currentIndex - 1]);
-        } else if (diffX < 0 && currentIndex < swipeOrder.length - 1) {
-            // Swipe Left
-            if (swipeOrder[currentIndex + 1] === 'tests') switchMobileTab('tests');
-            else loadCategory(swipeOrder[currentIndex + 1]);
+// Login Modal
+function openLoginModal() {
+  const modal = document.getElementById('loginModal');
+  if (modal) modal.classList.remove('hidden');
+}
+function closeLoginModal() {
+  const modal = document.getElementById('loginModal');
+  if (modal) modal.classList.add('hidden');
+}
+
+// Universal Content Card: Read More >> Toggle
+function toggleReadMore(cardId) {
+  const contentEl = document.getElementById(`content-${cardId}`);
+  const btnEl = document.getElementById(`readmore-btn-${cardId}`);
+  if (!contentEl || !btnEl) return;
+
+  const isClamped = contentEl.style.webkitLineClamp === '3' || contentEl.classList.contains('clamp-3');
+  if (isClamped) {
+    contentEl.style.webkitLineClamp = 'unset';
+    contentEl.classList.remove('clamp-3');
+    contentEl.classList.add('clamp-none');
+    btnEl.innerHTML = 'Show less &lt;&lt;';
+  } else {
+    contentEl.style.webkitLineClamp = '3';
+    contentEl.classList.remove('clamp-none');
+    contentEl.classList.add('clamp-3');
+    btnEl.innerHTML = 'Read more &gt;&gt;';
+  }
+}
+
+// Universal Content Card: Like Counter
+function handleLike(cardId) {
+  const countEl = document.getElementById(`like-count-${cardId}`);
+  const iconEl = document.getElementById(`like-icon-${cardId}`);
+  if (!countEl) return;
+
+  let current = parseInt(countEl.innerText) || 0;
+  const isLiked = countEl.dataset.liked === 'true';
+
+  if (!isLiked) {
+    countEl.innerText = current + 1;
+    countEl.dataset.liked = 'true';
+    if (iconEl) iconEl.innerText = '❤️';
+  } else {
+    countEl.innerText = Math.max(0, current - 1);
+    countEl.dataset.liked = 'false';
+    if (iconEl) iconEl.innerText = '🤍';
+  }
+}
+
+// Universal Content Card: Comment Box
+function openCommentBox(cardId) {
+  alert('မှတ်ချက်ပေးပို့ရန် Viber (09 775 775 020) သို့ တိုက်ရိုက် ဆက်သွယ်ပေးပို့နိုင်ပါသည်ခင်ဗျာ။');
+}
+
+// Universal Content Card: Social Share
+function handleShare(title, link) {
+  const shareUrl = link && link.startsWith('http') ? link : window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: title, url: shareUrl }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      alert('Link ကို Copy ကူးပြီးပါပြီခင်ဗျာ။ အခြားသူများထံ မျှဝေနိုင်ပါပြီ။');
+    });
+  }
+}
+
+// Dynamic Ad Banner from Google Sheet
+async function loadAdBannerFromSheet() {
+  const bannerEl = document.getElementById('dynamic-ad-banner');
+  const textEl = document.getElementById('ad-banner-text');
+  const linkEl = document.getElementById('ad-banner-link');
+  if (!bannerEl || !textEl) return;
+
+  try {
+    const configData = await fetchTabData('SITE_Config');
+    if (configData && configData.length > 0) {
+      const ticker = configData.find(c => c.Setting_Key === 'announcement_ticker');
+      if (ticker && ticker.Value_Text && (ticker.Is_Active === true || ticker.Is_Active === 'TRUE')) {
+        textEl.innerText = ticker.Value_Text;
+        if (ticker.Value_URL && linkEl) {
+          linkEl.href = ticker.Value_URL;
+          linkEl.style.display = 'inline';
+        } else if (linkEl) {
+          linkEl.style.display = 'none';
         }
+        bannerEl.style.display = 'block';
+        return;
+      }
     }
-}
-
-document.addEventListener('touchstart', e => {
-    if (e.target.closest('.overflow-x-auto') || e.target.closest('.overflow-y-auto')) return;
-    touchStartX = e.changedTouches[0].screenX; touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
-
-document.addEventListener('touchend', e => {
-    if (e.target.closest('.overflow-x-auto') || e.target.closest('.overflow-y-auto')) return;
-    touchEndX = e.changedTouches[0].screenX; touchEndY = e.changedTouches[0].screenY;
-    handleSwipe(); 
-}, { passive: true });
-
-
-// --------------------------------------------------
-// Auto-Loop to Top on Scroll Bottom
-// --------------------------------------------------
-window.addEventListener('scroll', () => {
-    if (window.innerWidth >= 768) return;
-    const contentDiv = document.getElementById('content');
-    if (!contentDiv || contentDiv.classList.contains('hidden')) return;
-    
-    const scrollPosition = window.innerHeight + window.scrollY;
-    
-    // အောက်ဆုံးသို့ရောက်သွားပါက Home (အပေါ်ဆုံး) သို့ ပြန်ကန်တက်မည်
-    if (scrollPosition >= document.body.offsetHeight - 10) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-});
-
-// Modal Logic (No changes)
-function openReviewsModal() { const m = document.getElementById('reviewsModal'); if(m) { m.classList.remove('hidden'); m.classList.add('flex'); setTimeout(() => m.classList.add('opacity-100'), 10); history.pushState({ modalOpen: true }, ""); } }
-function closeReviewsModal() { const m = document.getElementById('reviewsModal'); if(m) { m.classList.remove('opacity-100'); setTimeout(() => { m.classList.add('hidden'); m.classList.remove('flex'); }, 300); } }
-window.addEventListener('popstate', function() { closeReviewsModal(); });
-
-// --------------------------------------------------
-// 🚀 Coming Soon Modal Function
-// --------------------------------------------------
-function showComingSoon(featureName = 'Coming Soon') {
-    const modal = document.getElementById('comingSoonModal');
-    const title = document.getElementById('comingSoonTitle');
-    
-    if (modal) {
-        if (title) title.innerText = featureName;
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-    }
-}
-
-function closeComingSoon() {
-    const modal = document.getElementById('comingSoonModal');
-    if (modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-    }
+    bannerEl.style.display = 'none';
+  } catch (err) {
+    bannerEl.style.display = 'none';
+  }
 }
