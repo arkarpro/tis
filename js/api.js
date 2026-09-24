@@ -29,27 +29,30 @@ function resolveMedia(folder, filename) {
 // Fetch any tab data from Google Sheet
 
 // Tab Aliases Mapping (Supports both New Short Names & Legacy Names)
+// Tab Aliases Mapping (Supports both New Short Names & Legacy Names)
 const TAB_ALIASES = {
-  "COURSE_Excel": ["C_Excel", "COURSE_Excel"],
-  "C_Excel": ["C_Excel", "COURSE_Excel"],
-  "COURSE_PowerQuery": ["C_Analysis", "COURSE_PowerQuery", "COURSE_DataAnalysis"],
-  "C_Analysis": ["C_Analysis", "COURSE_PowerQuery", "COURSE_DataAnalysis"],
-  "COURSE_PowerBI": ["C_PBI", "COURSE_PowerBI"],
+  "C_EFBM": ["C_EFBM", "COURSE_Excel", "C_Excel"],
+  "COURSE_Excel": ["C_EFBM", "COURSE_Excel", "C_Excel"],
+  "C_DAE": ["C_DAE", "COURSE_PowerQuery", "C_Analysis", "COURSE_DataAnalysis"],
+  "COURSE_PowerQuery": ["C_DAE", "COURSE_PowerQuery", "C_Analysis"],
   "C_PBI": ["C_PBI", "COURSE_PowerBI"],
-  "COURSE_SQL": ["C_SQL", "COURSE_SQL"],
+  "COURSE_PowerBI": ["C_PBI", "COURSE_PowerBI"],
   "C_SQL": ["C_SQL", "COURSE_SQL"],
-  "FREE_Excel_Hacks": ["F_Hacks", "FREE_Excel_Hacks"],
+  "COURSE_SQL": ["C_SQL", "COURSE_SQL"],
   "F_Hacks": ["F_Hacks", "FREE_Excel_Hacks"],
-  "FREE_Articles": ["F_Articles", "FREE_Articles"],
-  "F_Articles": ["F_Articles", "FREE_Articles"],
-  "FREE_Videos": ["F_Videos", "FREE_Videos"],
+  "FREE_Excel_Hacks": ["F_Hacks", "FREE_Excel_Hacks"],
+  "F_Article": ["F_Article", "FREE_Articles", "F_Articles"],
+  "FREE_Articles": ["F_Article", "FREE_Articles", "F_Articles"],
   "F_Videos": ["F_Videos", "FREE_Videos"],
-  "HOME_Projects": ["H_Projects", "HOME_Projects"],
-  "H_Projects": ["H_Projects", "HOME_Projects"],
-  "HOME_About": ["H_About", "HOME_About"],
-  "H_About": ["H_About", "HOME_About"],
-  "TEST_Reviews": ["T_Reviews", "TEST_Reviews"],
-  "T_Reviews": ["T_Reviews", "TEST_Reviews"]
+  "FREE_Videos": ["F_Videos", "FREE_Videos"],
+  "Projects": ["Projects", "HOME_Projects", "H_Projects"],
+  "HOME_Projects": ["Projects", "HOME_Projects", "H_Projects"],
+  "About": ["About", "HOME_About", "H_About"],
+  "HOME_About": ["About", "HOME_About", "H_About"],
+  "Reviews": ["Reviews", "TEST_Reviews", "T_Reviews"],
+  "TEST_Reviews": ["Reviews", "TEST_Reviews", "T_Reviews"],
+  "Q&A": ["Q&A", "QNA", "qna"],
+  "Ads": ["Ads", "SITE_Ads"]
 };
 
 
@@ -78,29 +81,53 @@ async function fetchTabData(tabName, forceRefresh = false) {
 }
 
 
-// Universal Content Card HTML Builder
+// Universal Content Card HTML Builder (Supports Courses, Projects, Hacks, Articles, Reviews, Q&A, Ads)
 function createUniversalCardHtml(item, folder, fallbackFolder = "courses", tabName = "") {
-  const id = String(item.Course_ID || item.ID || item.Project_ID || item.Hack_No || item.Article_ID || item.Review_ID || Math.random().toString(36).substring(7)).trim();
-  const currentTab = tabName || item.Tab_Name || (folder === "courses" ? "COURSE_Excel" : folder);
-  const title = item.Title || item.Headline || item.Course_Title || item.Student_Name || "The Insights Solution";
+  const id = String(item.ID || item.Course_ID || item.Review_ID || item.Article_ID || item.Project_ID || item.Hack_No || item.Video_ID || item.Ad_ID || Math.random().toString(36).substring(7)).trim();
+  const currentTab = tabName || item.Tab_Name || (folder === "courses" ? "C_EFBM" : folder);
+  
+  // Intelligent Field Mapping across all 13 Tabs
+  let title = item.Title || item.Headline || item.Question || item.Student_Name || item.Course_Title || "The Insights Solution";
+  
+  // Star rating formatting for Reviews
+  let category = "";
+  if (item.Rating_Stars) {
+    category = "⭐".repeat(Math.min(5, parseInt(item.Rating_Stars) || 5));
+  } else {
+    category = item.Batch_No || item.Category || item.Tech_Stack || item.Topic || item.Course_Taken || "";
+  }
+  
+  let summary = "";
+  if (item.Role_Company && item.Course_Taken) {
+    summary = `${item.Role_Company} (${item.Course_Taken})`;
+  } else {
+    summary = item.Subtitle || item.Summary || item.Description || item.Problem_Statement || item.Role_Company || "";
+  }
+  
+  let fullContent = item.Review_Text || item.Answer_MD || item.Content_Markdown || item.Detailed_MD || item.Solution_Steps_MD || item.Syllabus_Outline_MD || "";
+  
   const rawImg = item.Photo_Name || item.Image_Name || item.Thumbnail_URL || "";
   const imgSrc = resolveMedia(folder, rawImg);
   const fallbackSrc = "Media_Files/" + rawImg;
   
-  // 1. Dynamic Button Text (from Google Sheet Button_Text column)
-  const actionText = item.Button_Text || item.Action_Text || "သင်တန်း အပ်နှံရန်";
-  const actionLink = item.Action_Link || item.Form_Link || item.Live_Demo_URL || "viber://chat?number=%2B959425320949";
+  // Action Button Text & Link
+  let defaultAction = "အသေးစိတ် ကြည့်ရန်";
+  if (currentTab.startsWith("C_") || currentTab.startsWith("COURSE_")) defaultAction = "သင်တန်း အပ်နှံရန်";
+  if (currentTab === "Reviews") defaultAction = "သင်တန်း စုံစမ်းမည်";
+  if (currentTab === "Q&A") defaultAction = "မေးမြန်းရန်";
+  if (currentTab === "Projects") defaultAction = "Live Demo ကြည့်ရန်";
+  if (currentTab === "F_Hacks") defaultAction = "Hack လေ့လာမည်";
   
-  const summary = item.Subtitle || item.Summary || item.Description || item.Problem_Statement || "";
-  const fullContent = item.Content_Markdown || item.Detailed_MD || item.Solution_Steps_MD || item.Syllabus_Outline_MD || item.Review_Text || "";
+  const actionText = item.Button_Text || item.Action_Text || item.CTA_Text || defaultAction;
+  const actionLink = item.Action_Link || item.Form_Link || item.Live_Demo_URL || item.Download_File_URL || item.CTA_Link || "viber://chat?number=%2B959425320949";
   
-  // 2. Dynamic Likes (from Google Sheet Likes column + LocalStorage sync)
+  // Dynamic Likes (from Sheet + LocalStorage)
   const baseLikes = parseInt(item.Likes || item.Like_Count || item.Likes_Count || 0);
   const isLiked = localStorage.getItem("tis_liked_" + id) === "true";
   const totalLikes = baseLikes + (isLiked ? 1 : 0);
   
-  // 3. Dynamic Comments (comma-separated from Google Sheet Comments column)
-  let rawComments = item.Comments || "";
+  // Dynamic Comments (comma-separated from Sheet + LocalStorage)
+  let rawComments = item.Comments || item.Comment || "";
   let commentList = [];
   if (rawComments && typeof rawComments === "string" && rawComments.trim()) {
     commentList = rawComments.split(",").map(c => c.trim()).filter(c => c.length > 0);
@@ -111,8 +138,6 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "courses", tabNa
       commentList = commentList.concat(localComments);
     }
   } catch(e) {}
-  
-  const category = item.Batch_No || item.Category || item.Tech_Stack || item.Topic || "";
 
   return `
   <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md" data-tab="${currentTab}">
@@ -184,13 +209,13 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "courses", tabNa
       </div>
     </div>
 
-    <!-- 5. Content / Article (3-line clamp + Read more >> toggle) -->
+    <!-- 5. Content / Article (3-line clamp + Read more >> toggle + Pre-line Whitespace) -->
     <div class="p-4 text-xs text-gray-600 leading-relaxed font-sans">
-      <div id="content-${id}" class="content-clamped" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-        ${summary ? `<p class="font-medium text-gray-700 mb-1">${summary}</p>` : ""}
-        ${fullContent ? `<div class="mt-2 space-y-1.5 text-gray-600">${fullContent}</div>` : ""}
+      <div id="content-${id}" class="content-clamped whitespace-pre-line" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; white-space: pre-line;">
+        ${summary ? `<p class="font-bold text-slate-800 mb-2 leading-snug whitespace-pre-line" style="white-space: pre-line;">${summary}</p>` : ""}
+        ${fullContent ? `<div class="mt-2 text-gray-600 leading-relaxed whitespace-pre-line" style="white-space: pre-line;">${fullContent}</div>` : ""}
       </div>
-      <button onclick="toggleReadMore('${id}')" id="readmore-btn-${id}" class="mt-2 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
+      <button onclick="toggleReadMore('${id}')" id="readmore-btn-${id}" class="mt-2.5 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
         Read more &gt;&gt;
       </button>
     </div>

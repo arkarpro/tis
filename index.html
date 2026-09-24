@@ -61,7 +61,13 @@
     .animate-fadeIn {
       animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-  </style>
+  
+  /* Auto preserve Enter/Newlines for all Content Cards */
+  .content-clamped, .whitespace-pre-line {
+    white-space: pre-line !important;
+    word-break: break-word;
+  }
+</style>
 </head>
 <body class="text-gray-800 antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen">
 

@@ -19,14 +19,15 @@ const VALID_PAGES = [
 
 // Page Controllers mapping to Google Sheets tabs
 const PAGE_CONTROLLERS = {
-  projects: () => renderDynamicTab('HOME_Projects', 'projects-container', 'projects', 'Live Demo ဖွင့်ကြည့်မည် ➔'),
-  excel_hacks: () => renderDynamicTab('FREE_Excel_Hacks', 'hacks-container', 'hacks', 'Hack လေ့လာမည် ➔'),
-  articles: () => renderDynamicTab('FREE_Articles', 'articles-container', 'articles', 'ဆောင်းပါး ဖတ်ရှုမည် ➔'),
-  course_excel_biz: () => renderDynamicTab('COURSE_Excel', 'course-excel-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
-  course_data_analysis: () => renderDynamicTab('COURSE_PowerQuery', 'course-da-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
-  course_powerbi: () => renderDynamicTab('COURSE_PowerBI', 'course-pbi-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
-  course_sql: () => renderDynamicTab('COURSE_SQL', 'course-sql-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
-  review: () => renderDynamicTab('TEST_Reviews', 'reviews-container', 'reviews', 'သင်တန်း ဆွေးနွေးရန် ➔'),
+  projects: () => renderDynamicTab('Projects', 'projects-container', 'projects', 'Live Demo ဖွင့်ကြည့်မည် ➔'),
+  excel_hacks: () => renderDynamicTab('F_Hacks', 'hacks-container', 'hacks', 'Hack လေ့လာမည် ➔'),
+  articles: () => renderDynamicTab('F_Article', 'articles-container', 'articles', 'ဆောင်းပါး ဖတ်ရှုမည် ➔'),
+  course_excel_biz: () => renderDynamicTab('C_EFBM', 'course-excel-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
+  course_data_analysis: () => renderDynamicTab('C_DAE', 'course-da-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
+  course_powerbi: () => renderDynamicTab('C_PBI', 'course-pbi-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
+  course_sql: () => renderDynamicTab('C_SQL', 'course-sql-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
+  review: () => renderDynamicTab('Reviews', 'reviews-container', 'reviews', 'သင်တန်း ဆွေးနွေးရန် ➔'),
+  qna: () => renderDynamicTab('Q&A', 'qna-container', 'qna', 'အမေးအဖြေ ဖတ်ရှုမည် ➔'),
   mock_excel: () => renderMockExcel(),
   mock_pl300: () => renderMockPL300()
 };
