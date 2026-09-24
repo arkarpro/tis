@@ -98,8 +98,8 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "courses") {
       <!-- Action Button (Absolute Bottom Right overlay) -->
       <a href="${actionLink}" target="_blank" rel="noopener noreferrer" 
          class="action-btn"
-         style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #0f172a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); text-decoration: none; transition: 0.2s;"
-         onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#0f172a'">
+         style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #1e3a8a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(30,58,138,0.35); text-decoration: none; transition: 0.2s;"
+         onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#1e3a8a'">
         <span>${actionText}</span>
         <span>➔</span>
       </a>
@@ -193,11 +193,14 @@ function handleLike(id) {
       btn.classList.remove("hover:text-rose-600");
     }
 
-    // Live Sync with Google Sheet Backend API
+    // Live Sync with Google Sheet Backend API (Instant Write-Back)
     const cardEl = btn ? btn.closest(".universal-card") : null;
-    const tabName = (cardEl && cardEl.dataset.tabName === "courses") ? "COURSE_Excel" : "COURSE_Excel";
+    const tabName = "COURSE_Excel";
     const syncUrl = MASTER_API + "?action=like&tab=" + encodeURIComponent(tabName) + "&id=" + encodeURIComponent(id);
-    fetch(syncUrl, { mode: "no-cors" }).catch(e => console.log("Like sync error:", e));
+    fetch(syncUrl).catch(() => {
+      // Fallback with no-cors if CORS is restricted
+      fetch(syncUrl, { mode: "no-cors" }).catch(e => console.log("Like sync error:", e));
+    });
   }
 }
 
