@@ -88,7 +88,7 @@ async function renderDynamicTab(tabName, containerId, folderName, defaultActionT
     // Render cards using universal engine
     container.innerHTML = activeItems.map(item => {
       if (!item.Action_Text) item.Action_Text = defaultActionText;
-      return createUniversalCardHtml(item, folderName);
+      return createUniversalCardHtml(item, folderName, 'courses', tabName);
     }).join('');
 
   } catch (err) {

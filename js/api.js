@@ -1,5 +1,5 @@
 // =========================================================================
-// 🌐 The Insights Solution (TIS) - Universal API & Content Card Engine
+// 🌐 The Insights Solution (TIS) - Universal API & Content Card Engine (v5.4)
 // =========================================================================
 
 const MASTER_API = "https://script.google.com/macros/s/AKfycbwuwM_avvTVZyYqgXVwzF_IAd5klnlvdmJ13JwBWiByUxXAq7dXKAiuLB5sjSornBfH/exec";
@@ -47,8 +47,9 @@ async function fetchTabData(tabName, forceRefresh = false) {
 }
 
 // Universal Content Card HTML Builder
-function createUniversalCardHtml(item, folder, fallbackFolder = "courses") {
+function createUniversalCardHtml(item, folder, fallbackFolder = "courses", tabName = "") {
   const id = String(item.Course_ID || item.ID || item.Project_ID || item.Hack_No || item.Article_ID || item.Review_ID || Math.random().toString(36).substring(7)).trim();
+  const currentTab = tabName || item.Tab_Name || (folder === "courses" ? "COURSE_Excel" : folder);
   const title = item.Title || item.Headline || item.Course_Title || item.Student_Name || "The Insights Solution";
   const rawImg = item.Photo_Name || item.Image_Name || item.Thumbnail_URL || "";
   const imgSrc = resolveMedia(folder, rawImg);
@@ -58,7 +59,7 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "courses") {
   const actionText = item.Button_Text || item.Action_Text || "သင်တန်း အပ်နှံရန်";
   const actionLink = item.Action_Link || item.Form_Link || item.Live_Demo_URL || "viber://chat?number=%2B959425320949";
   
-  const summary = item.Summary || item.Description || item.Problem_Statement || "";
+  const summary = item.Subtitle || item.Summary || item.Description || item.Problem_Statement || "";
   const fullContent = item.Content_Markdown || item.Detailed_MD || item.Solution_Steps_MD || item.Syllabus_Outline_MD || item.Review_Text || "";
   
   // 2. Dynamic Likes (from Google Sheet Likes column + LocalStorage sync)
@@ -82,7 +83,7 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "courses") {
   const category = item.Batch_No || item.Category || item.Tech_Stack || item.Topic || "";
 
   return `
-  <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md" data-tab-name="${folder}">
+  <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md" data-tab="${currentTab}">
     
     <!-- 1. Title -->
     <div class="p-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
@@ -95,11 +96,12 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "courses") {
       <img src="${imgSrc}" alt="${title}" class="w-full h-full object-contain" 
            onerror="if(!this.dataset.fallback){this.dataset.fallback=1; this.src='${fallbackSrc}';}else{this.src='Media_Files/branding/logo1.jpg';}">
       
-      <!-- Action Button (Absolute Bottom Right overlay) -->
+      <!-- Action Button (Navy Blue with smooth hover) -->
       <a href="${actionLink}" target="_blank" rel="noopener noreferrer" 
          class="action-btn"
-         style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #1e3a8a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(30,58,138,0.35); text-decoration: none; transition: 0.2s;"
-         onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#1e3a8a'">
+         style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #1e3a8a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(30,58,138,0.35); text-decoration: none; transition: all 0.2s ease;"
+         onmouseover="this.style.backgroundColor='#2563eb'; this.style.transform='scale(1.03)';" 
+         onmouseout="this.style.backgroundColor='#1e3a8a'; this.style.transform='scale(1)';">
         <span>${actionText}</span>
         <span>➔</span>
       </a>
@@ -193,12 +195,11 @@ function handleLike(id) {
       btn.classList.remove("hover:text-rose-600");
     }
 
-    // Live Sync with Google Sheet Backend API (Instant Write-Back)
+    // Dynamic Live Sync with Google Sheet Backend API
     const cardEl = btn ? btn.closest(".universal-card") : null;
-    const tabName = "COURSE_Excel";
+    const tabName = (cardEl && cardEl.dataset.tab) ? cardEl.dataset.tab : "COURSE_Excel";
     const syncUrl = MASTER_API + "?action=like&tab=" + encodeURIComponent(tabName) + "&id=" + encodeURIComponent(id);
     fetch(syncUrl).catch(() => {
-      // Fallback with no-cors if CORS is restricted
       fetch(syncUrl, { mode: "no-cors" }).catch(e => console.log("Like sync error:", e));
     });
   }
@@ -250,9 +251,13 @@ function submitComment(id) {
   }
   input.value = "";
 
-  // Live Sync with Google Sheet Backend API
-  const syncUrl = MASTER_API + "?action=comment&tab=COURSE_Excel&id=" + encodeURIComponent(id) + "&comment=" + encodeURIComponent(newComment);
-  fetch(syncUrl, { mode: "no-cors" }).catch(e => console.log("Comment sync error:", e));
+  // Dynamic Live Sync with Google Sheet Backend API
+  const cardEl = input ? input.closest(".universal-card") : null;
+  const tabName = (cardEl && cardEl.dataset.tab) ? cardEl.dataset.tab : "COURSE_Excel";
+  const syncUrl = MASTER_API + "?action=comment&tab=" + encodeURIComponent(tabName) + "&id=" + encodeURIComponent(id) + "&comment=" + encodeURIComponent(newComment);
+  fetch(syncUrl).catch(() => {
+    fetch(syncUrl, { mode: "no-cors" }).catch(e => console.log("Comment sync error:", e));
+  });
 }
 
 function toggleReadMore(id) {
