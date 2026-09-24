@@ -56,7 +56,7 @@ async function renderDynamicTab(tabName, containerId, folderName, defaultActionT
   container.innerHTML = `
     <div class="col-span-full flex flex-col items-center justify-center py-16">
       <div class="w-8 h-8 border-3 border-gray-200 border-t-blue-600 rounded-full animate-spin mb-3"></div>
-      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Google Sheet မှ ဒေတာများ ရယူနေပါသည်...</p>
+      <p class="text-xs font-bold text-gray-400 uppercase tracking-wider">Database မှ ဒေတာများ ရယူနေပါသည်...</p>
     </div>
   `;
 
