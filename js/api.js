@@ -27,24 +27,56 @@ function resolveMedia(folder, filename) {
 }
 
 // Fetch any tab data from Google Sheet
+
+// Tab Aliases Mapping (Supports both New Short Names & Legacy Names)
+const TAB_ALIASES = {
+  "COURSE_Excel": ["C_Excel", "COURSE_Excel"],
+  "C_Excel": ["C_Excel", "COURSE_Excel"],
+  "COURSE_PowerQuery": ["C_Analysis", "COURSE_PowerQuery", "COURSE_DataAnalysis"],
+  "C_Analysis": ["C_Analysis", "COURSE_PowerQuery", "COURSE_DataAnalysis"],
+  "COURSE_PowerBI": ["C_PBI", "COURSE_PowerBI"],
+  "C_PBI": ["C_PBI", "COURSE_PowerBI"],
+  "COURSE_SQL": ["C_SQL", "COURSE_SQL"],
+  "C_SQL": ["C_SQL", "COURSE_SQL"],
+  "FREE_Excel_Hacks": ["F_Hacks", "FREE_Excel_Hacks"],
+  "F_Hacks": ["F_Hacks", "FREE_Excel_Hacks"],
+  "FREE_Articles": ["F_Articles", "FREE_Articles"],
+  "F_Articles": ["F_Articles", "FREE_Articles"],
+  "FREE_Videos": ["F_Videos", "FREE_Videos"],
+  "F_Videos": ["F_Videos", "FREE_Videos"],
+  "HOME_Projects": ["H_Projects", "HOME_Projects"],
+  "H_Projects": ["H_Projects", "HOME_Projects"],
+  "HOME_About": ["H_About", "HOME_About"],
+  "H_About": ["H_About", "HOME_About"],
+  "TEST_Reviews": ["T_Reviews", "TEST_Reviews"],
+  "T_Reviews": ["T_Reviews", "TEST_Reviews"]
+};
+
+
 async function fetchTabData(tabName, forceRefresh = false) {
   if (!forceRefresh && DATA_CACHE[tabName]) {
     return DATA_CACHE[tabName];
   }
-  const url = MASTER_API + "?tab=" + encodeURIComponent(tabName) + (forceRefresh ? "&nocache=1" : "");
-  try {
-    const res = await fetch(url);
-    const json = await res.json();
-    if (json.status === "success" && json.data) {
-      DATA_CACHE[tabName] = json.data;
-      return json.data;
+  
+  // Try requested tab or aliases
+  const candidates = TAB_ALIASES[tabName] || [tabName];
+  for (const candidate of candidates) {
+    const url = MASTER_API + "?tab=" + encodeURIComponent(candidate) + (forceRefresh ? "&nocache=1" : "");
+    try {
+      const res = await fetch(url);
+      const json = await res.json();
+      if (json.status === "success" && json.data && json.data.length > 0) {
+        DATA_CACHE[tabName] = json.data;
+        DATA_CACHE[candidate] = json.data;
+        return json.data;
+      }
+    } catch (err) {
+      console.warn("Attempt with tab [" + candidate + "] failed, trying next...");
     }
-    return [];
-  } catch (err) {
-    console.error("Error fetching tab [" + tabName + "]:", err);
-    return [];
   }
+  return [];
 }
+
 
 // Universal Content Card HTML Builder
 function createUniversalCardHtml(item, folder, fallbackFolder = "courses", tabName = "") {

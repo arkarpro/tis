@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 2. Load Announcement Banner from Google Sheet SITE_Config
-  loadAdBannerFromSheet();
+  // loadAdBannerFromSheet(); // Removed per user request
 
   // 3. Listen to Hash change
   window.addEventListener('hashchange', () => {
@@ -147,6 +147,7 @@ async function loadPage(pageName, updateHash = true) {
     const pageHtml = await res.text();
     container.innerHTML = pageHtml;
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    updateActiveNav(targetPage);
 
     // Trigger Dynamic Tab Controller
     if (PAGE_CONTROLLERS[targetPage]) {
@@ -238,6 +239,7 @@ function handleShare(title, link) {
 
 // Dynamic Ad Banner from Google Sheet SITE_Config
 async function loadAdBannerFromSheet() {
+  return; // Disabled per user request
   const bannerEl = document.getElementById('dynamic-ad-banner');
   const textEl = document.getElementById('ad-banner-text');
   const linkEl = document.getElementById('ad-banner-link');
@@ -264,3 +266,35 @@ async function loadAdBannerFromSheet() {
     bannerEl.style.display = 'none';
   }
 }
+
+
+// Dynamic Active Navigation Pill Controller (Auto Highlight & Smooth Scroll)
+function updateActiveNav(pageName) {
+  // Mobile Quick Nav Pills
+  const pills = document.querySelectorAll('.nav-pill');
+  pills.forEach(pill => {
+    const page = pill.getAttribute('data-page');
+    if (page === pageName) {
+      pill.className = 'nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600 text-white font-extrabold border border-blue-400 shadow-md ring-1 ring-blue-300/40 text-xs transition active:scale-95';
+      try {
+        pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      } catch (e) {}
+    } else {
+      pill.className = 'nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition hover:bg-slate-700 active:scale-95';
+    }
+  });
+
+  // Mobile Drawer Links Active Highlight
+  const drawerLinks = document.querySelectorAll('#mobile-menu a');
+  drawerLinks.forEach(link => {
+    const href = link.getAttribute('href') || '';
+    if (href === '#' + pageName) {
+      link.classList.add('text-blue-400', 'font-black', 'bg-slate-800/60', 'rounded-lg', 'px-2');
+      link.classList.remove('text-gray-300');
+    } else {
+      link.classList.remove('text-blue-400', 'font-black', 'bg-slate-800/60', 'rounded-lg', 'px-2');
+      link.classList.add('text-gray-300');
+    }
+  });
+}
+window.updateActiveNav = updateActiveNav;

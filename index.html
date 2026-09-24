@@ -271,50 +271,51 @@
     </div>
   </div>
 
-  <!-- Mobile Quick-Access Category Bar with Authentic Icons -->
-  <div class="lg:hidden border-t border-slate-800/80 py-2.5 px-3 overflow-x-auto no-scrollbar shadow-inner" style="background-color: #0f172a !important;">
-    <div class="flex items-center gap-2 min-w-max">
-      <a href="#course_excel_biz" onclick="loadPage('course_excel_biz'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs font-bold active:scale-95 transition">
-        <span class="text-emerald-400">📊 Excel</span>
+  <!-- Mobile Quick-Access Category Bar with All 4 Sectors (Cohesive Styling & Active Indicator) -->
+  <div class="lg:hidden border-t border-slate-800/90 py-2 px-3 overflow-x-auto no-scrollbar shadow-inner" style="background-color: #0f172a !important;">
+    <div id="mobile-nav-track" class="flex items-center gap-1.5 min-w-max">
+      <!-- Sector: Course -->
+      <a href="#course_excel_biz" data-page="course_excel_biz" onclick="loadPage('course_excel_biz'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">📊</span> <span>Excel</span>
       </a>
-      <a href="#course_data_analysis" onclick="loadPage('course_data_analysis'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs font-bold active:scale-95 transition">
-        <span class="text-green-300">📦 Data Analysis</span>
+      <a href="#course_data_analysis" data-page="course_data_analysis" onclick="loadPage('course_data_analysis'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">📦</span> <span>Analysis</span>
       </a>
-      <a href="#course_powerbi" onclick="loadPage('course_powerbi'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs font-bold active:scale-95 transition">
-        <span class="text-yellow-400">📈 Power BI</span>
+      <a href="#course_powerbi" data-page="course_powerbi" onclick="loadPage('course_powerbi'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">📈</span> <span>PBI</span>
       </a>
-      <a href="#course_sql" onclick="loadPage('course_sql'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-xs font-bold active:scale-95 transition">
-        <span class="text-cyan-300">🗄️ SQL</span>
+      <a href="#course_sql" data-page="course_sql" onclick="loadPage('course_sql'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">🗄️</span> <span>SQL</span>
       </a>
-      <a href="#projects" onclick="loadPage('projects'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-blue-600 text-white text-xs font-bold active:scale-95 transition">
-        <span>💼 Projects</span>
+      <!-- Sector: Free -->
+      <a href="#excel_hacks" data-page="excel_hacks" onclick="loadPage('excel_hacks'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">💡</span> <span>Hacks</span>
       </a>
-      <a href="#excel_hacks" onclick="loadPage('excel_hacks'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-emerald-700 text-white text-xs font-bold active:scale-95 transition">
-        <span>💡 100 Hacks</span>
+      <a href="#articles" data-page="articles" onclick="loadPage('articles'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">📰</span> <span>Articles</span>
       </a>
-      <a href="#mock_excel" onclick="loadPage('mock_excel'); return false;" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-purple-700 text-white text-xs font-bold active:scale-95 transition">
-        <span>📝 Tests</span>
+      <!-- Sector: Home / Projects -->
+      <a href="#projects" data-page="projects" onclick="loadPage('projects'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">💼</span> <span>Projects</span>
+      </a>
+      <!-- Sector: Test & Review -->
+      <a href="#mock_excel" data-page="mock_excel" onclick="loadPage('mock_excel'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">📝</span> <span>Tests</span>
+      </a>
+      <a href="#review" data-page="review" onclick="loadPage('review'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">⭐</span> <span>Reviews</span>
+      </a>
+      <a href="#qna" data-page="qna" onclick="loadPage('qna'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">💬</span> <span>Q&A</span>
+      </a>
+      <a href="#about" data-page="about" onclick="loadPage('about'); return false;" class="nav-pill flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 border border-slate-700/80 text-slate-300 text-xs font-bold transition active:scale-95">
+        <span class="text-sm">👨‍💼</span> <span>About</span>
       </a>
     </div>
   </div>
 </nav>
 
   </header>
-
-  <!-- 2. Dynamic Ad Banner -->
-  <div id="ad-banner-placeholder">
-<!-- Dynamic Ad Banner Component (Loaded from Google Sheet: SITE_Config) -->
-<div id="dynamic-ad-banner" class="w-full bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-800 text-white py-2.5 px-4 shadow-sm" style="display: none;">
-  <div class="container mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-2 text-xs">
-    <div class="flex items-center gap-2">
-      <span class="px-2 py-0.5 rounded bg-yellow-400 text-slate-900 font-extrabold text-[10px] uppercase tracking-wider animate-pulse">Announcement</span>
-      <p id="ad-banner-text" class="font-medium text-white"></p>
-    </div>
-    <a id="ad-banner-link" href="#" target="_blank" class="font-bold underline hover:text-yellow-300 transition whitespace-nowrap">အသေးစိတ်ကြည့်ရန် ➔</a>
-  </div>
-</div>
-
-  </div>
 
   <!-- 3. Dynamic Page Content Frame (Pre-rendered About Section) -->
   <main id="main-content" class="flex-1 container mx-auto max-w-7xl px-4 py-6">
@@ -350,7 +351,7 @@
       <h3 class="text-2xl font-extrabold text-slate-900">Arkar Linn</h3>
       
       <p class="text-sm text-gray-600 leading-relaxed">
-        ဆရာ အာကာလင်းသည် ဘဏ္ဍာရေးနယ်ပယ်တွင် ၂၀၁၅ ခုနှစ်မှစတင်၍ Credit Analysis Manager အပါအဝင် စီမံခန့်ခွဲမှုရာထူးအဆင့်ဆင့်ကို တာဝန်ယူခဲ့ပြီး၊ အဖွဲ့အစည်း၏ အရေးကြီးသော PAR Management စနစ်များကို ဒေတာခွဲခြမ်းစိတ်ဖြာမှုဖြင့် အောင်မြင်စွာ ဦးဆောင်နိုင်ခဲ့သူ ဖြစ်ပါသည်။ ယခုလက်ရှိတွင် အမေရိကန်အခြေစိုက် (US-Based) ကုမ္ပဏီကြီးတစ်ခု၌ Senior Management Team Member အဖြစ် တာဝန်ထမ်းဆောင်လျက်ရှိပြီး၊ လုပ်ငန်းလည်ပတ်မှုနှင့် အရေးကြီးသော ဆုံးဖြတ်ချက်များကို အချက်အလက်များဖြင့် စီမံခန့်ခွဲသည့် (Data-driven Management) ကဏ္ဍတွင် အဓိက ဦးဆောင်လျက်ရှိပါသည်။ ၂၀၁၂ ခုနှစ်ကတည်းက စဉ်ဆက်မပြတ် လေ့လာဆည်းပူးခဲ့သော Data Analytics ကျွမ်းကျင်မှုများကို အသုံးချ၍ ယခုအခါ TIS (The Insights Solution) မှတစ်ဆင့် မြန်မာနိုင်ငံရှိ စီးပွားရေးလုပ်ငန်းများနှင့် လူငယ်များအတွက် အမှန်တကယ် လက်တွေ့အသုံးချနိုင်မည့် Data Strategy များကို တက်ကြွစွာ လမ်းညွှန်မျှဝေပေးလျက်ရှိပါသည်။
+        ဘဏ္ဍာရေးဝန်ဆောင်မှု လုပ်ငန်းနယ်ပယ်တွင် ၂၀၁၅ ခုနှစ်မှစ၍ Credit Officer, Credit Supervisor, Branch Manager နှင့် Credit Analysis Manager အဖြစ် တာဝန်ယူခဲ့ပြီး PAR Management စနစ်များကို ဒေတာခွဲခြမ်းစိတ်ဖြာမှုဖြင့် အောင်မြင်စွာ ဦးဆောင်ခဲ့သူ ဖြစ်ပါသည်။ ၂၀၁၂ ခုနှစ်မှ စတင်ကာ စုဆောင်းလေ့လာခဲ့သော Data Analysis အသိပညာများကို မြန်မာနိုင်ငံရှိ စီးပွားရေးလုပ်ငန်းများနှင့် လူငယ်များထံ လက်တွေ့ကျကျ မျှဝေပေးလျက်ရှိပါသည်။
       </p>
 
       <!-- Key Stats Grid -->
@@ -391,23 +392,23 @@
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-2">
       <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-black text-lg mb-3">🎯</div>
-      <h4 class="font-extrabold text-base text-slate-900">လက်တွေ့လုပ်ငန်းခွင်အသုံးချစနစ် (Practical-First Approach)</h4>
+      <h4 class="font-extrabold text-base text-slate-900">လက်တွေ့ ဦးစားပေး စနစ်</h4>
       <p class="text-xs text-gray-500 leading-relaxed">
-        စာတွေ့သဘောတရားသက်သက်မဟုတ်ဘဲ၊ လုပ်ငန်းခွင်တွင် ချက်ချင်း တိုက်ရိုက်အသုံးချနိုင်မည့် Real-World Business Case Study များကိုသာ အခြေခံ၍ လေ့ကျင့်သင်ကြားပေးပါသည်။
+        သဘောတရားသက်သက် မဟုတ်ဘဲ လုပ်ငန်းခွင်တွင် ချက်ချင်း အသုံးချနိုင်သော Real-World Business Cases များကိုသာ သင်ကြားပေးပါသည်။
       </p>
     </div>
     <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-2">
       <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-black text-lg mb-3">⚡</div>
-      <h4 class="font-extrabold text-base text-slate-900">အချိန်ကုန်သက်သာစေမည့် Automation (1-Click Automation)</h4>
+      <h4 class="font-extrabold text-base text-slate-900">Automation ဦးစားပေးခြင်း</h4>
       <p class="text-xs text-gray-500 leading-relaxed">
-        နေ့စဉ် ထပ်တလဲလဲ လုပ်ဆောင်နေရသော စာရင်းဇယားများကို Power Query နှင့် Modern DAX တို့အသုံးပြု၍ Click တစ်ချက်နှိပ်ရုံဖြင့် အလိုအလျောက် ပြီးစီးစေမည့်စနစ်များ တည်ဆောက်နည်းကို ဦးစားပေး သင်ကြားပါသည်။
+        ထပ်တလဲလဲ လုပ်ရသော အချိန်ကုန် စာရင်းဇယားများကို Power Query နှင့် Modern DAX ဖြင့် 1-Click အလိုအလျောက် ဖြစ်စေရန် လေ့ကျင့်ပေးပါသည်။
       </p>
     </div>
     <div class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-2">
       <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-black text-lg mb-3">🤝</div>
-      <h4 class="font-extrabold text-base text-slate-900">စဉ်ဆက်မပြတ် ကူညီပံ့ပိုးမှု (Lifetime Community Support)</h4>
+      <h4 class="font-extrabold text-base text-slate-900">တစ်သက်တာ ပံ့ပိုးမှု (Community)</h4>
       <p class="text-xs text-gray-500 leading-relaxed">
-        သင်တန်းပြီးဆုံးသွားသော်လည်း TIS Viber Community မှတစ်ဆင့် လုပ်ငန်းခွင်အတွင်း ကြုံတွေ့ရသော Data ဆိုင်ရာ အခက်အခဲများနှင့် ပြဿနာများကို အမြဲတမ်း အကြံပေး ကူညီဖြေရှင်းပေးပါသည်။
+        သင်တန်းပြီးဆုံးသော်လည်း TIS Viber Community မှတစ်ဆင့် လုပ်ငန်းခွင် ပြဿနာများနှင့် ဒေတာဆိုင်ရာ အခက်အခဲများကို အမြဲ အကြံပေးကူညီပါသည်။
       </p>
     </div>
   </div>
