@@ -47,8 +47,8 @@ async function fetchTabData(tabName, forceRefresh = false) {
 }
 
 // Universal Content Card HTML Builder
-function createUniversalCardHtml(item, folder, fallbackFolder = "projects") {
-  const id = item.ID || item.Course_ID || item.Project_ID || item.Hack_No || item.Article_ID || item.Review_ID || Math.random().toString(36).substring(7);
+function createUniversalCardHtml(item, folder, fallbackFolder = "courses") {
+  const id = String(item.Course_ID || item.ID || item.Project_ID || item.Hack_No || item.Article_ID || item.Review_ID || Math.random().toString(36).substring(7)).trim();
   const title = item.Title || item.Headline || item.Course_Title || item.Student_Name || "The Insights Solution";
   const rawImg = item.Photo_Name || item.Image_Name || item.Thumbnail_URL || "";
   const imgSrc = resolveMedia(folder, rawImg);
@@ -79,10 +79,10 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "projects") {
     }
   } catch(e) {}
   
-  const category = item.Category || item.Tech_Stack || item.Topic || item.Batch_No || "";
+  const category = item.Batch_No || item.Category || item.Tech_Stack || item.Topic || "";
 
   return `
-  <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md">
+  <div class="universal-card bg-white rounded-2xl border border-gray-200/90 shadow-sm overflow-hidden flex flex-col mb-6 transition hover:shadow-md" data-tab-name="${folder}">
     
     <!-- 1. Title -->
     <div class="p-4 pb-3 border-b border-gray-100 flex items-center justify-between gap-3">
@@ -93,13 +93,13 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "projects") {
     <!-- 2. Media Display (Strict 16:9 Ratio, object-fit: contain) -->
     <div class="media-frame" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background-color: #f4f4f4; overflow: hidden; display: flex; align-items: center; justify-content: center;">
       <img src="${imgSrc}" alt="${title}" class="w-full h-full object-contain" 
-           onerror="if(!this.dataset.fallback){this.dataset.fallback=1; this.src=;}else{this.src=Media_Files/branding/logo1.jpg;}">
+           onerror="if(!this.dataset.fallback){this.dataset.fallback=1; this.src='${fallbackSrc}';}else{this.src='Media_Files/branding/logo1.jpg';}">
       
       <!-- Action Button (Absolute Bottom Right overlay) -->
       <a href="${actionLink}" target="_blank" rel="noopener noreferrer" 
          class="action-btn"
          style="position: absolute; bottom: 10px; right: 10px; z-index: 10; background-color: #0f172a; color: #ffffff; padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.25); text-decoration: none; transition: 0.2s;"
-         onmouseover="this.style.backgroundColor=#2563eb" onmouseout="this.style.backgroundColor=#0f172a">
+         onmouseover="this.style.backgroundColor='#2563eb'" onmouseout="this.style.backgroundColor='#0f172a'">
         <span>${actionText}</span>
         <span>➔</span>
       </a>
@@ -107,27 +107,27 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "projects") {
 
     <!-- 3. Social Actions Row (Flexbox: Left: Like | Center: Comment | Right: Share) -->
     <div class="flex items-center justify-between px-4 py-2.5 border-t border-b border-gray-100 bg-slate-50/70 text-xs text-gray-500 font-semibold select-none">
-      <button onclick="handleLike()" id="like-btn-${id}" class="flex items-center gap-1.5 transition ${isLiked ? "text-rose-600 font-bold" : "hover:text-rose-600"}">
+      <button onclick="handleLike('${id}')" id="like-btn-${id}" class="flex items-center gap-1.5 transition ${isLiked ? "text-rose-600 font-bold" : "hover:text-rose-600"}">
         <span id="like-icon-${id}">${isLiked ? "❤️" : "🤍"}</span>
         <span id="like-count-${id}">${totalLikes}</span> Likes
       </button>
-      <button onclick="toggleCommentDrawer()" class="flex items-center gap-1.5 hover:text-blue-600 transition">
+      <button onclick="toggleCommentDrawer('${id}')" class="flex items-center gap-1.5 hover:text-blue-600 transition">
         <span>💬</span>
         <span>မှတ်ချက်များ (<span id="btn-cmt-count-${id}">${commentList.length}</span>)</span>
       </button>
-      <button onclick="handleShare(, )" class="flex items-center gap-1.5 hover:text-indigo-600 transition">
+      <button onclick="handleShare('${title}', '${actionLink}')" class="flex items-center gap-1.5 hover:text-indigo-600 transition">
         <span>🔗</span>
         <span>မျှဝေမည်</span>
       </button>
     </div>
 
     <!-- 4. Comments Drawer (Anonymous IDs with #User-XX) -->
-    <div id="comments-drawer-${id}" class="hidden border-b border-gray-100 bg-slate-50/70 p-4 transition-all duration-300">
+    <div id="comments-drawer-${id}" style="display: none;" class="border-b border-gray-100 bg-slate-50/70 p-4 transition-all duration-300">
       <div class="flex items-center justify-between mb-2.5">
         <span class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
           <span>💬</span> ကျောင်းသား/သူများ၏ မှတ်ချက်များ
         </span>
-        <button onclick="toggleCommentDrawer()" class="text-[11px] text-gray-400 hover:text-gray-600 font-semibold">ပိတ်မည် ✕</button>
+        <button onclick="toggleCommentDrawer('${id}')" class="text-[11px] text-gray-400 hover:text-gray-600 font-semibold">ပိတ်မည် ✕</button>
       </div>
       
       <div id="comments-list-${id}" class="space-y-2 mb-3 max-h-48 overflow-y-auto pr-1">
@@ -143,8 +143,8 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "projects") {
       <div class="flex gap-2 items-center">
         <input type="text" id="comment-input-${id}" placeholder="မှတ်ချက် ရေးသားပါ (အမည် မဖော်ပြပါ)..." 
                class="flex-1 text-xs px-3 py-2 bg-white border border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 transition"
-               onkeydown="if(event.key===Enter){submitComment();}">
-        <button onclick="submitComment()" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shrink-0">
+               onkeydown="if(event.key==='Enter'){submitComment('${id}');}">
+        <button onclick="submitComment('${id}')" class="px-3.5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition flex items-center gap-1 shrink-0">
           <span>ပို့မည်</span> ➔
         </button>
       </div>
@@ -156,7 +156,7 @@ function createUniversalCardHtml(item, folder, fallbackFolder = "projects") {
         ${summary ? `<p class="font-medium text-gray-700 mb-1">${summary}</p>` : ""}
         ${fullContent ? `<div class="mt-2 space-y-1.5 text-gray-600">${fullContent}</div>` : ""}
       </div>
-      <button onclick="toggleReadMore()" id="readmore-btn-${id}" class="mt-2 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
+      <button onclick="toggleReadMore('${id}')" id="readmore-btn-${id}" class="mt-2 font-extrabold text-blue-600 hover:text-blue-800 transition inline-block">
         Read more &gt;&gt;
       </button>
     </div>
@@ -192,17 +192,24 @@ function handleLike(id) {
       btn.classList.add("text-rose-600", "font-bold");
       btn.classList.remove("hover:text-rose-600");
     }
+
+    // Live Sync with Google Sheet Backend API
+    const cardEl = btn ? btn.closest(".universal-card") : null;
+    const tabName = (cardEl && cardEl.dataset.tabName === "courses") ? "COURSE_Excel" : "COURSE_Excel";
+    const syncUrl = MASTER_API + "?action=like&tab=" + encodeURIComponent(tabName) + "&id=" + encodeURIComponent(id);
+    fetch(syncUrl, { mode: "no-cors" }).catch(e => console.log("Like sync error:", e));
   }
 }
 
 function toggleCommentDrawer(id) {
   const drawer = document.getElementById("comments-drawer-" + id);
-  if (drawer) {
-    drawer.classList.toggle("hidden");
-    if (!drawer.classList.contains("hidden")) {
-      const input = document.getElementById("comment-input-" + id);
-      if (input) input.focus();
-    }
+  if (!drawer) return;
+  if (drawer.style.display === "none" || drawer.style.display === "") {
+    drawer.style.display = "block";
+    const input = document.getElementById("comment-input-" + id);
+    if (input) setTimeout(() => input.focus(), 60);
+  } else {
+    drawer.style.display = "none";
   }
 }
 
@@ -211,6 +218,7 @@ function submitComment(id) {
   if (!input || !input.value.trim()) return;
   const newComment = input.value.trim();
   
+  // Save to localStorage for instant user preview
   const localKey = "tis_local_comments_" + id;
   let existing = [];
   try {
@@ -219,6 +227,7 @@ function submitComment(id) {
   existing.push(newComment);
   localStorage.setItem(localKey, JSON.stringify(existing));
   
+  // Append to UI list
   const list = document.getElementById("comments-list-" + id);
   const countEl = document.getElementById("btn-cmt-count-" + id);
   const currentTotal = (parseInt(countEl ? countEl.innerText : "0") || 0) + 1;
@@ -237,6 +246,10 @@ function submitComment(id) {
     list.appendChild(div);
   }
   input.value = "";
+
+  // Live Sync with Google Sheet Backend API
+  const syncUrl = MASTER_API + "?action=comment&tab=COURSE_Excel&id=" + encodeURIComponent(id) + "&comment=" + encodeURIComponent(newComment);
+  fetch(syncUrl, { mode: "no-cors" }).catch(e => console.log("Comment sync error:", e));
 }
 
 function toggleReadMore(id) {
