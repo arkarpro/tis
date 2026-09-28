@@ -20,7 +20,7 @@ const VALID_PAGES = [
 // Page Controllers mapping to Google Sheets tabs
 const PAGE_CONTROLLERS = {
   projects: () => renderDynamicTab('Projects', 'projects-container', 'projects', 'Live Demo ဖွင့်ကြည့်မည် ➔'),
-  excel_hacks: () => renderDynamicTab('F_Hacks', 'hacks-container', 'hacks', 'Hack လေ့လာမည် ➔'),
+  excel_hacks: () => renderDynamicTab('F_Hacks', 'hacks-container', 'hacks', 'Excel File ရယူမယ် ➔'),
   articles: () => renderDynamicTab('F_Article', 'articles-container', 'articles', 'ဆောင်းပါး ဖတ်ရှုမည် ➔'),
   course_excel_biz: () => renderDynamicTab('C_EFBM', 'course-excel-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
   course_data_analysis: () => renderDynamicTab('C_DAE', 'course-da-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
