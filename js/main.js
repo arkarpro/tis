@@ -328,3 +328,18 @@ function updateActiveNav(pageName) {
   });
 }
 window.updateActiveNav = updateActiveNav;
+
+// Floating Quick Navigator Toggle
+function toggleQuickNav() {
+  const modal = document.getElementById('quickNavModal');
+  if (!modal) return;
+  if (modal.classList.contains('hidden')) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  } else {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+}
