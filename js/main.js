@@ -107,11 +107,11 @@ function renderMockExcel() {
   const container = document.getElementById('mock-excel-container');
   if (!container) return;
   const tests = [
-    { no: '1', level: 'Level 1: Elementary', title: 'Foundations & Essential Formulas', summary: 'SUM, AVERAGE, COUNTIF, IF အခြေခံ တွက်ချက်မှုများနှင့် Data Formatting စစ်ဆေးခြင်း။' },
-    { no: '2', level: 'Level 2: Intermediate', title: 'Advanced Lookup & Dynamic Formulas', summary: 'XLOOKUP, INDEX-MATCH, FILTER, UNIQUE dynamic array စနစ်များ စစ်ဆေးခြင်း။' },
-    { no: '3', level: 'Level 3: Upper Intermediate', title: 'Power Query Automation Mastery', summary: 'Folder Combining, Merged-cell Unpivoting, Custom M-Functions စစ်ဆေးခြင်း။' },
-    { no: '4', level: 'Level 4: Advanced', title: 'Business Reporting & Data Analysis', summary: 'SUMPRODUCT, Advanced PivotTable, Conditional Logic & Error Handling စစ်ဆေးခြင်း။' },
-    { no: '5', level: 'Level 5: Professional Master', title: 'Power Pivot & Business Intelligence', summary: 'Data Modeling, Star Schema, Relationships နှင့် Advanced DAX Formulas စစ်ဆေးခြင်း။' }
+    { no: '1', level: 'Level 1: Elementary', title: 'Foundations & Essential Formulas', summary: 'Formula စတင်နည်း (=), Cell References (C5), SUM, Rows/Columns နှင့် Shortcut များ စစ်ဆေးခြင်း။' },
+    { no: '2', level: 'Level 2: Intermediate', title: 'Conditional Logic & Lookup Formulas', summary: 'IF, Absolute Reference ($), COUNTIF, SUMIF နှင့် VLOOKUP အခြေခံ အသုံးပြုနည်းများ စစ်ဆေးခြင်း။' },
+    { no: '3', level: 'Level 3: Upper Intermediate', title: 'Advanced Reporting & Modern Lookups', summary: 'Pivot Table အနှစ်ချုပ်ခြင်း၊ SUMIFS, INDEX & MATCH, XLOOKUP နှင့် IFERROR စနစ်များ စစ်ဆေးခြင်း။' },
+    { no: '4', level: 'Level 4: Advanced', title: 'Modern Dynamic Array Formulas', summary: 'Spill စနစ်၊ UNIQUE, FILTER, SORT, SORTBY နှင့် SEQUENCE dynamic array ဖော်မြူလာများ စစ်ဆေးခြင်း။' },
+    { no: '5', level: 'Level 5: Professional Master', title: 'Power Query Automation & M Language', summary: 'Power Query ETL လုပ်ငန်းစဉ်၊ M language အခြေခံ၊ Data Transformation နှင့် အလိုအလျောက် သန့်စင်ခြင်း။' }
   ];
   
   container.innerHTML = tests.map(t => `
