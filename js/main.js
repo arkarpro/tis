@@ -20,7 +20,7 @@ const VALID_PAGES = [
 // Page Controllers mapping to Google Sheets tabs
 const PAGE_CONTROLLERS = {
   projects: () => renderDynamicTab('Projects', 'projects-container', 'projects', 'Live Demo ဖွင့်ကြည့်မည် ➔'),
-  excel_hacks: () => renderDynamicTab('F_Hacks', 'hacks-container', 'hacks', 'Excel File ရယူမယ် ➔'),
+  excel_hacks: () => renderDynamicTab('F_Hacks', 'hacks-container', 'hacks', 'Hack လေ့လာမည် ➔'),
   articles: () => renderDynamicTab('F_Article', 'articles-container', 'articles', 'ဆောင်းပါး ဖတ်ရှုမည် ➔'),
   course_excel_biz: () => renderDynamicTab('C_EFBM', 'course-excel-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
   course_data_analysis: () => renderDynamicTab('C_DAE', 'course-da-container', 'courses', 'သင်တန်း အပ်နှံရန် ➔'),
@@ -102,26 +102,63 @@ async function renderDynamicTab(tabName, containerId, folderName, defaultActionT
   }
 }
 
-// Mock Tests Launchers
+// Interactive Mock Tests Launchers (Connected to In-App Exam Simulator)
 function renderMockExcel() {
   const container = document.getElementById('mock-excel-container');
   if (!container) return;
   const tests = [
-    { title: 'Excel Level 1: Foundations & Essential Formulas', Category: 'Level 1', Summary: 'SUM, AVERAGE, COUNTIF, IF အခြေခံ တွက်ချက်မှုများနှင့် Data Formatting စစ်ဆေးခြင်း။', Action_Text: 'Test စတင်ဖြေဆိုမည် ➔', Action_Link: 'https://docs.google.com/forms/d/e/1FAIpQLSd_mock_level1/viewform', Photo_Name: 'quiz-01.jpg' },
-    { title: 'Excel Level 2: Advanced Lookup & Dynamic Formulas', Category: 'Level 2', Summary: 'XLOOKUP, INDEX-MATCH, FILTER, UNIQUE dynamic array စနစ်များ စစ်ဆေးခြင်း။', Action_Text: 'Test စတင်ဖြေဆိုမည် ➔', Action_Link: 'https://docs.google.com/forms/d/e/1FAIpQLSd_mock_level2/viewform', Photo_Name: 'quiz-02.jpg' },
-    { title: 'Excel Level 3: Power Query Automation Mastery', Category: 'Level 3', Summary: 'Folder Combining, Merged-cell Unpivoting, Custom M-Functions စစ်ဆေးခြင်း။', Action_Text: 'Test စတင်ဖြေဆိုမည် ➔', Action_Link: 'https://docs.google.com/forms/d/e/1FAIpQLSd_mock_level3/viewform', Photo_Name: 'quiz-03.jpg' }
+    { no: '1', level: 'Level 1: Elementary', title: 'Foundations & Essential Formulas', summary: 'SUM, AVERAGE, COUNTIF, IF အခြေခံ တွက်ချက်မှုများနှင့် Data Formatting စစ်ဆေးခြင်း။' },
+    { no: '2', level: 'Level 2: Intermediate', title: 'Advanced Lookup & Dynamic Formulas', summary: 'XLOOKUP, INDEX-MATCH, FILTER, UNIQUE dynamic array စနစ်များ စစ်ဆေးခြင်း။' },
+    { no: '3', level: 'Level 3: Upper Intermediate', title: 'Power Query Automation Mastery', summary: 'Folder Combining, Merged-cell Unpivoting, Custom M-Functions စစ်ဆေးခြင်း။' },
+    { no: '4', level: 'Level 4: Advanced', title: 'Business Reporting & Data Analysis', summary: 'SUMPRODUCT, Advanced PivotTable, Conditional Logic & Error Handling စစ်ဆေးခြင်း။' },
+    { no: '5', level: 'Level 5: Professional Master', title: 'Power Pivot & Business Intelligence', summary: 'Data Modeling, Star Schema, Relationships နှင့် Advanced DAX Formulas စစ်ဆေးခြင်း။' }
   ];
-  container.innerHTML = tests.map(t => createUniversalCardHtml(t, 'quizzes')).join('');
+  
+  container.innerHTML = tests.map(t => `
+    <div class="bg-white rounded-3xl p-6 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 flex flex-col justify-between hover:shadow-lg transition group">
+      <div>
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-black px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 tracking-wide">${t.level}</span>
+          <span class="text-[11px] font-bold text-gray-400">⏱️ Self-Paced / Timer</span>
+        </div>
+        <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-emerald-700 transition">${t.title}</h3>
+        <p class="text-xs text-gray-500 leading-relaxed mb-6">${t.summary}</p>
+      </div>
+      <button onclick="startExcelQuiz('${t.no}')" class="w-full py-3.5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-extrabold text-xs rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center gap-2">
+        <span>Test စတင်ဖြေဆိုမည်</span>
+        <span class="text-sm">▶</span>
+      </button>
+    </div>
+  `).join('');
 }
 
 function renderMockPL300() {
   const container = document.getElementById('mock-pl300-container');
   if (!container) return;
   const tests = [
-    { title: 'PL-300 Mock Test 1: Prepare the Data (25-30%)', Category: 'PL-300 Prep', Summary: 'Power Query Parameters, Data Cleaning, Custom Columns နှင့် Data Source Connections။', Action_Text: 'Exam စတင်ဖြေဆိုမည် ➔', Action_Link: 'https://docs.google.com/forms/d/e/1FAIpQLSd_pl300_part1/viewform', Photo_Name: 'quiz-03.jpg' },
-    { title: 'PL-300 Mock Test 2: Model the Data & DAX (25-30%)', Category: 'PL-300 DAX', Summary: 'Star Schema, Relationships (1:M, M:M), CALCULATE, FILTER, Time Intelligence DAX။', Action_Text: 'Exam စတင်ဖြေဆိုမည် ➔', Action_Link: 'https://docs.google.com/forms/d/e/1FAIpQLSd_pl300_part2/viewform', Photo_Name: 'PBI_8.png' }
+    { no: '1', badge: 'Part 1 (25-30%)', title: 'Prepare the Data', summary: 'Power Query Parameters, Data Cleaning, Custom Columns နှင့် Data Source Connections စစ်ဆေးခြင်း။' },
+    { no: '2', badge: 'Part 2 (25-30%)', title: 'Model the Data & DAX', summary: 'Star Schema, Relationships (1:M, M:M), CALCULATE, FILTER, Time Intelligence DAX စစ်ဆေးခြင်း။' },
+    { no: '3', badge: 'Part 3 (25-30%)', title: 'Visualize and Analyze the Data', summary: 'Visual Selection, Drill-through, Bookmarks, Custom Tooltips, Analytics Features စစ်ဆေးခြင်း။' },
+    { no: '4', badge: 'Part 4 (15-20%)', title: 'Deploy and Maintain Assets', summary: 'Workspaces, Row-Level Security (RLS), Scheduled Refresh, Gateway Setup စစ်ဆေးခြင်း။' },
+    { no: '5', badge: 'Part 5 (Final Exam)', title: 'PL-300 Full Mock Simulator', summary: 'Microsoft Certified Power BI Data Analyst Associate စာမေးပွဲ အစစ်အတိုင်း ဖြေဆိုလေ့ကျင့်ခြင်း။' }
   ];
-  container.innerHTML = tests.map(t => createUniversalCardHtml(t, 'quizzes')).join('');
+  
+  container.innerHTML = tests.map(t => `
+    <div class="bg-white rounded-3xl p-6 sm:p-7 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-gray-100 flex flex-col justify-between hover:shadow-lg transition group">
+      <div>
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-xs font-black px-3 py-1 rounded-full bg-blue-50 text-blue-700 tracking-wide">${t.badge}</span>
+          <span class="text-[11px] font-bold text-gray-400">⏱️ Certification Prep</span>
+        </div>
+        <h3 class="text-lg font-black text-slate-800 mb-2 group-hover:text-blue-700 transition">${t.title}</h3>
+        <p class="text-xs text-gray-500 leading-relaxed mb-6">${t.summary}</p>
+      </div>
+      <button onclick="startMockTest('${t.no}')" class="w-full py-3.5 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-extrabold text-xs rounded-xl shadow-md hover:shadow-lg transition flex items-center justify-center gap-2">
+        <span>Exam စတင်ဖြေဆိုမည်</span>
+        <span class="text-sm">▶</span>
+      </button>
+    </div>
+  `).join('');
 }
 
 // SPA Page Loader
@@ -171,15 +208,7 @@ function toggleMobileMenu() {
   if (menu) menu.classList.toggle('hidden');
 }
 
-// Login Modal
-function openLoginModal() {
-  const modal = document.getElementById('loginModal');
-  if (modal) modal.classList.remove('hidden');
-}
-function closeLoginModal() {
-  const modal = document.getElementById('loginModal');
-  if (modal) modal.classList.add('hidden');
-}
+// Login Modal is managed by auth.js
 
 // Universal Content Card: Read More >> Toggle
 function toggleReadMore(cardId) {
